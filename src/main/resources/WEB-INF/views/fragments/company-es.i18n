@@ -8,11 +8,12 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-master.company.title = La empresa
+master.company.title = Acme ANS
 master.company.text = \
-	Hello World, S.A. es una empresa ficticia que ofrece un proyecto starter para los \
-	estudiantes de la asignatura Diseño y Pruebas de la titulación de \
-	Ingeniería del Software en la Universidad de Seville. 
+	Acme AirNav Solutions, Inc. (Acme ANS, Inc. para abreviar) \
+	es una empresa ficticia que se especializa en ayudar a los aeropuertos \
+	a gestionar sus recursos y coordinar operaciones mediante el desarrollo \
+	de soluciones de software.
 master.company.name = Acme, Inc.
 master.company.address = 01 Acme Drive, Wondercity, Wonderland
 master.company.phone = +1 000 111 222
