@@ -9,7 +9,7 @@
 # they accept any liabilities with respect to them.
 
 master.footer.title.about = About us
-master.footer.label.company = Company
+master.footer.label.company = Acme ANS
 master.footer.label.license = License
 master.footer.title.social = Social
 master.footer.url.linkedin = http://www.linkedin.com
