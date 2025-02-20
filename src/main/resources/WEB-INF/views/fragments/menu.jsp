@@ -23,6 +23,9 @@
 			<acme:menu-suboption code="master.menu.anonymous.carlos" action="https://monkeytype.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.jose" action="https://neal.fun/asteroid-launcher/"/>
 	        <acme:menu-suboption code="master.menu.anonymous.lucia" action="https://www.ilovepdf.com/es/"/>
+=======
+			<acme:menu-suboption code="master.menu.anonymous.lucia" action="https://www.ilovepdf.com/es/"/>
+>>>>>>> e8301adda25230137bdcbb9580e25eb648e1ad9a
 
 		</acme:menu-option>
 
