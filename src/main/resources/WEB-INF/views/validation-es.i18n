@@ -1,0 +1,18 @@
+# validation-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+acme.validation.header.message  	= Debe tener entre 1 y 75 caracteres
+acme.validation.text.message   		= Debe tener entre 1 y 255 caracteres 
+acme.validation.phone.message       = Debe ser +código-país (código-área) número, donde sólo el número es obligatorio
+
+acme.validation.airline.duplicated-IATA.message  = código IATA ya usado
+acme.validation.airline.IATA.message			  = El código IATA debe estar compuesto únicamente por 3 letras mayusculas
+acme.validation.flightcrew.employeecode = El código de empleado deben ser 2 o tres letras mayusculas, las iniciales del empleado, seguido de seis dígitos
+acme.validation.flightcrewmember.duplicated-employeecode.message = codigo de empleado ya usado
