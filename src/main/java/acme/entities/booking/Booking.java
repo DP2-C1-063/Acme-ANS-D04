@@ -34,11 +34,14 @@ public class Booking extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z0-9]{6,8}$")
+	//@ValidString(pattern = "^[A-Z0-9]{6,8}$")
+	//UNIQUE
+	@Automapped
 	private String				locatorCode;
 
 	@Mandatory
 	@ValidMoment(past = true)
+	@Automapped
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				purchaseMoment;
 
@@ -54,12 +57,14 @@ public class Booking extends AbstractEntity {
 
 	@Optional
 	@ValidString(pattern = "^\\d{4}$")
+	@Automapped
 	private String				lastNibble;
 
 	@Mandatory
 	@Valid
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
+	@Automapped
 	private Customer			customer;
 
 }

@@ -11,6 +11,7 @@ import javax.persistence.TemporalType;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
@@ -33,29 +34,35 @@ public class Passenger extends AbstractEntity {
 
 	@Mandatory
 	@ValidString(max = 255)
+	@Automapped
 	private String				name;
 
 	@Mandatory
 	@ValidEmail
+	@Automapped
 	private String				email;
 
 	@Mandatory
 	@ValidString(pattern = "^[A-Z0-9]{6,9}$")
+	@Automapped
 	private String				passport;
 
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.DATE)
+	@Automapped
 	private Date				birth;
 
 	@Optional
 	@ValidString(max = 50)
+	@Automapped
 	private String				needs;
 
 	@Mandatory
 	@Valid
 	@OneToMany
 	@JoinColumn(name = "booking_id")
+	@Automapped
 	private Booking				booking;
 
 }

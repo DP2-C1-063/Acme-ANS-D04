@@ -16,3 +16,7 @@ acme.validation.airline.duplicated-IATA.message  = IATA code already used
 acme.validation.airline.IATA.message			  = The IATA must be composed of three uppercase letters only
 acme.validation.flightcrew.employeecode = The employee code must be two to three uppercase letters, the initial of the employee, and 6 digits
 acme.validation.flightcrewmember.duplicated-employeecode.message = Employee code already used
+acme.validation.customer.identifier.message = The identifier of a customer must have the first two or three letters correspond to their initials
+acme.validation.customer.duplicated-Identifier.message = Identifier of a customer already exists
+acme.validation.booking.locatorCode.message = The locator Code of booking must be 6 to 8 characters alphanumeric in uppercase
+acme.validation.booking.duplicated-locatorCode.message = Locator code of a booking already exists

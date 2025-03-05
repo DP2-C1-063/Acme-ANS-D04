@@ -1,0 +1,13 @@
+
+package acme.entities.customer;
+
+import org.springframework.data.jpa.repository.Query;
+
+import acme.client.repositories.AbstractRepository;
+
+public interface CustomerRepository extends AbstractRepository {
+
+	@Query("select c from Customer c where c.Identifier = :Identifier")
+	Customer findCustomerByIdentifier(String Identifier);
+
+}
