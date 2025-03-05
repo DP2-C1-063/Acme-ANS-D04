@@ -18,6 +18,8 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidBooking;
+import acme.constraints.ValidLocatorCode;
 import acme.entities.customer.Customer;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,6 +27,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidBooking
 public class Booking extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
@@ -34,8 +37,7 @@ public class Booking extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	//@ValidString(pattern = "^[A-Z0-9]{6,8}$")
-	//UNIQUE
+	@ValidLocatorCode
 	@Automapped
 	private String				locatorCode;
 

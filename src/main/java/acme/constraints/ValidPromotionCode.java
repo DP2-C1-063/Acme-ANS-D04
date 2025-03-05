@@ -18,11 +18,11 @@ import javax.validation.constraints.Pattern;
 @ReportAsSingleViolation
 
 @NotBlank
-@Pattern(regexp = "^[A-Z0-9]{6,8}$")
+@Pattern(regexp = "^[A-Z]{4}-[0-9]{2}$")
 
-public @interface ValidLocatorCode {
+public @interface ValidPromotionCode {
 
-	String message() default "{acme.validation.booking.locatorcode.message}";
+	String message() default "{acme.validation.service.promotionCode.message}";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};

@@ -8,21 +8,14 @@ import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import javax.validation.ReportAsSingleViolation;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 
-@Target(ElementType.FIELD)
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = {})
-@ReportAsSingleViolation
+@Constraint(validatedBy = ServiceValidator.class)
 
-@NotBlank
-@Pattern(regexp = "^[A-Z0-9]{6,8}$")
+public @interface ValidService {
 
-public @interface ValidLocatorCode {
-
-	String message() default "{acme.validation.booking.locatorcode.message}";
+	String message() default "";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};

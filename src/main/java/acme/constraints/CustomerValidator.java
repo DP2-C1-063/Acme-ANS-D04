@@ -40,7 +40,7 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 			existingCustomer = this.repository.findCustomerByIdentifier(customer.getIdentifier());
 			uniqueCustomer = existingCustomer == null || existingCustomer.equals(customer);
 
-			super.state(context, uniqueCustomer, "IATA", "acme.validation.customer.duplicated-Identifier.message");
+			super.state(context, uniqueCustomer, "Identifier", "acme.validation.customer.duplicated-identifier.message");
 		}
 
 		result = !super.hasErrors(context);
