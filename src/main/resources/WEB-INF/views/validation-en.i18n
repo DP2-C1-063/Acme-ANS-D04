@@ -12,6 +12,8 @@ acme.validation.header.message  	= Must have from 1 to 75 characters
 acme.validation.text.message   		= Must have from 1 to 255 characters
 acme.validation.phone.message       = Must match +country-code (area-code) phone-number, where only the phone-number is mandatory 
 
+acme.validation.airport.duplicated-IATA.message = The IATA code has already been used
+
 acme.validation.airline.duplicated-IATA.message  = IATA code already used
 acme.validation.airline.IATA.message			  = The IATA must be composed of three uppercase letters only
 acme.validation.flightcrew.employeecode = The employee code must be two to three uppercase letters, the initial of the employee, and 6 digits

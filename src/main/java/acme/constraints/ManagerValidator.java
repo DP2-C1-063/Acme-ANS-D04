@@ -6,8 +6,8 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
-import acme.entities.manager.Manager;
-import acme.entities.manager.ManagerRepository;
+import acme.realms.manager.Manager;
+import acme.realms.manager.ManagerRepository;
 
 public class ManagerValidator extends AbstractValidator<ValidManager, Manager> {
 	// Internal state ---------------------------------------------------------
