@@ -1,5 +1,5 @@
 
-package acme.entities.manager;
+package acme.realms.manager;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
