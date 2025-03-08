@@ -7,9 +7,8 @@ import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.validation.Mandatory;
-import acme.client.components.validation.Optional;
 import acme.entities.airlines.Airlines;
-import acme.entities.leg.Airport;
+import acme.entities.airport.Airport;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,9 +24,9 @@ public class OperatesAt extends AbstractEntity {
 	@ManyToOne(optional = false)
 	private Airlines			operator;
 
-	@Optional
+	@Mandatory
 	@Valid
-	@ManyToOne(optional = true)
+	@ManyToOne(optional = false)
 	private Airport				location;
 
 }
