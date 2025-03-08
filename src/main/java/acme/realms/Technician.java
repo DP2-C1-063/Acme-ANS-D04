@@ -1,37 +1,40 @@
 
-package acme.entities.technician;
+package acme.realms;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-import acme.client.components.basis.AbstractEntity;
+import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidLicenseNumber;
+import acme.constraints.ValidPhoneNumber;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public abstract class Technician extends AbstractEntity {
+public class Technician extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2-3}\\d{6}$")
 	@Column(unique = true)
+	@ValidLicenseNumber
 	private String				licenseNumber;
 
 	@Mandatory
 	@Automapped
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@ValidPhoneNumber
 	private String				phoneNumber;
 
 	@Mandatory
 	@Automapped
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	private String				specialisation;
 
 	@Mandatory
@@ -40,9 +43,10 @@ public abstract class Technician extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
+	@ValidNumber(min = 0, max = 120)
 	private Integer				experienceYears;
 
 	@Optional
-	@ValidString(max = 255)
+	@ValidString(min = 1, max = 255)
 	private String				certifications;
 }

@@ -17,3 +17,6 @@ acme.validation.airline.IATA.message			  = El código IATA debe estar compuesto 
 acme.validation.flightcrew.employeecode = El código de empleado deben ser 2 o tres letras mayusculas, las iniciales del empleado, seguido de seis dígitos
 acme.validation.flightcrewmember.duplicated-employeecode.message = codigo de empleado ya usado
 acme.validation.aircraft.duplicated-RegistrationNumber.message = El número de registro ya está usado
+acme.validation.technician.phone-number.message = El número de teléfono debe tener entre 6 y 15 dígitos, opcionalmente empezando con '+'
+acme.validation.technician.license-number.message = El número de licencia debe comenzar con 2-3 letras mayúsculas seguidas de 6 dígitos
+acme.validation.maintenance-record.invalid-moment.message = El momento de mantenimiento debe ser anterior a la fecha de la próxima inspección
