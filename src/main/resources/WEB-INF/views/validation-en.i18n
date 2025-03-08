@@ -20,3 +20,9 @@ acme.validation.aircraft.duplicated-RegistrationNumber.message = Registration nu
 
 acme.validation.manager.duplicated-identifier-number.message = The identifier number has already been used
 acme.validation.manager.identifier-number.message = The identifier number must be composed of two or three uppercase letters and 6 digits
+
+acme.validation.leg.duplicated-flight-number.message = The flight number has already been used
+acme.validation.leg.arrival-before-departure.message = The arrival must occur after the departure
+acme.validation.leg.duration-too-long.message = The duration is too long
+acme.validation.leg.same-departure-and-arrival-airport.message = The departure and the arrival airports must be different
+acme.validation.leg.flight-number.message = The flight number must be composed of the airline IATA and 4 digits
