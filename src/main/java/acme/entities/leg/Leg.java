@@ -50,7 +50,9 @@ public class Leg extends AbstractEntity {
 	private Status				status;
 
 	@Mandatory
+
 	@Valid
+
 	@ManyToOne(optional = false)
 	private Airport				departureAirport;
 
