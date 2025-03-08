@@ -17,3 +17,5 @@ acme.validation.airline.IATA.message			  = El código IATA debe estar compuesto 
 acme.validation.flightcrew.employeecode = El código de empleado deben ser 2 o tres letras mayusculas, las iniciales del empleado, seguido de seis dígitos
 acme.validation.flightcrewmember.duplicated-employeecode.message = codigo de empleado ya usado
 acme.validation.aircraft.duplicated-RegistrationNumber.message = El número de registro ya está usado
+acme.validation.assistanceagent.duplicated-employeecode.message = codigo de empleado ya usado
+acme.validation.trackinglog.status.message =  no tiene la informacion necesaria para estar  terminada

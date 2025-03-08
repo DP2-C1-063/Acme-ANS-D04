@@ -17,3 +17,5 @@ acme.validation.airline.IATA.message			  = The IATA must be composed of three up
 acme.validation.flightcrew.employeecode = The employee code must be two to three uppercase letters, the initial of the employee, and 6 digits
 acme.validation.flightcrewmember.duplicated-employeecode.message = Employee code already used
 acme.validation.aircraft.duplicated-RegistrationNumber.message = Registration number already exist
+acme.validation.assistanceagent.duplicated-employeecode.message = Employee code already used
+acme.validation.trackinglog.status.message = tracking log does not match information requirements to be finished
