@@ -19,6 +19,7 @@ import acme.constraints.ValidFlightNumber;
 import acme.constraints.ValidLeg;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.airport.Airport;
+import acme.entities.flight.Flight;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,7 +29,11 @@ import lombok.Setter;
 @ValidLeg
 public class Leg extends AbstractEntity {
 
+	// Serialisation version --------------------------------------------------
+
 	private static final long	serialVersionUID	= 1L;
+
+	// Attributes -------------------------------------------------------------
 
 	@Mandatory
 	@ValidFlightNumber
@@ -36,12 +41,12 @@ public class Leg extends AbstractEntity {
 	private String				flightNumber;
 
 	@Mandatory
-	@ValidMoment
+	@ValidMoment(past = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				scheduledDeparture;
 
 	@Mandatory
-	@ValidMoment
+	@ValidMoment(past = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				scheduledArrival;
 
@@ -50,31 +55,39 @@ public class Leg extends AbstractEntity {
 	@Automapped
 	private Status				status;
 
-	@Mandatory
-
-	@Valid
-
-	@ManyToOne(optional = false)
-	private Airport				departureAirport;
-
-	@Mandatory
-	@Valid
-	@ManyToOne(optional = false)
-	private Airport				arrivalAirport;
-
-	@Mandatory
-	@Valid
-	@ManyToOne(optional = false)
-	private Aircraft			aircraft;
+	// Derived attributes -----------------------------------------------------
 
 
 	@Transient
-	public int getDuration() {
+	public double getDuration() {
 
 		long durationInMs = this.scheduledArrival.getTime() - this.scheduledDeparture.getTime();
 		long durationInHours = durationInMs / (1000 * 60 * 60);
 
-		return (int) durationInHours;
+		return durationInHours;
 	}
+
+	// Relationships ----------------------------------------------------------
+
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Airport		departureAirport;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Airport		arrivalAirport;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Aircraft	aircraft;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Flight		flight;
 
 }

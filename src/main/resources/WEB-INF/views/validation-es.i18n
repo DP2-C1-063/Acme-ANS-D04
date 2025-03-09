@@ -23,8 +23,11 @@ acme.validation.aircraft.duplicated-RegistrationNumber.message = El número de r
 acme.validation.manager.duplicated-identifier-number.message = El número identificador ya ha sido usado
 acme.validation.manager.identifier-number.message = El número identificador debe estar compuesto de dos o tres letras mayúsculas y 6 dígitos
 
+acme.validation.flight.arrival-before-departure.message = La llegada debe ocurrir después del despegue
+
 acme.validation.leg.duplicated-flight-number.message = El número de vuelo ya ha sido usado
 acme.validation.leg.arrival-before-departure.message = La llegada debe ocurrir después del despegue
 acme.validation.leg.duration-too-long.message = La duración es demasiado larga
+acme.validation.leg.duration-too-short.message = La duración es demasiado corta
 acme.validation.leg.same-departure-and-arrival-airport.message = Los aeropuertos de salida y llegada deben ser diferentes
 acme.validation.leg.flight-number.message = El número de vuelo debe estar compuesto por el IATA de la aerolínea y 4 dígitos
