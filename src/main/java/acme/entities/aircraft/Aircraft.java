@@ -20,26 +20,31 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidAircraft
-public abstract class Aircraft extends AbstractEntity {
+public class Aircraft extends AbstractEntity {
 
+	private static final long	serialVersionUID	= 1L;
 	@Mandatory
 	@Automapped
 	@Length(min = 1, max = 50)
-	private String			model;
+	private String				model;
 	@Mandatory
 	@Length(min = 1, max = 50)
 	@Column(unique = true)
-	private String			registrationNumber;
+	private String				registrationNumber;
 	@Mandatory
-	@Range(min = 2, max = 5)
+	@Range(min = 1, max = 255)
 	@Automapped
-	private Integer			cargoWeight;
+	private Integer				capacity;
+	@Mandatory
+	@Range(min = 20000, max = 50000)
+	@Automapped
+	private Integer				cargoWeight;
 	@Mandatory
 	@Valid
 	@Automapped
-	private AircraftStatus	status;
+	private AircraftStatus		status;
 	@Optional
 	@Automapped
-	@Length(min = 1, max = 255)
-	private String			details;
+	@Length(min = 0, max = 255)
+	private String				details;
 }

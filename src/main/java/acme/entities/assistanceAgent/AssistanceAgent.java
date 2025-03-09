@@ -27,35 +27,37 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidAssistanceAgent
-public abstract class AssistanceAgent extends AbstractEntity {
+public class AssistanceAgent extends AbstractEntity {
 
+	private static final long	serialVersionUID	= 1L;
 	@Mandatory
 	@Automapped
 	@ValidEmployeeCode
-	private String		employeeCode;
+	private String				employeeCode;
 	@Mandatory
 	@Automapped
 	@Length(min = 1, max = 255)
-	private String		spokenLanguages;
+	private String				spokenLanguages;
 	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
-	private Airlines	airline;
+	private Airlines			airline;
 	@Mandatory
 	@ValidMoment(past = true)
 	@Automapped
-	private Date		momentBeginningWorking;
+	private Date				momentBeginningWorking;
 	@Optional
 	@Automapped
-	@Length(min = 1, max = 255)
-	private String		bio;
+	@Length(min = 0, max = 255)
+	private String				bio;
 	@Optional
-	@ValidMoney
+	@ValidMoney(min = 0.00, max = 1000000)
 	@Automapped
-	private Money		salary;
+	private Money				salary;
 	@Optional
 	@ValidUrl
+	@Length(min = 0, max = 255)
 	@Automapped
-	private String		photo;
+	private String				photo;
 
 }

@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
+import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
@@ -22,8 +23,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class TrackingLog {
+public class TrackingLog extends AbstractEntity {
 
+	private static final long	serialVersionUID	= 1L;
 	@Mandatory
 	@ValidMoment(past = true)
 	@Automapped
@@ -43,7 +45,7 @@ public class TrackingLog {
 	private TrackingLogStatus	status;
 	@Optional
 	@Automapped
-	@Length(min = 1, max = 255)
+	@Length(min = 0, max = 255)
 	private String				resolution;
 	@Mandatory
 	@ManyToOne
