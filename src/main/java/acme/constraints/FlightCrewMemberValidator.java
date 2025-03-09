@@ -6,8 +6,8 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
-import acme.entities.flightCrewMembers.FlightCrewMemberRepository;
-import acme.entities.flightCrewMembers.FlightCrewMembers;
+import acme.realms.flightCrewMembers.FlightCrewMemberRepository;
+import acme.realms.flightCrewMembers.FlightCrewMembers;
 
 public class FlightCrewMemberValidator extends AbstractValidator<ValidFlightCrewMember, FlightCrewMembers> {
 	// Internal state ---------------------------------------------------------
