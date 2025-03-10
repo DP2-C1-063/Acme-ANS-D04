@@ -1,6 +1,6 @@
 key,model,registrationNumber,capacity,cargoWeight,status,details
 #base entity
-aircraft-00,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+aircraft-00,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am","Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
 #model-standard variation
 aircraft-01,L,1,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
 aircraft-02,Lo,2,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
@@ -13,36 +13,36 @@ aircraft-08,<marquee>Hacked</marquee>,8,128,35000,ACTIVE,"Lorem ipsum dolor sit 
 aircraft-09,<script>alert(‘Hacked!’);</script>,9,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
 aircraft-010,' or 'A' = 'A,10,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
 #registrationNumber-standard variation
-aircraft-11,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",L,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-aircraft-12,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",Lo,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-aircraft-13,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscin",128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-aircraft-14,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",โลเร็ม อิปซัม,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-aircraft-15,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",لوريم إيبسوم,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-aircraft-16,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",洛伦·伊普森,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-aircraft-17,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",<marquee>Hacked</marquee>,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-aircraft-18,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",<script>alert(‘Hacked!’);</script>,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-aircraft-19,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",' or 'A' = 'A,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+aircraft-11,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",L,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+aircraft-12,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",Lo,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+aircraft-13,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am","Lorem ipsum dolor sit amet, consectetur adipiscin",128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+aircraft-14,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",โลเร็ม อิปซัม,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+aircraft-15,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",لوريم إيبسوم,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+aircraft-16,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",洛伦·伊普森,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+aircraft-17,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",<marquee>Hacked</marquee>,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+aircraft-18,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",<script>alert(‘Hacked!’);</script>,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+aircraft-19,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",' or 'A' = 'A,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
 #capacity-standard variation
-aircraft-20,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",20,1,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-aircraft-21,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",21,2,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-aircraft-22,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",22,255,34999,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-aircraft-23,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",23,255,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+aircraft-20,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",20,1,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+aircraft-21,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",21,2,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+aircraft-22,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",22,255,34999,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+aircraft-23,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",23,255,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
 #cargoWeight-standard variation
-aircraft-24,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",24,128,20000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-aircraft-25,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",25,128,20001,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-aircraft-26,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",26,128,49999,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-aircraft-27,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",27,128,50000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+aircraft-24,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",24,128,20000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+aircraft-25,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",25,128,20001,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+aircraft-26,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",26,128,49999,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+aircraft-27,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",27,128,50000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
 #status-standard variation
-aircraft-28,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",28,128,35000,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+aircraft-28,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",28,128,35000,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
 #details-standard variation
-aircraft-29,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",29,128,35000,ACTIVE,null
-aircraft-30,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",30,128,35000,ACTIVE,
-aircraft-31,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",31,128,35000,ACTIVE,L
-aircraft-32,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",32,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor"
-aircraft-33,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",33,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*"
-aircraft-34,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",34,128,35000,ACTIVE,โลเร็ม อิปซัม
-aircraft-35,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",35,128,35000,ACTIVE,لوريم إيبسوم
-aircraft-36,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",36,128,35000,ACTIVE,洛伦·伊普森
-aircraft-37,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",37,128,35000,ACTIVE,<marquee>Hacked</marquee>
-aircraft-38,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",38,128,35000,ACTIVE,<script>alert(‘Hacked!’);</script>
-aircraft-39,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame",39,128,35000,ACTIVE,' or 'A' = 'A
+aircraft-29,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",29,128,35000,ACTIVE,null
+aircraft-30,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",30,128,35000,ACTIVE,
+aircraft-31,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",31,128,35000,ACTIVE,L
+aircraft-32,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",32,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor"
+aircraft-33,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",33,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*"
+aircraft-34,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",34,128,35000,ACTIVE,โลเร็ม อิปซัม
+aircraft-35,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",35,128,35000,ACTIVE,لوريم إيبسوم
+aircraft-36,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",36,128,35000,ACTIVE,洛伦·伊普森
+aircraft-37,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",37,128,35000,ACTIVE,<marquee>Hacked</marquee>
+aircraft-38,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",38,128,35000,ACTIVE,<script>alert(‘Hacked!’);</script>
+aircraft-39,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",39,128,35000,ACTIVE,' or 'A' = 'A

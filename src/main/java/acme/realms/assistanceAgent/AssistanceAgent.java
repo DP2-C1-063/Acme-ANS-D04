@@ -1,5 +1,5 @@
 
-package acme.entities.assistanceAgent;
+package acme.realms.assistanceAgent;
 
 import java.util.Date;
 
@@ -9,7 +9,7 @@ import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.Length;
 
-import acme.client.components.basis.AbstractEntity;
+import acme.client.components.basis.AbstractRole;
 import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
@@ -27,7 +27,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidAssistanceAgent
-public class AssistanceAgent extends AbstractEntity {
+public class AssistanceAgent extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 	@Mandatory
