@@ -63,7 +63,7 @@ public class MaintenanceRecord extends AbstractEntity {
 
 	@Mandatory
 	@ManyToOne(optional = false)
-
-	private Aircraft				relatedAircreft;
+	@Valid
+	private Aircraft				relatedAircraft;
 
 }
