@@ -1,0 +1,4 @@
+key,key:task,key:maintenance-record
+task-involves-record-00,task-00,maintenance-record-00
+task-involves-record-01,task-00,maintenance-record-01
+task-involves-record-02,task-01,maintenance-record-02
