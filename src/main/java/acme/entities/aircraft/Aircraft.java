@@ -3,6 +3,7 @@ package acme.entities.aircraft;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.Length;
@@ -13,6 +14,7 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.constraints.ValidAircraft;
+import acme.entities.airlines.Airlines;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -47,4 +49,8 @@ public class Aircraft extends AbstractEntity {
 	@Automapped
 	@Length(min = 0, max = 255)
 	private String				details;
+	@Mandatory
+	@Valid
+	@ManyToOne
+	private Airlines			airline;
 }
