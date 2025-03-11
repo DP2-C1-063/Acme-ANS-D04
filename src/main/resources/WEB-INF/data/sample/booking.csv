@@ -1,20 +1,20 @@
-key,locator-code,purchase-moment,travel-class,price,last-nibble,key:customer
+key,locator-code,purchase-moment,travel-class,price,last-nibble,key:customer,key:passenger
 #base
-booking-00,W2J0ABSO,2000/01/01 00:00,ECONOMY,EUR 500000.00,8158,customer-01
+booking-00,W2J0ABSO,2000/01/01 00:00,ECONOMY,EUR 500000.00,8158,customer-01,passenger-01
 #purchase moment
-booking-01,X19RZ9,2000/01/01 00:01,ECONOMY,EUR 500000.00,8158,customer-01
-booking-02,WSJN2TBE,2024/12/31 23:59,ECONOMY,EUR 500000.00,8158,customer-01
-booking-03,BQFTQCM,2025/01/01 0:00,ECONOMY,EUR 500000.00,8158,customer-01
+booking-01,X19RZ9,2000/01/01 00:01,ECONOMY,EUR 500000.00,8158,customer-01,passenger-01
+booking-02,WSJN2TBE,2024/12/31 23:59,ECONOMY,EUR 500000.00,8158,customer-01,passenger-01
+booking-03,BQFTQCM,2025/01/01 0:00,ECONOMY,EUR 500000.00,8158,customer-01,passenger-01
 #travel class
-booking-04,5DEDHP,2000/01/01 00:00,ECONOMY,EUR 500000.00,8158,customer-01
-booking-05,XFD9H4B,2000/01/01 00:00,BUSINESS,EUR 500000.00,8158,customer-01
+booking-04,5DEDHP,2000/01/01 00:00,ECONOMY,EUR 500000.00,8158,customer-01,passenger-01
+booking-05,XFD9H4B,2000/01/01 00:00,BUSINESS,EUR 500000.00,8158,customer-01,passenger-01
 #price
-booking-06,10GK2XPW,2000/01/01 00:00,ECONOMY,EUR 500000.00,8158,customer-01
+booking-06,10GK2XPW,2000/01/01 00:00,ECONOMY,EUR 500000.00,8158,customer-01,passenger-01
 #last nibble
-booking-07,CG3O00YP,2000/01/01 00:00,ECONOMY,EUR 500000.00,8158,customer-01
-booking-08,33GPPX3,2000/01/01 00:00,ECONOMY,EUR 500000.00,6485,customer-01
-booking-09,LSZKDI,2000/01/01 00:00,ECONOMY,EUR 500000.00,,customer-01
+booking-07,CG3O00YP,2000/01/01 00:00,ECONOMY,EUR 500000.00,8158,customer-01,passenger-01
+booking-08,33GPPX3,2000/01/01 00:00,ECONOMY,EUR 500000.00,6485,customer-01,passenger-01
+booking-09,LSZKDI,2000/01/01 00:00,ECONOMY,EUR 500000.00,,customer-01,passenger-01
 #customer
-booking-10,684LUSZM,2000/01/01 00:00,ECONOMY,EUR 500000.00,8158,customer-01
-booking-11,PV7EE6,2000/01/01 00:00,ECONOMY,EUR 500000.00,8158,customer-02
-booking-12,DMWFO49,2000/01/01 00:00,ECONOMY,EUR 500000.00,8158,customer-03
+booking-10,684LUSZM,2000/01/01 00:00,ECONOMY,EUR 500000.00,8158,customer-01,passenger-01
+booking-11,PV7EE6,2000/01/01 00:00,ECONOMY,EUR 500000.00,8158,customer-02,passenger-01
+booking-12,DMWFO49,2000/01/01 00:00,ECONOMY,EUR 500000.00,8158,customer-03,passenger-01

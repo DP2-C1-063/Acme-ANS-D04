@@ -20,6 +20,7 @@ import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.constraints.ValidBooking;
 import acme.constraints.ValidLocatorCode;
+import acme.entities.passenger.Passenger;
 import acme.realms.customer.Customer;
 import lombok.Getter;
 import lombok.Setter;
@@ -68,5 +69,12 @@ public class Booking extends AbstractEntity {
 	@JoinColumn(name = "customer_id")
 	@Automapped
 	private Customer			customer;
+
+	@Mandatory
+	@Valid
+	@ManyToOne
+	@JoinColumn(name = "passenger_id")
+	@Automapped
+	private Passenger			passenger;
 
 }
