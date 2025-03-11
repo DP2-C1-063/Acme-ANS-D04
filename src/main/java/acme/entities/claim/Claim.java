@@ -50,9 +50,10 @@ public class Claim extends AbstractEntity {
 	@Mandatory
 	@Automapped
 	private boolean				accepted;
-	@Mandatory
 
-	@Automapped
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
 	private Leg					leg;
 
 }

@@ -6,6 +6,7 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
+import acme.client.helpers.MomentHelper;
 import acme.entities.leg.Leg;
 import acme.entities.leg.LegRepository;
 
@@ -44,29 +45,29 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 			}
 			{
 				boolean arrivalIsBeforeDeparture;
-				arrivalIsBeforeDeparture = leg.getScheduledArrival().before(leg.getScheduledDeparture());
+				arrivalIsBeforeDeparture = MomentHelper.isBefore(leg.getScheduledArrival(), leg.getScheduledDeparture());
 
-				super.state(context, arrivalIsBeforeDeparture, "scheduledArrival", "acme.validation.leg.arrival-before-departure.message");
+				super.state(context, !arrivalIsBeforeDeparture, "scheduledArrival", "acme.validation.leg.arrival-before-departure.message");
 			}
 			{
 				// Added based on a teacher's message in the discussion forum. Max duration = 1000 minutes (aprox. 16.667 hours)
 				boolean durationIsTooLong;
 				durationIsTooLong = leg.getDuration() > 16.667;
 
-				super.state(context, durationIsTooLong, "duration", "acme.validation.leg.duration-too-long.message");
+				super.state(context, !durationIsTooLong, "duration", "acme.validation.leg.duration-too-long.message");
 			}
 			{
 				// Added based on a teacher's message in the discussion forum. Min duration = 1 minute (aprox. 0.016 hours)
 				boolean durationIsTooShort;
 				durationIsTooShort = leg.getDuration() < 0.016;
 
-				super.state(context, durationIsTooShort, "duration", "acme.validation.leg.duration-too-short.message");
+				super.state(context, !durationIsTooShort, "duration", "acme.validation.leg.duration-too-short.message");
 			}
 			{
 				boolean sameDepartureAndArrivalAirport;
 				sameDepartureAndArrivalAirport = leg.getDepartureAirport().equals(leg.getArrivalAirport());
 
-				super.state(context, sameDepartureAndArrivalAirport, "arrivalAirport", "acme.validation.leg.same-departure-and-arrival-airport.message");
+				super.state(context, !sameDepartureAndArrivalAirport, "arrivalAirport", "acme.validation.leg.same-departure-and-arrival-airport.message");
 			}
 		}
 

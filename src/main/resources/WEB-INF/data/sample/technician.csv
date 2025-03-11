@@ -1,4 +1,4 @@
 key,key:user-account,licenseNumber,phoneNumber,specialisation,healthTestPassed,experienceYears,certifications
 technician-00,user-account-technician-00,ABC123456,+123456789012345,Lorem ipsum dolor sit ame,True,6,Lorem ipsum dolor sit ame
-technician-01,user-account-technician-01,ABC123456,+123456789012345,Lorem ipsum dolor sit ame,True,6,Lorem ipsum dolor sit ame
-technician-02,user-account-technician-02,ABD123456,+123456789012345,Lorem ipsum dolor sit ame,True,6,Lorem ipsum dolor sit ame
+technician-01,user-account-technician-01,ABC123457,+123456789012345,Lorem ipsum dolor sit ame,True,6,Lorem ipsum dolor sit ame
+technician-02,user-account-technician-02,ABD123458,+123456789012345,Lorem ipsum dolor sit ame,True,6,Lorem ipsum dolor sit ame
