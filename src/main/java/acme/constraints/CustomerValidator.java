@@ -6,8 +6,8 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
-import acme.entities.customer.Customer;
-import acme.entities.customer.CustomerRepository;
+import acme.realms.customer.Customer;
+import acme.realms.customer.CustomerRepository;
 
 public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer> {
 	// Internal state ---------------------------------------------------------
@@ -40,7 +40,7 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 			existingCustomer = this.repository.findCustomerByIdentifier(customer.getIdentifier());
 			uniqueCustomer = existingCustomer == null || existingCustomer.equals(customer);
 
-			super.state(context, uniqueCustomer, "Identifier", "acme.validation.customer.duplicated-identifier.message");
+			super.state(context, uniqueCustomer, "identifier", "acme.validation.customer.duplicated-identifier.message");
 		}
 
 		result = !super.hasErrors(context);
