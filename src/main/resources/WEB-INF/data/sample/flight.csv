@@ -1,0 +1,37 @@
+key,tag,indication,cost,description,key:manager
+# base entity
+flight-00,Lorem ipsum dolor sit ame,SELF_TRANSFER_REQUIRED,500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*",manager-00
+# tag - standard variations
+flight-01,L,SELF_TRANSFER_REQUIRED,500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*",manager-00
+flight-02,Lo,SELF_TRANSFER_REQUIRED,500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*",manager-00
+flight-03,"Lorem ipsum dolor sit amet, consectetur adipiscin",SELF_TRANSFER_REQUIRED,500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*",manager-00,
+flight-04,"Lorem ipsum dolor sit amet, consectetur adipiscing",SELF_TRANSFER_REQUIRED,500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*",manager-00,
+flight-05,โลเร็ม อิปซัม,SELF_TRANSFER_REQUIRED,500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*",manager-00,
+flight-06,لوريم إيبسوم,SELF_TRANSFER_REQUIRED,500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*",manager-00,
+flight-07,洛伦·伊普森,SELF_TRANSFER_REQUIRED,500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*",manager-00,
+flight-08,<marquee>Hacked</marquee>,SELF_TRANSFER_REQUIRED,500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*",manager-00,
+flight-09,<script>alert(‘Hacked!’);</script>,SELF_TRANSFER_REQUIRED,500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*",manager-00,
+flight-10,'' or 'A' = 'A,SELF_TRANSFER_REQUIRED,500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*",manager-00,
+# tag - no singular values
+# indication - standard variations
+flight-11,Lorem ipsum dolor sit ame,SELF_TRANSFER_REQUIRED,500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*",manager-00,
+flight-12,Lorem ipsum dolor sit ame,SELF_TRANSFER_NOT_REQUIRED,500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*",manager-00,
+# indication - no singular values
+# cost - standard variations
+flight-13,Lorem ipsum dolor sit ame,SELF_TRANSFER_REQUIRED,0.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*",manager-00,
+flight-14,Lorem ipsum dolor sit ame,SELF_TRANSFER_REQUIRED,1.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*",manager-00,
+flight-15,Lorem ipsum dolor sit ame,SELF_TRANSFER_REQUIRED,999999.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*",manager-00,
+flight-16,Lorem ipsum dolor sit ame,SELF_TRANSFER_REQUIRED,1000000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*",manager-00,
+# cost - no singular values
+# description - standard variations
+flight-17,Lorem ipsum dolor sit ame,SELF_TRANSFER_REQUIRED,500000.00,,manager-00
+flight-18,Lorem ipsum dolor sit ame,SELF_TRANSFER_REQUIRED,500000.00,L,manager-00
+flight-19,Lorem ipsum dolor sit ame,SELF_TRANSFER_REQUIRED,500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",manager-00
+flight-20,Lorem ipsum dolor sit ame,SELF_TRANSFER_REQUIRED,500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",manager-00
+flight-21,Lorem ipsum dolor sit ame,SELF_TRANSFER_REQUIRED,500000.00,โลเร็ม อิปซัม,manager-00
+flight-22,Lorem ipsum dolor sit ame,SELF_TRANSFER_REQUIRED,500000.00,لوريم إيبسوم,manager-00
+flight-23,Lorem ipsum dolor sit ame,SELF_TRANSFER_REQUIRED,500000.00,洛伦·伊普森,manager-00
+flight-24,Lorem ipsum dolor sit ame,SELF_TRANSFER_REQUIRED,500000.00,<marquee>Hacked</marquee>,manager-00
+flight-25,Lorem ipsum dolor sit ame,SELF_TRANSFER_REQUIRED,500000.00,<script>alert(‘Hacked!’);</script>,manager-00
+flight-26,Lorem ipsum dolor sit ame,SELF_TRANSFER_REQUIRED,500000.00,'' or 'A' = 'A,manager-00
+# description - no singular values
