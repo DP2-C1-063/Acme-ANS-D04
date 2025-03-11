@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>30</x>
+      <y>220</y>
+      <w>250</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidIdentifierNumber
+--
++ NotBlank
++ Pattern(regexp = "^[A-Z]{2,3}\\d{6}$")
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>130</y>
+      <w>340</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidFlight
+--
++ scheduledArrival must be after scheduledDeparture
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>130</y>
+      <w>230</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidManager
+--
++ identifierNumber must be unique
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>310</x>
+      <y>130</y>
+      <w>340</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidLeg
+--
++ flightNumber must be unique
++ scheduledArrival must be after scheduledDeparture
++ duration must be less than 1000 minutes
++ duration must be more than 1 minute
++ departureAirport and arrivalAirport must be diferent
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
