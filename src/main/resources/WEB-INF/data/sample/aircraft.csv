@@ -1,4 +1,4 @@
-key,model,registrationNumber,capacity,cargoWeight,status,details,airline
+key,model,registrationNumber,capacity,cargoWeight,status,details,key:airline
 #base entity
 aircraft-00,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am","Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-00
 #model-standard variation
@@ -46,3 +46,5 @@ aircraft-36,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",36,128,35000,AC
 aircraft-37,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",37,128,35000,ACTIVE,<marquee>Hacked</marquee>,airline-00
 aircraft-38,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",38,128,35000,ACTIVE,<script>alert(‘Hacked!’);</script>,airline-00
 aircraft-39,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",39,128,35000,ACTIVE,' or 'A' = 'A,airline-00
+airline-standard variation,,,,,,,
+aircraft-40,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am","Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
