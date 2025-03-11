@@ -1,0 +1,36 @@
+key,name,moment,subject,text,score,recomended
+#base
+review-00,Lorem ipsum dolor sit ame,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false
+#name
+review-01,L,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false
+review-02,Lo,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false
+review-03,"Lorem ipsum dolor sit amet, consectetur adipiscin",2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false
+review-04,"Lorem ipsum dolor sit amet, consectetur adipiscing",2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false
+#moment
+review-05,Lorem ipsum dolor sit ame,2000/01/01 00:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false
+review-06,Lorem ipsum dolor sit ame,2000/01/01 00:01,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false
+review-07,Lorem ipsum dolor sit ame,2024/12/31 23:59,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false
+review-08,Lorem ipsum dolor sit ame,"2025/01/01 00:00",Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false
+#subject
+review-09,Lorem ipsum dolor sit ame,2012/07/02 00:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false
+review-10,Lorem ipsum dolor sit ame,2012/07/02 0:00,Lorem ipsum dolor sit ame,L,5,false
+review-11,Lorem ipsum dolor sit ame,2012/07/02 0:00,Lorem ipsum dolor sit ame,Lo,5,false
+review-12,Lorem ipsum dolor sit ame,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",5,false
+review-13,Lorem ipsum dolor sit ame,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",5,false
+review-14,Lorem ipsum dolor sit ame,2012/07/02 0:00,Lorem ipsum dolor sit ame,โลเร็ม อิปซัม,5,false
+review-15,Lorem ipsum dolor sit ame,2012/07/02 0:00,Lorem ipsum dolor sit ame,لوريم إيبسوم,5,false
+review-16,Lorem ipsum dolor sit ame,2012/07/02 0:00,Lorem ipsum dolor sit ame,洛伦·伊普森,5,false
+review-17,Lorem ipsum dolor sit ame,2012/07/02 0:00,Lorem ipsum dolor sit ame,<marquee>Hacked</marquee>,5,false
+review-18,Lorem ipsum dolor sit ame,2012/07/02 0:00,Lorem ipsum dolor sit ame,<script>alert(‘Hacked!’);</script>,5,false
+review-19,Lorem ipsum dolor sit ame,2012/07/02 0:00,Lorem ipsum dolor sit ame,' or 'A' = 'A ,5,false
+#score
+review-20,Lorem ipsum dolor sit ame,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",0,false
+review-21,Lorem ipsum dolor sit ame,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",1,false
+review-22,Lorem ipsum dolor sit ame,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",9,false
+review-23,Lorem ipsum dolor sit ame,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",10,false
+#recomended
+review-24,Lorem ipsum dolor sit ame,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+#author
+review-25,Lorem ipsum dolor sit ame,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false
+review-26,Lorem ipsum dolor sit ame,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false
+,,,,,,
