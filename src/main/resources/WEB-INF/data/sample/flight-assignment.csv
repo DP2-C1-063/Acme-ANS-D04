@@ -1,0 +1,32 @@
+key,key:flightCrewMember,key:leg,duty,lastUpdate,currentStatus,remarks
+#base
+flight-assignment-00,flight-crew-members-00,leg-00,PILOT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+#flight-crew-members
+flight-assignment-01,flight-crew-members-01,leg-00,PILOT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-02,flight-crew-members-02,leg-00,PILOT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+#leg
+flight-assignment-03,flight-crew-members-00,leg-01,PILOT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-04,flight-crew-members-00,leg-02,PILOT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+#duty
+flight-assignment-05,flight-crew-members-00,leg-00,CO_PILOT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-06,flight-crew-members-00,leg-00,LEAD_ATTENDANT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-07,flight-crew-members-00,leg-00,CABIN_ATTENDANT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+#lastUpdate
+flight-assignment-08,flight-crew-members-00,leg-00,PILOT,2000/01/01 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-09,flight-crew-members-00,leg-00,PILOT,2000/01/01 0:01,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-10,flight-crew-members-00,leg-00,PILOT,"2024/12/31 23:59",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-11,flight-crew-members-00,leg-00,PILOT,"2025/01/01 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+#currentStatus
+flight-assignment-12,flight-crew-members-00,leg-00,PILOT,"2012/07/02 0:00",PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-13,flight-crew-members-00,leg-00,PILOT,"2012/07/02 0:00",CANCELLED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+#remarks
+flight-assignment-14,flight-crew-members-00,leg-00,PILOT,"2012/07/02 0:00",CONFIRMED,L
+flight-assignment-15,flight-crew-members-00,leg-00,PILOT,"2012/07/02 0:00",CONFIRMED,Lo
+flight-assignment-16,flight-crew-members-00,leg-00,PILOT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor"
+flight-assignment-17,flight-crew-members-00,leg-00,PILOT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*"
+flight-assignment-18,flight-crew-members-00,leg-00,PILOT,"2012/07/02 0:00",CONFIRMED,"โลเร็ม อิปซัม"
+flight-assignment-19,flight-crew-members-00,leg-00,PILOT,"2012/07/02 0:00",CONFIRMED,"لوريم إيبسوم"
+flight-assignment-20,flight-crew-members-00,leg-00,PILOT,"2012/07/02 0:00",CONFIRMED,洛伦·伊普森
+flight-assignment-21,flight-crew-members-00,leg-00,PILOT,"2012/07/02 0:00",CONFIRMED,<marquee>Hacked</marquee>
+flight-assignment-22,flight-crew-members-00,leg-00,PILOT,"2012/07/02 0:00",CONFIRMED,<script>alert(‘Hacked!’);</script>
+flight-assignment-23,flight-crew-members-00,leg-00,PILOT,"2012/07/02 0:00",CONFIRMED,' or 'A' = 'A
