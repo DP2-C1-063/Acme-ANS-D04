@@ -38,3 +38,5 @@ acme.validation.leg.flight-number.message = The flight number must be composed o
 acme.validation.assistanceagent.duplicated-employeecode.message = Employee code already used
 acme.validation.trackinglog.status.message = tracking log does not match information requirements to be finished
 
+
+acme.validation.trackinglog.resolution-percentage.message = percentage must be greater than last percentage
