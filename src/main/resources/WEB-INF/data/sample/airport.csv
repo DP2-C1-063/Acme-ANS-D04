@@ -82,7 +82,6 @@ airport-65,Lorem ipsum dolor sit ame,ABO,INTERNATIONAL,Lorem ipsum dolor sit ame
 airport-66,Lorem ipsum dolor sit ame,ABP,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,acme@lorem-ipsum.org,'' or 'A' = 'A,"+123456789"
 # address - no singular values
 # contactPhoneNumber - standard variations
-airport-67,Lorem ipsum dolor sit ame,ABQ,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*",
 airport-67,Lorem ipsum dolor sit ame,ABQ,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*","123456"
 airport-68,Lorem ipsum dolor sit ame,ABR,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*","1234567"
 airport-69,Lorem ipsum dolor sit ame,ABS,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*","+123456"
@@ -91,4 +90,5 @@ airport-71,Lorem ipsum dolor sit ame,ABU,INTERNATIONAL,Lorem ipsum dolor sit ame
 airport-72,Lorem ipsum dolor sit ame,ABV,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*","123456789123456"
 airport-73,Lorem ipsum dolor sit ame,ABW,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*","+12345678912345"
 airport-74,Lorem ipsum dolor sit ame,ABX,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*","+123456789123456"
+airport-75,Lorem ipsum dolor sit ame,ABY,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*",
 # contactPhoneNumber - no singular values
