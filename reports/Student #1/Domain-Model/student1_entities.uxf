@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>80</x>
+      <y>130</y>
+      <w>440</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Flight
+--
++ tag: String {Mandatory, ValidString(min=1,max=50), Automapped}
++ indication: Indication {Mandatory, Valid, Automapped}
++ cost: Money {Mandatory, ValidMoney, Automapped}
++ description: String {Optional, ValidString, Automapped}
+--
+/+ scheduledDeparture: Date
+/+ scheduledArrival: Date
+/+ originCity: String
+/+ destinationCity: String
+/+ numberOfLayovers: int
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>700</x>
+      <y>170</y>
+      <w>150</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+Manager
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>510</x>
+      <y>170</y>
+      <w>210</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Manage by &gt;
+lt=&lt;-x
+m1=1
+m2=*
+
+</panel_attributes>
+    <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>80</x>
+      <y>480</y>
+      <w>840</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Leg
+--
++ flightNumber: String {Mandatory,ValidFlightNumber,Column(unique=true)}
++ scheduledDeparture: Date {Mandatory,ValidMoment(past=false, max="2200/01/01 23:58"),Temporal(TemporalType.TIMESTAMP)}
++ scheduledArrival: Date {Mandatory,ValidMoment(past=false),Temporal(TemporalType.TIMESTAMP)}
++ status: Status {Mandatory,Valid,Automapped}
+--
+/+ duration: double
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>320</y>
+      <w>130</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>Composed of v
+lt=&lt;-x
+m1=1
+m2=*
+
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>280</y>
+      <w>170</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Airport
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>320</y>
+      <w>120</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>Ends at ^
+lt=&lt;-x
+m1=1
+m2=*
+r1=+arrivalAirport
+
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>670</x>
+      <y>320</y>
+      <w>140</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>Beggins at ^
+lt=&lt;-x
+m1=1
+m2=*
+r1=+departureAirport
+
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>750</x>
+      <y>280</y>
+      <w>170</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Aircraft
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>830</x>
+      <y>320</y>
+      <w>100</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>Done by ^
+lt=&lt;-x
+m1=1
+m2=*
+
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+</diagram>

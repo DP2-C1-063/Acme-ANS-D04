@@ -20,11 +20,23 @@ acme.validation.flightcrew.employeecode = The employee code must be two to three
 acme.validation.flightcrewmember.duplicated-employeecode.message = Employee code already used
 acme.validation.aircraft.duplicated-RegistrationNumber.message = Registration number already exist
 
+
+acme.validation.technician.phone-number.message = The phone number must be 6-15 digits, optionally starting with '+'
+acme.validation.technician.license-number.message = The license number must start with 2-3 uppercase letters followed by 6 digits
+acme.validation.maintenance-record.invalid-moment.message = The maintenance moment must be before the next inspection date
 acme.validation.manager.duplicated-identifier-number.message = The identifier number has already been used
 acme.validation.manager.identifier-number.message = The identifier number must be composed of two or three uppercase letters and 6 digits
+
+acme.validation.flight.arrival-before-departure.message = The arrival must occur after the departure
 
 acme.validation.leg.duplicated-flight-number.message = The flight number has already been used
 acme.validation.leg.arrival-before-departure.message = The arrival must occur after the departure
 acme.validation.leg.duration-too-long.message = The duration is too long
+acme.validation.leg.duration-too-short.message = The duration is too short
 acme.validation.leg.same-departure-and-arrival-airport.message = The departure and the arrival airports must be different
 acme.validation.leg.flight-number.message = The flight number must be composed of the airline IATA and 4 digits
+acme.validation.assistanceagent.duplicated-employeecode.message = Employee code already used
+acme.validation.trackinglog.status.message = tracking log does not match information requirements to be finished
+
+
+acme.validation.trackinglog.resolution-percentage.message = percentage must be greater than last percentage

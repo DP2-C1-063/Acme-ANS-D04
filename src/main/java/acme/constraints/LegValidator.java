@@ -49,11 +49,18 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 				super.state(context, arrivalIsBeforeDeparture, "scheduledArrival", "acme.validation.leg.arrival-before-departure.message");
 			}
 			{
-				// Added based on a teacher's message in the discussion forum. Max duration = 1000 minutes (aprox. 17 hours)
+				// Added based on a teacher's message in the discussion forum. Max duration = 1000 minutes (aprox. 16.667 hours)
 				boolean durationIsTooLong;
-				durationIsTooLong = leg.getDuration() > 17;
+				durationIsTooLong = leg.getDuration() > 16.667;
 
 				super.state(context, durationIsTooLong, "duration", "acme.validation.leg.duration-too-long.message");
+			}
+			{
+				// Added based on a teacher's message in the discussion forum. Min duration = 1 minute (aprox. 0.016 hours)
+				boolean durationIsTooShort;
+				durationIsTooShort = leg.getDuration() < 0.016;
+
+				super.state(context, durationIsTooShort, "duration", "acme.validation.leg.duration-too-short.message");
 			}
 			{
 				boolean sameDepartureAndArrivalAirport;
