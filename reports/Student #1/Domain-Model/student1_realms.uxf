@@ -41,7 +41,7 @@ bg=green</panel_attributes>
       <w>100</w>
       <h>140</h>
     </coordinates>
-    <panel_attributes>Works for ^
+    <panel_attributes>Manages ^
 lt=&lt;-x
 m1=1
 m2=*
