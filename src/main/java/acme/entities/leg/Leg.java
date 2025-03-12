@@ -15,6 +15,7 @@ import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidMoment;
+import acme.client.helpers.MomentHelper;
 import acme.constraints.ValidFlightNumber;
 import acme.constraints.ValidLeg;
 import acme.entities.aircraft.Aircraft;
@@ -61,8 +62,8 @@ public class Leg extends AbstractEntity {
 	@Transient
 	public double getDuration() {
 
-		long durationInMs = this.scheduledArrival.getTime() - this.scheduledDeparture.getTime();
-		long durationInHours = durationInMs / (1000 * 60 * 60);
+		long durationInMs = MomentHelper.computeDuration(this.scheduledDeparture, this.scheduledArrival).getSeconds();
+		double durationInHours = durationInMs / (60. * 60.);
 
 		return durationInHours;
 	}

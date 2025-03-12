@@ -31,5 +31,4 @@ maintenance-record-22,2012/07/02 0:00,COMPLETED,2025/01/01 0:01,EUR 500000.00,<s
 maintenance-record-23,2012/07/02 0:00,COMPLETED,2025/01/01 0:01,EUR 500000.00,' or 'A' = 'A ,technician-00,aircraft-00
 #technician
 maintenance-record-24,2012/07/02 0:00,COMPLETED,2025/01/01 0:01,EUR 500000.00,"Lorem ipsum dolor sit amet,  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",technician-00,aircraft-00
-maintenance-record-25,2012/07/02 0:00,COMPLETED,2025/01/01 0:01,EUR 500000.00,"Lorem ipsum dolor sit amet,  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",technician-01,aircraft-00
-maintenance-record-26,2012/07/02 0:00,COMPLETED,2025/01/01 0:01,EUR 500000.00,"Lorem ipsum dolor sit amet,  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",technician-02,aircraft-00
+maintenance-record-25,2012/07/02 0:00,COMPLETED,2025/01/01 0:01,EUR 500000.00,"Lorem ipsum dolor sit amet,  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",technician-02,aircraft-00
