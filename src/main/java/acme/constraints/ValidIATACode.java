@@ -22,7 +22,7 @@ import javax.validation.constraints.Pattern;
 
 public @interface ValidIATACode {
 
-	String message() default "{acme.validation.airline.IATA.message}";
+	String message() default "{acme.validation.*.IATA.message}";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};

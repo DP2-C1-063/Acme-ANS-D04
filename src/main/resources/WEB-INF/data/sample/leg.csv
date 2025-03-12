@@ -2,19 +2,19 @@ key,flight-number,scheduled-departure,scheduled-arrival,status,key:departureAirp
 # base entity
 leg-00,AAA1234,2025/09/01 10:00,2025/09/01 10:30,ON_TIME,airport-00,airport-01,aircraft-00,flight-00
 # status - standard variations
-leg-01,BBB1234,2025/09/01 10:00,2025/09/01 10:30,DELAYED,airport-00,airport-01,aircraft-00,flight-00
-leg-02,CCC1234,2025/09/01 10:00,2025/09/01 10:30,CANCELLED,airport-00,airport-01,aircraft-00,flight-00
-leg-03,DDD1234,2025/09/01 10:00,2025/09/01 10:30,LANDED,airport-00,airport-01,aircraft-00,flight-00
+leg-01,BBB1234,2025/09/01 10:00,2025/09/01 10:30,DELAYED,airport-00,airport-01,aircraft-00,flight-01
+leg-02,CCC1234,2025/09/01 10:00,2025/09/01 10:30,CANCELLED,airport-00,airport-01,aircraft-00,flight-01
+leg-03,DDD1234,2025/09/01 10:00,2025/09/01 10:30,LANDED,airport-00,airport-01,aircraft-00,flight-01
 # status - no singular values
 # scheduled-departure - standard variations
-leg-04,EEE1234,2025/01/01 00:00,2025/01/01 10:30,ON_TIME,airport-00,airport-01,aircraft-00,flight-00
-leg-05,FFF1234,2025/01/01 00:01,2025/01/01 10:30,ON_TIME,airport-00,airport-01,aircraft-00,flight-00
-leg-06,GGG1234,2200/12/31 23:57,2200/12/31 23:59,ON_TIME,airport-00,airport-01,aircraft-00,flight-00
-leg-07,HHH1234,2200/12/31 23:58,2200/12/31 23:59,ON_TIME,airport-00,airport-01,aircraft-00,flight-00
+leg-04,EEE1234,2025/01/01 00:00,2025/01/01 10:30,ON_TIME,airport-00,airport-01,aircraft-00,flight-01
+leg-05,FFF1234,2025/01/01 00:01,2025/01/01 10:30,ON_TIME,airport-00,airport-01,aircraft-00,flight-01
+leg-06,GGG1234,2200/12/31 23:57,2200/12/31 23:59,ON_TIME,airport-00,airport-01,aircraft-00,flight-01
+leg-07,HHH1234,2200/12/31 23:58,2200/12/31 23:59,ON_TIME,airport-00,airport-01,aircraft-00,flight-01
 # scheduled-departure - no singular values
 # scheduled-arrival - standard variations
-leg-08,III1234,2025/01/01 00:00,2025/01/01 00:01,ON_TIME,airport-00,airport-01,aircraft-00,flight-00
-leg-09,JJJ1234,2025/01/01 00:00,2025/01/01 00:02,ON_TIME,airport-00,airport-01,aircraft-00,flight-00
-# leg-10,KKK1234,2200/01/01 10:00,2200/12/31 23:58,ON_TIME,airport-00,airport-01,aircraft-00,flight-00
-# leg-11,LLL1234,2200/01/01 10:00,2200/12/31 23:59,ON_TIME,airport-00,airport-01,aircraft-00,flight-00
+leg-08,III1234,2025/01/01 00:00,2025/01/01 00:01,ON_TIME,airport-00,airport-01,aircraft-00,flight-01
+leg-09,JJJ1234,2025/01/01 00:00,2025/01/01 00:02,ON_TIME,airport-00,airport-01,aircraft-00,flight-01
+leg-10,KKK1234,2200/12/31 10:00,2200/12/31 23:58,ON_TIME,airport-00,airport-01,aircraft-00,flight-01
+leg-11,LLL1234,2200/12/31 10:00,2200/12/31 23:59,ON_TIME,airport-00,airport-01,aircraft-00,flight-01
 # scheduled-arrival - no singular values
