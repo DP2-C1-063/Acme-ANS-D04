@@ -18,6 +18,15 @@ acme.validation.airport.duplicated-IATA.message = El código IATA ya ha sido usa
 
 acme.validation.airline.duplicated-IATA.message  = código IATA ya usado
 
+acme.validation.airline.IATA.message			  = El código IATA debe estar compuesto únicamente por 3 letras mayusculas
+acme.validation.flightcrew.employeecode = El código de empleado deben ser 2 o tres letras mayusculas, las iniciales del empleado, seguido de seis dígitos
+acme.validation.flightcrewmember.duplicated-employeecode.message = codigo de empleado ya usado
+acme.validation.customer.identifier.message = El identificador de un cliente debe tener las primeras dos o tres letras correspondiendo con las iniciales
+acme.validation.customer.duplicated-identifier.message = El identificador de un cliente ya existe
+acme.validation.booking.locatorCode.message = The codigo de una reserva debe ser de 6 a 8 caracteres alfanuméricos en mayúsculas
+acme.validation.booking.duplicated-locatorcode.message = El codigo de una reserva ya existe
+acme.validation.service.promotioncode.message = El codigo de promocion de un servicio debe tener los dos ultimos numeros correspondiendo con el año
+acme.validation.service.duplicated-promotioncode.message = El codigo de promocion ya existe
 acme.validation.aircraft.duplicated-RegistrationNumber.message = El número de registro ya está usado
 
 acme.validation.manager.duplicated-identifier-number.message = El número identificador ya ha sido usado
@@ -41,7 +50,10 @@ acme.validation.assistanceagent.duplicated-employeecode.message = codigo de empl
 acme.validation.trackinglog.status.message =  no tiene la informacion necesaria para estar  terminada
 acme.validation.trackinglog.resolution-percentage.message=el porcentaje debe aumentar
 
+acme.validation.passenger.passport.message = El pasaporte debe ser de 6 a 9 caracteres alphanumericos y en mayusculas
+
 acme.validation.technician.phone-number.message = El número de teléfono debe tener entre 6 y 15 dígitos, opcionalmente empezando con '+'
 acme.validation.technician.license-number.message = El número de licencia debe comenzar con 2-3 letras mayúsculas seguidas de 6 dígitos
 
 acme.validation.maintenance-record.invalid-moment.message = El momento de mantenimiento debe ser anterior a la fecha de la próxima inspección
+

@@ -18,6 +18,15 @@ acme.validation.airport.duplicated-IATA.message = The IATA code has already been
 
 acme.validation.airline.duplicated-IATA.message  = IATA code already used
 
+acme.validation.airline.IATA.message			  = The IATA must be composed of three uppercase letters only
+acme.validation.flightcrew.employeecode = The employee code must be two to three uppercase letters, the initial of the employee, and 6 digits
+acme.validation.flightcrewmember.duplicated-employeecode.message = Employee code already used
+acme.validation.customer.identifier.message = The identifier of a customer must have the first two or three letters correspond to their initials
+acme.validation.customer.duplicated-identifier.message = Identifier of a customer already exists
+acme.validation.booking.locatorCode.message = The locator Code of booking must be 6 to 8 characters alphanumeric in uppercase
+acme.validation.booking.duplicated-locatorcode.message = Locator code of a booking already exists
+acme.validation.service.promotioncode.message = Promotion code of a service must have the last two digits corresponding to the current year
+acme.validation.service.duplicated-promotioncode.message = The promotion code already exists
 acme.validation.aircraft.duplicated-RegistrationNumber.message = Registration number already exist
 
 acme.validation.manager.duplicated-identifier-number.message = The identifier number has already been used
@@ -44,4 +53,10 @@ acme.validation.trackinglog.resolution-percentage.message = percentage must be g
 acme.validation.technician.phone-number.message = The phone number must be 6-15 digits, optionally starting with '+'
 acme.validation.technician.license-number.message = The license number must start with 2-3 uppercase letters followed by 6 digits
 
+
+acme.validation.trackinglog.resolution-percentage.message = percentage must be greater than last percentage
+
+acme.validation.passenger.passport.message = The passport must be 6 to 9 characters alphanumeric in uppercase
+
 acme.validation.maintenance-record.invalid-moment.message = The maintenance moment must be before the next inspection date
+

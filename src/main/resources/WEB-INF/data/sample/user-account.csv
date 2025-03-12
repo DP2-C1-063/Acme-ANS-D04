@@ -5,16 +5,17 @@ user-account-consumer-03,true,"UserIdentity{name: 'Manolo', surname: '之乎路�
 user-account-provider-01,true,"UserIdentity{name: 'Laurel', surname: 'Provider', email: 'laurel@acme.com'}",provider1,provider1
 user-account-provider-02,true,"UserIdentity{name: 'Martina', surname: 'коза თხა', email: 'martina@acme.com'}",provider2,provider2
 user-account-provider-03,true,"UserIdentity{name: 'Antonia', surname: 'אבטיח Æløzå', email: 'antonia@acme.com'}",provider3,provider3
-
 user-account-manager-00,true,"UserIdentity{name: 'Daniel', surname: 'Torres', email: 'daniel@acme.com'}",manager0,manager0
 user-account-manager-01,true,"UserIdentity{name: 'Marcos', surname: 'Herrera', email: 'marcos@acme.com'}",manager1,manager1
 user-account-manager-02,true,"UserIdentity{name: 'Clara', surname: 'Mendoza', email: 'clara@acme.com'}",manager2,manager2
 user-account-manager-03,true,"UserIdentity{name: 'Samuel', surname: 'Rivas', email: 'samuel@acme.com'}",manager3,manager3
-
 user-account-technician-00,true,"UserIdentity{name: 'Juán', surname: 'Fernandez', email: 'juan@acme.com'}",technician0,technician0
 user-account-technician-01,true,"UserIdentity{name: 'Antonio', surname: 'Fernandez', email: 'antonio@acme.com'}",technician1,technician1
+user-account-technician-02,true,"UserIdentity{name: 'Sebastian', surname: 'Fernandez', email: 'antonio@acme.com'}",technician2,technician2
+user-account-technician-03,true,"UserIdentity{name: 'Fernando', surname: 'Fernandez', email: 'antonio@acme.com'}",technician3,technician3
+user-account-customer-01,true,"UserIdentity{name: 'Maria', surname: 'Moreno', email: 'maria@acme.com'}",customer1,customer1
+user-account-customer-02,true,"UserIdentity{name: 'Sergio', surname: 'Lopez', email: 'sergio@acme.com'}",customer2,customer2
+user-account-customer-03,true,"UserIdentity{name: 'Gabriela', surname: 'Sanchez', email: 'gabriela@acme.com'}",customer3,customer3
 user-account-assistance-agent-01,true,"UserIdentity{name: 'Manuel', surname: 'Con', email: 'manuel@acme.com'}",agent1,agent1
 user-account-assistance-agent-02,true,"UserIdentity{name: 'Monica', surname: 'nu', email: 'monica@acme.com'}",agent2,agent2
-user-account-assistance-agent-03,true,"UserIdentity{name: 'Raquel', surname: 'Tol', email: 'raquel@acme.com'}",manager4,manager4
-user-account-technician-02,true,"UserIdentity{name: 'Sebastian', surname: 'Fernandez', email: 'sebastian@acme.com'}",technician2,technician2
-user-account-technician-03,true,"UserIdentity{name: 'Fernando', surname: 'Fernandez', email: 'fernando@acme.com'}",technician3,technician3
+user-account-assistance-agent-03,true,"UserIdentity{name: 'Raquel', surname: 'Tol', email: 'raquel@acme.com'}",agent3,agent3
