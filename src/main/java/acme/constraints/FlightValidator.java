@@ -33,10 +33,8 @@ public class FlightValidator extends AbstractValidator<ValidFlight, Flight> {
 
 		if (flight == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else {
-
+		else if (flight.getScheduledArrival() != null && flight.getScheduledDeparture() != null) {
 			boolean arrivalIsBeforeDeparture;
-			Flight existingFlight;
 
 			arrivalIsBeforeDeparture = MomentHelper.isBefore(flight.getScheduledArrival(), flight.getScheduledDeparture());
 
