@@ -37,3 +37,4 @@ acme.validation.leg.same-departure-and-arrival-airport.message = Los aeropuertos
 acme.validation.leg.flight-number.message = El número de vuelo debe estar compuesto por el IATA de la aerolínea y 4 dígitos
 acme.validation.assistanceagent.duplicated-employeecode.message = codigo de empleado ya usado
 acme.validation.trackinglog.status.message =  no tiene la informacion necesaria para estar  terminada
+acme.validation.trackinglog.resolution-percentage.message=el porcentaje debe aumentar

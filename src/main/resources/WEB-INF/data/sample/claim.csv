@@ -1,0 +1,36 @@
+key,key:assistanceAgent,registrationMoment,passengerEmail,description,type,accepted,key:leg
+#base entity
+claim-00,assistance-agent-00,2012/07/02 0:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,leg-00
+#registrationMoment-standard variation
+claim-01,assistance-agent-00,2000/01/01 0:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,leg-00
+claim-02,assistance-agent-00,2000/01/01 0:01,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,leg-00
+claim-03,assistance-agent-00,2024/12/31 23:59,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,leg-00
+claim-04,assistance-agent-00,2025/01/01 0:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,leg-00
+#passengerEmail-standard variation
+claim-05,assistance-agent-00,2012/07/02 0:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,leg-00
+claim-06,assistance-agent-00,2012/07/02 0:00,a@b.e,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,leg-00
+claim-07,assistance-agent-00,2012/07/02 0:00,a@b.es,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,leg-00
+claim-08,assistance-agent-00,2012/07/02 0:00,a@b.esx,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,leg-00
+claim-09,assistance-agent-00,2012/07/02 0:00,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,leg-00
+claim-10,assistance-agent-00,2012/07/02 0:00,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,leg-00
+#description-standard variation
+claim-11,assistance-agent-00,2012/07/02 0:00,acme@lorem-ipsum.org,L,FLIGHT_ISSUES,true,leg-00
+claim-12,assistance-agent-00,2012/07/02 0:00,acme@lorem-ipsum.org,Lo,FLIGHT_ISSUES,true,leg-00
+claim-13,assistance-agent-00,2012/07/02 0:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",FLIGHT_ISSUES,true,leg-00
+claim-14,assistance-agent-00,2012/07/02 0:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",FLIGHT_ISSUES,true,leg-00
+claim-15,assistance-agent-00,2012/07/02 0:00,acme@lorem-ipsum.org,โลเร็ม อิปซัม,FLIGHT_ISSUES,true,leg-00
+claim-16,assistance-agent-00,2012/07/02 0:00,acme@lorem-ipsum.org,لوريم إيبسوم,FLIGHT_ISSUES,true,leg-00
+claim-17,assistance-agent-00,2012/07/02 0:00,acme@lorem-ipsum.org,洛伦·伊普森,FLIGHT_ISSUES,true,leg-00
+claim-18,assistance-agent-00,2012/07/02 0:00,acme@lorem-ipsum.org,<marquee>Hacked</marquee>,FLIGHT_ISSUES,true,leg-00
+claim-19,assistance-agent-00,2012/07/02 0:00,acme@lorem-ipsum.org,<script>alert(‘Hacked!’);</script>,FLIGHT_ISSUES,true,leg-00
+claim-20,assistance-agent-00,2012/07/02 0:00,acme@lorem-ipsum.org,"' or 'A' = 'A ",FLIGHT_ISSUES,true,leg-00
+#type-standrad variation
+claim-21,assistance-agent-00,2012/07/02 0:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",LUGGAGE_ISSUES,true,leg-00
+claim-22,assistance-agent-00,2012/07/02 0:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",SECURITY_INCIDENT,true,leg-00
+claim-23,assistance-agent-00,2012/07/02 0:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",OTHER_ISSUES,true,leg-00
+#accepted-standard variation
+claim-24,assistance-agent-00,2012/07/02 0:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,false,leg-00
+#assistance-agent-01-standard variation
+claim-25,assistance-agent-01,2012/07/02 0:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,leg-00
+#leg-standard variation
+claim-26,assistance-agent-00,2012/07/02 0:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,leg-01

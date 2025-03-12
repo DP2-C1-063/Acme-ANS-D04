@@ -14,6 +14,7 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
+import acme.entities.leg.Leg;
 import acme.realms.assistanceAgent.AssistanceAgent;
 import lombok.Getter;
 import lombok.Setter;
@@ -49,9 +50,10 @@ public class Claim extends AbstractEntity {
 	@Mandatory
 	@Automapped
 	private boolean				accepted;
-	//@Mandatory
-	//@VAlid
-	//@Automapped
-	//private leg leg;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Leg					leg;
 
 }

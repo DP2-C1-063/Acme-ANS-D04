@@ -6,6 +6,7 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
+import acme.client.helpers.MomentHelper;
 import acme.entities.flight.Flight;
 import acme.entities.flight.FlightRepository;
 
@@ -32,15 +33,12 @@ public class FlightValidator extends AbstractValidator<ValidFlight, Flight> {
 
 		if (flight == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else {
-
+		else if (flight.getScheduledArrival() != null && flight.getScheduledDeparture() != null) {
 			boolean arrivalIsBeforeDeparture;
-			Flight existingFlight;
 
-			existingFlight = this.repository.findFlight(flight);
-			arrivalIsBeforeDeparture = existingFlight.getScheduledArrival().before(existingFlight.getScheduledDeparture());
+			arrivalIsBeforeDeparture = MomentHelper.isBefore(flight.getScheduledArrival(), flight.getScheduledDeparture());
 
-			super.state(context, arrivalIsBeforeDeparture, "scheduledArrival", "acme.validation.flight.arrival-before-departure.message");
+			super.state(context, !arrivalIsBeforeDeparture, "scheduledArrival", "acme.validation.flight.arrival-before-departure.message");
 		}
 
 		result = !super.hasErrors(context);
