@@ -23,12 +23,13 @@ bg=RED</panel_attributes>
       <x>680</x>
       <y>130</y>
       <w>340</w>
-      <h>70</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Constraint&gt;&gt;
 ValidFlight
 --
-+ scheduledArrival must be after scheduledDeparture
++ flight must have at least one leg related
++ legs related to the flight must not overlap
 bg=RED</panel_attributes>
     <additional_attributes/>
   </element>

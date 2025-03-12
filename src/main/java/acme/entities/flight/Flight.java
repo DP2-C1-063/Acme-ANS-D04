@@ -51,6 +51,11 @@ public class Flight extends AbstractEntity {
 	@Automapped
 	private Money				cost;
 
+	@Mandatory
+	// HINT: @Valid by default.
+	@Automapped
+	private boolean				published;
+
 	@Optional
 	@ValidString
 	@Automapped
@@ -66,7 +71,7 @@ public class Flight extends AbstractEntity {
 		List<Leg> wrapper;
 
 		legRepository = SpringHelper.getBean(LegRepository.class);
-		wrapper = legRepository.findLegsByFlight(this);
+		wrapper = legRepository.findLegsByFlight(this.getId());
 		if (!wrapper.isEmpty() && wrapper != null)
 			result = wrapper.getFirst().getScheduledDeparture();
 
@@ -80,7 +85,7 @@ public class Flight extends AbstractEntity {
 		List<Leg> wrapper;
 
 		legRepository = SpringHelper.getBean(LegRepository.class);
-		wrapper = legRepository.findLegsByFlight(this);
+		wrapper = legRepository.findLegsByFlight(this.getId());
 		if (!wrapper.isEmpty() && wrapper != null)
 			result = wrapper.getLast().getScheduledArrival();
 
@@ -94,7 +99,7 @@ public class Flight extends AbstractEntity {
 		List<Leg> wrapper;
 
 		legRepository = SpringHelper.getBean(LegRepository.class);
-		wrapper = legRepository.findLegsByFlight(this);
+		wrapper = legRepository.findLegsByFlight(this.getId());
 		if (!wrapper.isEmpty() && wrapper != null)
 			result = wrapper.getFirst().getDepartureAirport().getCity();
 
@@ -108,7 +113,7 @@ public class Flight extends AbstractEntity {
 		List<Leg> wrapper;
 
 		legRepository = SpringHelper.getBean(LegRepository.class);
-		wrapper = legRepository.findLegsByFlight(this);
+		wrapper = legRepository.findLegsByFlight(this.getId());
 		if (!wrapper.isEmpty() && wrapper != null)
 			result = wrapper.getLast().getArrivalAirport().getCity();
 
@@ -122,7 +127,7 @@ public class Flight extends AbstractEntity {
 		List<Leg> wrapper;
 
 		legRepository = SpringHelper.getBean(LegRepository.class);
-		wrapper = legRepository.findLegsByFlight(this);
+		wrapper = legRepository.findLegsByFlight(this.getId());
 		if (!wrapper.isEmpty() && wrapper != null)
 			result = wrapper.size() - 1;
 

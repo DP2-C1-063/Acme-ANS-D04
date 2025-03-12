@@ -4,10 +4,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
-      <y>130</y>
+      <x>70</x>
+      <y>120</y>
       <w>440</w>
-      <h>200</h>
+      <h>210</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Flight
@@ -15,6 +15,7 @@ Flight
 + tag: String {Mandatory, ValidString(min=1,max=50), Automapped}
 + indication: Indication {Mandatory, Valid, Automapped}
 + cost: Money {Mandatory, ValidMoney, Automapped}
++ published: boolean {Mandatory, Automapped}
 + description: String {Optional, ValidString, Automapped}
 --
 /+ scheduledDeparture: Date
@@ -28,8 +29,8 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>700</x>
-      <y>170</y>
+      <x>690</x>
+      <y>160</y>
       <w>150</w>
       <h>50</h>
     </coordinates>
@@ -41,8 +42,8 @@ bg=pink</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>510</x>
-      <y>170</y>
+      <x>500</x>
+      <y>160</y>
       <w>210</w>
       <h>60</h>
     </coordinates>
@@ -57,8 +58,8 @@ m2=*
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
-      <y>480</y>
+      <x>70</x>
+      <y>470</y>
       <w>840</w>
       <h>130</h>
     </coordinates>
@@ -77,10 +78,10 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>280</x>
+      <x>270</x>
       <y>320</y>
       <w>130</w>
-      <h>180</h>
+      <h>170</h>
     </coordinates>
     <panel_attributes>Composed of v
 lt=&lt;-x
@@ -88,13 +89,13 @@ m1=1
 m2=*
 
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>280</y>
+      <x>530</x>
+      <y>270</y>
       <w>170</w>
       <h>50</h>
     </coordinates>
@@ -107,8 +108,8 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>570</x>
-      <y>320</y>
+      <x>560</x>
+      <y>310</y>
       <w>120</w>
       <h>180</h>
     </coordinates>
@@ -124,8 +125,8 @@ r1=+arrivalAirport
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>670</x>
-      <y>320</y>
+      <x>660</x>
+      <y>310</y>
       <w>140</w>
       <h>180</h>
     </coordinates>
@@ -141,8 +142,8 @@ r1=+departureAirport
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>750</x>
-      <y>280</y>
+      <x>740</x>
+      <y>270</y>
       <w>170</w>
       <h>50</h>
     </coordinates>
@@ -155,8 +156,8 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>830</x>
-      <y>320</y>
+      <x>820</x>
+      <y>310</y>
       <w>100</w>
       <h>180</h>
     </coordinates>
@@ -167,5 +168,65 @@ m2=*
 
 </panel_attributes>
     <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>700</y>
+      <w>170</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Claim
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>590</y>
+      <w>130</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>Associated to ^
+lt=&lt;-x
+m1=1
+m2=*
+
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>20</y>
+      <w>170</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Airline
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>60</y>
+      <w>100</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Manages &gt;
+lt=&lt;-x
+m1=1
+m2=*
+
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
   </element>
 </diagram>
