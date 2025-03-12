@@ -46,3 +46,5 @@ acme.validation.trackinglog.status.message = tracking log does not match informa
 
 
 acme.validation.trackinglog.resolution-percentage.message = percentage must be greater than last percentage
+
+acme.validation.passenger.passport.message = The passport must be 6 to 9 characters alphanumeric in uppercase

@@ -44,3 +44,4 @@ acme.validation.leg.flight-number.message = El número de vuelo debe estar compu
 acme.validation.assistanceagent.duplicated-employeecode.message = codigo de empleado ya usado
 acme.validation.trackinglog.status.message =  no tiene la informacion necesaria para estar  terminada
 acme.validation.trackinglog.resolution-percentage.message=el porcentaje debe aumentar
+acme.validation.passenger.passport.message = El pasaporte debe ser de 6 a 9 caracteres alphanumericos y en mayusculas
