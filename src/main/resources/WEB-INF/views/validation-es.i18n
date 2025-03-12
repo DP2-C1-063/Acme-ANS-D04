@@ -12,22 +12,19 @@ acme.validation.header.message  	= Debe tener entre 1 y 75 caracteres
 acme.validation.text.message   		= Debe tener entre 1 y 255 caracteres 
 acme.validation.phone.message       = Debe ser +código-país (código-área) número, donde sólo el número es obligatorio
 
+acme.validation.*.IATA.message			  = El código IATA debe estar compuesto únicamente por 3 letras mayúsculas
+
 acme.validation.airport.duplicated-IATA.message = El código IATA ya ha sido usado
 
 acme.validation.airline.duplicated-IATA.message  = código IATA ya usado
-acme.validation.airline.IATA.message			  = El código IATA debe estar compuesto únicamente por 3 letras mayusculas
-acme.validation.flightcrew.employeecode = El código de empleado deben ser 2 o tres letras mayusculas, las iniciales del empleado, seguido de seis dígitos
-acme.validation.flightcrewmember.duplicated-employeecode.message = codigo de empleado ya usado
+
 acme.validation.aircraft.duplicated-RegistrationNumber.message = El número de registro ya está usado
 
-
-acme.validation.technician.phone-number.message = El número de teléfono debe tener entre 6 y 15 dígitos, opcionalmente empezando con '+'
-acme.validation.technician.license-number.message = El número de licencia debe comenzar con 2-3 letras mayúsculas seguidas de 6 dígitos
-acme.validation.maintenance-record.invalid-moment.message = El momento de mantenimiento debe ser anterior a la fecha de la próxima inspección
 acme.validation.manager.duplicated-identifier-number.message = El número identificador ya ha sido usado
 acme.validation.manager.identifier-number.message = El número identificador debe estar compuesto de dos o tres letras mayúsculas y 6 dígitos
 
-acme.validation.flight.arrival-before-departure.message = La llegada debe ocurrir después del despegue
+acme.validation.flight.legs.message = El vuelo deben tener al menos un tramo
+acme.validation.flight.legs-overlap.message = El vuelo debe estar compuesto de tramos que no se solapen
 
 acme.validation.leg.duplicated-flight-number.message = El número de vuelo ya ha sido usado
 acme.validation.leg.arrival-before-departure.message = La llegada debe ocurrir después del despegue
@@ -35,6 +32,16 @@ acme.validation.leg.duration-too-long.message = La duración es demasiado larga
 acme.validation.leg.duration-too-short.message = La duración es demasiado corta
 acme.validation.leg.same-departure-and-arrival-airport.message = Los aeropuertos de salida y llegada deben ser diferentes
 acme.validation.leg.flight-number.message = El número de vuelo debe estar compuesto por el IATA de la aerolínea y 4 dígitos
+
+acme.validation.flightcrew.employeecode = El código de empleado deben ser 2 o tres letras mayusculas, las iniciales del empleado, seguido de seis dígitos
+acme.validation.flightcrewmember.duplicated-employeecode.message = codigo de empleado ya usado
+
 acme.validation.assistanceagent.duplicated-employeecode.message = codigo de empleado ya usado
+
 acme.validation.trackinglog.status.message =  no tiene la informacion necesaria para estar  terminada
 acme.validation.trackinglog.resolution-percentage.message=el porcentaje debe aumentar
+
+acme.validation.technician.phone-number.message = El número de teléfono debe tener entre 6 y 15 dígitos, opcionalmente empezando con '+'
+acme.validation.technician.license-number.message = El número de licencia debe comenzar con 2-3 letras mayúsculas seguidas de 6 dígitos
+
+acme.validation.maintenance-record.invalid-moment.message = El momento de mantenimiento debe ser anterior a la fecha de la próxima inspección
