@@ -1,6 +1,7 @@
 
 package acme.entities.service;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.Valid;
 
@@ -45,8 +46,8 @@ public class Service extends AbstractEntity {
 	private Double				dwellTime;
 
 	@Optional
-	@Automapped
 	@ValidPromotionCode
+	@Column(unique = true)
 	private String				promotionCode;
 
 	@Optional

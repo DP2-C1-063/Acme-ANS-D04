@@ -6,10 +6,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import javax.annotation.Nullable;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import javax.validation.ReportAsSingleViolation;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 @Target(ElementType.FIELD)
@@ -17,12 +17,12 @@ import javax.validation.constraints.Pattern;
 @Constraint(validatedBy = {})
 @ReportAsSingleViolation
 
-@NotBlank
+@Nullable
 @Pattern(regexp = "^[A-Z]{4}-[0-9]{2}$")
 
 public @interface ValidPromotionCode {
 
-	String message() default "{acme.validation.service.promotionCode.message}";
+	String message() default "{acme.validation.service.promotioncode.message}";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};

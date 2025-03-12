@@ -18,7 +18,7 @@ import javax.validation.constraints.Pattern;
 @ReportAsSingleViolation
 
 @NotBlank
-@Pattern(regexp = "^\\+?\\d{6,15}$")
+@Pattern(regexp = "^[A-Z0-9]{6,9}$")
 
 public @interface ValidPassport {
 
