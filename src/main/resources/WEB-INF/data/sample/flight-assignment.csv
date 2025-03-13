@@ -30,3 +30,8 @@ flight-assignment-20,flight-crew-members-00,leg-00,PILOT,"2012/07/02 0:00",CONFI
 flight-assignment-21,flight-crew-members-00,leg-00,PILOT,"2012/07/02 0:00",CONFIRMED,<marquee>Hacked</marquee>
 flight-assignment-22,flight-crew-members-00,leg-00,PILOT,"2012/07/02 0:00",CONFIRMED,<script>alert(‘Hacked!’);</script>
 flight-assignment-23,flight-crew-members-00,leg-00,PILOT,"2012/07/02 0:00",CONFIRMED,' or 'A' = 'A
+#test-with-accounts
+flight-assignment-24,flight-crew-members-01,leg-00,PILOT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-25,flight-crew-members-02,leg-00,CO_PILOT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-26,flight-crew-members-03,leg-00,LEAD_ATTENDANT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-27,flight-crew-members-04,leg-00,CABIN_ATTENDANT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"

@@ -19,3 +19,8 @@ user-account-customer-03,true,"UserIdentity{name: 'Gabriela', surname: 'Sanchez'
 user-account-assistance-agent-01,true,"UserIdentity{name: 'Manuel', surname: 'Con', email: 'manuel@acme.com'}",agent1,agent1
 user-account-assistance-agent-02,true,"UserIdentity{name: 'Monica', surname: 'nu', email: 'monica@acme.com'}",agent2,agent2
 user-account-assistance-agent-03,true,"UserIdentity{name: 'Raquel', surname: 'Tol', email: 'raquel@acme.com'}",agent3,agent3
+user-account-flight-crew-member-01,true,"UserIdentity{name: 'Pedro', surname: 'Piloto', email: 'piloto@acme.com'}",member1,member1
+user-account-flight-crew-member-02,true,"UserIdentity{name: 'Pablo', surname: 'Copiloto', email: 'copiloto@acme.com'}",member2,member2
+user-account-flight-crew-member-03,true,"UserIdentity{name: 'Paco', surname: 'AsistenteDeCabina', email: 'asistentedecabina@acme.com'}",member3,member3
+user-account-flight-crew-member-04,true,"UserIdentity{name: 'Paulina', surname: 'AsistentaDeVuelo', email: 'asistentadevuelo@acme.com'}",member4,member4
+user-account-flight-crew-member-05,true,"UserIdentity{name: 'Manolo', surname: 'Nuevo', email: 'nuevo@acme.com'}",member,member
