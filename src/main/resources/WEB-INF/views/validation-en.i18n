@@ -52,7 +52,7 @@ acme.validation.trackinglog.resolution-percentage.message = percentage must be g
 
 acme.validation.technician.phone-number.message = The phone number must be 6-15 digits, optionally starting with '+'
 acme.validation.technician.license-number.message = The license number must start with 2-3 uppercase letters followed by 6 digits
-
+acme.validation.technician.duplicated-license-number.message = The license number has already been used
 
 acme.validation.trackinglog.resolution-percentage.message = percentage must be greater than last percentage
 

@@ -25,30 +25,31 @@ public class Technician extends AbstractRole {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@Column(unique = true)
 	@ValidLicenseNumber
+	@Column(unique = true)
 	private String				licenseNumber;
 
 	@Mandatory
-	@Automapped
 	@ValidPhoneNumber
+	@Automapped
 	private String				phoneNumber;
 
 	@Mandatory
-	@Automapped
 	@ValidString(min = 1, max = 50)
+	@Automapped
 	private String				specialisation;
 
 	@Mandatory
 	@Automapped
-	private Boolean				healthTestPassed;
+	private boolean				healthTestPassed;
 
 	@Mandatory
-	@Automapped
 	@ValidNumber(min = 0, max = 120)
-	private Integer				experienceYears;
+	@Automapped
+	private int					experienceYears;
 
 	@Optional
 	@ValidString(min = 1, max = 255)
+	@Automapped
 	private String				certifications;
 }

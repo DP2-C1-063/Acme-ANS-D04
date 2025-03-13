@@ -54,6 +54,7 @@ acme.validation.passenger.passport.message = El pasaporte debe ser de 6 a 9 cara
 
 acme.validation.technician.phone-number.message = El número de teléfono debe tener entre 6 y 15 dígitos, opcionalmente empezando con '+'
 acme.validation.technician.license-number.message = El número de licencia debe comenzar con 2-3 letras mayúsculas seguidas de 6 dígitos
+acme.validation.technician.duplicated-license-number.message = El número de licencia ya ha sido usado
 
 acme.validation.maintenance-record.invalid-moment.message = El momento de mantenimiento debe ser anterior a la fecha de la próxima inspección
 

@@ -37,7 +37,7 @@ public class TechnicianValidator extends AbstractValidator<ValidTechnician, Tech
 			existingLicenseNumber = this.repository.findTechnicianByLicenseNumber(technician.getLicenseNumber());
 			uniqueLicenseNumber = existingLicenseNumber == null || existingLicenseNumber.equals(technician);
 
-			super.state(context, uniqueLicenseNumber, "PromotionCode", "acme.validation.service.duplicated-promotioncode.message");
+			super.state(context, uniqueLicenseNumber, "LicenseNumber", "acme.validation.technician.duplicated-license-number.message");
 		}
 
 		result = !super.hasErrors(context);

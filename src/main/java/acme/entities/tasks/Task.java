@@ -22,23 +22,24 @@ public class Task extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
+	@Valid
 	@Automapped
 	private TaskType			type;
 
 	@Mandatory
-	@Automapped
 	@ValidString(min = 1, max = 255)
+	@Automapped
 	private String				description;
 
 	@Mandatory
-	@Automapped
 	@ValidNumber(min = 0, max = 10)
-	private Integer				priority;
+	@Automapped
+	private int					priority;
 
 	@Mandatory
-	@Automapped
 	@ValidNumber(min = 0, max = 1000)
-	private Integer				estimatedDuration;
+	@Automapped
+	private int					estimatedDuration;
 
 	@Mandatory
 	@Valid
