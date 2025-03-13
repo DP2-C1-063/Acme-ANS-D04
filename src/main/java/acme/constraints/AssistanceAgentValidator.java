@@ -34,8 +34,8 @@ public class AssistanceAgentValidator extends AbstractValidator<ValidAssistanceA
 			boolean uniqueAssistanceAgent;
 			AssistanceAgent existingAssistanceAgent;
 
-			existingAssistanceAgent = this.assistanceAgentRepository.findByEmployeeCode(assistanceAgent.getEmployeeCode()).get(0);
-			uniqueAssistanceAgent = existingAssistanceAgent == null || existingAssistanceAgent.equals(assistanceAgent) || this.assistanceAgentRepository.findByEmployeeCode(assistanceAgent.getEmployeeCode()).size() < 2;
+			existingAssistanceAgent = this.assistanceAgentRepository.findByEmployeeCode(assistanceAgent.getEmployeeCode());
+			uniqueAssistanceAgent = existingAssistanceAgent == null || existingAssistanceAgent.equals(assistanceAgent);
 
 			super.state(context, uniqueAssistanceAgent, "employeeCode", "acme.validation.assistanceagent.duplicated-employeecode.message");
 		}
