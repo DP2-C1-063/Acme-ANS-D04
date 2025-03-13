@@ -1,5 +1,5 @@
 
-package acme.realms;
+package acme.realms.technicians;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,12 +12,14 @@ import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.constraints.ValidLicenseNumber;
 import acme.constraints.ValidPhoneNumber;
+import acme.constraints.ValidTechnician;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@ValidTechnician
 public class Technician extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
