@@ -10,7 +10,7 @@
       <h>210</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
-Flight
+Flight (ValidFlight)
 --
 + tag: String {Mandatory, ValidString(min=1,max=50), Automapped}
 + indication: Indication {Mandatory, Valid, Automapped}
@@ -64,7 +64,7 @@ m2=*
       <h>130</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
-Leg
+Leg (ValidLeg)
 --
 + flightNumber: String {Mandatory,ValidFlightNumber,Column(unique=true)}
 + scheduledDeparture: Date {Mandatory,ValidMoment(past=false, max="2200/01/01 23:58"),Temporal(TemporalType.TIMESTAMP)}
