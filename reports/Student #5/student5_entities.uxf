@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>130</x>
-      <y>480</y>
+      <x>230</x>
+      <y>460</y>
       <w>690</w>
       <h>190</h>
     </coordinates>
@@ -23,8 +23,8 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1140</x>
-      <y>360</y>
+      <x>1240</x>
+      <y>340</y>
       <w>110</w>
       <h>70</h>
     </coordinates>
@@ -36,8 +36,8 @@ bg=pink</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>810</x>
-      <y>400</y>
+      <x>910</x>
+      <y>380</y>
       <w>350</w>
       <h>160</h>
     </coordinates>
@@ -52,8 +52,8 @@ m2=*
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1140</x>
-      <y>600</y>
+      <x>1240</x>
+      <y>580</y>
       <w>180</w>
       <h>50</h>
     </coordinates>
@@ -65,8 +65,8 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>810</x>
-      <y>600</y>
+      <x>910</x>
+      <y>580</y>
       <w>350</w>
       <h>50</h>
     </coordinates>
@@ -81,8 +81,8 @@ r1=+relatedAircraft
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>340</x>
-      <y>110</y>
+      <x>440</x>
+      <y>90</y>
       <w>570</w>
       <h>150</h>
     </coordinates>
@@ -100,8 +100,8 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>900</x>
-      <y>170</y>
+      <x>1000</x>
+      <y>150</y>
       <w>260</w>
       <h>230</h>
     </coordinates>
@@ -116,8 +116,8 @@ m2=*
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>620</x>
-      <y>340</y>
+      <x>720</x>
+      <y>320</y>
       <w>200</w>
       <h>50</h>
     </coordinates>
@@ -129,8 +129,8 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
-      <y>380</y>
+      <x>820</x>
+      <y>360</y>
       <w>100</w>
       <h>120</h>
     </coordinates>
@@ -145,8 +145,8 @@ m2=*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
-      <y>250</y>
+      <x>820</x>
+      <y>230</y>
       <w>100</w>
       <h>110</h>
     </coordinates>

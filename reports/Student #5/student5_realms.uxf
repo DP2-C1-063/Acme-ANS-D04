@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>8</zoom_level>
+  <zoom_level>13</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>216</x>
-      <y>240</y>
-      <w>480</w>
-      <h>120</h>
+      <x>130</x>
+      <y>91</y>
+      <w>780</w>
+      <h>195</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Role&gt;&gt;
 Technician {ValidTechnician}
