@@ -8,6 +8,6 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-
+D03 This is the third version of Acme ANS for the third deliverable. It includes new functionalities as well as some corrections from the previous deliverable.
 D02 This is the second version of Acme ANS for the second deliverable. It includes new entities to meet the informations requirements, as well as some sample data for testing purposes.
 D01 This is the first version of Acme ANS for the first deliverable
