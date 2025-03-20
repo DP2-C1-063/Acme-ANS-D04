@@ -1,0 +1,4 @@
+administrator.airport.list.title = Listing of airports
+
+administrator.airport.list.label.name = Name
+administrator.airport.list.label.IATACode = IATA code

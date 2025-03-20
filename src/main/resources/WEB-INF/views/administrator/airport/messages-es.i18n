@@ -1,0 +1,4 @@
+authenticated.airport.list.title = Lista de aeropuertos
+
+authenticated.airport.list.label.name = Nombre
+authenticated.airport.list.label.IATACode = Código IATA
