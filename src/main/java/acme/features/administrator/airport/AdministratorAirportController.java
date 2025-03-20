@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.administrator.airport;
+package acme.features.administrator.airport;
 
 import javax.annotation.PostConstruct;
 
@@ -15,7 +15,9 @@ public class AdministratorAirportController extends AbstractGuiController<Admini
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AdministratorAirportListService listService;
+	private AdministratorAirportListService	listService;
+	@Autowired
+	private AdministratorAirportShowService	showService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -23,6 +25,7 @@ public class AdministratorAirportController extends AbstractGuiController<Admini
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
+		super.addBasicCommand("show", this.showService);
 	}
 
 }
