@@ -1,0 +1,14 @@
+flight-crew-members.flight-assignment.list.title = Lista de asignaciones de vuelo
+
+flight-crew-members.flight-assignment.list.label.duty = Puesto
+flight-crew-members.flight-assignment.list.label.lastUpdate = Ultima actualización
+flight-crew-members.flight-assignment.list.label.leg =  Tramo asociado
+
+flight-crew-members.flight-assignment.form.title = Formularios de asignaciones de vuelo
+
+flight-crew-members.flight-assignment.form.label.duty = Puesto:
+flight-crew-members.flight-assignment.form.label.lastUpdate = Ultima actualización:
+flight-crew-members.flight-assignment.form.label.leg =  Tramo asociado: 
+flight-crew-members.flight-assignment.form.label.currentStatus = Estatus actual:
+flight-crew-members.flight-assignment.form.label.remarks = Comentarios:
+flight-crew-members.flight-assignment.form.label.flightCrewMember = Miembro de tripulación asignado:
