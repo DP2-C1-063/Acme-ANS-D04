@@ -31,6 +31,7 @@
 
 		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.list-user-accounts" action="/administrator/user-account/list"/>
+			<acme:menu-suboption code="master.menu.administrator.list-airlines" action="/administrator/airlines/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-db-initial" action="/administrator/system/populate-initial"/>
 			<acme:menu-suboption code="master.menu.administrator.populate-db-sample" action="/administrator/system/populate-sample"/>			
@@ -45,6 +46,16 @@
 		<acme:menu-option code="master.menu.consumer" access="hasRealm('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.flightCrewMember" access="hasRealm('FlightCrewMembers')">
+		<acme:menu-suboption code="master.menu.flightCrewMember.list-activity-logs" action="/flight-crew-members/activity-log/list"/>
+		<acme:menu-suboption code="master.menu.flightCrewMember.list-completed-flight-assignments" action="/flight-crew-members/flight-assignment/list-completed"/>
+		<acme:menu-suboption code="master.menu.flightCrewMember.list-planned-flight-assignments" action="/flight-crew-members/flight-assignment/list-planned"/>
+
+
+		</acme:menu-option>
+		
+		
 	</acme:menu-left>
 
 	<acme:menu-right>		
