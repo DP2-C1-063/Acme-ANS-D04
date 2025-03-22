@@ -43,7 +43,9 @@ acme.validation.leg.same-departure-and-arrival-airport.message = Los aeropuertos
 acme.validation.leg.flight-number.message = El número de vuelo debe estar compuesto por el IATA de la aerolínea y 4 dígitos
 
 acme.validation.flightcrew.employeecode = El código de empleado deben ser 2 o tres letras mayusculas, las iniciales del empleado, seguido de seis dígitos
-acme.validation.flightcrewmember.duplicated-employeecode.message = codigo de empleado ya usado
+acme.validation.flightcrewmember.duplicated-employeecode.message = Codigo de empleado ya usado
+acme.validation.flightcrewmember.incorrect-initials-employeecode.message = Las 2 primeras letras del código de empleado deben ser las iniciales del mismo (nombre y apellidos) 
+
 
 acme.validation.assistanceagent.duplicated-employeecode.message = codigo de empleado ya usado
 

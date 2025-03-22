@@ -44,6 +44,7 @@ acme.validation.leg.flight-number.message = The flight number must be composed o
 
 acme.validation.flightcrew.employeecode = The employee code must be two to three uppercase letters, the initial of the employee, and 6 digits
 acme.validation.flightcrewmember.duplicated-employeecode.message = Employee code already used
+acme.validation.flightcrewmember.incorrect-initials-employeecode.message = At least the first two letters of the code must be the initials of the employee (name and surname)
 
 acme.validation.assistanceagent.duplicated-employeecode.message = Employee code already used
 

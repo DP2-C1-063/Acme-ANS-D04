@@ -1,0 +1,15 @@
+
+
+flight-crew-members.activity-log.list.title = Lista de registros de actividad
+
+flight-crew-members.activity-log.list.label.registrationMoment = Fecha de registro
+flight-crew-members.activity-log.list.label.incidentType = Tipo de incidencia
+flight-crew-members.activity-log.list.label.severityLevel = Nivel de gravedad
+
+flight-crew-members.activity-log.form.title = Formulario de registros de actividad
+
+flight-crew-members.activity-log.form.label.registrationMoment = Fecha de registro:
+flight-crew-members.activity-log.form.label.incidentType = Tipo de incidencia:
+flight-crew-members.activity-log.form.label.description = Descripcion: 
+flight-crew-members.activity-log.form.label.severityLevel = Nivel de gravedad:
+flight-crew-members.activity-log.form.label.flightAssignment = Numero de asignación de vuelo:

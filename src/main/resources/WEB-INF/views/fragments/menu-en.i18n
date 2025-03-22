@@ -22,7 +22,10 @@ master.menu.anonymous.raquel = 26776094T: Ortega Almirón, Raquel
 
 master.menu.administrator = Administrator
 master.menu.administrator.list-user-accounts = List user accounts
+
+master.menu.administrator.list-airlines = List airlines
 master.menu.administrator.list-airports = List airports
+
 master.menu.administrator.populate-db-initial = Populate DB (initial)
 master.menu.administrator.populate-db-sample = Populate DB (samples)
 master.menu.administrator.shut-system-down = Shut system down
@@ -45,3 +48,10 @@ master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.provider-profile = Provider profile
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.consumer-profile = Consumer profile
+
+# master.menu.flightCrewMember ############
+
+master.menu.flightCrewMember = Flight Crew Member
+master.menu.flightCrewMember.list-activity-logs = List Activity Logs
+master.menu.flightCrewMember.list-completed-flight-assignments = List Completed Flight Assignments
+master.menu.flightCrewMember.list-planned-flight-assignments = List Planned Flight Assignments

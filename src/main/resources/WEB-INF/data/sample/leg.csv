@@ -18,3 +18,6 @@ leg-09,JJJ1234,2025/01/01 00:00,2025/01/01 00:02,ON_TIME,airport-00,airport-01,a
 leg-10,KKK1234,2200/12/31 10:00,2200/12/31 23:58,ON_TIME,airport-00,airport-01,aircraft-00,flight-01
 leg-11,LLL1234,2200/12/31 10:00,2200/12/31 23:59,ON_TIME,airport-00,airport-01,aircraft-00,flight-01
 # scheduled-arrival - no singular values
+#test for features
+leg-12,LLL1235,2013/12/31 10:00,2013/12/31 23:59,LANDED,airport-00,airport-01,aircraft-00,flight-01
+leg-13,LLL1236,2200/12/31 10:00,2200/12/31 23:59,ON_TIME,airport-00,airport-01,aircraft-00,flight-01
