@@ -1,0 +1,12 @@
+manager.flight.list.title = Listing of flights
+
+manager.flight.list.label.tag = Tag
+manager.flight.list.label.indication = Indication
+manager.flight.list.label.cost = Cost
+manager.flight.list.label.published = Published
+manager.flight.list.label.description = Description
+manager.flight.list.label.scheduledDeparture = Scheduled Departure
+manager.flight.list.label.scheduledArrival = Scheduled Arrival
+manager.flight.list.label.originCity = Origin City
+manager.flight.list.label.destinationCity = Destination City
+manager.flight.list.label.numberOfLayovers = Number of Layovers

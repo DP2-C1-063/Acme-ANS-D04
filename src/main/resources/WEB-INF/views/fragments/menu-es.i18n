@@ -58,3 +58,8 @@ master.menu.flightCrewMember.list-activity-logs = Listar registros de actividad
 master.menu.flightCrewMember.list-completed-flight-assignments = Listar asignaciones de vuelo completadas
 master.menu.flightCrewMember.list-planned-flight-assignments = Listar asignaciones de vuelo planeadas
 
+# master.menu.manager ############
+
+master.menu.manager = Manager
+master.menu.manager.list-flights = Listar vuelos
+master.menu.manager.list-legs = Listar tramos
