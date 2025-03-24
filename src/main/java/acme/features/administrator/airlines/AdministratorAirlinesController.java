@@ -24,6 +24,9 @@ public class AdministratorAirlinesController extends AbstractGuiController<Admin
 	@Autowired
 	private AdministratorAirlinesCreateService	createService;
 
+	@Autowired
+	AdministratorAirlinesUpdateService			updateService;
+
 	// Constructors -----------------------------------------------------------
 
 
@@ -32,6 +35,7 @@ public class AdministratorAirlinesController extends AbstractGuiController<Admin
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("update", this.updateService);
 	}
 
 }

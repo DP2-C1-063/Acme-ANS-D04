@@ -61,3 +61,4 @@ acme.validation.passenger.passport.message = The passport must be 6 to 9 charact
 
 acme.validation.maintenance-record.invalid-moment.message = The maintenance moment must be before the next inspection date
 
+acme.validation.confirmation.message = Do you wish to confirm this operation?

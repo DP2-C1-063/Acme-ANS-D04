@@ -12,7 +12,8 @@ import acme.entities.airlines.AirlineType;
 import acme.entities.airlines.Airlines;
 
 @GuiService
-public class AdministratorAirlinesShowService extends AbstractGuiService<Administrator, Airlines> {
+public class AdministratorAirlinesUpdateService extends AbstractGuiService<Administrator, Airlines> {
+
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -38,15 +39,35 @@ public class AdministratorAirlinesShowService extends AbstractGuiService<Adminis
 	}
 
 	@Override
+	public void bind(final Airlines airline) {
+
+		super.bindObject(airline, "name", "IATACode", "web", "type", "email", "phoneNumber");
+
+	}
+
+	@Override
+	public void validate(final Airlines airline) {
+		boolean confirmation;
+
+		confirmation = super.getRequest().getData("confirmation", boolean.class);
+		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+	}
+
+	@Override
+	public void perform(final Airlines airline) {
+		this.repository.save(airline);
+	}
+
+	@Override
 	public void unbind(final Airlines airline) {
 		SelectChoices choices;
 		Dataset dataset;
+
 		choices = SelectChoices.from(AirlineType.class, airline.getType());
 
-		dataset = super.unbindObject(airline, "name", "IATACode", "web", "type", "foundationMoment", "email", "phoneNumber");
-		dataset.put("confirmation", false);
-		dataset.put("readonly", true);
+		dataset = super.unbindObject(airline, "name", "IATACode", "web", "type", "email", "phoneNumber");
 		dataset.put("types", choices);
+
 		super.getResponse().addData(dataset);
 	}
 
