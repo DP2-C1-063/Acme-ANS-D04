@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.flight.Flight;
 import acme.entities.leg.Leg;
 import acme.realms.manager.Manager;
 
@@ -23,17 +24,24 @@ public class ManagerLegListService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void authorise() {
+		boolean status;
+		int masterId;
+		Flight flight;
+
+		masterId = super.getRequest().getData("masterId", int.class);
+		flight = this.repository.findFlightById(masterId);
+		status = flight != null && !flight.isPublished();
+
 		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
 		List<Leg> legs;
-		int flightId;
+		int masterId;
+		masterId = super.getRequest().getData("masterId", int.class);
 
-		flightId = super.getRequest().getData("id", int.class);
-
-		legs = this.repository.findAllLegsByFlightId(flightId);
+		legs = this.repository.findAllLegsByMasterId(masterId);
 
 		super.getBuffer().addData(legs);
 	}
@@ -41,9 +49,11 @@ public class ManagerLegListService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void unbind(final Leg leg) {
 		Dataset dataset;
+		int masterId;
+		masterId = super.getRequest().getData("masterId", int.class);
 
 		dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "status", "duration", "departureAirport", "arrivalAirport", "aircraft", "flight");
-
+		dataset.put("masterId", leg.getFlight().getId());
 		super.getResponse().addData(dataset);
 	}
 

@@ -16,3 +16,7 @@
 	<acme:list-column code="manager.flight.list.label.numberOfLayovers" path="numberOfLayovers"/>
 	<acme:list-payload path="payload"/>
 </acme:list>
+
+<jstl:if test="${_command == 'list'}">
+	<acme:button code="manager.flight.list.button.create" action="/manager/flight/create"/>
+</jstl:if>
