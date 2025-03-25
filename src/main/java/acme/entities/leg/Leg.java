@@ -56,6 +56,8 @@ public class Leg extends AbstractEntity {
 	@Automapped
 	private Status				status;
 
+	// Necesario añadir propiedad published
+
 	// Derived attributes -----------------------------------------------------
 
 

@@ -64,6 +64,7 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 				super.state(context, !durationIsTooShort, "duration", "acme.validation.leg.duration-too-short.message");
 			}
 			{
+				// Puede que deba eliminarse esta restricción
 				boolean sameDepartureAndArrivalAirport;
 				sameDepartureAndArrivalAirport = leg.getDepartureAirport().equals(leg.getArrivalAirport());
 
