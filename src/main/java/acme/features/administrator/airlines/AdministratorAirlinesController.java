@@ -25,7 +25,7 @@ public class AdministratorAirlinesController extends AbstractGuiController<Admin
 	private AdministratorAirlinesCreateService	createService;
 
 	@Autowired
-	AdministratorAirlinesUpdateService			updateService;
+	private AdministratorAirlinesUpdateService	updateService;
 
 	// Constructors -----------------------------------------------------------
 

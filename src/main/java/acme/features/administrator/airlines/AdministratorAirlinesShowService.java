@@ -45,7 +45,7 @@ public class AdministratorAirlinesShowService extends AbstractGuiService<Adminis
 
 		dataset = super.unbindObject(airline, "name", "IATACode", "web", "type", "foundationMoment", "email", "phoneNumber");
 		dataset.put("confirmation", false);
-		dataset.put("readonly", true);
+		dataset.put("readonly", false);
 		dataset.put("types", choices);
 		super.getResponse().addData(dataset);
 	}
