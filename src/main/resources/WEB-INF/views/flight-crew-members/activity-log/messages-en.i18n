@@ -1,4 +1,5 @@
 
+flight-crew-members.activity-log.list.button.create = Create
 flight-crew-members.activity-log.list.title = List of Activity Logs
 
 flight-crew-members.activity-log.list.label.registrationMoment = Registration Moment
@@ -13,6 +14,11 @@ flight-crew-members.activity-log.form.label.description = Description:
 flight-crew-members.activity-log.form.label.severityLevel = Severity Level:
 flight-crew-members.activity-log.form.label.flightAssignment = Flight Assignment:
 
+flight-crew-members.activity-log.form.button.back = Back
+
+flight-crew-members.activity-log.form.button.create = Create
+flight-crew-members.activity-log.form.button.update = Update
+flight-crew-members.activity-log.form.button.publish = Publish
 
 
 

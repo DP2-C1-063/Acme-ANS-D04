@@ -36,5 +36,10 @@ flight-assignment-25,flight-crew-members-02,leg-00,CO_PILOT,"2012/07/02 0:00",CO
 flight-assignment-26,flight-crew-members-03,leg-00,LEAD_ATTENDANT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
 flight-assignment-27,flight-crew-members-04,leg-00,CABIN_ATTENDANT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
 #test-for-features
-flight-assignment-28,flight-crew-members-01,leg-12,CABIN_ATTENDANT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-flight-assignment-29,flight-crew-members-01,leg-13,CABIN_ATTENDANT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-28,flight-crew-members-01,leg-12,PILOT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-29,flight-crew-members-01,leg-13,PILOT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+#assignment to finished leg
+flight-assignment-30,flight-crew-members-00,leg-03,PILOT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-31,flight-crew-members-01,leg-03,CO_PILOT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-32,flight-crew-members-02,leg-03,LEAD_ATTENDANT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-33,flight-crew-members-03,leg-03,CABIN_ATTENDANT,"2012/07/02 0:00",CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"

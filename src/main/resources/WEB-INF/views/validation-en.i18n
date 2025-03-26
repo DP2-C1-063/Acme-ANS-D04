@@ -62,3 +62,7 @@ acme.validation.passenger.passport.message = The passport must be 6 to 9 charact
 acme.validation.maintenance-record.invalid-moment.message = The maintenance moment must be before the next inspection date
 
 acme.validation.confirmation.message = Do you wish to confirm this operation?
+
+acme.validation.activityLog.leg-not-done-yet.message = The log can not be associated to a leg that is not finished yet
+
+acme.validation.range = must be between 0 and 10

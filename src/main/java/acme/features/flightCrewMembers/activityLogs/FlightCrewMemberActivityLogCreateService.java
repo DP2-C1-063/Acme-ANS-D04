@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLog.ActivityLog;
@@ -16,7 +17,8 @@ import acme.features.flightCrewMembers.flightAssignments.FlightCrewMemberFlightA
 import acme.realms.flightCrewMembers.FlightCrewMembers;
 
 @GuiService
-public class FlightCrewMemberActivityLogShowService extends AbstractGuiService<FlightCrewMembers, ActivityLog> {
+public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService<FlightCrewMembers, ActivityLog> {
+
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -36,26 +38,51 @@ public class FlightCrewMemberActivityLogShowService extends AbstractGuiService<F
 	@Override
 	public void load() {
 		ActivityLog log;
-		int id;
 
-		id = super.getRequest().getData("id", int.class);
-		log = this.repository.findActivityLogById(id);
+		log = new ActivityLog();
+		log.setDescription("");
+		log.setFlightAssignment(null);
+		log.setIncidentType("");
+		log.setRegistrationMoment(MomentHelper.getCurrentMoment());
+		log.setSeverityLevel(0);
 
 		super.getBuffer().addData(log);
 	}
 
 	@Override
+	public void bind(final ActivityLog log) {
+		int assignmentId;
+		FlightAssignment assignment;
+		super.bindObject(log, "incidentType", "description", "severityLevel");
+		assignmentId = super.getRequest().getData("flightAssignment", int.class);
+		assignment = this.assignmentRepository.findAssignmentById(assignmentId);
+		log.setFlightAssignment(assignment);
+
+	}
+
+	@Override
+	public void validate(final ActivityLog log) {
+		;
+	}
+
+	@Override
+	public void perform(final ActivityLog log) {
+		this.repository.save(log);
+	}
+
+	@Override
 	public void unbind(final ActivityLog log) {
-		Dataset dataset;
 		SelectChoices choices;
 		int memberId;
 		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		Dataset dataset;
 		Collection<FlightAssignment> assignments = this.assignmentRepository.findAllCompletedAssignmentsOfCrewMember(memberId, Status.LANDED);
+		choices = SelectChoices.from(assignments, "id", null);
 
-		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severityLevel", "flightAssignment", "draftMode");
-		choices = SelectChoices.from(assignments, "id", log.getFlightAssignment());
-		dataset.put("flightAssignment", log.getFlightAssignment().getId());
+		dataset = super.unbindObject(log, "incidentType", "description", "severityLevel");
+		dataset.put("flightAssignment", choices.getSelected().getKey());
 		dataset.put("assignments", choices);
+
 		super.getResponse().addData(dataset);
 	}
 

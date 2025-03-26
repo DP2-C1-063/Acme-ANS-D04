@@ -57,4 +57,9 @@ public class FlightAssignment extends AbstractEntity {
 	@ManyToOne(optional = false)
 	private Leg					leg;
 
+	@Mandatory
+	// HINT: @Valid by default.
+	@Automapped
+	private boolean				draftMode			= true;
+
 }

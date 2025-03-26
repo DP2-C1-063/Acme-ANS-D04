@@ -61,3 +61,7 @@ acme.validation.technician.duplicated-license-number.message = El número de lic
 acme.validation.maintenance-record.invalid-moment.message = El momento de mantenimiento debe ser anterior a la fecha de la próxima inspección
 
 acme.validation.confirmation.message = ¿Está seguro de que quiere confirmar esta operación?
+
+acme.validation.activityLog.leg-not-done-yet.message = El registro no puede asociarse a un tramo que aun no ha finalizado
+
+acme.validation.range = Debe estar entre 0 y 10
