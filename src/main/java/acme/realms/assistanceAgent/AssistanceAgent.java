@@ -32,30 +32,35 @@ public class AssistanceAgent extends AbstractRole {
 	@Automapped
 	@ValidEmployeeCode
 	private String				employeeCode;
+
 	@Mandatory
 	@Automapped
 	@ValidString(min = 1, max = 255)
 	private String				spokenLanguages;
-	@Mandatory
-	@Valid
-	@ManyToOne(optional = false)
-	private Airlines			airline;
+
 	@Mandatory
 	@ValidMoment(past = true)
 	@Automapped
 	private Date				momentBeginningWorking;
+
 	@Optional
 	@Automapped
 	@ValidString(min = 0, max = 255)
 	private String				bio;
+
 	@Optional
 	@ValidMoney(min = 0.00, max = 1000000)
 	@Automapped
 	private Money				salary;
+
 	@Optional
 	@ValidUrl
-	@ValidString(min = 0, max = 255)
 	@Automapped
 	private String				photo;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Airlines			airline;
 
 }

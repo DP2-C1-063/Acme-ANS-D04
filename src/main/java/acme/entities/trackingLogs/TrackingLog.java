@@ -15,6 +15,7 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidScore;
 import acme.client.components.validation.ValidString;
 import acme.entities.claim.Claim;
+import acme.realms.assistanceAgent.AssistanceAgent;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,23 +29,35 @@ public class TrackingLog extends AbstractEntity {
 	@ValidMoment(past = true)
 	@Automapped
 	private Date				lastUpdateMoment;
+
 	@Mandatory
 	@Automapped
 	@ValidString(min = 1, max = 50)
 	private String				step;
+
 	@Mandatory
 	@ValidScore
 	@Automapped
 	private Double				resolutionPercentage;
+
 	@Mandatory
 	@Valid
 	@Automapped
 	private TrackingLogStatus	status;
+
 	@Optional
 	@Automapped
 	@ValidString(min = 0, max = 255)
 	private String				resolution;
+
 	@Mandatory
+	@Valid
 	@ManyToOne
 	private Claim				claim;
+
+	@Mandatory
+	@Valid
+	@ManyToOne
+	private AssistanceAgent		assistanceAgent;
+
 }
