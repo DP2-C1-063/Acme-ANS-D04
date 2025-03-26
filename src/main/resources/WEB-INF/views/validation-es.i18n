@@ -60,3 +60,4 @@ acme.validation.technician.duplicated-license-number.message = El número de lic
 
 acme.validation.maintenance-record.invalid-moment.message = El momento de mantenimiento debe ser anterior a la fecha de la próxima inspección
 
+acme.validation.customer.incorrect-initials-identifier.message = Las 2 primeras letras del identificador del cliente deben ser las iniciales del mismo (nombre y apellidos)

@@ -61,3 +61,4 @@ acme.validation.passenger.passport.message = The passport must be 6 to 9 charact
 
 acme.validation.maintenance-record.invalid-moment.message = The maintenance moment must be before the next inspection date
 
+acme.validation.customer.incorrect-initials-identifier.message = At least the first two letters of the identifier must be the initials of the customer (name and surname)

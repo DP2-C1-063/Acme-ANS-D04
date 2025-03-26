@@ -1,0 +1,22 @@
+
+customer.booking.list.title = List of Bookings
+
+customer.booking.list.label.identifier = Identifier
+customer.booking.list.label.phone = Phone Number
+customer.booking.list.label.points = Points
+
+customer.booking.form.title = Booking form
+
+customer.booking.form.label.identifier = Identifier:
+customer.booking.form.label.phone = Phone Number:
+customer.booking.form.label.points = Points: 
+customer.booking.form.label.address = Address:
+customer.booking.form.label.city = City:
+customer.booking.form.label.country = Country:
+
+
+
+
+
+
+
