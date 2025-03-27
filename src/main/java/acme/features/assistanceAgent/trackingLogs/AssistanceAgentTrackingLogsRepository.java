@@ -10,9 +10,9 @@ import acme.client.repositories.AbstractRepository;
 import acme.entities.trackingLogs.TrackingLog;
 
 @Repository
-public interface AssistanceAgentTrackingLogs extends AbstractRepository {
+public interface AssistanceAgentTrackingLogsRepository extends AbstractRepository {
 
-	@Query("select tl fron TrackingLog tl where tl.assistanceAgent.id = :Id ")
-	Collection<TrackingLog> getAllTRackingLogsByAssistanceAgent(int Id);
+	@Query("select tl from TrackingLog tl where tl.assistanceAgent.id = :Id ")
+	Collection<TrackingLog> getAllTrackingLogsByAssistanceAgent(int Id);
 
 }

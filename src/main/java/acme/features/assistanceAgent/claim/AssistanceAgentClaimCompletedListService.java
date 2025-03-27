@@ -13,7 +13,7 @@ import acme.entities.claim.Claim;
 import acme.realms.assistanceAgent.AssistanceAgent;
 
 @GuiService
-public class AssistanceAgentCompletedClaimListService extends AbstractGuiService<AssistanceAgent, Claim> {
+public class AssistanceAgentClaimCompletedListService extends AbstractGuiService<AssistanceAgent, Claim> {
 
 	@Autowired
 	private AssistanceAgentClaimRepository repository;
@@ -33,7 +33,7 @@ public class AssistanceAgentCompletedClaimListService extends AbstractGuiService
 
 		claims = this.repository.findAllClaimsByAssistanceAgent(memberId);
 		for (Claim c : claims)
-			if (c.getStatus() != "PENDING")
+			if (!c.getStatus().equals("PENDING"))
 				res.add(c);
 
 		super.getBuffer().addData(res);

@@ -1,0 +1,6 @@
+administrator.aircraft.list.title = Listing of aircraft
+
+administrator.aircraft.list.label.model = Modelo
+administrator.aircraft.list.label.registrationNumber = Número de registro
+administrator.aircraft.list.label.status = Estado
+
