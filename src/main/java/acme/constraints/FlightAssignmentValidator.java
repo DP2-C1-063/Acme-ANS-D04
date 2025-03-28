@@ -53,13 +53,13 @@ public class FlightAssignmentValidator extends AbstractValidator<ValidFlightAssi
 			}
 			{
 				boolean onlyPilot;
-				Collection<FlightAssignment> existingPilot = this.repository.findDutyAlreadyInLeg(Duty.PILOT, assignment.getLeg().getId(), assignment.getFlightCrewMember().getId());
+				Collection<FlightAssignment> existingPilot = this.repository.findDutyAlreadyInLeg(Duty.PILOT, assignment.getLeg().getId(), assignment.getId());
 				onlyPilot = !assignment.getDuty().equals(Duty.PILOT) || existingPilot.isEmpty();
 				super.state(context, onlyPilot, "duty", "acme.validation.flightAssignment.already-pilot");
 			}
 			{
 				boolean onlyCoPilot;
-				Collection<FlightAssignment> existingCoPilot = this.repository.findDutyAlreadyInLeg(Duty.CO_PILOT, assignment.getLeg().getId(), assignment.getFlightCrewMember().getId());
+				Collection<FlightAssignment> existingCoPilot = this.repository.findDutyAlreadyInLeg(Duty.CO_PILOT, assignment.getLeg().getId(), assignment.getId());
 				onlyCoPilot = !assignment.getDuty().equals(Duty.CO_PILOT) || existingCoPilot.isEmpty();
 				super.state(context, onlyCoPilot, "duty", "acme.validation.flightAssignment.already-co-pilot");
 
