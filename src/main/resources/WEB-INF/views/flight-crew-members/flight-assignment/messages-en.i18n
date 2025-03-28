@@ -11,9 +11,16 @@ flight-crew-members.flight-assignment.form.label.duty = Duty:
 flight-crew-members.flight-assignment.form.label.lastUpdate = Last Update:
 flight-crew-members.flight-assignment.form.label.leg =  Associated Leg: 
 flight-crew-members.flight-assignment.form.label.currentStatus = Current Status:
-flight-crew-members.flight-assignment.form.label.remarks = Remarks:
+flight-crew-members.flight-assignment.form.label.remarks = Remarks (Optional):
 flight-crew-members.flight-assignment.form.label.flightCrewMember = Associated Flight Crew Member:
 
+flight-crew-members.flight-assignment.list.button.create = Create
+flight-crew-members.flight-assignment.form.button.create = Create
+flight-crew-members.flight-assignment.form.button.update = Update
+flight-crew-members.flight-assignment.form.button.publish = Publish
+flight-crew-members.flight-assignment.form.button.delete = Delete
+
+flight-crew-member.flight-assignment.leg-has-not-finished-yet = An assignment cant be published if the leg has already occurred
 
 
 

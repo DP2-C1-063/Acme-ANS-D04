@@ -2,6 +2,7 @@
 package acme.features.flightCrewMembers.activityLogs;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,7 +13,6 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLog.ActivityLog;
 import acme.entities.flightAssignment.FlightAssignment;
-import acme.entities.leg.Status;
 import acme.features.flightCrewMembers.flightAssignments.FlightCrewMemberFlightAssignmentRepository;
 import acme.realms.flightCrewMembers.FlightCrewMembers;
 
@@ -76,7 +76,8 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		int memberId;
 		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		Dataset dataset;
-		Collection<FlightAssignment> assignments = this.assignmentRepository.findAllCompletedAssignmentsOfCrewMember(memberId, Status.LANDED);
+		Date currentMoment = MomentHelper.getCurrentMoment();
+		Collection<FlightAssignment> assignments = this.assignmentRepository.findAllCompletedAssignmentsOfCrewMember(memberId, currentMoment);
 		choices = SelectChoices.from(assignments, "id", null);
 
 		dataset = super.unbindObject(log, "incidentType", "description", "severityLevel");

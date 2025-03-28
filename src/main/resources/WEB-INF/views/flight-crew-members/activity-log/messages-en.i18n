@@ -20,7 +20,9 @@ flight-crew-members.activity-log.form.button.create = Create
 flight-crew-members.activity-log.form.button.update = Update
 flight-crew-members.activity-log.form.button.publish = Publish
 
+flight-crew-member.activity-log.assignment-not-published-yet = The assignment you are trying to link to this log has not been published yet, published it before publishing the log
 
+flight-crew-members.activity-log.form.button.delete = Delete
 
 
 

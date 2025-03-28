@@ -1,16 +1,18 @@
 
 package acme.constraints;
 
+import java.util.Date;
+
 import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
+import acme.client.helpers.MomentHelper;
 import acme.entities.activityLog.ActivityLog;
 import acme.entities.activityLog.ActivityLogRepository;
 import acme.entities.leg.Leg;
-import acme.entities.leg.Status;
 
 @Validator
 public class ActivityLogValidator extends AbstractValidator<ValidActivityLog, ActivityLog> {
@@ -37,8 +39,9 @@ public class ActivityLogValidator extends AbstractValidator<ValidActivityLog, Ac
 		else if (activityLog.getFlightAssignment() != null) {
 
 			boolean landedLeg;
+			Date currentMoment = MomentHelper.getCurrentMoment();
 			Leg legOfLog = activityLog.getFlightAssignment().getLeg();
-			landedLeg = legOfLog.getStatus().equals(Status.LANDED);
+			landedLeg = MomentHelper.isBeforeOrEqual(legOfLog.getScheduledArrival(), currentMoment);
 
 			super.state(context, landedLeg, "flightAssignment", "acme.validation.activityLog.leg-not-done-yet.message");
 		}

@@ -65,3 +65,11 @@ acme.validation.confirmation.message = ¿Está seguro de que quiere confirmar es
 acme.validation.activityLog.leg-not-done-yet.message = El registro no puede asociarse a un tramo que aun no ha finalizado
 
 acme.validation.range = Debe estar entre 0 y 10
+
+acme.validation.flightAssignment.member-not-available.message = Este miembro no se encuentra disponible
+
+acme.validation.flightAssignment.concurrent-leg.message = Este miembro ya tiene un tramo en estas fechas
+
+acme.validation.flightAssignment.already-pilot = Ya hay un piloto asignado a este tramo
+
+acme.validation.flightAssignment.already-co-pilot = Ya hay un copiloto asignado a este tramo
