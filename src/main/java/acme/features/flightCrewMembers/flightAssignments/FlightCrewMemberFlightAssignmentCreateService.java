@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flightAssignment.CurrentStatus;
@@ -16,7 +17,8 @@ import acme.entities.leg.Leg;
 import acme.realms.flightCrewMembers.FlightCrewMembers;
 
 @GuiService
-public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiService<FlightCrewMembers, FlightAssignment> {
+public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiService<FlightCrewMembers, FlightAssignment> {
+
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -33,12 +35,38 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 	@Override
 	public void load() {
 		FlightAssignment assignment;
-		int id;
+		FlightCrewMembers member;
+		member = (FlightCrewMembers) super.getRequest().getPrincipal().getActiveRealm();
 
-		id = super.getRequest().getData("id", int.class);
-		assignment = this.repository.findAssignmentById(id);
-
+		assignment = new FlightAssignment();
+		assignment.setCurrentStatus(CurrentStatus.PENDING);
+		assignment.setDraftMode(true);
+		assignment.setDuty(Duty.PILOT);
+		assignment.setFlightCrewMember(member);
+		assignment.setLastUpdate(MomentHelper.getCurrentMoment());
+		assignment.setLeg(null);
+		assignment.setRemarks("");
 		super.getBuffer().addData(assignment);
+	}
+
+	@Override
+	public void bind(final FlightAssignment assignment) {
+		int legId;
+		Leg leg;
+		super.bindObject(assignment, "duty", "currentStatus", "remarks");
+		legId = super.getRequest().getData("leg", int.class);
+		leg = this.repository.findLegById(legId);
+		assignment.setLeg(leg);
+	}
+
+	@Override
+	public void validate(final FlightAssignment assignment) {
+		;
+	}
+
+	@Override
+	public void perform(final FlightAssignment assignment) {
+		this.repository.save(assignment);
 	}
 
 	@Override
@@ -52,7 +80,7 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 		choicesDuties = SelectChoices.from(Duty.class, assignment.getDuty());
 		choicesStatuses = SelectChoices.from(CurrentStatus.class, assignment.getCurrentStatus());
 
-		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "leg", "currentStatus", "remarks", "draftMode");
+		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "leg", "currentStatus", "remarks");
 		dataset.put("legs", choicesLegs);
 		dataset.put("flightCrewMember", assignment.getFlightCrewMember().getEmployeeCode());
 		dataset.put("duties", choicesDuties);
