@@ -32,10 +32,11 @@ public class AssistanceAgentClaimPendingListService extends AbstractGuiService<A
 		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
 		claims = this.repository.findAllClaimsByAssistanceAgent(memberId);
-		for (Claim c : claims)
+		for (Claim c : claims) {
+			System.out.print(c.getStatus());
 			if (c.getStatus().equals("PENDING"))
 				res.add(c);
-
+		}
 		super.getBuffer().addData(res);
 	}
 

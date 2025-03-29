@@ -54,18 +54,17 @@ public class Claim extends AbstractEntity {
 
 	@Transient
 	public String getStatus() {
-		String result = null;
+		String result = "PENDING";
 		TrackingLogRepository trackingLogRepository;
 		List<TrackingLog> wrapper;
-		TrackingLog trackingLog;
+
 		trackingLogRepository = SpringHelper.getBean(TrackingLogRepository.class);
-		wrapper = trackingLogRepository.getLastTrackingRepositoryByClaim(this.getId());
-		if (!(wrapper == null) || wrapper.isEmpty()) {
-			trackingLog = wrapper.getFirst();
+
+		wrapper = trackingLogRepository.getLastTrackingLogByClaim(this.getId());
+		if (!wrapper.isEmpty() && wrapper != null) {
+			TrackingLog trackingLog = wrapper.getFirst();
 			if (trackingLog.getResolutionPercentage() == 100.0)
 				result = trackingLog.getStatus().toString();
-			else
-				result = "PENDING";
 		}
 		return result;
 	}

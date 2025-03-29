@@ -1,0 +1,24 @@
+
+assistance-agent.tracking-logs.list.title = List of tracking logs
+
+assistance-agent.tracking-logs.list.label.resolutionPercentage = Resolution Percentage
+assistance-agent.tracking-logs.list.label.step = Step
+assistance-agent.tracking-logs.list.label.lastUpdateMoment =  Last update moment
+
+
+assistance-agent.tracking-logs.form.title = Tracking Log Form
+
+assistance-agent.tracking-logs.form.label.lastUpdateMoment = Last Update Moment:
+assistance-agent.tracking-logs.form.label.step = Step:
+assistance-agent.tracking-logs.form.label.resolutionPercentage = Resolution Percentage:
+assistance-agent.tracking-logs.form.label.status = Status:
+assistance-agent.tracking-logs.form.label.resolution = Resolution:
+assistance-agent.tracking-logs.form.label.claim = Claim:
+assistance-agent.tracking-logs.form.label.assistanceAgent = Assistance Agent:
+
+
+
+
+
+
+

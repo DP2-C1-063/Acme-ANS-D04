@@ -31,6 +31,6 @@ claim-23,assistance-agent-00,2012/07/02 0:00,acme@lorem-ipsum.org,"Lorem ipsum d
 #accepted-standard variation
 claim-24,assistance-agent-00,2012/07/02 0:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,leg-00
 #assistance-agent-01-standard variation
-claim-25,assistance-agent-01,2012/07/02 0:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,leg-00
+claim-25,assistance-agent-52,2012/07/02 0:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,leg-00
 #leg-standard variation
 claim-26,assistance-agent-00,2012/07/02 0:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,leg-01

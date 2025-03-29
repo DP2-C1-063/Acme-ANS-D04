@@ -19,11 +19,15 @@ public class AssistanceAgentClaimController extends AbstractGuiController<Assist
 	@Autowired
 	private AssistanceAgentClaimPendingListService		listPendingService;
 
+	@Autowired
+	private AssistanceAgentClaimShowService				showService;
+
 
 	@PostConstruct
 	protected void initialise() {
 		super.addCustomCommand("list-completed", "list", this.listCompletedService);
 		super.addCustomCommand("list-pending", "list", this.listPendingService);
+		super.addBasicCommand("show", this.showService);
 
 	}
 

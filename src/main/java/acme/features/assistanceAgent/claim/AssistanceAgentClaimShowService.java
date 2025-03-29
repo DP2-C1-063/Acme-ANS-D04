@@ -1,9 +1,6 @@
 
 package acme.features.assistanceAgent.claim;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -13,7 +10,7 @@ import acme.entities.claim.Claim;
 import acme.realms.assistanceAgent.AssistanceAgent;
 
 @GuiService
-public class AssistanceAgentClaimCompletedListService extends AbstractGuiService<AssistanceAgent, Claim> {
+public class AssistanceAgentClaimShowService extends AbstractGuiService<AssistanceAgent, Claim> {
 
 	@Autowired
 	private AssistanceAgentClaimRepository repository;
@@ -26,27 +23,22 @@ public class AssistanceAgentClaimCompletedListService extends AbstractGuiService
 
 	@Override
 	public void load() {
-		Collection<Claim> claims;
-		Collection<Claim> res = new ArrayList<>();
-		int memberId;
-		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		System.out.print(memberId);
+		Claim claim;
+		int id;
 
-		claims = this.repository.findAllClaimsByAssistanceAgent(memberId);
-		for (Claim c : claims)
-			if (!c.getStatus().equals("PENDING"))
-				res.add(c);
+		id = super.getRequest().getData("id", int.class);
+		claim = this.repository.findClaim(id);
 
-		super.getBuffer().addData(res);
+		super.getBuffer().addData(claim);
 	}
 
 	@Override
 	public void unbind(final Claim claim) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(claim, "passengerEmail", "type", "description");
-
+		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "leg", "assistanceAgent");
+		dataset.put("confirmation", false);
+		dataset.put("readonly", true);
 		super.getResponse().addData(dataset);
 	}
-
 }

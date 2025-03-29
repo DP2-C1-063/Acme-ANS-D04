@@ -56,3 +56,9 @@ master.menu.flightCrewMember = Flight Crew Member
 master.menu.flightCrewMember.list-activity-logs = List Activity Logs
 master.menu.flightCrewMember.list-completed-flight-assignments = List Completed Flight Assignments
 master.menu.flightCrewMember.list-planned-flight-assignments = List Planned Flight Assignments
+
+# master.menu.assistanceAgent ############
+master.menu.assistanceAgent = Assistance Agent
+master.menu.assistanceAgent.list-pending-claims = List pending claims
+master.menu.assistanceAgent.list-completed-claims = List completed claims
+master.menu.assistanceAgent.list-tracking-logs = List tracking log

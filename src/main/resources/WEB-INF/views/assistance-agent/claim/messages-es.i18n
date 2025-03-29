@@ -1,0 +1,14 @@
+assistance-agent.claim.list.title = Lista de quejas
+
+assistance-agent.claim.list.label.passengerEmail = Email del pasajero
+assistance-agent.claim.list.label.type = Tipo
+assistance-agent.claim.list.label.description =  Descripcion
+
+assistance-agent.claim.form.title = Formulario de queja
+
+assistance-agent.claim.form.label.registrationMoment = Momento de registro:
+assistance-agent.claim.form.label.passengerEmail = Email del pasajero:
+assistance-agent.claim.form.label.description = Descripción:
+assistance-agent.claim.form.label.type = Tipo:
+assistance-agent.claim.form.label.leg = Paso:
+assistance-agent.claim.form.label.assistanceAgent = Asistente:
