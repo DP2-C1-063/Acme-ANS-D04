@@ -16,7 +16,7 @@ import acme.entities.airlines.Airlines;
 import acme.features.administrator.airlines.AdministratorAirlinesRepository;
 
 @GuiService
-public class AdministratorAircraftCreateService extends AbstractGuiService<Administrator, Aircraft> {
+public class AdministratorAircraftUpdateService extends AbstractGuiService<Administrator, Aircraft> {
 
 	@Autowired
 	private AdministratorAircraftRepository	repository;
@@ -32,7 +32,11 @@ public class AdministratorAircraftCreateService extends AbstractGuiService<Admin
 	@Override
 	public void load() {
 		Aircraft aircraft;
-		aircraft = new Aircraft();
+
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		aircraft = this.repository.findAircraftById(id);
 
 		super.getBuffer().addData(aircraft);
 	}
@@ -75,5 +79,4 @@ public class AdministratorAircraftCreateService extends AbstractGuiService<Admin
 		dataset.put("statuses", choicesStatus);
 		super.getResponse().addData(dataset);
 	}
-
 }

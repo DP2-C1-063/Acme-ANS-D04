@@ -9,3 +9,7 @@
 	<acme:list-column code="assistance-agent.tracking-logs.list.label.lastUpdateMoment" path="lastUpdateMoment" width="70%"/>
 	<acme:list-payload path="payload"/>
 </acme:list>
+
+<jstl:if test="${_command == 'list'}">
+	<acme:button code="assistance-agent.tracking-logs.list.button.create" action="/assistance-agent/tracking-log/create"/>
+</jstl:if>

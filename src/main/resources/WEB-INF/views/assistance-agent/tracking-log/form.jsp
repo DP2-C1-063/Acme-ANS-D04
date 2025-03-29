@@ -4,11 +4,24 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form readonly="${readonly}">	
-	<acme:input-moment code="assistance-agent.tracking-logs.form.label.lastUpdateMoment" path="lastUpdateMoment"/>  
+     <jstl:if test="${_command == 'show' }">
+	<acme:input-moment code="assistance-agent.tracking-logs.form.label.lastUpdateMoment" path="lastUpdateMoment"  readonly="true"/>  
+	</jstl:if>
 	<acme:input-textbox code="assistance-agent.tracking-logs.form.label.step" path="step"/>
 	<acme:input-textbox code="assistance-agent.tracking-logs.form.label.resolutionPercentage" path="resolutionPercentage"/>
-	<acme:input-textbox code="assistance-agent.tracking-logs.form.label.status" path="status"/>
+	<acme:input-select code="assistance-agent.tracking-logs.form.label.status" path="status" choices="${statuses}"/>
 	<acme:input-textbox code="assistance-agent.tracking-logs.form.label.resolution" path="resolution"/>
-	<acme:input-textbox code="assistance-agent.tracking-logs.form.label.claim" path="claim"/>
-	<acme:input-textbox code="assistance-agent.tracking-logs.form.label.assistanceAgent" path="assistanceAgent"/>
+	<acme:input-select code="assistance-agent.tracking-logs.form.label.claim" path="claim" choices="${claims}"/>
+	<acme:input-textbox code="assistance-agent.tracking-logs.form.label.assistanceAgent" path="assistanceAgent"  readonly="true"/>
+	
+	<jstl:choose>	
+		
+		
+		<jstl:when test="${_command == 'create'}">
+			<acme:submit code="assistance-agent.tracking-logs.form.button.create" action="/assistance-agent/tracking-log/create"/>
+			<acme:input-checkbox code="assistance-agent.tracking-logs.form.label.confirmation" path="confirmation"/>		
+			
+		</jstl:when>		
+	</jstl:choose>
 </acme:form>
+

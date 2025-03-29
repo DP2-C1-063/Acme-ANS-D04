@@ -9,3 +9,7 @@
 	<acme:list-column code="assistance-agent.claim.list.label.description" path="description" width="70%"/>
 	<acme:list-payload path="payload"/>
 </acme:list>
+
+<jstl:if test="${acme:anyOf(_command, 'list-completed|list-pending')}">
+	<acme:button code="assistance-agent.claim.list.button.create" action="/assistance-agent/claim/create"/>
+</jstl:if>
