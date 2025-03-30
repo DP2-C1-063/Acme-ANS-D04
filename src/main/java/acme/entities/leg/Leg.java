@@ -56,7 +56,10 @@ public class Leg extends AbstractEntity {
 	@Automapped
 	private Status				status;
 
-	// Necesario añadir propiedad published
+	@Mandatory
+	// HINT: @Valid by default.
+	@Automapped
+	private boolean				published;
 
 	// Derived attributes -----------------------------------------------------
 

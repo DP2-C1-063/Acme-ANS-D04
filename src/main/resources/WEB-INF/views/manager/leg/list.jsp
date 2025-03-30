@@ -4,7 +4,7 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="manager.leg.list.label.flightNumber" path="flightNumber"/>
+	<acme:list-column code="manager.leg.list.label.flightNumber" path="flightNumber" sortable="false"/>
 	<acme:list-column code="manager.leg.list.label.scheduledDeparture" path="scheduledDeparture"/>
 	<acme:list-column code="manager.leg.list.label.scheduledArrival" path="scheduledArrival"/>
 	<acme:list-column code="manager.leg.list.label.status" path="status"/>
@@ -15,3 +15,7 @@
 	<acme:list-column code="manager.leg.list.label.flight" path="flight"/>
 	<acme:list-payload path="payload"/>
 </acme:list>
+
+<jstl:if test="${_command == 'list'}">
+	<acme:button code="manager.leg.list.button.create" action="/manager/leg/create?masterId=${masterId}"/>
+</jstl:if>
