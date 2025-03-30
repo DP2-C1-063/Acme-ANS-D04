@@ -50,20 +50,14 @@ public class ManagerFlightShowService extends AbstractGuiService<Manager, Flight
 	@Override
 	public void unbind(final Flight flight) {
 		Dataset dataset;
-		boolean published;
 		SelectChoices indications;
 		indications = SelectChoices.from(Indication.class, flight.getIndication());
-
-		published = flight.isPublished();
 
 		dataset = super.unbindObject(flight, "tag", "indication", "cost", //
 			"published", "description", "scheduledDeparture", "scheduledArrival", "originCity", //
 			"destinationCity", "numberOfLayovers");
 
-		if (published)
-			dataset.put("readonly", true);
-		else
-			dataset.put("readonly", false);
+		dataset.put("readonly", flight.isPublished());
 		dataset.put("indications", indications);
 		dataset.put("indication", indications.getSelected());
 		dataset.put("masterId", flight.getId());

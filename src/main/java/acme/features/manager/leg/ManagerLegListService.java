@@ -27,12 +27,14 @@ public class ManagerLegListService extends AbstractGuiService<Manager, Leg> {
 		boolean status;
 		int masterId;
 		Flight flight;
+		Manager manager;
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		flight = this.repository.findFlightById(masterId);
-		status = flight != null && !flight.isPublished();
+		manager = flight == null ? null : flight.getManager();
+		status = flight != null && super.getRequest().getPrincipal().hasRealm(manager);
 
-		super.getResponse().setAuthorised(true);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

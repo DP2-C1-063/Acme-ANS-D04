@@ -79,49 +79,7 @@ public class ManagerLegShowService extends AbstractGuiService<Manager, Leg> {
 		}
 
 		dataset.put("aircraft", leg.getAircraft().getId());
-
-		/*
-		 * Dataset dataset;
-		 * boolean flightPublished;
-		 * int masterId;
-		 * Flight flight;
-		 * SelectChoices statuses;
-		 * Collection<Airport> airports;
-		 * SelectChoices availableArrivalAirports;
-		 * SelectChoices availableDepartureAirports;
-		 * 
-		 * SelectChoices availableAircrafts;
-		 * int airlineId;
-		 * 
-		 * masterId = super.getRequest().getData("masterId", int.class);
-		 * flight = this.repository.findFlightById(masterId);
-		 * airlineId = flight.getManager().getAirline().getId();
-		 * 
-		 * airports = this.repository.findAllAirportsByOperatorId(airlineId);
-		 * aircrafts = this.repository.findAllAircraftsByAirlineId(airlineId);
-		 * availableArrivalAirports = SelectChoices.from(airports, "name", leg.getArrivalAirport());
-		 * availableDepartureAirports = SelectChoices.from(airports, "name", leg.getDepartureAirport());
-		 * availableAircrafts = SelectChoices.from(aircrafts, "model", leg.getAircraft());
-		 * 
-		 * statuses = SelectChoices.from(Status.class, leg.getStatus());
-		 * 
-		 * flightPublished = flight.isPublished();
-		 * 
-		 * dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "status", "duration", "departureAirport", "arrivalAirport", "aircraft");
-		 * 
-		 * dataset.put("confirmation", false);
-		 * dataset.put("readonly", flightPublished);
-		 * dataset.put("arrivalAirports", availableArrivalAirports);
-		 * dataset.put("arrivalAirport", availableArrivalAirports.getSelected());
-		 * dataset.put("departureAirports", availableDepartureAirports);
-		 * dataset.put("departureAirport", availableDepartureAirports.getSelected());
-		 * dataset.put("aircrafts", availableAircrafts);
-		 * dataset.put("aircraft", availableAircrafts.getSelected());
-		 * 
-		 * dataset.put("published", flightPublished);
-		 * dataset.put("statuses", statuses);
-		 * dataset.put("status", statuses.getSelected());
-		 */
+		dataset.put("readonly", leg.isPublished());
 
 		super.getResponse().addData(dataset);
 	}
