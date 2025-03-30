@@ -33,7 +33,7 @@ public class ManagerFlightListService extends AbstractGuiService<Manager, Flight
 
 		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		flights = this.repository.findAllFlights();
+		flights = this.repository.findAllFlightsByManagerId(managerId);
 
 		super.getBuffer().addData(flights);
 	}

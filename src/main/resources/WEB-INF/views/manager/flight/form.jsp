@@ -17,12 +17,9 @@
 	<acme:input-integer code="manager.flight.form.label.numberOfLayovers" path="numberOfLayovers"/>
 	
 	</jstl:if>
-	
-	<jstl:if test="${!readonly}">
-		<acme:input-checkbox code="manager.flight.form.label.confirmation" path="confirmation"/>
 
-	</jstl:if>
-	
+<%-- BUTTONS --%>
+
 	<jstl:choose>	 
 		<jstl:when test="${_command == 'show' && published == true}">
 			<acme:button code="manager.flight.form.button.legs" action="/manager/leg/list?masterId=${id}"/>			
