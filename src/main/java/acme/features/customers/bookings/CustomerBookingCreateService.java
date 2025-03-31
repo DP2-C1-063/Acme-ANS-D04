@@ -11,10 +11,8 @@ import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
+import acme.entities.booking.TravelClass;
 import acme.entities.flight.Flight;
-import acme.entities.flight.FlightRepository;
-import acme.entities.passenger.Passenger;
-import acme.entities.passenger.PassengerRepository;
 import acme.realms.customer.Customer;
 
 @GuiService
@@ -23,55 +21,61 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private CustomerBookingRepository	repository;
-
-	@Autowired
-	private FlightRepository			flightRepository;
-
-	@Autowired
-	private PassengerRepository			passengerRepository;
-
-	// AbstractGuiService interface -------------------------------------------
+	private CustomerBookingRepository repository;
 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
+		Customer customer = (Customer) super.getRequest().getPrincipal().getActiveRealm();
 		Booking booking;
 
 		booking = new Booking();
-		booking.setLocatorCode(null);
 		booking.setPurchaseMoment(MomentHelper.getCurrentMoment());
-		booking.setTravelClass(null);
-		booking.setLastNibble("");
-		booking.setCustomer(null);
-		booking.setFlight(null);
 		booking.setDraftMode(true);
+		booking.setCustomer(customer);
 
 		super.getBuffer().addData(booking);
 	}
 
 	@Override
-	public void unbind(final Booking booking) {
-		SelectChoices flightChoices;
-		SelectChoices passengerChoices;
-		int customerId;
-		customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		Dataset dataset;
-		Collection<Flight> flights = this.flightRepository.findAllFlightsByBooking(booking.getId());
-		Collection<Passenger> passengers = this.passengerRepository.findAllPassengersByBooking(booking.getId());
-		flightChoices = SelectChoices.from(flights, "id", null);
-		passengerChoices = SelectChoices.from(passengers, "id", null);
+	public void bind(final Booking booking) {
+		super.bindObject(booking, "flight", "locatorCode", "travelClass", "price", "lastNibble");
+	}
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastNibble");
-		dataset.put("flight", flightChoices.getSelected().getKey());
+	@Override
+	public void validate(final Booking booking) {
+		Booking existing = this.repository.findBookingByLocatorCode(booking.getLocatorCode());
+		boolean valid = existing == null || existing.getId() == booking.getId();
+		super.state(valid, "locatorCode", "customer.booking.form.error.duplicateLocatorCode");
+	}
+
+	@Override
+	public void perform(final Booking booking) {
+		booking.setDraftMode(true);
+		this.repository.save(booking);
+	}
+
+	@Override
+	public void unbind(final Booking booking) {
+		assert booking != null;
+		Dataset dataset;
+		SelectChoices travelTypes = SelectChoices.from(TravelClass.class, booking.getTravelClass());
+
+		Collection<Flight> flights = this.repository.findAllFlights();
+		SelectChoices flightChoices = SelectChoices.from(flights, "id", booking.getFlight());
+
+		dataset = super.unbindObject(booking, "flight", "locatorCode", "travelClass", "lastNibble", "draftMode", "id");
+		dataset.put("travelTypes", travelTypes);
 		dataset.put("flights", flightChoices);
-		dataset.put("passengers", passengerChoices);
 
 		super.getResponse().addData(dataset);
+
 	}
 }
