@@ -74,7 +74,7 @@ public class ManagerFlightPublishService extends AbstractGuiService<Manager, Fli
 					break;
 				}
 
-			super.state(allLegsArePublished, "legs", "acme.validation.legs-published.message");
+			super.state(allLegsArePublished, "*", "acme.validation.flight.legs-published.message");
 		}
 		{
 			boolean atLeastOneLeg;
@@ -85,7 +85,7 @@ public class ManagerFlightPublishService extends AbstractGuiService<Manager, Fli
 			legs = this.repository.findLegsByFlightId(masterId);
 			atLeastOneLeg = legs != null ? legs.size() >= 1 : false;
 
-			super.state(atLeastOneLeg, "legs", "acme.validation.no-legs.message");
+			super.state(atLeastOneLeg, "*", "acme.validation.flight.no-legs.message");
 		}
 		;
 	}
@@ -104,7 +104,7 @@ public class ManagerFlightPublishService extends AbstractGuiService<Manager, Fli
 
 		dataset = super.unbindObject(flight, "tag", "indication", "cost", //
 			"description", "scheduledDeparture", "scheduledArrival", "originCity", //
-			"destinationCity", "numberOfLayovers");
+			"destinationCity", "numberOfLayovers", "published");
 		dataset.put("indications", indications);
 		dataset.put("indication", indications.getSelected());
 

@@ -24,3 +24,4 @@ manager.flight.form.button.legs = Legs
 manager.flight.form.button.update = Update
 manager.flight.form.button.delete = Delete
 manager.flight.form.button.publish = Publish
+manager.flight.form.button.create = Create

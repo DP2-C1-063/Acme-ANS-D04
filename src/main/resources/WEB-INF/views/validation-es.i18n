@@ -60,5 +60,6 @@ acme.validation.technician.duplicated-license-number.message = El número de lic
 
 acme.validation.maintenance-record.invalid-moment.message = El momento de mantenimiento debe ser anterior a la fecha de la próxima inspección
 acme.validation.published.message = No puedes eliminar esto porque ya ha sido publicado
-acme.validation.legs-published.message = Todos los tramos deben estar publicados para publicar el vuelo
+acme.validation.flight.no-legs.message = No se puede publicar un vuelo sin tramos
+acme.validation.flight.legs-published.message = Todos los tramos deben estar publicados para publicar el vuelo
 acme.validation.confirmation.message = Debe confirmar

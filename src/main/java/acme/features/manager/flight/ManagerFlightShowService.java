@@ -55,7 +55,7 @@ public class ManagerFlightShowService extends AbstractGuiService<Manager, Flight
 
 		dataset = super.unbindObject(flight, "tag", "indication", "cost", //
 			"published", "description", "scheduledDeparture", "scheduledArrival", "originCity", //
-			"destinationCity", "numberOfLayovers");
+			"destinationCity", "numberOfLayovers", "published");
 
 		dataset.put("readonly", flight.isPublished());
 		dataset.put("indications", indications);

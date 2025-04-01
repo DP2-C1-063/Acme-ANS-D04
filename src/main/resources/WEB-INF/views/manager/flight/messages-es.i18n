@@ -29,3 +29,4 @@ manager.flight.form.button.legs = Tramos
 manager.flight.form.button.update = Actualizar
 manager.flight.form.button.delete = Eliminar
 manager.flight.form.button.publish = Publicar
+manager.flight.form.button.create = Crear
