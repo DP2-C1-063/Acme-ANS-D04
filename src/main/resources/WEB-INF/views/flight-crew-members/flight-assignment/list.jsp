@@ -9,3 +9,7 @@
 	<acme:list-column code="flight-crew-members.flight-assignment.list.label.leg" path="leg" width="70%"/>
 	<acme:list-payload path="payload"/>
 </acme:list>
+
+<jstl:if test="${acme:anyOf(_command, 'list-planned|list-completed')}">
+	<acme:button code="flight-crew-members.flight-assignment.list.button.create" action="/flight-crew-members/flight-assignment/create"/>
+</jstl:if>

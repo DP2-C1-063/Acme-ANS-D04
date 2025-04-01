@@ -11,7 +11,7 @@ aircraft-06,لوريم إيبسوم,6,128,35000,ACTIVE,"Lorem ipsum dolor sit am
 aircraft-07,洛伦·伊普森,7,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airlines-00
 aircraft-08,<marquee>Hacked</marquee>,8,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airlines-00
 aircraft-09,<script>alert(‘Hacked!’);</script>,9,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airlines-00
-aircraft-010,' or 'A' = 'A,10,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airlines-00
+aircraft-10,' or 'A' = 'A,10,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airlines-00
 #registrationNumber-standard variation
 aircraft-11,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",L,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airlines-00
 aircraft-12,"Lorem ipsum dolor sit ame,Lorem ipsum dolor sit am",Lo,128,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airlines-00

@@ -4,6 +4,7 @@ administrator.airlines.list.title = Lista de aerolineas
 administrator.airlines.list.label.name = Nombre
 administrator.airlines.list.label.IATACode = Código IATA
 administrator.airlines.list.label.web = Página web
+administrator.airlines.list.button.create = Crear una aerolínea
 
 
 administrator.airlines.form.title = Formulario de aerolínea
@@ -13,5 +14,11 @@ administrator.airlines.form.label.IATACode = Código IATA:
 administrator.airlines.form.label.type = Tipo de areolínea:
 administrator.airlines.form.label.web = Página Web:
 administrator.airlines.form.label.foundationMoment = Momento de creación:
+administrator.airlines.form.label.type = Tipo:
 administrator.airlines.form.label.email = Correo electrónico (Opcional):
 administrator.airlines.form.label.phoneNumber = Número de teléfono (Opcional):
+
+administrator.airlines.form.button.back = Volver
+administrator.airlines.form.button.update = Actualizar
+administrator.airlines.form.button.create = Crear
+administrator.airlines.form.label.confirmation = Confirme que estos son los datos correctos para esta aerolínea
