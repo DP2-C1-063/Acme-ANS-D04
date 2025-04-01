@@ -21,3 +21,10 @@ leg-11,LLL1234,2200/12/31 10:00,2200/12/31 23:59,ON_TIME,airport-00,airport-01,a
 #test for features
 leg-12,LLL1235,2013/12/31 10:00,2013/12/31 23:59,LANDED,airport-00,airport-01,aircraft-00,flight-01,false
 leg-13,LLL1236,2200/12/31 10:00,2200/12/31 23:59,ON_TIME,airport-00,airport-01,aircraft-00,flight-01,false
+leg-14,LLL1237,2025/01/01 00:00,2025/01/01 01:00,ON_TIME,airport-76,airport-77,aircraft-00,flight-27,false
+leg-15,LLL1238,2025/01/01 00:00,2025/01/01 02:00,ON_TIME,airport-76,airport-77,aircraft-00,flight-29,true
+leg-16,LLL1239,2025/01/01 00:00,2025/01/01 02:00,ON_TIME,airport-76,airport-77,aircraft-00,flight-28,false
+leg-17,LLL1240,2025/01/01 02:10,2025/01/01 08:00,ON_TIME,airport-77,airport-78,aircraft-00,flight-28,false
+leg-18,LLL1241,2025/01/01 08:00,2025/01/01 10:00,ON_TIME,airport-76,airport-77,aircraft-00,flight-30,false
+leg-19,LLL1242,2025/01/01 07:00,2025/01/01 08:30,ON_TIME,airport-76,airport-77,aircraft-00,flight-31,false
+leg-20,LLL1243,2025/01/01 08:45,2025/01/01 12:00,ON_TIME,airport-77,airport-78,aircraft-00,flight-31,false
