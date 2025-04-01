@@ -34,8 +34,12 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 		id = super.getRequest().getData("id", int.class);
 		assignment = this.repository.findAssignmentById(id);
 
-		boolean status = assignment.isDraftMode() && assignment.getDuty().equals(Duty.LEAD_ATTENDANT);
+		int memberId;
+		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		boolean status = assignment.isDraftMode() && assignment.getDuty().equals(Duty.LEAD_ATTENDANT) && assignment.getFlightCrewMember().getId() == memberId;
+
 		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
@@ -82,6 +86,7 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 
 		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "leg", "currentStatus", "remarks", "draftMode");
 		dataset.put("legs", choicesLegs);
+		dataset.put("completed", MomentHelper.isBefore(assignment.getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment()));
 		dataset.put("flightCrewMember", assignment.getFlightCrewMember().getEmployeeCode());
 		dataset.put("duties", choicesDuties);
 		dataset.put("statuses", choicesStatuses);
