@@ -4,7 +4,7 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="administrator.aircraft.form.label.model" path="model"/>  
+	<acme:input-textbox code="administrator.aircraft.form.label.model" path="model" />  
 	<acme:input-textbox code="administrator.aircraft.form.label.registrationNumber" path="registrationNumber"/>
 	<acme:input-textbox code="administrator.aircraft.form.label.capacity" path="capacity"/>
 	<acme:input-textbox code="administrator.aircraft.form.label.cargoWeight" path="cargoWeight"/>
@@ -16,6 +16,7 @@
 			
 		<jstl:when test="${acme:anyOf(_command, 'show|update')}">
 			<acme:submit code="administrator.aircraft.form.button.update" action="/administrator/aircraft/update"/>
+			<acme:submit code="administrator.aircraft.form.button.disable" action="/administrator/aircraft/disable"/>
 			<acme:input-checkbox code="administrator.aircraft.form.label.confirmation" path="confirmation"/>			
 		</jstl:when>
 		

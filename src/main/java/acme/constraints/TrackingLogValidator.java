@@ -35,9 +35,12 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 		else {
 			Boolean trackingLogCorrectlyFinished = trackingLog.getResolutionPercentage() == 100 && trackingLog.getStatus() != TrackingLogStatus.PENDING || trackingLog.getStatus() != TrackingLogStatus.PENDING && trackingLog.getResolution() != null;
 			super.state(context, trackingLogCorrectlyFinished, "status", "acme.validation.trackinglog.status.message");
-			Boolean percentageIsAscendance;
-			percentageIsAscendance = this.trackingLogRepository.getLastTrackingLogByClaim(trackingLog.getClaim().getId()).get(0).getResolutionPercentage() <= trackingLog.getResolutionPercentage();
-			super.state(context, percentageIsAscendance, "status", "acme.validation.trackinglog.resolution-percentage.message");
+			if (!trackingLog.getClaim().isReview()) {
+				Boolean percentageIsAscendance;
+
+				percentageIsAscendance = this.trackingLogRepository.getLastTrackingLogByClaim(trackingLog.getClaim().getId()).get(0).getResolutionPercentage() <= trackingLog.getResolutionPercentage();
+				super.state(context, percentageIsAscendance, "resolutionPercentage", "acme.validation.trackinglog.resolution-percentage.message");
+			}
 		}
 
 		result = !super.hasErrors(context);

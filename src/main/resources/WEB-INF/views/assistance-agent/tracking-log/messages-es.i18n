@@ -14,5 +14,9 @@ assistance-agent.tracking-logs.form.label.resolution = Resolución:
 assistance-agent.tracking-logs.form.label.claim = Queja:
 assistance-agent.tracking-logs.form.label.assistanceAgent = Asistente:
 
-
+assistance-agent.tracking-logs.form.button.delete = borrar
+assistance-agent.tracking-logs.form.button.publish = publicar
+assistance-agent.tracking-logs.form.button.update= actualizar
+assistance-agent.tracking-logs.list.button.create =crear
+assistance-agent.tracking-logs.claim-have-not-been-published= tracking log can not be published if corresponding claim is not published
 

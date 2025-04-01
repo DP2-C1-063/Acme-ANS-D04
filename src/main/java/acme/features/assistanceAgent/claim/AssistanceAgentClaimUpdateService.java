@@ -16,7 +16,7 @@ import acme.entities.leg.Leg;
 import acme.realms.assistanceAgent.AssistanceAgent;
 
 @GuiService
-public class AssistanceAgentClaimCreateService extends AbstractGuiService<AssistanceAgent, Claim> {
+public class AssistanceAgentClaimUpdateService extends AbstractGuiService<AssistanceAgent, Claim> {
 
 	@Autowired
 	private AssistanceAgentClaimRepository repository;
@@ -24,16 +24,22 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		Claim claim;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		claim = this.repository.findClaim(id);
+		boolean status = claim.isDraftMode();
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Claim claim = new Claim();
-		AssistanceAgent agent;
-		agent = (AssistanceAgent) super.getRequest().getPrincipal().getActiveRealm();
-		claim.setRegistrationMoment(MomentHelper.getCurrentMoment());
-		claim.setAssistanceAgent(agent);
+		Claim claim;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		claim = this.repository.findClaim(id);
 
 		super.getBuffer().addData(claim);
 	}
@@ -68,7 +74,7 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		choicesTypes = SelectChoices.from(ClaimType.class, claim.getType());
 		Collection<Leg> legs = this.repository.findAllLegs();
 		choicesLegs = SelectChoices.from(legs, "id", claim.getLeg());
-		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "leg");
+		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "leg", "draftMode");
 		dataset.put("legs", choicesLegs);
 		dataset.put("assistanceAgent", claim.getAssistanceAgent().getEmployeeCode());
 		dataset.put("types", choicesTypes);

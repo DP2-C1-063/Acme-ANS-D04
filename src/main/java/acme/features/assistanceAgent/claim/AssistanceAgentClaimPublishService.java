@@ -16,7 +16,7 @@ import acme.entities.leg.Leg;
 import acme.realms.assistanceAgent.AssistanceAgent;
 
 @GuiService
-public class AssistanceAgentClaimCreateService extends AbstractGuiService<AssistanceAgent, Claim> {
+public class AssistanceAgentClaimPublishService extends AbstractGuiService<AssistanceAgent, Claim> {
 
 	@Autowired
 	private AssistanceAgentClaimRepository repository;
@@ -24,16 +24,22 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		Claim claim;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		claim = this.repository.findClaim(id);
+		boolean status = claim.isDraftMode();
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Claim claim = new Claim();
-		AssistanceAgent agent;
-		agent = (AssistanceAgent) super.getRequest().getPrincipal().getActiveRealm();
-		claim.setRegistrationMoment(MomentHelper.getCurrentMoment());
-		claim.setAssistanceAgent(agent);
+		Claim claim;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		claim = this.repository.findClaim(id);
 
 		super.getBuffer().addData(claim);
 	}
@@ -51,12 +57,14 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 	public void validate(final Claim claim) {
 		boolean notYetOcurred;
 		notYetOcurred = MomentHelper.isAfter(claim.getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment());
-		super.state(notYetOcurred, "leg", "flight-crew-member.flight-assignment.leg-has-not-finished-yet");
+		super.state(notYetOcurred, "leg", "assistance-agent.claim.leg-has-not-finished-yet");
 
 	}
 
 	@Override
 	public void perform(final Claim claim) {
+		claim.setDraftMode(false);
+		claim.setReview(false);
 		this.repository.save(claim);
 	}
 
@@ -68,7 +76,7 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		choicesTypes = SelectChoices.from(ClaimType.class, claim.getType());
 		Collection<Leg> legs = this.repository.findAllLegs();
 		choicesLegs = SelectChoices.from(legs, "id", claim.getLeg());
-		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "leg");
+		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "leg", "draftMode");
 		dataset.put("legs", choicesLegs);
 		dataset.put("assistanceAgent", claim.getAssistanceAgent().getEmployeeCode());
 		dataset.put("types", choicesTypes);

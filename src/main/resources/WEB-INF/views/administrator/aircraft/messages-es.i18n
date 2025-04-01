@@ -16,4 +16,6 @@ administrator.aircraft.form.label.airline = Aerolinea:
 
 
 administrator.aircraft.form.button.create = Crear
+administrator.aircraft.form.button.update = Actualizar
+administrator.aircraft.form.button.disable = Desactivar
 administrator.aircraft.form.label.confirmation = Comfirma que esta es la información deseada para la aeronave

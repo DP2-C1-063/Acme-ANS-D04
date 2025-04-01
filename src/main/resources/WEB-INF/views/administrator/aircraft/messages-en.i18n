@@ -15,4 +15,6 @@ administrator.aircraft.form.label.details = Details:
 administrator.aircraft.form.label.airline = Airline:
 
 administrator.aircraft.form.button.create = Create
+administrator.aircraft.form.button.update = Update
+administrator.aircraft.form.button.disable = Disable
 administrator.aircraft.form.label.confirmation = Confirm this is the desire data for this aircraft

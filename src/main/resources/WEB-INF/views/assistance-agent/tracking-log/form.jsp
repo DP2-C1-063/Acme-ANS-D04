@@ -15,7 +15,11 @@
 	<acme:input-textbox code="assistance-agent.tracking-logs.form.label.assistanceAgent" path="assistanceAgent"  readonly="true"/>
 	
 	<jstl:choose>	
-		
+		<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && draftMode == true}">
+			<acme:submit code="assistance-agent.tracking-logs.form.button.update" action="/assistance-agent/tracking-log/update"/>
+			<acme:submit code="assistance-agent.tracking-logs.form.button.publish" action="/assistance-agent/tracking-log/publish"/>
+			<acme:submit code="assistance-agent.tracking-logs.form.button.delete" action="/assistance-agent/tracking-log/delete"/>			
+		</jstl:when>
 		
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="assistance-agent.tracking-logs.form.button.create" action="/assistance-agent/tracking-log/create"/>

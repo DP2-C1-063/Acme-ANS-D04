@@ -49,6 +49,10 @@ public class TrackingLog extends AbstractEntity {
 	@Automapped
 	@ValidString(min = 0, max = 255)
 	private String				resolution;
+	@Mandatory
+	// HINT: @Valid by default.
+	@Automapped
+	private boolean				draftMode			= true;
 
 	@Mandatory
 	@Valid

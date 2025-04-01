@@ -16,7 +16,7 @@ import acme.features.assistanceAgent.claim.AssistanceAgentClaimRepository;
 import acme.realms.assistanceAgent.AssistanceAgent;
 
 @GuiService
-public class AssistanceAgentTrackigLogsShowService extends AbstractGuiService<AssistanceAgent, TrackingLog> {
+public class AssistanceAgentTrackingLogsUpdateService extends AbstractGuiService<AssistanceAgent, TrackingLog> {
 
 	@Autowired
 	private AssistanceAgentTrackingLogsRepository	repository;
@@ -27,18 +27,40 @@ public class AssistanceAgentTrackigLogsShowService extends AbstractGuiService<As
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		int id;
+		TrackingLog trackingLog;
+		id = super.getRequest().getData("id", int.class);
+		trackingLog = this.repository.getTrackingLogById(id);
+		boolean status = trackingLog.isDraftMode();
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		TrackingLog trackingLog;
 		int id;
-
+		TrackingLog trackingLog;
 		id = super.getRequest().getData("id", int.class);
 		trackingLog = this.repository.getTrackingLogById(id);
-
 		super.getBuffer().addData(trackingLog);
+	}
+
+	@Override
+	public void bind(final TrackingLog trackingLog) {
+		int claimId = super.getRequest().getData("claim", int.class);
+		Claim claim = this.claimRepository.findClaim(claimId);
+		trackingLog.setClaim(claim);
+
+		super.bindObject(trackingLog, "step", "resolutionPercentage", "status", "resolution");
+	}
+
+	@Override
+	public void validate(final TrackingLog trackingLog) {
+
+	}
+
+	@Override
+	public void perform(final TrackingLog trackingLog) {
+		this.repository.save(trackingLog);
 	}
 
 	@Override
@@ -53,10 +75,7 @@ public class AssistanceAgentTrackigLogsShowService extends AbstractGuiService<As
 		dataset = super.unbindObject(trackingLog, "step", "resolutionPercentage", "status", "resolution", "draftMode");
 		dataset.put("claims", choicesClaims);
 		dataset.put("statuses", choicesStatus);
-		dataset.put("lastUpdateMoment", trackingLog.getLastUpdateMoment());
-		dataset.put("assistanceAgent", trackingLog.getAssistanceAgent().getEmployeeCode());
-		dataset.put("confirmation", false);
-		dataset.put("readonly", false);
+
 		super.getResponse().addData(dataset);
 	}
 }

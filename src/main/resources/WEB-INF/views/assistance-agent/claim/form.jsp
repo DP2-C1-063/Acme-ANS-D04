@@ -14,12 +14,20 @@
 	<acme:input-textbox code="assistance-agent.claim.form.label.assistanceAgent" path="assistanceAgent" readonly="true"/>
 	
 	<jstl:choose>	
-		
+			
+		<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && draftMode == true}">
+			<acme:submit code="assistance-agent.claim.form.button.update" action="/assistance-agent/claim/update"/>
+			<acme:submit code="assistance-agent.claim.form.button.publish" action="/assistance-agent/claim/publish"/>
+			<acme:submit code="assistance-agent.claim.form.button.delete" action="/assistance-agent/claim/delete"/>			
+		</jstl:when>
 		
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="assistance-agent.claim.form.button.create" action="/assistance-agent/claim/create"/>
-			<acme:input-checkbox code="assistance-agent.claim.form.label.confirmation" path="confirmation"/>		
 			
-		</jstl:when>		
+		</jstl:when>	
+		<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && draftMode == false}">
+			
+			<acme:submit code="assistance-agent.claim.form.button.review" action="/assistance-agent/claim/review"/>			
+		</jstl:when>	
 	</jstl:choose>
 </acme:form>
