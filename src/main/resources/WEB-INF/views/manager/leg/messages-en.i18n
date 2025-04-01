@@ -1,0 +1,25 @@
+manager.leg.list.title = Listing of legs
+
+manager.leg.list.label.flightNumber = Flight number
+manager.leg.list.label.scheduledDeparture = Scheduled departure
+manager.leg.list.label.scheduledArrival = Scheduled arrival
+manager.leg.list.label.departureAirport = Departure airport
+manager.leg.list.label.arrivalAirport = Arrival airport
+
+manager.leg.list.button.create = Create
+
+manager.leg.form.title = Leg form
+
+manager.leg.form.label.flightNumber = Flight number
+manager.leg.form.label.scheduledDeparture = Scheduled departure
+manager.leg.form.label.scheduledArrival = Scheduled arrival
+manager.leg.form.label.duration = Duration
+manager.leg.form.label.status = Status
+manager.leg.form.label.departureAirport = Departure airport
+manager.leg.form.label.arrivalAirport = Arrival airport
+manager.leg.form.label.aircraft = Aircraft
+
+manager.leg.form.button.create = Create
+manager.leg.form.button.update = Update
+manager.leg.form.button.delete = Delete
+manager.leg.form.button.publish = Publish

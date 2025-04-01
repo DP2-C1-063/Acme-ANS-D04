@@ -30,14 +30,12 @@ public class ManagerFlightPublishService extends AbstractGuiService<Manager, Fli
 		int masterId;
 		Flight flight;
 		Manager manager;
-		Collection<Leg> legs;
 
 		masterId = super.getRequest().getData("id", int.class);
 		flight = this.repository.findFlightById(masterId);
 		manager = flight == null ? null : flight.getManager();
-		legs = this.repository.findLegsByFlightId(masterId);
-		boolean allLegsArePublished = legs.stream().allMatch(l -> l.isPublished());
-		status = flight != null && !flight.isPublished() && super.getRequest().getPrincipal().hasRealm(manager) && legs.size() >= 1 && allLegsArePublished;
+
+		status = flight != null && !flight.isPublished() && super.getRequest().getPrincipal().hasRealm(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -55,11 +53,40 @@ public class ManagerFlightPublishService extends AbstractGuiService<Manager, Fli
 
 	@Override
 	public void bind(final Flight flight) {
-		super.bindObject(flight, "tag", "indication", "cost", "description");
+		super.bindObject(flight, "tag", "indication", "cost", //
+			"description", "scheduledDeparture", "scheduledArrival", "originCity", //
+			"destinationCity", "numberOfLayovers");
 	}
 
 	@Override
 	public void validate(final Flight flight) {
+		{
+			boolean allLegsArePublished;
+			int masterId;
+			Collection<Leg> legs;
+
+			masterId = super.getRequest().getData("id", int.class);
+			legs = this.repository.findLegsByFlightId(masterId);
+			allLegsArePublished = true;
+			for (Leg l : legs)
+				if (!l.isPublished()) {
+					allLegsArePublished = false;
+					break;
+				}
+
+			super.state(allLegsArePublished, "legs", "acme.validation.legs-published.message");
+		}
+		{
+			boolean atLeastOneLeg;
+			int masterId;
+			Collection<Leg> legs;
+
+			masterId = super.getRequest().getData("id", int.class);
+			legs = this.repository.findLegsByFlightId(masterId);
+			atLeastOneLeg = legs != null ? legs.size() >= 1 : false;
+
+			super.state(atLeastOneLeg, "legs", "acme.validation.no-legs.message");
+		}
 		;
 	}
 
@@ -75,7 +102,9 @@ public class ManagerFlightPublishService extends AbstractGuiService<Manager, Fli
 		SelectChoices indications;
 		indications = SelectChoices.from(Indication.class, flight.getIndication());
 
-		dataset = super.unbindObject(flight, "tag", "indication", "cost", "description", "published");
+		dataset = super.unbindObject(flight, "tag", "indication", "cost", //
+			"description", "scheduledDeparture", "scheduledArrival", "originCity", //
+			"destinationCity", "numberOfLayovers");
 		dataset.put("indications", indications);
 		dataset.put("indication", indications.getSelected());
 

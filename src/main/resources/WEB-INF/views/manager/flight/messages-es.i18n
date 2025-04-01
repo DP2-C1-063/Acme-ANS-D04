@@ -5,8 +5,27 @@ manager.flight.list.label.indication = Indicación
 manager.flight.list.label.cost = Costo
 manager.flight.list.label.published = Publicado
 manager.flight.list.label.description = Descripción
-manager.flight.list.label.scheduledDeparture = Salida Programada
-manager.flight.list.label.scheduledArrival = Llegada Programada
-manager.flight.list.label.originCity = Ciudad de Origen
-manager.flight.list.label.destinationCity = Ciudad de Destino
-manager.flight.list.label.numberOfLayovers = Número de Escalas
+manager.flight.list.label.scheduledDeparture = Salida programada
+manager.flight.list.label.scheduledArrival = Llegada rogramada
+manager.flight.list.label.originCity = Ciudad de origen
+manager.flight.list.label.destinationCity = Ciudad de destino
+manager.flight.list.label.numberOfLayovers = Número de escalas
+
+manager.flight.list.button.create = Crear
+
+manager.flight.form.title = Detalles de vuelo
+
+manager.flight.form.label.tag = Etiqueta
+manager.flight.form.label.indication = Indicación
+manager.flight.form.label.cost = Costo
+manager.flight.form.label.description = Descripción
+manager.flight.form.label.scheduledDeparture = Salida programada
+manager.flight.form.label.scheduledArrival = Llegada programada
+manager.flight.form.label.originCity = Ciudad de origen
+manager.flight.form.label.destinationCity = Ciudad de destino
+manager.flight.form.label.numberOfLayovers = Número de escalas
+
+manager.flight.form.button.legs = Tramos
+manager.flight.form.button.update = Actualizar
+manager.flight.form.button.delete = Eliminar
+manager.flight.form.button.publish = Publicar

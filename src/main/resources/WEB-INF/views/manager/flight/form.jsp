@@ -9,14 +9,11 @@
 	<acme:input-money code="manager.flight.form.label.cost" path="cost"/>
 	<acme:input-textarea code="manager.flight.form.label.description" path="description"/>
 	
-	<jstl:if test="${readonly}">
-	<acme:input-moment code="manager.flight.form.label.scheduledDeparture" path="scheduledDeparture"/>
-	<acme:input-moment code="manager.flight.form.label.scheduledArrival" path="scheduledArrival"/>
-	<acme:input-textbox code="manager.flight.form.label.originCity" path="originCity"/>
-	<acme:input-textbox code="manager.flight.form.label.destinationCity" path="destinationCity"/>
-	<acme:input-integer code="manager.flight.form.label.numberOfLayovers" path="numberOfLayovers"/>
-	
-	</jstl:if>
+	<acme:input-moment code="manager.flight.form.label.scheduledDeparture" path="scheduledDeparture" readonly="true"/>
+	<acme:input-moment code="manager.flight.form.label.scheduledArrival" path="scheduledArrival" readonly="true"/>
+	<acme:input-textbox code="manager.flight.form.label.originCity" path="originCity" readonly="true"/>
+	<acme:input-textbox code="manager.flight.form.label.destinationCity" path="destinationCity" readonly="true"/>
+	<acme:input-textbox code="manager.flight.form.label.numberOfLayovers" path="numberOfLayovers" readonly="true"/>
 
 <%-- BUTTONS --%>
 
