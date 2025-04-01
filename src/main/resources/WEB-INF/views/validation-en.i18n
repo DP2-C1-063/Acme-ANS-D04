@@ -60,4 +60,6 @@ acme.validation.trackinglog.resolution-percentage.message = percentage must be g
 acme.validation.passenger.passport.message = The passport must be 6 to 9 characters alphanumeric in uppercase
 
 acme.validation.maintenance-record.invalid-moment.message = The maintenance moment must be before the next inspection date
-
+acme.validation.published.message = You can not delete this because it is already been published
+acme.validation.legs-published.message = All legs must be published to publish the flight
+acme.validation.confirmation.message = You must confirm

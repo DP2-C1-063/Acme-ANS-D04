@@ -12,30 +12,43 @@ import acme.entities.airport.Airport;
 import acme.entities.airport.OperationalScope;
 
 @GuiService
-public class AdministratorAirportCreateService extends AbstractGuiService<Administrator, Airport> {
-	// Internal state
+public class AdministratorAirportUpdateService extends AbstractGuiService<Administrator, Airport> {
+	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	private AdministratorAirportRepository repository;
 
+	// AbstractGuiService interface -------------------------------------------
 
-	// AbstractGuiService interface
+
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int id;
+		Airport airport;
+
+		id = super.getRequest().getData("id", int.class);
+		airport = this.repository.findAirportById(id);
+		status = airport != null;
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		Airport airport;
-		airport = new Airport();
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		airport = this.repository.findAirportById(id);
 
 		super.getBuffer().addData(airport);
 	}
 
 	@Override
 	public void bind(final Airport airport) {
-		super.bindObject(airport, "name", "IATACode", "operationalScope", "city", "country", "website", "email", "address", "contactPhoneNumber");
+		super.bindObject(airport, "name", "IATACode", "operationalScope", "city", "country", "website", //
+			"email", "address", "contactPhoneNumber");
 	}
 
 	@Override
@@ -57,12 +70,12 @@ public class AdministratorAirportCreateService extends AbstractGuiService<Admini
 		SelectChoices operationalScopes;
 		operationalScopes = SelectChoices.from(OperationalScope.class, airport.getOperationalScope());
 
-		dataset = super.unbindObject(airport, "name", "IATACode", "operationalScope", "city", "country", "website", "email", "address", "contactPhoneNumber");
+		dataset = super.unbindObject(airport, "name", "IATACode", "operationalScope", "city", "country", "website", //
+			"email", "address", "contactPhoneNumber");
 		dataset.put("confirmation", false);
 		dataset.put("readonly", false);
 		dataset.put("operationalScopes", operationalScopes);
 
 		super.getResponse().addData(dataset);
 	}
-
 }

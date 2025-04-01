@@ -10,9 +10,9 @@
 	<acme:list-column code="administrator.airport.list.label.operationalScope" path="operationalScope"/>
 	<acme:list-column code="administrator.airport.list.label.city" path="city"/>
 	<acme:list-column code="administrator.airport.list.label.country" path="country"/>
-	<acme:list-column code="administrator.airport.list.label.website" path="website"/>
-	<acme:list-column code="administrator.airport.list.label.email" path="email"/>
-	<acme:list-column code="administrator.airport.list.label.address" path="address"/>
-	<acme:list-column code="administrator.airport.list.label.contactPhoneNumber" path="contactPhoneNumber"/>
 	<acme:list-payload path="payload"/>
 </acme:list>
+
+<jstl:if test="${_command == 'list'}">
+	<acme:button code="administrator.airport.list.button.create" action="/administrator/airport/create"/>
+</jstl:if>
