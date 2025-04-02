@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.claim.Claim;
 import acme.entities.trackingLogs.TrackingLog;
 import acme.realms.assistanceAgent.AssistanceAgent;
 
@@ -20,15 +21,20 @@ public class AssistanceAgentTrackingLogsListService extends AbstractGuiService<A
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		int masterId;
+		Claim claim;
+		masterId = super.getRequest().getData("masterId", int.class);
+		claim = this.repository.findClaim(masterId);
+
+		super.getResponse().setAuthorised(claim != null);
 	}
 	@Override
 	public void load() {
 		Collection<TrackingLog> trackingLog;
-		int memberId;
-		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		int masterId;
+		masterId = super.getRequest().getData("masterId", int.class);
 
-		trackingLog = this.repository.getAllTrackingLogsByAssistanceAgent(memberId);
+		trackingLog = this.repository.getAllTrackingLogsByClaim(masterId);
 
 		super.getBuffer().addData(trackingLog);
 	}
@@ -38,7 +44,20 @@ public class AssistanceAgentTrackingLogsListService extends AbstractGuiService<A
 		Dataset dataset;
 
 		dataset = super.unbindObject(trackingLog, "resolutionPercentage", "step", "lastUpdateMoment");
-
+		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
+		super.getResponse().addGlobal("masterId", super.getRequest().getData("masterId", int.class));
 		super.getResponse().addData(dataset);
+	}
+	@Override
+	public void unbind(final Collection<TrackingLog> trackingLog) {
+
+		final boolean showCreate;
+		int masterId;
+		Claim claim;
+		masterId = super.getRequest().getData("masterId", int.class);
+		claim = this.repository.findClaim(masterId);
+		showCreate = claim != null;
+		super.getResponse().addGlobal("masterId", super.getRequest().getData("masterId", int.class));
+		super.getResponse().addGlobal("showCreate", showCreate);
 	}
 }

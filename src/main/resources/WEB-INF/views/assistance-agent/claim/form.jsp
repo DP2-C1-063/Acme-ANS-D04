@@ -18,7 +18,8 @@
 		<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && draftMode == true}">
 			<acme:submit code="assistance-agent.claim.form.button.update" action="/assistance-agent/claim/update"/>
 			<acme:submit code="assistance-agent.claim.form.button.publish" action="/assistance-agent/claim/publish"/>
-			<acme:submit code="assistance-agent.claim.form.button.delete" action="/assistance-agent/claim/delete"/>			
+			<acme:submit code="assistance-agent.claim.form.button.delete" action="/assistance-agent/claim/delete"/>	
+			<acme:button code="assistance-agent.claim.form.button.TrackingLogs" action="/assistance-agent/tracking-log/list?masterId=${id}"/>		
 		</jstl:when>
 		
 		<jstl:when test="${_command == 'create'}">
@@ -27,7 +28,10 @@
 		</jstl:when>	
 		<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && draftMode == false}">
 			
-			<acme:submit code="assistance-agent.claim.form.button.review" action="/assistance-agent/claim/review"/>			
+			<acme:submit code="assistance-agent.claim.form.button.review" action="/assistance-agent/claim/review"/>	
+			<acme:button code="assistance-agent.claim.form.button.TrackingLogs" action="/assistance-agent/tracking-log/list?masterId=${id}"/>		
 		</jstl:when>	
 	</jstl:choose>
+	
+	
 </acme:form>

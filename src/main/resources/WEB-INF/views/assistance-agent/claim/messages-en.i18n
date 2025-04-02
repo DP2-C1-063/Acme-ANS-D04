@@ -22,4 +22,7 @@ assistance-agent.claim.form.button.delete = delete
 assistance-agent.claim.form.button.publish = publish
 assistance-agent.claim.form.button.update= update
 assistance-agent.claim.list.button.create =create
+assistance-agent.claim.form.button.create=create
+
+assistance-agent.claim.form.button.TrackingLogs=Tracking Logs
 assistance-agent.claim.leg-has-not-finished-yet = An claim cant be published if the leg has already occurred

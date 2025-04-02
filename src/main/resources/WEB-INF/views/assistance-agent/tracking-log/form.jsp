@@ -11,7 +11,7 @@
 	<acme:input-textbox code="assistance-agent.tracking-logs.form.label.resolutionPercentage" path="resolutionPercentage"/>
 	<acme:input-select code="assistance-agent.tracking-logs.form.label.status" path="status" choices="${statuses}"/>
 	<acme:input-textbox code="assistance-agent.tracking-logs.form.label.resolution" path="resolution"/>
-	<acme:input-select code="assistance-agent.tracking-logs.form.label.claim" path="claim" choices="${claims}"/>
+	
 	<acme:input-textbox code="assistance-agent.tracking-logs.form.label.assistanceAgent" path="assistanceAgent"  readonly="true"/>
 	
 	<jstl:choose>	
@@ -22,8 +22,7 @@
 		</jstl:when>
 		
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="assistance-agent.tracking-logs.form.button.create" action="/assistance-agent/tracking-log/create"/>
-			<acme:input-checkbox code="assistance-agent.tracking-logs.form.label.confirmation" path="confirmation"/>		
+			<acme:submit code="assistance-agent.tracking-logs.form.button.create" action="/assistance-agent/tracking-log/create?masterId=${masterId}"/>
 			
 		</jstl:when>		
 	</jstl:choose>

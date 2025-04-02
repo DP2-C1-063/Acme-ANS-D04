@@ -1,8 +1,6 @@
 
 package acme.features.assistanceAgent.trackingLogs;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -39,22 +37,24 @@ public class AssistanceAgentTrackingLogsCreateService extends AbstractGuiService
 		trackingLog.setLastUpdateMoment(MomentHelper.getCurrentMoment());
 		trackingLog.setAssistanceAgent(agent);
 		trackingLog.setStatus(TrackingLogStatus.PENDING);
+		int claimId;
+		Claim claim;
+
+		claim = this.repository.findClaim(super.getRequest().getData("masterId", int.class));
+		trackingLog.setClaim(claim);
 
 		super.getBuffer().addData(trackingLog);
 	}
 
 	@Override
 	public void bind(final TrackingLog trackingLog) {
-		int claimId = super.getRequest().getData("claim", int.class);
-		Claim claim = this.claimRepository.findClaim(claimId);
-		trackingLog.setClaim(claim);
 
 		super.bindObject(trackingLog, "step", "resolutionPercentage", "status", "resolution");
 	}
 
 	@Override
 	public void validate(final TrackingLog trackingLog) {
-		// Implementar validaciones si es necesario
+
 	}
 
 	@Override
@@ -66,15 +66,13 @@ public class AssistanceAgentTrackingLogsCreateService extends AbstractGuiService
 	public void unbind(final TrackingLog trackingLog) {
 		SelectChoices choicesStatus;
 		Dataset dataset;
-		Collection<Claim> claims = this.claimRepository.findAllClaimsByAssistanceAgent(trackingLog.getAssistanceAgent().getId());
-		SelectChoices choicesClaims = SelectChoices.from(claims, "id", trackingLog.getClaim());
 
 		choicesStatus = SelectChoices.from(TrackingLogStatus.class, trackingLog.getStatus());
 
 		dataset = super.unbindObject(trackingLog, "step", "resolutionPercentage", "status", "resolution");
-		dataset.put("claims", choicesClaims);
+		dataset.put("claim", trackingLog.getClaim());
 		dataset.put("statuses", choicesStatus);
-
+		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
 		super.getResponse().addData(dataset);
 	}
 }

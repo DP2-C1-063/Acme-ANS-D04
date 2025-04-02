@@ -24,8 +24,14 @@ public class AssistanceAgentClaimReviewService extends AbstractGuiService<Assist
 
 	@Override
 	public void authorise() {
-
-		super.getResponse().setAuthorised(true);
+		int id;
+		Claim claim;
+		id = super.getRequest().getData("id", int.class);
+		claim = this.repository.findClaim(id);
+		AssistanceAgent agent;
+		agent = (AssistanceAgent) super.getRequest().getPrincipal().getActiveRealm();
+		boolean status = claim.getAssistanceAgent().equals(agent);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
