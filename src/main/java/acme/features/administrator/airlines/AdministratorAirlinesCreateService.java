@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.components.principals.Administrator;
 import acme.client.components.views.SelectChoices;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.airlines.AirlineType;
@@ -35,7 +34,7 @@ public class AdministratorAirlinesCreateService extends AbstractGuiService<Admin
 		airline = new Airlines();
 		airline.setIATACode("");
 		airline.setEmail("");
-		airline.setFoundationMoment(MomentHelper.getCurrentMoment());
+		airline.setFoundationMoment(null);
 		airline.setName("");
 		airline.setPhoneNumber("");
 		airline.setWeb("");
@@ -47,7 +46,7 @@ public class AdministratorAirlinesCreateService extends AbstractGuiService<Admin
 	@Override
 	public void bind(final Airlines airline) {
 
-		super.bindObject(airline, "name", "IATACode", "web", "type", "email", "phoneNumber");
+		super.bindObject(airline, "name", "IATACode", "web", "type", "email", "phoneNumber", "foundationMoment");
 
 	}
 
@@ -71,7 +70,7 @@ public class AdministratorAirlinesCreateService extends AbstractGuiService<Admin
 
 		choices = SelectChoices.from(AirlineType.class, airline.getType());
 
-		dataset = super.unbindObject(airline, "name", "IATACode", "web", "type", "email", "phoneNumber");
+		dataset = super.unbindObject(airline, "name", "IATACode", "web", "type", "email", "phoneNumber", "foundationMoment");
 		dataset.put("types", choices);
 
 		super.getResponse().addData(dataset);

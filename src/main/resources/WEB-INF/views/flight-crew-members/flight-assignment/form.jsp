@@ -14,15 +14,23 @@
 	<acme:input-textbox code="flight-crew-members.flight-assignment.form.label.flightCrewMember" path="flightCrewMember"  readonly="true"/>
 			
 <jstl:choose>
+
 	<jstl:when test="${_command == 'create'}">
 			<acme:submit code="flight-crew-members.flight-assignment.form.button.create" action="/flight-crew-members/flight-assignment/create"/>
 	</jstl:when>
 	
 	
 	<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && draftMode == true && duty == 'LEAD_ATTENDANT'}">
+	<jstl:if test="${completed == true }">
+		<acme:button code="flight-crew-members.flight-assignments.form.button.logs" action="/flight-crew-members/activity-log/list?masterId=${id}"/>
+		</jstl:if>		
 		<acme:submit code="flight-crew-members.flight-assignment.form.button.update" action="/flight-crew-members/flight-assignment/update"/>
 		<acme:submit code="flight-crew-members.flight-assignment.form.button.publish" action="/flight-crew-members/flight-assignment/publish"/>
 		<acme:submit code="flight-crew-members.flight-assignment.form.button.delete" action="/flight-crew-members/flight-assignment/delete"/>	
+	</jstl:when>
+	
+	<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && completed == true}">
+			<acme:button code="flight-crew-members.flight-assignments.form.button.logs" action="/flight-crew-members/activity-log/list?masterId=${id}"/>			
 	</jstl:when>
 		
 </jstl:choose>

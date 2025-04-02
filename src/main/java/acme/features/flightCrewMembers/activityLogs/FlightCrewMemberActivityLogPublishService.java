@@ -1,14 +1,9 @@
 
 package acme.features.flightCrewMembers.activityLogs;
 
-import java.util.Collection;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
-import acme.client.components.views.SelectChoices;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLog.ActivityLog;
@@ -34,12 +29,14 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 		boolean status;
 		ActivityLog log;
 		int id;
+		int memberId;
 
 		id = super.getRequest().getData("id", int.class);
 		log = this.repository.findActivityLogById(id);
 
-		status = log.isDraftMode();
+		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
+		status = log.getFlightAssignment().getFlightCrewMember().getId() == memberId && log.isDraftMode();
 		super.getResponse().setAuthorised(status);
 
 	}
@@ -69,7 +66,7 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 	@Override
 	public void validate(final ActivityLog log) {
 		boolean assignmentPublished = !log.getFlightAssignment().isDraftMode();
-		super.state(assignmentPublished, "flightAssignment", "flight-crew-member.activity-log.assignment-not-published-yet");
+		super.state(assignmentPublished, "*", "flight-crew-member.activity-log.assignment-not-published-yet");
 	}
 
 	@Override
@@ -81,17 +78,10 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 
 	@Override
 	public void unbind(final ActivityLog log) {
-		SelectChoices choices;
-		int memberId;
-		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		Dataset dataset;
-		Date currentMoment = MomentHelper.getCurrentMoment();
-		Collection<FlightAssignment> assignments = this.assignmentRepository.findAllCompletedAssignmentsOfCrewMember(memberId, currentMoment);
-		choices = SelectChoices.from(assignments, "id", null);
 
 		dataset = super.unbindObject(log, "incidentType", "description", "severityLevel", "draftMode");
-		dataset.put("flightAssignment", choices.getSelected().getKey());
-		dataset.put("assignments", choices);
+		dataset.put("flightAssignment", log.getFlightAssignment().getId());
 
 		super.getResponse().addData(dataset);
 	}
