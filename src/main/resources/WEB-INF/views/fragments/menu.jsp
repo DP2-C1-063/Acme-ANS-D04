@@ -33,6 +33,8 @@
 			<acme:menu-suboption code="master.menu.administrator.list-user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-suboption code="master.menu.administrator.list-airlines" action="/administrator/airlines/list"/>
 			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.administrator.list-aircrafts" action="/administrator/aircraft/list"/>
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.list-airports" action="/administrator/airport/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-db-initial" action="/administrator/system/populate-initial"/>
@@ -52,10 +54,14 @@
 		<acme:menu-option code="master.menu.flightCrewMember" access="hasRealm('FlightCrewMembers')">
 		<acme:menu-suboption code="master.menu.flightCrewMember.list-completed-flight-assignments" action="/flight-crew-members/flight-assignment/list-completed"/>
 		<acme:menu-suboption code="master.menu.flightCrewMember.list-planned-flight-assignments" action="/flight-crew-members/flight-assignment/list-planned"/>
-
-
+    
+    
 		</acme:menu-option>
+		<acme:menu-option code="master.menu.assistanceAgent" access="hasRealm('AssistanceAgent')">
+		<acme:menu-suboption code="master.menu.assistanceAgent.list-pending-claims" action="/assistance-agent/claim/list-pending"/>
+		<acme:menu-suboption code="master.menu.assistanceAgent.list-completed-claims" action="/assistance-agent/claim/list-completed"/>
 		
+		</acme:menu-option>
 		
 	</acme:menu-left>
 

@@ -1,0 +1,28 @@
+
+assistance-agent.tracking-log.list.title = List of tracking logs
+
+assistance-agent.tracking-logs.list.label.resolutionPercentage = Resolution Percentage
+assistance-agent.tracking-logs.list.label.step = Step
+assistance-agent.tracking-logs.list.label.lastUpdateMoment =  Last update moment
+
+
+assistance-agent.tracking-log.form.title = Tracking Log Form
+
+assistance-agent.tracking-logs.form.label.lastUpdateMoment = Last Update Moment:
+assistance-agent.tracking-logs.form.label.step = Step:
+assistance-agent.tracking-logs.form.label.resolutionPercentage = Resolution Percentage:
+assistance-agent.tracking-logs.form.label.status = Status:
+assistance-agent.tracking-logs.form.label.resolution = Resolution:
+assistance-agent.tracking-logs.form.label.claim = Claim:
+assistance-agent.tracking-logs.form.label.assistanceAgent = Assistance Agent:
+
+
+assistance-agent.tracking-logs.form.button.delete = delete
+assistance-agent.tracking-logs.form.button.publish = publish
+assistance-agent.tracking-logs.form.button.update = update
+assistance-agent.tracking-logs.list.button.create = create
+assistance-agent.tracking-logs.form.button.create = create
+
+assistance-agent.tracking-logs.claim-have-not-been-published= tracking log can not be published if corresponding claim is not published
+
+
