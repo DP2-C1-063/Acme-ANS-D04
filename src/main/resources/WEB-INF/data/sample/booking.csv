@@ -15,7 +15,7 @@ booking-07,CG3O00YP,2000/01/01 00:00,ECONOMY,8158,customer-01,flight-01,false
 booking-08,33GPPX3,2000/01/01 00:00,ECONOMY,6485,customer-01,flight-01,false
 booking-09,LSZKDI,2000/01/01 00:00,ECONOMY,,customer-01,flight-01,false
 #customer
-booking-10,684LUSZM,2000/01/01 00:00,ECONOMY,8158,customer-01,flight-01,false
+booking-10,684LUSZM,2000/01/01 00:00,ECONOMY,8158,customer-02,flight-01,true
 booking-11,PV7EE6,2000/01/01 00:00,ECONOMY,8158,customer-02,flight-01,false
 #flight
 booking-13,W2JP4BSO,2000/01/01 00:00,ECONOMY,8158,customer-01,flight-01,false

@@ -21,6 +21,12 @@ public class CustomerPassengerCreateService extends AbstractGuiService<Customer,
 		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
 
 		super.getResponse().setAuthorised(status);
+
+		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		int passengerId = super.getRequest().getData("id", int.class);
+		Passenger passenger = this.repository.getPassengerById(passengerId);
+
+		super.getResponse().setAuthorised(customerId == passenger.getCustomer().getId());
 	}
 
 	@Override

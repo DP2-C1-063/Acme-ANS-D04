@@ -3,8 +3,8 @@ key,identifier,phone,address,city,country,points,key:UserAccount
 customer-00,MM385181,+29091390,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*","Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",250000,user-account-customer-00
 #points
 customer-01,RO064843,+29091390,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*","Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",1,user-account-customer-01
-customer-02,MMM599418,+29091390,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*","Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",499999,user-account-customer-00
-customer-03,MMM082979,+29091390,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*","Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",500000,user-account-customer-00
+customer-02,SL599418,+29091390,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*","Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",499999,user-account-customer-02
+customer-03,GS082979,+29091390,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*","Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",500000,user-account-customer-03
 customer-04,MM124328,+29091390,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*","Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",,user-account-customer-00
 #address
 customer-05,MMM279948,+29091390,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*","Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",250000,user-account-customer-00
@@ -45,6 +45,3 @@ customer-37,MM531965,+29091390,"Lorem ipsum dolor sit amet, consectetur adipisci
 #phone
 customer-38,MMM874517,+29091390,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*","Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",250000,user-account-customer-00
 customer-39,MMM126218,+29091380,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*","Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",250000,user-account-customer-00
-#user account
-customer-40,SL805280,+29091390,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,250000,user-account-customer-02
-customer-41,GS385301,+29091390,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,250000,user-account-customer-03

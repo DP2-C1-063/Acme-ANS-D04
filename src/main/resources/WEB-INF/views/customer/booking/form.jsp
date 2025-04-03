@@ -6,8 +6,7 @@
      <acme:input-textbox code="customer.booking.list.label.locatorCode" path="locatorCode"/>
      <acme:input-textbox code="customer.booking.list.label.lastNibble" path="lastNibble"/>
      <acme:input-select code="customer.booking.list.label.travelClass" path="travelClass" choices="${travelClasses}"/>
-     <acme:input-double code="customer.booking.list.label.price" path="price" readonly="true"/>
- 
+     <acme:input-double code="customer.booking.list.label.price" path="price" readonly="true"/> 
  	
  	
  	<jstl:choose>

@@ -8,6 +8,8 @@
      <acme:list-column code="customer.booking.list.label.locatorCode" path="locatorCode" />
  	<acme:list-column code="customer.booking.list.label.purchaseMoment" path="purchaseMoment" />
  	<acme:list-column code="customer.booking.list.label.price" path="price" />
+ 	 	<acme:list-column code="customer.booking.list.label.draftmode" path="draftMode" />
+ 
      <acme:list-payload path="payload"/>	
  </acme:list>
  
