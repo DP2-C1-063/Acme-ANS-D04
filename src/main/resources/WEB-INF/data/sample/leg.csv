@@ -1,30 +1,30 @@
-key,flight-number,scheduled-departure,scheduled-arrival,status,key:departureAirport,key:arrivalAirport,key:aircraft,key:flight,published
+key,number,scheduled-departure,scheduled-arrival,status,key:departureAirport,key:arrivalAirport,key:aircraft,key:flight,published
 # base entity
-leg-00,AAA1234,2025/09/01 10:00,2025/09/01 10:30,ON_TIME,airport-00,airport-01,aircraft-00,flight-00,false
+leg-00,0000,2025/09/01 10:00,2025/09/01 10:30,ON_TIME,airport-00,airport-01,aircraft-00,flight-00,false
 # status - standard variations
-leg-01,BBB1234,2025/09/01 10:00,2025/09/01 10:30,DELAYED,airport-00,airport-01,aircraft-00,flight-01,false
-leg-02,CCC1234,2025/09/01 10:00,2025/09/01 10:30,CANCELLED,airport-00,airport-01,aircraft-00,flight-01,false
-leg-03,DDD1234,2025/09/01 10:00,2025/09/01 10:30,LANDED,airport-00,airport-01,aircraft-00,flight-01,false
+leg-01,0001,2025/09/01 10:00,2025/09/01 10:30,DELAYED,airport-00,airport-01,aircraft-01,flight-01,false
+leg-02,0002,2025/09/01 10:00,2025/09/01 10:30,CANCELLED,airport-00,airport-01,aircraft-02,flight-01,false
+leg-03,0003,2025/09/01 10:00,2025/09/01 10:30,LANDED,airport-00,airport-01,aircraft-03,flight-01,false
 # status - no singular values
 # scheduled-departure - standard variations
-leg-04,EEE1234,2025/01/01 00:00,2025/01/01 10:30,ON_TIME,airport-00,airport-01,aircraft-00,flight-01,false
-leg-05,FFF1234,2025/01/01 00:01,2025/01/01 10:30,ON_TIME,airport-00,airport-01,aircraft-00,flight-01,false
-leg-06,GGG1234,2200/12/31 23:57,2200/12/31 23:59,ON_TIME,airport-00,airport-01,aircraft-00,flight-01,false
-leg-07,HHH1234,2200/12/31 23:58,2200/12/31 23:59,ON_TIME,airport-00,airport-01,aircraft-00,flight-01,false
+leg-04,0004,2025/01/01 00:00,2025/01/01 10:30,ON_TIME,airport-00,airport-01,aircraft-04,flight-01,false
+leg-05,0005,2025/01/01 00:01,2025/01/01 10:30,ON_TIME,airport-00,airport-01,aircraft-05,flight-01,false
+leg-06,0006,2200/12/31 23:57,2200/12/31 23:59,ON_TIME,airport-00,airport-01,aircraft-00,flight-01,false
+leg-07,0007,2200/12/31 23:58,2200/12/31 23:59,ON_TIME,airport-00,airport-01,aircraft-01,flight-01,false
 # scheduled-departure - no singular values
 # scheduled-arrival - standard variations
-leg-08,III1234,2025/01/01 00:00,2025/01/01 00:01,ON_TIME,airport-00,airport-01,aircraft-00,flight-01,false
-leg-09,JJJ1234,2025/01/01 00:00,2025/01/01 00:02,ON_TIME,airport-00,airport-01,aircraft-00,flight-01,false
-leg-10,KKK1234,2200/12/31 10:00,2200/12/31 23:58,ON_TIME,airport-00,airport-01,aircraft-00,flight-01,false
-leg-11,LLL1234,2200/12/31 10:00,2200/12/31 23:59,ON_TIME,airport-00,airport-01,aircraft-00,flight-01,false
+leg-08,0008,2025/01/01 00:00,2025/01/01 00:01,ON_TIME,airport-00,airport-01,aircraft-06,flight-01,false
+leg-09,0009,2025/01/01 00:00,2025/01/01 00:02,ON_TIME,airport-00,airport-01,aircraft-07,flight-01,false
+leg-10,0010,2200/12/31 10:00,2200/12/31 23:58,ON_TIME,airport-00,airport-01,aircraft-02,flight-01,false
+leg-11,0011,2200/12/31 10:00,2200/12/31 23:59,ON_TIME,airport-00,airport-01,aircraft-03,flight-01,false
 # scheduled-arrival - no singular values
-#test for features
-leg-12,LLL1235,2013/12/31 10:00,2013/12/31 23:59,LANDED,airport-00,airport-01,aircraft-00,flight-01,false
-leg-13,LLL1236,2200/12/31 10:00,2200/12/31 23:59,ON_TIME,airport-00,airport-01,aircraft-00,flight-01,false
-leg-14,LLL1237,2025/01/01 00:00,2025/01/01 01:00,ON_TIME,airport-76,airport-77,aircraft-00,flight-27,false
-leg-15,LLL1238,2025/01/01 00:00,2025/01/01 02:00,ON_TIME,airport-76,airport-77,aircraft-00,flight-29,true
-leg-16,LLL1239,2025/01/01 00:00,2025/01/01 02:00,ON_TIME,airport-76,airport-77,aircraft-00,flight-28,false
-leg-17,LLL1240,2025/01/01 02:10,2025/01/01 08:00,ON_TIME,airport-77,airport-78,aircraft-00,flight-28,false
-leg-18,LLL1241,2025/01/01 08:00,2025/01/01 10:00,ON_TIME,airport-76,airport-77,aircraft-00,flight-30,false
-leg-19,LLL1242,2025/01/01 07:00,2025/01/01 08:30,ON_TIME,airport-76,airport-77,aircraft-00,flight-31,false
-leg-20,LLL1243,2025/01/01 08:45,2025/01/01 12:00,ON_TIME,airport-77,airport-78,aircraft-00,flight-31,false
+# test for features
+leg-12,0012,2013/12/31 10:00,2013/12/31 23:59,LANDED,airport-00,airport-01,aircraft-08,flight-01,false
+leg-13,0013,2200/12/31 10:00,2200/12/31 23:59,ON_TIME,airport-00,airport-01,aircraft-04,flight-01,false
+leg-14,0014,2025/01/01 00:00,2025/01/01 01:00,ON_TIME,airport-76,airport-77,aircraft-08,flight-27,false
+leg-15,0015,2025/01/01 00:00,2025/01/01 02:00,ON_TIME,airport-76,airport-77,aircraft-09,flight-29,true
+leg-16,0016,2025/01/01 00:00,2025/01/01 02:00,ON_TIME,airport-76,airport-77,aircraft-10,flight-28,false
+leg-17,0017,2025/01/01 02:10,2025/01/01 08:00,ON_TIME,airport-77,airport-78,aircraft-06,flight-28,false
+leg-18,0018,2025/01/01 08:00,2025/01/01 10:00,ON_TIME,airport-76,airport-77,aircraft-06,flight-30,false
+leg-19,0019,2025/01/01 07:00,2025/01/01 08:30,ON_TIME,airport-76,airport-77,aircraft-07,flight-31,false
+leg-20,0020,2025/01/01 08:45,2025/01/01 12:00,ON_TIME,airport-77,airport-78,aircraft-07,flight-31,false

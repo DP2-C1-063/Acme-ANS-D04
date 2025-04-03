@@ -59,7 +59,7 @@ public class ManagerLegListService extends AbstractGuiService<Manager, Leg> {
 		masterId = super.getRequest().getData("masterId", int.class);
 
 		dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "departureAirport", "arrivalAirport");
-		super.addPayload(dataset, leg, "status", "duration", "aircraft", "flight");
+		super.addPayload(dataset, leg, "status", "duration", "aircraft", "flight", "number");
 		super.getResponse().addGlobal("flightPublished", leg.getFlight().isPublished());
 
 		dataset.put("masterId", masterId);

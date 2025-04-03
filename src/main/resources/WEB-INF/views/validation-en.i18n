@@ -63,4 +63,5 @@ acme.validation.maintenance-record.invalid-moment.message = The maintenance mome
 acme.validation.published.message = You can not delete this because it is already been published
 acme.validation.flight.no-legs.message = You can not publish a flight without legs
 acme.validation.flight.legs-published.message = All legs must be published to publish the flight
+acme.validation.leg.aircraft-in-use.message = The aircraft is in use during the selected flight window
 acme.validation.confirmation.message = You must confirm

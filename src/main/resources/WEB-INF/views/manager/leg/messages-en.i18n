@@ -11,6 +11,7 @@ manager.leg.list.button.create = Create
 manager.leg.form.title = Leg form
 
 manager.leg.form.label.flightNumber = Flight number
+manager.leg.form.label.number = Number
 manager.leg.form.label.scheduledDeparture = Scheduled departure
 manager.leg.form.label.scheduledArrival = Scheduled arrival
 manager.leg.form.label.duration = Duration

@@ -87,7 +87,6 @@ public class ManagerFlightPublishService extends AbstractGuiService<Manager, Fli
 
 			super.state(atLeastOneLeg, "*", "acme.validation.flight.no-legs.message");
 		}
-		;
 	}
 
 	@Override

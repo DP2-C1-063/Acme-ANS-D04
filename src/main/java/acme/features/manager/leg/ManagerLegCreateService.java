@@ -58,7 +58,7 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 	}
 	@Override
 	public void bind(final Leg leg) {
-		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft");
+		super.bindObject(leg, "number", "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft");
 
 	}
 	@Override
@@ -74,7 +74,7 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 	public void unbind(final Leg leg) {
 
 		Dataset dataset;
-		dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft");
+		dataset = super.unbindObject(leg, "number", "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft");
 
 		// Status --------------------------------------------------------
 
@@ -100,18 +100,13 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 
 		SelectChoices availableAircrafts;
 		Collection<Aircraft> aircrafts;
+
 		aircrafts = this.repository.findAllAircrafts();
 		availableAircrafts = SelectChoices.from(aircrafts, "model", leg.getAircraft());
 		dataset.put("aircrafts", availableAircrafts);
 		dataset.put("aircraft", availableAircrafts.getSelected());
 
 		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
-
-		/*
-		 * airlineId = flight.getManager().getAirline().getId();
-		 * airports = this.repository.findAllAirportsByOperatorId(airlineId);
-		 * aircrafts = this.repository.findAllAircraftsByAirlineId(airlineId);
-		 */
 
 		super.getResponse().addData(dataset);
 	}

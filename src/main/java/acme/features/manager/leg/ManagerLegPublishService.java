@@ -1,13 +1,21 @@
 
 package acme.features.manager.leg;
 
+import java.util.Collection;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.aircraft.Aircraft;
+import acme.entities.airport.Airport;
 import acme.entities.flight.Flight;
 import acme.entities.leg.Leg;
+import acme.entities.leg.Status;
 import acme.realms.manager.Manager;
 
 @GuiService
@@ -50,12 +58,43 @@ public class ManagerLegPublishService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void bind(final Leg leg) {
-		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft");
+		super.bindObject(leg, "number", "scheduledDeparture", "scheduledArrival", "status", "departureAirport", //
+			"arrivalAirport", "aircraft");
 	}
 
 	@Override
 	public void validate(final Leg leg) {
-		;
+		{
+			boolean aircraftNotInUse;
+			Collection<Leg> legsSameAircraft;
+			int aircraftId;
+			Date departure;
+			Date arrival;
+
+			aircraftId = leg.getAircraft().getId();
+			legsSameAircraft = this.repository.findAllLegsByAircraftId(aircraftId);
+			legsSameAircraft.remove(leg);
+			departure = leg.getScheduledDeparture();
+			arrival = leg.getScheduledArrival();
+			aircraftNotInUse = true;
+			if (departure != null && arrival != null)
+				for (Leg l : legsSameAircraft) {
+					Date startDate = l.getScheduledDeparture();
+					Date endDate = l.getScheduledArrival();
+					if (startDate != null && endDate != null) {
+						boolean startsWithinInterval = MomentHelper.isAfterOrEqual(departure, startDate) && MomentHelper.isBeforeOrEqual(departure, endDate);
+						boolean endsWithinInterval = MomentHelper.isAfterOrEqual(arrival, startDate) && MomentHelper.isBeforeOrEqual(arrival, endDate);
+						boolean coversEntireInterval = MomentHelper.isBeforeOrEqual(departure, startDate) && MomentHelper.isAfterOrEqual(arrival, endDate);
+
+						if (startsWithinInterval || endsWithinInterval || coversEntireInterval) {
+							aircraftNotInUse = false;
+							break;
+						}
+					}
+				}
+
+			super.state(aircraftNotInUse, "*", "acme.validation.leg.aircraft-in-use.message");
+		}
 	}
 
 	@Override
@@ -67,8 +106,39 @@ public class ManagerLegPublishService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void unbind(final Leg leg) {
 		Dataset dataset;
+		Collection<Aircraft> aircrafts;
+		Collection<Airport> airports;
+		SelectChoices availableAircrafts;
+		SelectChoices arrivalAirports;
+		SelectChoices departureAirports;
+		SelectChoices statuses;
 
-		dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft");
+		aircrafts = this.repository.findAllAircrafts();
+		airports = this.repository.findAllAirports();
+
+		statuses = SelectChoices.from(Status.class, leg.getStatus());
+
+		dataset = super.unbindObject(leg, "number", "scheduledDeparture", "scheduledArrival", "status", "departureAirport", //
+			"arrivalAirport", "aircraft", "published");
+
+		dataset.put("masterId", leg.getFlight().getId());
+		dataset.put("statuses", statuses);
+		dataset.put("status", statuses.getSelected());
+
+		if (!aircrafts.isEmpty()) {
+			availableAircrafts = SelectChoices.from(aircrafts, "model", leg.getAircraft());
+			dataset.put("aircrafts", availableAircrafts);
+		}
+		if (!airports.isEmpty()) {
+			arrivalAirports = SelectChoices.from(airports, "name", leg.getArrivalAirport());
+			departureAirports = SelectChoices.from(airports, "name", leg.getDepartureAirport());
+			dataset.put("departureAirports", departureAirports);
+			dataset.put("arrivalAirports", arrivalAirports);
+			dataset.put("departureAirport", departureAirports.getSelected());
+			dataset.put("arrivalAirport", arrivalAirports.getSelected());
+		}
+
+		dataset.put("aircraft", leg.getAircraft().getId());
 
 		super.getResponse().addData(dataset);
 	}

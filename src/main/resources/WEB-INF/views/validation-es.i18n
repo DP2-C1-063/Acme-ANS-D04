@@ -62,4 +62,5 @@ acme.validation.maintenance-record.invalid-moment.message = El momento de manten
 acme.validation.published.message = No puedes eliminar esto porque ya ha sido publicado
 acme.validation.flight.no-legs.message = No se puede publicar un vuelo sin tramos
 acme.validation.flight.legs-published.message = Todos los tramos deben estar publicados para publicar el vuelo
+acme.validation.leg.aircraft-in-use.message = La aeronave está en uso en el intervalo de vuelo seleccionado
 acme.validation.confirmation.message = Debe confirmar

@@ -41,7 +41,7 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 				existingLeg = this.repository.findLegByFlightNumber(leg.getFlightNumber());
 				uniqueLeg = existingLeg == null || existingLeg.equals(leg);
 
-				super.state(context, uniqueLeg, "flightNumber", "acme.validation.leg.duplicated-flight-number.message");
+				super.state(context, uniqueLeg, "number", "acme.validation.leg.duplicated-flight-number.message");
 			}
 			{
 				boolean arrivalIsBeforeDeparture;

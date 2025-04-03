@@ -3,7 +3,6 @@ package acme.entities.leg;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -38,8 +37,8 @@ public class Leg extends AbstractEntity {
 
 	@Mandatory
 	@ValidFlightNumber
-	@Column(unique = true)
-	private String				flightNumber;
+	@Automapped
+	private String				number;
 
 	@Mandatory
 	@ValidMoment(past = false, max = "2200/12/31 23:58")
@@ -71,6 +70,13 @@ public class Leg extends AbstractEntity {
 		double durationInHours = durationInMs / (60. * 60.);
 
 		return durationInHours;
+	}
+
+	@Transient
+	public String getFlightNumber() {
+		String IATACode = this.getFlight().getManager().getAirline().getIATACode();
+		String number = this.getNumber();
+		return IATACode + number;
 	}
 
 	// Relationships ----------------------------------------------------------

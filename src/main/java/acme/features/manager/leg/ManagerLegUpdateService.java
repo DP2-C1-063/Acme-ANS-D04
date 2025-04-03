@@ -50,7 +50,7 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void bind(final Leg leg) {
-		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", //
+		super.bindObject(leg, "number", "scheduledDeparture", "scheduledArrival", //
 			"status", "departureAirport", "arrivalAirport", "aircraft");
 	}
 
@@ -73,7 +73,7 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 	public void unbind(final Leg leg) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", //
+		dataset = super.unbindObject(leg, "number", "scheduledDeparture", "scheduledArrival", //
 			"status", "departureAirport", "arrivalAirport", "aircraft");
 
 		super.getResponse().addData(dataset);
