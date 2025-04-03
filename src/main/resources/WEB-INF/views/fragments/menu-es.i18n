@@ -42,6 +42,12 @@ master.menu.provider.favourite-link = Enlace favorito
 master.menu.consumer = Consumidor
 master.menu.consumer.favourite-link = Enlace favorito
 
+# master.menu.customer ##########################################################
+ 
+ master.menu.customer = Cliente
+ master.menu.customer.list-bookings = Listar reservas
+ master.menu.customer.list-passengers = Listar pasajeros
+ 
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
@@ -57,12 +63,24 @@ master.menu.flightCrewMember = Miembro de la tripulacion de vuelo
 master.menu.flightCrewMember.list-completed-flight-assignments = Listar asignaciones de vuelo completadas
 master.menu.flightCrewMember.list-planned-flight-assignments = Listar asignaciones de vuelo planeadas
 
+# master.menu.manager ############
+
+master.menu.manager = Manager
+master.menu.manager.list-flights = Listar vuelos
+
+# master.menu.customer ############
+
+master.menu.customer = Cliente
+master.menu.customer.list-bookings = Listar reservas
+
 # master.menu.technician ####################################################
 
 master.menu.technician = Técnico
 master.menu.technician.list-maintenance-records = Listar registros de mantenimiento
 master.menu.technician.list-task = Lista de tareas
+
 # master.menu.assistanceAgent ############
+
 master.menu.assistanceAgent = Asistente 
 master.menu.assistanceAgent.list-pending-claims = Lista de quejas pendientes
 master.menu.assistanceAgent.list-completed-claims = Lista de quejas completadas

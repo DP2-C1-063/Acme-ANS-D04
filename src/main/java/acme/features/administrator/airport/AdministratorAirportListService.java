@@ -39,7 +39,8 @@ public class AdministratorAirportListService extends AbstractGuiService<Administ
 	public void unbind(final Airport airport) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(airport, "name", "IATACode", "operationalScope", "city", "country", "website", "email", "address", "contactPhoneNumber");
+		dataset = super.unbindObject(airport, "name", "IATACode", "operationalScope", "city", "country");
+		super.addPayload(dataset, airport, "website", "email", "address", "contactPhoneNumber");
 
 		super.getResponse().addData(dataset);
 	}
