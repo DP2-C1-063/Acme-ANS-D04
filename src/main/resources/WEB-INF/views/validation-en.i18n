@@ -60,4 +60,4 @@ acme.validation.trackinglog.resolution-percentage.message = percentage must be g
 acme.validation.passenger.passport.message = The passport must be 6 to 9 characters alphanumeric in uppercase
 
 acme.validation.maintenance-record.invalid-moment.message = The maintenance moment must be before the next inspection date
-
+acme.validation.maintenance-record.tasks-unpublished.message  = To publish a maintenance record, all the tasks associated must be already published 
