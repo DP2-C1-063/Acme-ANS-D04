@@ -35,3 +35,9 @@ flight-24,FALSE,Lorem ipsum dolor sit ame,SELF_TRANSFER_REQUIRED,EUR 500000.00,<
 flight-25,FALSE,Lorem ipsum dolor sit ame,SELF_TRANSFER_REQUIRED,EUR 500000.00,<script>alert(‘Hacked!’);</script>,manager-00
 flight-26,FALSE,Lorem ipsum dolor sit ame,SELF_TRANSFER_REQUIRED,EUR 500000.00,'' or 'A' = 'A,manager-00
 # description - no singular values
+# sample data for testing feautures
+flight-27,FALSE,The fastest,SELF_TRANSFER_REQUIRED,EUR 100.00,"The fastest flight between Seville and Madrid",manager-01
+flight-28,FALSE,The exotic,SELF_TRANSFER_REQUIRED,EUR 100.00,"An exotic flight between Seville and China",manager-01
+flight-29,TRUE,The cheapest,SELF_TRANSFER_REQUIRED,EUR 50.00,"The cheapest flight between Seville and Madrid",manager-01
+flight-30,FALSE,The premium,SELF_TRANSFER_REQUIRED,EUR 150.00,"A premium flight between Seville and Madrid",manager-02
+flight-31,FALSE,The adventure,SELF_TRANSFER_REQUIRED,EUR 120.00,"An adventurous flight between Seville and China",manager-02

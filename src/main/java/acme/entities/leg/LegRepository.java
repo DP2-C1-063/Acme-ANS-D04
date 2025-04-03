@@ -11,7 +11,7 @@ import acme.client.repositories.AbstractRepository;
 @Repository
 public interface LegRepository extends AbstractRepository {
 
-	@Query("select l from Leg l where l.flightNumber = :flightNumber")
+	@Query("SELECT l FROM Leg l WHERE CONCAT(l.flight.manager.airline.IATACode, l.number) = :flightNumber")
 	Leg findLegByFlightNumber(String flightNumber);
 
 	@Query("select l from Leg l where l.flight.id = :flightId order by l.scheduledDeparture")

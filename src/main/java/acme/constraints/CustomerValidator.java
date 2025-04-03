@@ -33,14 +33,22 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 		if (customer == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else {
+			{
+				boolean uniqueCustomer;
+				Customer existingCustomer;
 
-			boolean uniqueCustomer;
-			Customer existingCustomer;
+				existingCustomer = this.repository.findCustomerByIdentifier(customer.getIdentifier());
+				uniqueCustomer = existingCustomer == null || existingCustomer.equals(customer);
 
-			existingCustomer = this.repository.findCustomerByIdentifier(customer.getIdentifier());
-			uniqueCustomer = existingCustomer == null || existingCustomer.equals(customer);
+				super.state(context, uniqueCustomer, "identifier", "acme.validation.customer.duplicated-identifier.message");
+			}
+			{
+				boolean correctInitials;
+				correctInitials = customer.getIdentifier().charAt(0) == customer.getIdentity().getName().charAt(0) && customer.getIdentifier().charAt(1) == customer.getIdentity().getSurname().charAt(0);
 
-			super.state(context, uniqueCustomer, "identifier", "acme.validation.customer.duplicated-identifier.message");
+				super.state(context, correctInitials, "identifier", "acme.validation.customer.incorrect-initials-identifier.message");
+
+			}
 		}
 
 		result = !super.hasErrors(context);

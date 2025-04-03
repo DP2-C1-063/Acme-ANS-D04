@@ -1,5 +1,5 @@
 
-package acme.realms.technicians;
+package acme.realms.technician;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

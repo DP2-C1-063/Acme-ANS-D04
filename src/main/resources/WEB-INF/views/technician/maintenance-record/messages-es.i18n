@@ -1,0 +1,26 @@
+# LIST ####################################################
+
+technician.maintenance-record.list.title = Lista de Registros de Mantenimiento
+
+technician.maintenance-record.list.button.create = Crear
+
+technician.maintenance-record.list.label.aircraft = Aeronave
+technician.maintenance-record.list.label.maintenance-moment = Momento de Mantenimiento
+technician.maintenance-record.list.label.status = Estado
+technician.maintenance-record.list.label.estimated-cost = Costo Estimado
+
+# FORM ####################################################
+technician.maintenance-record.form.title = Registro de Mantenimiento
+
+technician.maintenance-record.form.button.tasks = Tareas
+technician.maintenance-record.form.button.create = Crear
+technician.maintenance-record.form.button.update = Actualizar
+technician.maintenance-record.form.button.publish = Publicar
+technician.maintenance-record.form.button.delete = Eliminar
+
+technician.maintenance-record.form.label.maintenance-moment = Momento de Mantenimiento
+technician.maintenance-record.form.label.status = Estado
+technician.maintenance-record.form.label.aircraft = Aeronave
+technician.maintenance-record.form.label.next-inspection = Próxima Inspección
+technician.maintenance-record.form.label.estimated-cost = Costo Estimado
+technician.maintenance-record.form.label.notes = Notas
