@@ -19,7 +19,7 @@ import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.constraints.ValidMaintenanceRecord;
 import acme.entities.aircraft.Aircraft;
-import acme.realms.technicians.Technician;
+import acme.realms.technician.Technician;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -66,4 +66,8 @@ public class MaintenanceRecord extends AbstractEntity {
 	@ManyToOne(optional = false)
 	private Aircraft				relatedAircraft;
 
+	@Mandatory
+	// HINT: @Valid by default.
+	@Automapped
+	private boolean					draftMode			= true;
 }

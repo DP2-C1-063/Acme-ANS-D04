@@ -59,6 +59,7 @@ acme.validation.technician.license-number.message = El número de licencia debe 
 acme.validation.technician.duplicated-license-number.message = El número de licencia ya ha sido usado
 
 acme.validation.maintenance-record.invalid-moment.message = El momento de mantenimiento debe ser anterior a la fecha de la próxima inspección
+acme.validation.maintenance-record.tasks-unpublished.message  = Para publicar un registro de mantenimiento, todas las tareas asociadas deben estar publicadas 
 
 acme.validation.confirmation.message = ¿Está seguro de que quiere confirmar esta operación?
 
