@@ -9,3 +9,7 @@
 	<acme:list-column code="administrator.airlines.list.label.web" path="web" width="70%"/>
 	<acme:list-payload path="payload"/>
 </acme:list>
+
+<jstl:if test="${_command == 'list'}">
+	<acme:button code="administrator.airlines.list.button.create" action="/administrator/airlines/create"/>
+</jstl:if>	

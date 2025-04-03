@@ -10,5 +10,17 @@ flight-crew-members.flight-assignment.form.label.duty = Puesto:
 flight-crew-members.flight-assignment.form.label.lastUpdate = Ultima actualización:
 flight-crew-members.flight-assignment.form.label.leg =  Tramo asociado: 
 flight-crew-members.flight-assignment.form.label.currentStatus = Estatus actual:
-flight-crew-members.flight-assignment.form.label.remarks = Comentarios:
+flight-crew-members.flight-assignment.form.label.remarks = Comentarios (Opcional):
 flight-crew-members.flight-assignment.form.label.flightCrewMember = Miembro de tripulación asignado:
+
+flight-crew-members.flight-assignment.list.button.create = Crear
+
+flight-crew-members.flight-assignment.form.button.create = Crear
+flight-crew-members.flight-assignment.form.button.update = Actualizar
+flight-crew-members.flight-assignment.form.button.publish = Publicar
+flight-crew-members.flight-assignment.form.button.delete = Eliminar
+flight-crew-members.flight-assignments.form.button.logs = Registro de actividad
+
+flight-crew-member.flight-assignment.leg-has-not-finished-yet = No se puede publicar la asignación si el tramo ya ha sucedido
+
+

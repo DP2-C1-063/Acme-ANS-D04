@@ -21,7 +21,17 @@ public class FlightCrewMemberActivityLogShowService extends AbstractGuiService<F
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int memberId;
+		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		ActivityLog log;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		log = this.repository.findActivityLogById(id);
+
+		status = log.getFlightAssignment().getFlightCrewMember().getId() == memberId;
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -38,10 +48,8 @@ public class FlightCrewMemberActivityLogShowService extends AbstractGuiService<F
 	@Override
 	public void unbind(final ActivityLog log) {
 		Dataset dataset;
-
-		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severityLevel", "flightAssignment");
-		dataset.put("confirmation", false);
-		dataset.put("readonly", true);
+		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severityLevel", "draftMode");
+		dataset.put("flightAssignment", log.getFlightAssignment().getId());
 		super.getResponse().addData(dataset);
 	}
 
