@@ -6,11 +6,11 @@
 <acme:form>
 	<jstl:choose>
 		<jstl:when test="${_command == 'create'}">
-			<acme:input-select code=" technician.task-involves-record.form.label.task" path="task" choices="${tasks}" />
+			<acme:input-select code="technician.task-involves-record.form.label.task" path="task" choices="${tasks}" />
 			<acme:submit code="technician.task-involves-record.form.button.create" action="/technician/task-involves-record/create?masterId=${masterId}"/>			
 		</jstl:when>
 		<jstl:when test="${_command == 'show'}">
-			<acme:input-select code=" technician.task-involves-record.form.label.task-type" path="task.type" choices="${types}" readonly="true"/>
+			<acme:input-select code="technician.task-involves-record.form.label.task-type" path="task.type" choices="${types}" readonly="true"/>
 			<acme:input-textarea code="technician.task-involves-record.form.label.description" path="task.description" readonly="true"/>
 			<acme:input-integer code="technician.task-involves-record.form.label.priority" path="task.priority" readonly="true"/>
 			<acme:input-integer code="technician.task-involves-record.form.label.estimated-duration" path="task.estimatedDuration" readonly="true"/>

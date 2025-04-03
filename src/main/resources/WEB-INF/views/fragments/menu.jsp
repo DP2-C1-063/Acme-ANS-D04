@@ -63,9 +63,10 @@
  		</acme:menu-option>
     
 		</acme:menu-option>
-		<acme:menu-option code="master.menu.assistanceAgent" access="hasRealm('AssistanceAgent')">
-		<acme:menu-suboption code="master.menu.assistanceAgent.list-pending-claims" action="/assistance-agent/claim/list-pending"/>
-		<acme:menu-suboption code="master.menu.assistanceAgent.list-completed-claims" action="/assistance-agent/claim/list-completed"/>
+			<acme:menu-option code="master.menu.assistanceAgent" access="hasRealm('AssistanceAgent')">
+			<acme:menu-suboption code="master.menu.assistanceAgent.list-pending-claims" action="/assistance-agent/claim/list-pending"/>
+			<acme:menu-suboption code="master.menu.assistanceAgent.list-completed-claims" action="/assistance-agent/claim/list-completed"/>
+		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.manager" access="hasRealm('Manager')">
 			<acme:menu-suboption code="master.menu.manager.list-flights" action="/manager/flight/list"/>
@@ -75,7 +76,7 @@
 			<acme:menu-suboption code="master.menu.technician.list-maintenance-records" action="/technician/maintenance-record/list"/>
 			<acme:menu-suboption code="master.menu.technician.list-task" action="/technician/task/list"/>
 		</acme:menu-option>
-
+  
 	</acme:menu-left>
 
 	<acme:menu-right>		

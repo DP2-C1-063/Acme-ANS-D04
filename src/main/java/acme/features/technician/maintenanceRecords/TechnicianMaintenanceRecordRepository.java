@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.maintenanceRecords.MaintenanceRecord;
-import acme.entities.tasks.TaskInvolvesRecord;
+import acme.entities.tasks.Task;
 
 public interface TechnicianMaintenanceRecordRepository extends AbstractRepository {
 
@@ -24,6 +24,6 @@ public interface TechnicianMaintenanceRecordRepository extends AbstractRepositor
 	@Query("SELECT a FROM Aircraft a")
 	Collection<Aircraft> findAllAircraft();
 
-	@Query("SELECT i.task FROM TaskInvolvesRecord i WHERE i.id = :id")
-	Collection<TaskInvolvesRecord> findAllTaskAssociatedWith(final int id);
+	@Query("SELECT i.task FROM TaskInvolvesRecord i WHERE i.maintenanceRecord.id = :id")
+	Collection<Task> findAllTaskAssociatedWith(final int id);
 }
