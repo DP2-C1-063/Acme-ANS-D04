@@ -45,8 +45,8 @@ master.menu.consumer.favourite-link = Enlace favorito
 # master.menu.customer ##########################################################
  
  master.menu.customer = Cliente
- master.menu.customer.list-bookings = Listado de reservas
- master.menu.customer.list-passengers = Listado de pasajeros
+ master.menu.customer.list-bookings = Listar reservas
+ master.menu.customer.list-passengers = Listar pasajeros
  
 # master.menu.user-account ####################################################
 
