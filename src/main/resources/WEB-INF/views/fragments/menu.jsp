@@ -52,8 +52,8 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.flightCrewMember" access="hasRealm('FlightCrewMembers')">
-			<acme:menu-suboption code="master.menu.flightCrewMember.list-completed-flight-assignments" action="/flight-crew-members/flight-assignment/list-completed/"/>
-			<acme:menu-suboption code="master.menu.flightCrewMember.list-planned-flight-assignments" action="/flight-crew-members/flight-assignment/list-planned/"/>
+			<acme:menu-suboption code="master.menu.flightCrewMember.list-completed-flight-assignments" action="/flight-crew-members/flight-assignment/list-completed"/>
+			<acme:menu-suboption code="master.menu.flightCrewMember.list-planned-flight-assignments" action="/flight-crew-members/flight-assignment/list-planned"/>
 		</acme:menu-option>
 				
 		<acme:menu-option code="master.menu.customer" access="hasRealm('Customer')">

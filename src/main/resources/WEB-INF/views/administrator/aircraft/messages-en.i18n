@@ -3,6 +3,7 @@ administrator.aircraft.list.title = Listing of aircraft
 administrator.aircraft.list.label.model = Model
 administrator.aircraft.list.label.registrationNumber = Registration Number
 administrator.aircraft.list.label.status = Status
+administrator.aircraft.list.button.create = Create
 
 administrator.aircraft.form.title = Aircraft Form
 
