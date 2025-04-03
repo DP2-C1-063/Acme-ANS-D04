@@ -8,6 +8,7 @@ import acme.client.components.principals.Administrator;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.airlines.AirlineType;
 import acme.entities.airlines.Airlines;
 
 @GuiService
@@ -40,10 +41,12 @@ public class AdministratorAirlinesShowService extends AbstractGuiService<Adminis
 	public void unbind(final Airlines airline) {
 		SelectChoices choices;
 		Dataset dataset;
+		choices = SelectChoices.from(AirlineType.class, airline.getType());
 
 		dataset = super.unbindObject(airline, "name", "IATACode", "web", "type", "foundationMoment", "email", "phoneNumber");
 		dataset.put("confirmation", false);
-		dataset.put("readonly", true);
+		dataset.put("readonly", false);
+		dataset.put("types", choices);
 		super.getResponse().addData(dataset);
 	}
 

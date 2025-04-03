@@ -6,8 +6,8 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
-import acme.realms.technicians.Technician;
-import acme.realms.technicians.TechnicianRepository;
+import acme.realms.technician.Technician;
+import acme.realms.technician.TechnicianRepository;
 
 public class TechnicianValidator extends AbstractValidator<ValidTechnician, Technician> {
 

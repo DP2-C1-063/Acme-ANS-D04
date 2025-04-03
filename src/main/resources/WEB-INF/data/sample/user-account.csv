@@ -26,5 +26,6 @@ user-account-flight-crew-member-03,true,"UserIdentity{name: 'Paco', surname: 'As
 user-account-flight-crew-member-04,true,"UserIdentity{name: 'Paulina', surname: 'AsistentaDeVuelo', email: 'asistentadevuelo@acme.com'}",member4,member4
 user-account-flight-crew-member-05,true,"UserIdentity{name: 'Manolo', surname: 'Nuevo', email: 'nuevo@acme.com'}",member,member
 user-account-flight-crew-member-00,true,"UserIdentity{name: 'Base', surname: 'Base', email: 'base@acme.com'}",basemember,basemember
+user-account-assistance-agent-00,true,"UserIdentity{name: 'Base', surname: 'Base', email: 'base@acme.com'}",basemember2,basemember2
 user-account-administrator-02,true,"UserIdentity{name: 'Juán', surname: 'Admin', email: 'a1@acme.com'}",administrator1,administrator1
 user-account-administrator-03,true,"UserIdentity{name: 'María', surname: 'Admin', email: 'a2@acme.com'}",administrator2,administrator2

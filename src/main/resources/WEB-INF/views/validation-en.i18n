@@ -60,5 +60,21 @@ acme.validation.trackinglog.resolution-percentage.message = percentage must be g
 acme.validation.passenger.passport.message = The passport must be 6 to 9 characters alphanumeric in uppercase
 
 acme.validation.maintenance-record.invalid-moment.message = The maintenance moment must be before the next inspection date
+acme.validation.maintenance-record.tasks-unpublished.message  = To publish a maintenance record, all the tasks associated must be already published 
 
 acme.validation.customer.incorrect-initials-identifier.message = At least the first two letters of the identifier must be the initials of the customer (name and surname)
+
+acme.validation.confirmation.message = Do you wish to confirm this operation?
+
+acme.validation.activityLog.leg-not-done-yet.message = The log can not be associated to a leg that is not finished yet
+
+acme.validation.range = must be between 0 and 10
+
+acme.validation.flightAssignment.member-not-available.message = This member is not currently available.
+
+acme.validation.flightAssignment.concurrent-leg.message = There is already a leg that overlaps with this one for this crew member
+
+acme.validation.flightAssignment.already-pilot = There is already a pilot for this leg
+
+acme.validation.flightAssignment.already-co-pilot = There is already a co-pilot for this leg
+

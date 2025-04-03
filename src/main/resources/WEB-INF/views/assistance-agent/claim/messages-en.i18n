@@ -1,0 +1,28 @@
+
+assistance-agent.claim.list.title = List of claims
+
+assistance-agent.claim.list.label.passengerEmail = Passenger email
+assistance-agent.claim.list.label.type = Type
+assistance-agent.claim.list.label.description =  Description
+
+
+assistance-agent.claim.form.title = Claim Form
+
+assistance-agent.claim.form.label.registrationMoment = Registration Moment:
+assistance-agent.claim.form.label.passengerEmail = Passenger Email:
+assistance-agent.claim.form.label.description = Description:
+assistance-agent.claim.form.label.type = Type:
+assistance-agent.claim.form.label.leg = Leg:
+assistance-agent.claim.form.label.assistanceAgent = Assistance Agent:
+
+
+
+assistance-agent.claim.form.button.review = review
+assistance-agent.claim.form.button.delete = delete
+assistance-agent.claim.form.button.publish = publish
+assistance-agent.claim.form.button.update= update
+assistance-agent.claim.list.button.create =create
+assistance-agent.claim.form.button.create=create
+
+assistance-agent.claim.form.button.TrackingLogs=Tracking Logs
+assistance-agent.claim.leg-has-not-finished-yet = An claim cant be published if the leg has already occurred
