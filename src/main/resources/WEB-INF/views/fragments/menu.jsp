@@ -55,6 +55,14 @@
 			<acme:menu-suboption code="master.menu.flightCrewMember.list-activity-logs" action="/flight-crew-members/activity-log/list"/>
 			<acme:menu-suboption code="master.menu.flightCrewMember.list-completed-flight-assignments" action="/flight-crew-members/flight-assignment/list-completed"/>
 			<acme:menu-suboption code="master.menu.flightCrewMember.list-planned-flight-assignments" action="/flight-crew-members/flight-assignment/list-planned"/>
+
+		</acme:menu-option>
+				
+		<acme:menu-option code="master.menu.customer" access="hasRealm('Customer')">
+ 			<acme:menu-suboption code="master.menu.customer.list-bookings" action="/customer/booking/list"/>
+ 			<acme:menu-suboption code="master.menu.customer.list-passengers" action="/customer/passenger/list"/>
+ 		</acme:menu-option>
+	
 		<acme:menu-suboption code="master.menu.flightCrewMember.list-completed-flight-assignments" action="/flight-crew-members/flight-assignment/list-completed"/>
 		<acme:menu-suboption code="master.menu.flightCrewMember.list-planned-flight-assignments" action="/flight-crew-members/flight-assignment/list-planned"/>
     
@@ -71,6 +79,7 @@
 				
 		</acme:menu-option>
 		
+
 	</acme:menu-left>
 
 	<acme:menu-right>		
@@ -80,6 +89,8 @@
 			<acme:menu-suboption code="master.menu.user-account.provider-profile" action="/authenticated/provider/update" access="hasRealm('Provider')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-consumer" action="/authenticated/consumer/create" access="!hasRealm('Consumer')"/>
 			<acme:menu-suboption code="master.menu.user-account.consumer-profile" action="/authenticated/consumer/update" access="hasRealm('Consumer')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-customer" action="/authenticated/customer/create" access="!hasRealm('Customer')"/>
+			<acme:menu-suboption code="master.menu.user-account.customer-profile" action="/authenticated/customer/update" access="hasRealm('Customer')"/>
 		</acme:menu-option>
 	</acme:menu-right>
 </acme:menu-bar>

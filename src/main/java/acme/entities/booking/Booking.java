@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -15,8 +16,8 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
-import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
+import acme.client.helpers.SpringHelper;
 import acme.constraints.ValidBooking;
 import acme.constraints.ValidLocatorCode;
 import acme.entities.flight.Flight;
@@ -52,11 +53,6 @@ public class Booking extends AbstractEntity {
 	@Automapped
 	private TravelClass			travelClass;
 
-	@Mandatory
-	@ValidMoney
-	@Automapped
-	private Money				price;
-
 	@Optional
 	@ValidString(pattern = "^\\d{4}$")
 	@Automapped
@@ -71,5 +67,38 @@ public class Booking extends AbstractEntity {
 	@ManyToOne
 	@Valid
 	private Flight				flight;
+
+	@Mandatory
+	@Automapped
+	private boolean				draftMode			= true;
+
+	/*
+	 * @Transient
+	 * public Money getPrice() {
+	 * Money totalCost = this.getFlight().getCost();
+	 * BookingRepository bookingRepository = SpringHelper.getBean(BookingRepository.class);
+	 * Integer pricePerPassenger = bookingRepository.getNumberPassengersOfBooking(this.getId());
+	 * Money res = new Money();
+	 * res.setCurrency(totalCost.getCurrency());
+	 * res.setAmount(totalCost.getAmount() * pricePerPassenger);
+	 * return res;
+	 * }
+	 */
+
+
+	@Transient
+	public Money getPrice() {
+		Money totalCost = this.getFlight().getCost();
+		BookingRepository bookingRepository = SpringHelper.getBean(BookingRepository.class);
+		Integer numPassengers = bookingRepository.getNumberPassengersOfBooking(this.getId());
+		Money res = new Money();
+		res.setCurrency(totalCost.getCurrency());
+		if (numPassengers == 0)
+			res.setAmount(0.00);
+		else
+			res.setAmount(totalCost.getAmount() / numPassengers);
+
+		return res;
+	}
 
 }

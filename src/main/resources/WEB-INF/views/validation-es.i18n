@@ -61,6 +61,8 @@ acme.validation.technician.duplicated-license-number.message = El número de lic
 acme.validation.maintenance-record.invalid-moment.message = El momento de mantenimiento debe ser anterior a la fecha de la próxima inspección
 acme.validation.maintenance-record.tasks-unpublished.message  = Para publicar un registro de mantenimiento, todas las tareas asociadas deben estar publicadas 
 
+acme.validation.customer.incorrect-initials-identifier.message = Las 2 primeras letras del identificador del cliente deben ser las iniciales del mismo (nombre y apellidos)
+
 acme.validation.confirmation.message = ¿Está seguro de que quiere confirmar esta operación?
 
 acme.validation.activityLog.leg-not-done-yet.message = El registro no puede asociarse a un tramo que aun no ha finalizado
