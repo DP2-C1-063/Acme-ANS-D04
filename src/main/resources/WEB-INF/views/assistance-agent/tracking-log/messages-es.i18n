@@ -1,10 +1,10 @@
-assistance-agent.tracking-logs.list.title = Lista de tracking logs
+assistance-agent.tracking-log.list.title = Lista de tracking logs
 
 assistance-agent.tracking-logs.list.label.resolutionPercentage = Porcentaje de resolución
 assistance-agent.tracking-logs.list.label.step = Paso
 assistance-agent.tracking-logs.list.label.lastUpdateMoment =  última actualización
 
-assistance-agent.tracking-logs.form.title = Formulario de tracking log
+assistance-agent.tracking-log.form.title = Formulario de tracking log
 
 assistance-agent.tracking-logs.form.label.lastUpdateMoment = última actualización:
 assistance-agent.tracking-logs.form.label.step = Paso:
@@ -17,6 +17,7 @@ assistance-agent.tracking-logs.form.label.assistanceAgent = Asistente:
 assistance-agent.tracking-logs.form.button.delete = borrar
 assistance-agent.tracking-logs.form.button.publish = publicar
 assistance-agent.tracking-logs.form.button.update= actualizar
-assistance-agent.tracking-logs.list.button.create =crear
+assistance-agent.tracking-logs.list.button.create = crear
+assistance-agent.tracking-logs.form.button.create = crear
 assistance-agent.tracking-logs.claim-have-not-been-published= tracking log can not be published if corresponding claim is not published
 
