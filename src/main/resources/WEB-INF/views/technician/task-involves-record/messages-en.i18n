@@ -1,0 +1,24 @@
+# LIST ##########
+
+technician.task-involves-record.list.title  = List Task
+technician.task-involves-record.list.label.technician = Technician 
+technician.task-involves-record.list.label.type= Type
+technician.task-involves-record.list.label.description = Description
+technician.task-involves-record.list.label.priority = Priority
+technician.task-involves-record.list.label.estimated-duration = Estimated Duration
+
+technician.task-involves-record.list.button.create = Create
+
+# FORM #########
+
+technician.task-involves-record.form.title = Task
+technician.task-involves-record.form.label.task-type=Type
+technician.task-involves-record.form.label.description = Description
+technician.task-involves-record.form.label.priority = Priority
+technician.task-involves-record.form.label.estimated-duration = Estimated Duration  
+
+technician.task-involves-record.form.button.create = Create
+technician.task-involves-record.form.button.update = Update
+technician.task-involves-record.form.button.publish = Publish
+technician.task-involves-record.form.button.delete = Delete
+

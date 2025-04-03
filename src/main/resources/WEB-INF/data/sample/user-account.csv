@@ -14,7 +14,8 @@ user-account-technician-00,true,"UserIdentity{name: 'Juán', surname: 'Fernandez
 user-account-technician-01,true,"UserIdentity{name: 'Antonio', surname: 'Fernandez', email: 'antonio@acme.com'}",technician1,technician1
 user-account-technician-02,true,"UserIdentity{name: 'Sebastian', surname: 'Fernandez', email: 'antonio@acme.com'}",technician2,technician2
 user-account-technician-03,true,"UserIdentity{name: 'Fernando', surname: 'Fernandez', email: 'antonio@acme.com'}",technician3,technician3
-user-account-customer-01,true,"UserIdentity{name: 'Maria', surname: 'Moreno', email: 'maria@acme.com'}",customer1,customer1
+user-account-customer-00,true,"UserIdentity{name: 'Maria', surname: 'Moreno', email: 'maria@acme.com'}",customer0,customer0
+user-account-customer-01,true,"UserIdentity{name: 'Raquel', surname: 'Ortega', email: 'almiron@acme.com'}",customer1,customer1
 user-account-customer-02,true,"UserIdentity{name: 'Sergio', surname: 'Lopez', email: 'sergio@acme.com'}",customer2,customer2
 user-account-customer-03,true,"UserIdentity{name: 'Gabriela', surname: 'Sanchez', email: 'gabriela@acme.com'}",customer3,customer3
 user-account-assistance-agent-01,true,"UserIdentity{name: 'Manuel', surname: 'Con', email: 'manuel@acme.com'}",agent1,agent1
@@ -26,6 +27,6 @@ user-account-flight-crew-member-03,true,"UserIdentity{name: 'Paco', surname: 'As
 user-account-flight-crew-member-04,true,"UserIdentity{name: 'Paulina', surname: 'AsistentaDeVuelo', email: 'asistentadevuelo@acme.com'}",member4,member4
 user-account-flight-crew-member-05,true,"UserIdentity{name: 'Manolo', surname: 'Nuevo', email: 'nuevo@acme.com'}",member,member
 user-account-flight-crew-member-00,true,"UserIdentity{name: 'Base', surname: 'Base', email: 'base@acme.com'}",basemember,basemember
-
+user-account-assistance-agent-00,true,"UserIdentity{name: 'Base', surname: 'Base', email: 'base@acme.com'}",basemember2,basemember2
 user-account-administrator-02,true,"UserIdentity{name: 'Juán', surname: 'Admin', email: 'a1@acme.com'}",administrator1,administrator1
 user-account-administrator-03,true,"UserIdentity{name: 'María', surname: 'Admin', email: 'a2@acme.com'}",administrator2,administrator2

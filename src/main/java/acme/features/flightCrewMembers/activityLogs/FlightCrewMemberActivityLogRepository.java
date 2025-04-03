@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.activityLog.ActivityLog;
+import acme.entities.flightAssignment.FlightAssignment;
 
 @Repository
 public interface FlightCrewMemberActivityLogRepository extends AbstractRepository {
@@ -17,5 +18,11 @@ public interface FlightCrewMemberActivityLogRepository extends AbstractRepositor
 
 	@Query("select a from ActivityLog a where a.id = :id")
 	ActivityLog findActivityLogById(int id);
+
+	@Query("select a from FlightAssignment a where a.id = :id")
+	FlightAssignment findAssignmentById(int id);
+
+	@Query("select a from ActivityLog a where a.flightAssignment.id = :id")
+	Collection<ActivityLog> findAllActivityLogsOfAssignment(final int id);
 
 }

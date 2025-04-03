@@ -7,5 +7,4 @@ import acme.client.repositories.AbstractRepository;
 
 @Repository
 public interface FlightRepository extends AbstractRepository {
-
 }

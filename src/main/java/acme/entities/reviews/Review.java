@@ -48,6 +48,7 @@ public class Review extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
-	private Boolean				recomended;
+	// HINT: @Valid by default.
+	private boolean				recomended;
 
 }

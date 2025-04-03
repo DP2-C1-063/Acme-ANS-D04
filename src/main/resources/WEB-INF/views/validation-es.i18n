@@ -59,8 +59,23 @@ acme.validation.technician.license-number.message = El número de licencia debe 
 acme.validation.technician.duplicated-license-number.message = El número de licencia ya ha sido usado
 
 acme.validation.maintenance-record.invalid-moment.message = El momento de mantenimiento debe ser anterior a la fecha de la próxima inspección
+
 acme.validation.published.message = No puedes eliminar esto porque ya ha sido publicado
 acme.validation.flight.no-legs.message = No se puede publicar un vuelo sin tramos
 acme.validation.flight.legs-published.message = Todos los tramos deben estar publicados para publicar el vuelo
 acme.validation.leg.aircraft-in-use.message = La aeronave está en uso en el intervalo de vuelo seleccionado
-acme.validation.confirmation.message = Debe confirmar
+
+acme.validation.maintenance-record.tasks-unpublished.message  = Para publicar un registro de mantenimiento, todas las tareas asociadas deben estar publicadas 
+
+acme.validation.customer.incorrect-initials-identifier.message = Las 2 primeras letras del identificador del cliente deben ser las iniciales del mismo (nombre y apellidos)
+
+acme.validation.confirmation.message = ¿Está seguro de que quiere confirmar esta operación?
+
+acme.validation.activityLog.leg-not-done-yet.message = El registro no puede asociarse a un tramo que aun no ha finalizado
+
+acme.validation.range = Debe estar entre 0 y 10
+
+acme.validation.flightAssignment.member-not-available.message = Este miembro no se encuentra disponible
+acme.validation.flightAssignment.concurrent-leg.message = Este miembro ya tiene un tramo en estas fechas
+acme.validation.flightAssignment.already-pilot = Ya hay un piloto asignado a este tramo
+acme.validation.flightAssignment.already-co-pilot = Ya hay un copiloto asignado a este tramo
