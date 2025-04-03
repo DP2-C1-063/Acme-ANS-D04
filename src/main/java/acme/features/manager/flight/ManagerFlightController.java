@@ -1,27 +1,36 @@
 
-package acme.features.administrator.airport;
+package acme.features.manager.flight;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import acme.client.components.principals.Administrator;
 import acme.client.controllers.AbstractGuiController;
 import acme.client.controllers.GuiController;
-import acme.entities.airport.Airport;
+import acme.entities.flight.Flight;
+import acme.realms.manager.Manager;
 
 @GuiController
-public class AdministratorAirportController extends AbstractGuiController<Administrator, Airport> {
+public class ManagerFlightController extends AbstractGuiController<Manager, Flight> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AdministratorAirportListService		listService;
+	private ManagerFlightListService	listService;
+
 	@Autowired
-	private AdministratorAirportShowService		showService;
+	private ManagerFlightShowService	showService;
+
 	@Autowired
-	private AdministratorAirportCreateService	createService;
+	private ManagerFlightCreateService	createService;
+
 	@Autowired
-	private AdministratorAirportUpdateService	updateService;
+	private ManagerFlightUpdateService	updateService;
+
+	@Autowired
+	private ManagerFlightDeleteService	deleteService;
+
+	@Autowired
+	private ManagerFlightPublishService	publishService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -32,6 +41,7 @@ public class AdministratorAirportController extends AbstractGuiController<Admini
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);
+		super.addBasicCommand("delete", this.deleteService);
+		super.addCustomCommand("publish", "update", this.publishService);
 	}
-
 }

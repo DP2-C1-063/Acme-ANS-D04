@@ -92,3 +92,7 @@ airport-73,Lorem ipsum dolor sit ame,ABW,INTERNATIONAL,Lorem ipsum dolor sit ame
 airport-74,Lorem ipsum dolor sit ame,ABX,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*","+123456789123456"
 airport-75,Lorem ipsum dolor sit ame,ABY,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut*",null
 # contactPhoneNumber - no singular values
+# sample data for testing feautures
+airport-76,Aeropuerto de Sevilla,SVQ,INTERNATIONAL,Seville,Spain,http://www.aena.es/es/sevilla.html,svqcas@aena.es,"Ctra. N-IV Madrid-Cádiz, km. 532, 41020 Sevilla, España","+34913211000"
+airport-77,Aeropuerto Adolfo Suárez Madrid-Barajas,MAD,INTERNATIONAL,Madrid,Spain,http://www.aena.es/es/madrid-barajas.html,clientesmad@aena.es,"Avenida de la Hispanidad, s/n, 28042 Madrid, España","+34913211000"
+airport-78,Aeropuerto Internacional de Pekín-Capital,PEK,INTERNATIONAL,Pekin,China,http://www.bcia.com.cn,null,"Distrito de Chaoyang, Pekín, China","+861096158"

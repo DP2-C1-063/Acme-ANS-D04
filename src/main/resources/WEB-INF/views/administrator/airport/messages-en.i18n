@@ -5,10 +5,8 @@ administrator.airport.list.label.IATACode = IATA code
 administrator.airport.list.label.operationalScope = Operational scope
 administrator.airport.list.label.city = City
 administrator.airport.list.label.country = Country
-administrator.airport.list.label.website = Website
-administrator.airport.list.label.email = Email
-administrator.airport.list.label.address = Address
-administrator.airport.list.label.contactPhoneNumber = Contact phone number
+
+administrator.airport.list.button.create = Create
 
 administrator.airport.form.title = Airport form
 administrator.airport.form.label.name = Name:
@@ -20,3 +18,7 @@ administrator.airport.form.label.website = Website:
 administrator.airport.form.label.email = Email:
 administrator.airport.form.label.address = Address:
 administrator.airport.form.label.contactPhoneNumber = Contact phone number:
+
+administrator.airport.form.label.confirmation = Confirm
+administrator.airport.form.button.update = Update
+administrator.airport.form.button.create = Create
