@@ -2,6 +2,7 @@
 package acme.features.flightCrewMembers.flightAssignments;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,6 +11,7 @@ import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.activityLog.ActivityLog;
 import acme.entities.flightAssignment.CurrentStatus;
 import acme.entities.flightAssignment.Duty;
 import acme.entities.flightAssignment.FlightAssignment;
@@ -69,6 +71,8 @@ public class FlightCrewMemberFlightAssignmentDeleteService extends AbstractGuiSe
 
 	@Override
 	public void perform(final FlightAssignment assignment) {
+		List<ActivityLog> logs = this.repository.findLogsByAssignmentId(assignment.getId());
+		this.repository.deleteAll(logs);
 		this.repository.delete(assignment);
 	}
 
