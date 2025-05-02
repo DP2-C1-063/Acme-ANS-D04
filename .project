@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Acme-ANS-D03</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -38,7 +37,12 @@
 		<link>
 			<name>acme-framework</name>
 			<type>2</type>
-			<locationURI>WORKSPACE_LOC/Frameworks/Acme-Framework-25.3.0/target/classes</locationURI>
+			<locationURI>WORKSPACE_LOC/Frameworks/Acme-Framework-25.5.0/target/classes</locationURI>
+		</link>
+		<link>
+			<name>target/classes</name>
+			<type>2</type>
+			<location>//C:/Users/herre/Desktop/Workspace-25/Projects/Acme-ANS-D04/target/classes/</location>
 		</link>
 	</linkedResources>
 </projectDescription>
