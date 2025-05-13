@@ -31,6 +31,7 @@ public class ManagerFlightUpdateService extends AbstractGuiService<Manager, Flig
 		flightId = super.getRequest().getData("id", int.class);
 		flight = this.repository.findFlightById(flightId);
 		manager = flight == null ? null : flight.getManager();
+
 		status = flight != null && super.getRequest().getPrincipal().hasRealm(manager);
 
 		super.getResponse().setAuthorised(status);
@@ -74,7 +75,7 @@ public class ManagerFlightUpdateService extends AbstractGuiService<Manager, Flig
 		indications = SelectChoices.from(Indication.class, flight.getIndication());
 
 		dataset = super.unbindObject(flight, "tag", "indication", "cost", //
-			"published", "description", "scheduledDeparture", "scheduledArrival", "originCity", //
+			"description", "scheduledDeparture", "scheduledArrival", "originCity", //
 			"destinationCity", "numberOfLayovers", "published");
 		dataset.put("masterId", flight.getId());
 		dataset.put("indications", indications);
