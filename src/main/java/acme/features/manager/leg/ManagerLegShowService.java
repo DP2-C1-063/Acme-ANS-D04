@@ -11,6 +11,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.airport.Airport;
+import acme.entities.flight.Flight;
 import acme.entities.leg.Leg;
 import acme.entities.leg.Status;
 import acme.realms.manager.Manager;
@@ -27,7 +28,19 @@ public class ManagerLegShowService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int legId;
+		Leg leg;
+		Flight flight;
+		Manager manager;
+
+		legId = super.getRequest().getData("id", int.class);
+		leg = this.repository.findLegById(legId);
+		flight = leg.getFlight();
+		manager = flight == null ? null : flight.getManager();
+		status = leg != null && flight != null && super.getRequest().getPrincipal().hasRealm(manager);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -76,7 +89,6 @@ public class ManagerLegShowService extends AbstractGuiService<Manager, Leg> {
 		}
 
 		dataset.put("aircraft", leg.getAircraft().getId());
-		dataset.put("readonly", leg.isPublished());
 
 		super.getResponse().addData(dataset);
 	}

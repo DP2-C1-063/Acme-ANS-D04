@@ -4,9 +4,11 @@ package acme.features.manager.flight;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flight.Flight;
+import acme.entities.flight.Indication;
 import acme.realms.manager.Manager;
 
 @GuiService
@@ -29,6 +31,7 @@ public class ManagerFlightUpdateService extends AbstractGuiService<Manager, Flig
 		flightId = super.getRequest().getData("id", int.class);
 		flight = this.repository.findFlightById(flightId);
 		manager = flight == null ? null : flight.getManager();
+
 		status = flight != null && super.getRequest().getPrincipal().hasRealm(manager);
 
 		super.getResponse().setAuthorised(status);
@@ -68,11 +71,15 @@ public class ManagerFlightUpdateService extends AbstractGuiService<Manager, Flig
 	@Override
 	public void unbind(final Flight flight) {
 		Dataset dataset;
+		SelectChoices indications;
+		indications = SelectChoices.from(Indication.class, flight.getIndication());
 
 		dataset = super.unbindObject(flight, "tag", "indication", "cost", //
-			"published", "description", "scheduledDeparture", "scheduledArrival", "originCity", //
+			"description", "scheduledDeparture", "scheduledArrival", "originCity", //
 			"destinationCity", "numberOfLayovers", "published");
 		dataset.put("masterId", flight.getId());
+		dataset.put("indications", indications);
+		dataset.put("indication", indications.getSelected());
 
 		super.getResponse().addData(dataset);
 	}
