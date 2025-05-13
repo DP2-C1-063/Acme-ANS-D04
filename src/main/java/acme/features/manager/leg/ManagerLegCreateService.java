@@ -28,7 +28,6 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void authorise() {
-
 		boolean status;
 		int masterId;
 		Flight flight;

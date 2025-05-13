@@ -45,7 +45,10 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 			}
 			{
 				boolean arrivalIsBeforeDeparture;
-				arrivalIsBeforeDeparture = MomentHelper.isBefore(leg.getScheduledArrival(), leg.getScheduledDeparture());
+				arrivalIsBeforeDeparture = false;
+
+				if (!(leg.getScheduledArrival() == null || leg.getScheduledDeparture() == null))
+					arrivalIsBeforeDeparture = MomentHelper.isBefore(leg.getScheduledArrival(), leg.getScheduledDeparture());
 
 				super.state(context, !arrivalIsBeforeDeparture, "scheduledArrival", "acme.validation.leg.arrival-before-departure.message");
 			}
@@ -54,19 +57,21 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 				boolean durationIsTooLong;
 				durationIsTooLong = leg.getDuration() > 16.667;
 
-				super.state(context, !durationIsTooLong, "duration", "acme.validation.leg.duration-too-long.message");
+				super.state(context, !durationIsTooLong, "scheduledArrival", "acme.validation.leg.duration-too-long.message");
 			}
 			{
 				// Added based on a teacher's message in the discussion forum. Min duration = 1 minute (aprox. 0.016 hours)
 				boolean durationIsTooShort;
 				durationIsTooShort = leg.getDuration() < 0.016;
 
-				super.state(context, !durationIsTooShort, "duration", "acme.validation.leg.duration-too-short.message");
+				super.state(context, !durationIsTooShort, "scheduledArrival", "acme.validation.leg.duration-too-short.message");
 			}
 			{
 				// Puede que deba eliminarse esta restricción
 				boolean sameDepartureAndArrivalAirport;
-				sameDepartureAndArrivalAirport = leg.getDepartureAirport().equals(leg.getArrivalAirport());
+				sameDepartureAndArrivalAirport = false;
+				if (leg.getDepartureAirport() != null)
+					sameDepartureAndArrivalAirport = leg.getDepartureAirport().equals(leg.getArrivalAirport());
 
 				super.state(context, !sameDepartureAndArrivalAirport, "arrivalAirport", "acme.validation.leg.same-departure-and-arrival-airport.message");
 			}
