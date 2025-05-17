@@ -77,8 +77,10 @@ public class TechnicianTaskInvolvesRecordCreateService extends AbstractGuiServic
 	public void unbind(final TaskInvolvesRecord involves) {
 		Dataset dataset;
 		SelectChoices choicesTask;
+		Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
 
-		Collection<Task> tasks = this.repository.findAllTasks();
+		Collection<Task> tasks = this.repository.findAllTasks().stream().filter(f -> !f.isDraftMode() || f.getTechnician().equals(technician)).toList();
+
 		choicesTask = SelectChoices.from(tasks, "id", involves.getTask());
 
 		dataset = super.unbindObject(involves, "task.type", "task.priority", "task.estimatedDuration");
