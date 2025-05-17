@@ -14,7 +14,7 @@ import acme.client.repositories.AbstractRepository;
 import acme.entities.service.Service;
 
 @Repository
-public interface ServiceRepository extends AbstractRepository {
+public interface RandomServiceRepository extends AbstractRepository {
 
 	@Query("select count(s) from Service s")
 	int countServices();

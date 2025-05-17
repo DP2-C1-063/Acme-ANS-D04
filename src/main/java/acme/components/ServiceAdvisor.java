@@ -13,7 +13,7 @@ public class ServiceAdvisor {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ServiceRepository repository;
+	private RandomServiceRepository repository;
 
 	// Beans ------------------------------------------------------------------
 
