@@ -3,12 +3,16 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
-<acme:form readonly="${readonly}">
-	<acme:input-textbox code="manager.leg.form.label.flightNumber" path="flightNumber" readonly="true"/>	
+<acme:form>
+	<jstl:if test="${_command == 'show' }"> <%-- TRANSIENT PROPERTIES --%>
+		<acme:input-textbox code="manager.leg.form.label.flightNumber" path="flightNumber" readonly="true"/>
+	</jstl:if>	
 	<acme:input-textbox code="manager.leg.form.label.number" path="number"/>
 	<acme:input-moment code="manager.leg.form.label.scheduledDeparture" path="scheduledDeparture"/>
 	<acme:input-moment code="manager.leg.form.label.scheduledArrival" path="scheduledArrival"/>
-	<acme:input-textbox code="manager.leg.form.label.duration" path="duration" readonly="true"/>
+	<jstl:if test="${_command == 'show' }"> <%-- TRANSIENT PROPERTIES --%>
+		<acme:input-integer code="manager.leg.form.label.duration" path="duration" readonly="true"/>
+	</jstl:if>
 	<acme:input-select code="manager.leg.form.label.status" path="status" choices="${statuses}"/>
 	<acme:input-select code="manager.leg.form.label.departureAirport" path="departureAirport" choices="${departureAirports}"/>
 	<acme:input-select code="manager.leg.form.label.arrivalAirport" path="arrivalAirport" choices="${arrivalAirports}"/>

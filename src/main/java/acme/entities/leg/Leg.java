@@ -41,7 +41,7 @@ public class Leg extends AbstractEntity {
 	private String				number;
 
 	@Mandatory
-	@ValidMoment(past = false, max = "2200/12/31 23:58")
+	@ValidMoment(past = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				scheduledDeparture;
 
@@ -65,10 +65,12 @@ public class Leg extends AbstractEntity {
 
 	@Transient
 	public double getDuration() {
+		double durationInHours = 0.;
 
-		long durationInMs = MomentHelper.computeDuration(this.scheduledDeparture, this.scheduledArrival).getSeconds();
-		double durationInHours = durationInMs / (60. * 60.);
-
+		if (!(this.getScheduledArrival() == null || this.getScheduledDeparture() == null)) {
+			long durationInMs = MomentHelper.computeDuration(this.scheduledDeparture, this.scheduledArrival).getSeconds();
+			durationInHours = durationInMs / (60. * 60.);
+		}
 		return durationInHours;
 	}
 

@@ -2,9 +2,11 @@
 package acme.features.flightCrewMembers.flightAssignments;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.basis.AbstractEntity;
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
@@ -29,7 +31,21 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean auth;
+		List<AbstractEntity> legs = this.repository.findAll();
+		List<Integer> legsIds = legs.stream().map(l -> l.getId()).toList();
+		if (super.getRequest().getMethod().equals("GET"))
+			auth = true;
+		else {
+			Integer legId = super.getRequest().getData("leg", int.class);
+			if (legId == 0)
+				auth = true;
+			else if (!legsIds.contains(legId))
+				auth = false;
+			else
+				auth = true;
+		}
+		super.getResponse().setAuthorised(auth);
 	}
 
 	@Override
