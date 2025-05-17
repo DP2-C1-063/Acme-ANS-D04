@@ -1,6 +1,6 @@
 # LIST ##########
 
-technician.task-involves-record.list.title = Lista de Tareas
+technician.task-involves-record.list.title = Lista de tareas asociadas
 technician.task-involves-record.list.label.technician = Técnico
 technician.task-involves-record.list.label.type = Tipo
 technician.task-involves-record.list.label.description = Descripción
@@ -11,7 +11,8 @@ technician.task-involves-record.list.button.create = Crear
 
 # FORM #########
 
-technician.task-involves-record.form.title = Tarea
+technician.task-involves-record.form.title = Reporte - Tarea
+technician.task-involves-record.form.label.task = Tarea
 technician.task-involves-record.form.label.task-type = Tipo
 technician.task-involves-record.form.label.description = Descripción
 technician.task-involves-record.form.label.priority = Prioridad
@@ -20,4 +21,4 @@ technician.task-involves-record.form.label.estimated-duration = Duración Estima
 technician.task-involves-record.form.button.create = Crear
 technician.task-involves-record.form.button.update = Actualizar
 technician.task-involves-record.form.button.publish = Publicar
-technician.task-involves-record.form.button.delete = Eliminar
+technician.task-involves-record.form.button.delete = Quitar tarea del registro
