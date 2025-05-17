@@ -41,8 +41,8 @@
 
 <jstl:if test="${service != null}">
 	<div class="panel-body" style="margin: 1em 0em 1em 0em; text-align: center;">	
-		<a href="${service.picture}" target="_blank">
-			<img src="${service.picture}" alt="${service.name}" class="img-fluid rounded" style="border-style: solid;"/>
+		<a href="${service.linkPicture}" target="_blank">
+			<img src="${service.linkPicture}" alt="${service.name}" class="img-fluid rounded" style="border-style: solid;"/>
 		</a>
 	</div>
 </jstl:if>
