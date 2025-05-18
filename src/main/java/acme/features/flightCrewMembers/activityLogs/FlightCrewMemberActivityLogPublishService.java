@@ -8,7 +8,6 @@ import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLog.ActivityLog;
-import acme.entities.flightAssignment.FlightAssignment;
 import acme.features.flightCrewMembers.flightAssignments.FlightCrewMemberFlightAssignmentRepository;
 import acme.realms.flightCrewMembers.FlightCrewMembers;
 
@@ -57,12 +56,8 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 
 	@Override
 	public void bind(final ActivityLog log) {
-		int assignmentId;
-		FlightAssignment assignment;
+
 		super.bindObject(log, "incidentType", "description", "severityLevel");
-		assignmentId = super.getRequest().getData("flightAssignment", int.class);
-		assignment = this.assignmentRepository.findAssignmentById(assignmentId);
-		log.setFlightAssignment(assignment);
 
 	}
 

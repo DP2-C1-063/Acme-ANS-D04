@@ -46,7 +46,7 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 			invalidLeg = true;
 		int memberId;
 		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		boolean status = assignment.isDraftMode() && assignment.getDuty().equals(Duty.LEAD_ATTENDANT) && assignment.getFlightCrewMember().getId() == memberId;
+		boolean status = assignment.isDraftMode() && assignment.getFlightCrewMember().getId() == memberId;
 
 		super.getResponse().setAuthorised(status && invalidLeg);
 	}

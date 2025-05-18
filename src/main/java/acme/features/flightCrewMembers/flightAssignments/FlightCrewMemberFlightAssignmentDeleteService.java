@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.basis.AbstractEntity;
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
@@ -34,12 +35,21 @@ public class FlightCrewMemberFlightAssignmentDeleteService extends AbstractGuiSe
 		int id;
 		id = super.getRequest().getData("id", int.class);
 		assignment = this.repository.findAssignmentById(id);
-
+		boolean invalidLeg;
+		List<AbstractEntity> legs = this.repository.findAll();
+		List<Integer> legsIds = legs.stream().map(l -> l.getId()).toList();
+		Integer legId = super.getRequest().getData("leg", int.class);
+		if (legId == 0)
+			invalidLeg = true;
+		else if (!legsIds.contains(legId))
+			invalidLeg = false;
+		else
+			invalidLeg = true;
 		int memberId;
 		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		boolean status = assignment.isDraftMode() && assignment.getDuty().equals(Duty.LEAD_ATTENDANT) && assignment.getFlightCrewMember().getId() == memberId;
+		boolean status = assignment.isDraftMode() && assignment.getFlightCrewMember().getId() == memberId;
 
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(status && invalidLeg);
 
 	}
 

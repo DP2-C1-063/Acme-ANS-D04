@@ -41,7 +41,7 @@ public class ActivityLogValidator extends AbstractValidator<ValidActivityLog, Ac
 			boolean landedLeg;
 			Date currentMoment = MomentHelper.getCurrentMoment();
 			Leg legOfLog = activityLog.getFlightAssignment().getLeg();
-			landedLeg = MomentHelper.isBeforeOrEqual(legOfLog.getScheduledArrival(), currentMoment);
+			landedLeg = MomentHelper.isBefore(legOfLog.getScheduledArrival(), currentMoment);
 
 			super.state(context, landedLeg, "flightAssignment", "acme.validation.activityLog.leg-not-done-yet.message");
 		}
