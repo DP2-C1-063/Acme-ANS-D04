@@ -93,13 +93,14 @@ public class FlightCrewMemberFlightAssignmentDeleteService extends AbstractGuiSe
 		SelectChoices choicesDuties;
 		SelectChoices choicesStatuses;
 		Collection<Leg> legs = this.repository.findAllLegs();
-		choicesLegs = SelectChoices.from(legs, "id", assignment.getLeg());
+
+		choicesLegs = SelectChoices.from(legs, "id", super.getRequest().getData("leg", int.class) == 0 ? null : assignment.getLeg());
 		choicesDuties = SelectChoices.from(Duty.class, assignment.getDuty());
 		choicesStatuses = SelectChoices.from(CurrentStatus.class, assignment.getCurrentStatus());
 
 		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "leg", "currentStatus", "remarks", "draftMode");
 		dataset.put("legs", choicesLegs);
-		dataset.put("completed", MomentHelper.isBefore(assignment.getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment()));
+		dataset.put("completed", super.getRequest().getData("leg", int.class) == 0 ? false : MomentHelper.isBefore(assignment.getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment()));
 		dataset.put("flightCrewMember", assignment.getFlightCrewMember().getEmployeeCode());
 		dataset.put("duties", choicesDuties);
 		dataset.put("statuses", choicesStatuses);

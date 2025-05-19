@@ -20,7 +20,7 @@
 	</jstl:when>
 	
 	
-	<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && draftMode == true }">
+	<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true }">
 	<jstl:if test="${completed == true }">
 		<acme:button code="flight-crew-members.flight-assignments.form.button.logs" action="/flight-crew-members/activity-log/list?masterId=${id}"/>
 		</jstl:if>		
@@ -29,7 +29,7 @@
 		<acme:submit code="flight-crew-members.flight-assignment.form.button.delete" action="/flight-crew-members/flight-assignment/delete"/>	
 	</jstl:when>
 	
-	<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && completed == true}">
+	<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && completed == true}">
 			<acme:button code="flight-crew-members.flight-assignments.form.button.logs" action="/flight-crew-members/activity-log/list?masterId=${id}"/>			
 	</jstl:when>
 		
