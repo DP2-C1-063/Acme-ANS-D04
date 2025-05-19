@@ -22,11 +22,15 @@ public class AssistanceAgentTrackingLogsListService extends AbstractGuiService<A
 	@Override
 	public void authorise() {
 		int masterId;
+
 		Claim claim;
+
 		masterId = super.getRequest().getData("masterId", int.class);
 		claim = this.repository.findClaim(masterId);
-
-		super.getResponse().setAuthorised(claim != null);
+		AssistanceAgent agent;
+		agent = (AssistanceAgent) super.getRequest().getPrincipal().getActiveRealm();
+		Boolean status = claim != null && (claim.getAssistanceAgent().equals(agent) || !claim.isDraftMode());
+		super.getResponse().setAuthorised(status);
 	}
 	@Override
 	public void load() {

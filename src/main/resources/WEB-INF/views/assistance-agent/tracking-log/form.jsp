@@ -11,9 +11,9 @@
 	<acme:input-textbox code="assistance-agent.tracking-logs.form.label.resolutionPercentage" path="resolutionPercentage"/>
 	<acme:input-select code="assistance-agent.tracking-logs.form.label.status" path="status" choices="${statuses}"/>
 	<acme:input-textbox code="assistance-agent.tracking-logs.form.label.resolution" path="resolution"/>
-	
+	<jstl:if test="${_command == 'show' }">
 	<acme:input-textbox code="assistance-agent.tracking-logs.form.label.assistanceAgent" path="assistanceAgent"  readonly="true"/>
-	
+	</jstl:if>
 	<jstl:choose>	
 		<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && draftMode == true}">
 			<acme:submit code="assistance-agent.tracking-logs.form.button.update" action="/assistance-agent/tracking-log/update"/>

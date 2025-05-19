@@ -34,16 +34,18 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 
 		if (trackingLog == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else {
+		else if (trackingLog.getResolutionPercentage() != null && trackingLog.getStatus() != null) {
+
 			boolean statusCorrect = trackingLog.getResolutionPercentage() == 100.00 && trackingLog.getStatus() != TrackingLogStatus.PENDING || trackingLog.getResolutionPercentage() != 100.00 && trackingLog.getStatus() == TrackingLogStatus.PENDING;
 			boolean resolutionCorrect = trackingLog.getStatus() != TrackingLogStatus.PENDING && trackingLog.getResolution() != null;
 			Boolean trackingLogCorrectlyFinished = statusCorrect || resolutionCorrect;
 			super.state(context, trackingLogCorrectlyFinished, "status", "acme.validation.trackinglog.status.message");
 			if (!trackingLog.getClaim().isReview()) {
-				Boolean percentageIsAscendance;
+				Boolean percentageIsAscendance = true;
 				List<TrackingLog> trackingLogs = this.trackingLogRepository.getLastTrackingLogByClaim(trackingLog.getClaim().getId());
-				percentageIsAscendance = trackingLogs.get(0).getResolutionPercentage() < trackingLog.getResolutionPercentage() || this.trackingLogRepository.getLastTrackingLogByClaim(trackingLog.getClaim().getId()).isEmpty()
-					|| trackingLogs.contains(trackingLog);
+				if (!trackingLogs.isEmpty())
+					percentageIsAscendance = trackingLogs.get(0).getResolutionPercentage() < trackingLog.getResolutionPercentage() || this.trackingLogRepository.getLastTrackingLogByClaim(trackingLog.getClaim().getId()).isEmpty()
+						|| trackingLogs.contains(trackingLog);
 				super.state(context, percentageIsAscendance, "resolutionPercentage", "acme.validation.trackinglog.resolution-percentage.message");
 			}
 		}

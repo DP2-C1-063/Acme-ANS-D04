@@ -23,9 +23,9 @@ tracking-log-16,2012/07/02 0:00,Lorem ipsum dolor sit ame,0.01,PENDING,"Lorem ip
 tracking-log-17,2012/07/02 0:00,Lorem ipsum dolor sit ame,99.99,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",claim-04,assistance-agent-00
 tracking-log-18,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",claim-05,assistance-agent-00
 #status-standard variation
-tracking-log-19,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",claim-06,assistance-agent-00
-tracking-log-20,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,REJECTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",claim-07,assistance-agent-00
-#resolution-standard variation
+tracking-log-19,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",claim-24,assistance-agent-53
+tracking-log-20,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,REJECTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",claim-07,assistance-agent-51
+#resolution-standard variation,"","","",""
 tracking-log-21,2012/07/02 0:00,Lorem ipsum dolor sit ame,67.00,PENDING,null,claim-00,assistance-agent-00
 tracking-log-22,2012/07/02 0:00,Lorem ipsum dolor sit ame,68.00,PENDING,,claim-00,assistance-agent-00
 tracking-log-23,2012/07/02 0:00,Lorem ipsum dolor sit ame,69.00,PENDING,L,claim-00,assistance-agent-00

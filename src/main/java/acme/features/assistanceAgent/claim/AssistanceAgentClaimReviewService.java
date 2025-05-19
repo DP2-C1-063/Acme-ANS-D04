@@ -30,7 +30,7 @@ public class AssistanceAgentClaimReviewService extends AbstractGuiService<Assist
 		claim = this.repository.findClaim(id);
 		AssistanceAgent agent;
 		agent = (AssistanceAgent) super.getRequest().getPrincipal().getActiveRealm();
-		boolean status = claim.getAssistanceAgent().equals(agent);
+		boolean status = claim != null && claim.getAssistanceAgent().equals(agent) && !claim.isDraftMode();
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -58,7 +58,7 @@ public class AssistanceAgentClaimReviewService extends AbstractGuiService<Assist
 	public void validate(final Claim claim) {
 		boolean notYetOcurred;
 		notYetOcurred = MomentHelper.isAfter(claim.getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment());
-		super.state(notYetOcurred, "leg", "assistance-agent.claim.leg-has-not-finished-yet");
+		super.state(!notYetOcurred, "leg", "assistance-agent.claim.leg-has-not-finished-yet");
 
 	}
 
@@ -76,7 +76,7 @@ public class AssistanceAgentClaimReviewService extends AbstractGuiService<Assist
 		SelectChoices choicesTypes;
 		choicesTypes = SelectChoices.from(ClaimType.class, claim.getType());
 		Collection<Leg> legs = this.repository.findAllLegs();
-		choicesLegs = SelectChoices.from(legs, "id", claim.getLeg());
+		choicesLegs = SelectChoices.from(legs, "scheduledArrival", claim.getLeg());
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "leg", "draftMode");
 		dataset.put("legs", choicesLegs);
 		dataset.put("assistanceAgent", claim.getAssistanceAgent().getEmployeeCode());

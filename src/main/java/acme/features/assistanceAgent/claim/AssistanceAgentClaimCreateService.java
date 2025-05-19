@@ -49,10 +49,11 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 
 	@Override
 	public void validate(final Claim claim) {
-		boolean notYetOcurred;
-		notYetOcurred = MomentHelper.isAfter(claim.getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment());
-		super.state(notYetOcurred, "leg", "flight-crew-member.flight-assignment.leg-has-not-finished-yet");
-
+		if (claim.getLeg() != null) {
+			boolean notYetOcurred;
+			notYetOcurred = MomentHelper.isAfter(claim.getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment());
+			super.state(!notYetOcurred, "leg", "assistance-agent.claim.leg-has-not-finished-yet");
+		}
 	}
 
 	@Override
@@ -67,7 +68,7 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		SelectChoices choicesTypes;
 		choicesTypes = SelectChoices.from(ClaimType.class, claim.getType());
 		Collection<Leg> legs = this.repository.findAllLegs();
-		choicesLegs = SelectChoices.from(legs, "id", claim.getLeg());
+		choicesLegs = SelectChoices.from(legs, "scheduledArrival", claim.getLeg());
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "leg");
 		dataset.put("legs", choicesLegs);
 		dataset.put("assistanceAgent", claim.getAssistanceAgent().getEmployeeCode());
