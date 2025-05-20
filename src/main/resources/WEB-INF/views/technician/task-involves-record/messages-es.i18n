@@ -7,18 +7,19 @@ technician.task-involves-record.list.label.description = Descripción
 technician.task-involves-record.list.label.priority = Prioridad
 technician.task-involves-record.list.label.estimated-duration = Duración Estimada
 
-technician.task-involves-record.list.button.create = Crear
+technician.task-involves-record.list.button.create = Añadir tarea
 
 # FORM #########
 
 technician.task-involves-record.form.title = Reporte - Tarea
 technician.task-involves-record.form.label.task = Tarea
-technician.task-involves-record.form.label.task-type = Tipo
-technician.task-involves-record.form.label.description = Descripción
-technician.task-involves-record.form.label.priority = Prioridad
-technician.task-involves-record.form.label.estimated-duration = Duración Estimada
-
-technician.task-involves-record.form.button.create = Crear
+technician.task-involves-record.form.label.record-aircraft = Aeronave del registro
+technician.task-involves-record.form.label.task-type = Tipo de tarea
+technician.task-involves-record.form.label.description = Descripción de la tarea
+technician.task-involves-record.form.label.priority = Prioridad de la tarea
+technician.task-involves-record.form.label.estimated-duration = Duración estimada de la tarea
+technician.task-involves-record.form.label.technician = Técnico de la tarea
+technician.task-involves-record.form.button.create = Añadir
 technician.task-involves-record.form.button.update = Actualizar
 technician.task-involves-record.form.button.publish = Publicar
 technician.task-involves-record.form.button.delete = Quitar tarea del registro

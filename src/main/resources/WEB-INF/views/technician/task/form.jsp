@@ -7,7 +7,6 @@
 	<acme:input-select code="technician.task.form.label.type" path="type" choices="${types}" />
 	<acme:input-textarea code="technician.task.form.label.description" path="description" />
 	<acme:input-integer code="technician.task.form.label.priority" path="priority" />
-	<!-- <acme:input-select code="technician.task.form.label.aircraft" path="relatedAircraft" choices="${aircrafts}" />-->
 	<acme:input-integer code="technician.task.form.label.estimated-duration" path="estimatedDuration" />
 	<jstl:choose>
 		<jstl:when test="${_command == 'create'}">

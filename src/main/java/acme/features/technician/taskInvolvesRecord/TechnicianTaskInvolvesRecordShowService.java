@@ -49,11 +49,10 @@ public class TechnicianTaskInvolvesRecordShowService extends AbstractGuiService<
 		Collection<Task> tasks = this.repository.findAllTasks();
 		choicesTask = SelectChoices.from(tasks, "id", involves.getTask());
 
-		dataset = super.unbindObject(involves, "task.type", "task.priority", "task.estimatedDuration", "task.description");
+		dataset = super.unbindObject(involves, "maintenanceRecord.relatedAircraft.registrationNumber", "task.type", "task.priority", "task.estimatedDuration", "task.description", "task.technician.licenseNumber");
 		dataset.put("task", choicesTask.getSelected().getKey());
 		dataset.put("tasks", choicesTask);
 		dataset.put("types", choicesType);
-		super.addPayload(dataset, involves, "task.technician.licenseNumber");
 		super.getResponse().addData(dataset);
 	}
 

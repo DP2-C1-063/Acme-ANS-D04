@@ -81,14 +81,13 @@ public class TechnicianTaskInvolvesRecordCreateService extends AbstractGuiServic
 
 		Collection<Task> tasks = this.repository.findAllTasks().stream().filter(f -> !f.isDraftMode() || f.getTechnician().equals(technician)).toList();
 
-		choicesTask = SelectChoices.from(tasks, "id", involves.getTask());
+		choicesTask = SelectChoices.from(tasks, "description", involves.getTask());
 
-		dataset = super.unbindObject(involves, "task.type", "task.priority", "task.estimatedDuration");
+		dataset = super.unbindObject(involves);
 		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
 		dataset.put("task", choicesTask.getSelected().getKey());
 		dataset.put("tasks", choicesTask);
 
-		super.addPayload(dataset, involves, "task.technician.licenseNumber");
 		super.getResponse().addData(dataset);
 	}
 }

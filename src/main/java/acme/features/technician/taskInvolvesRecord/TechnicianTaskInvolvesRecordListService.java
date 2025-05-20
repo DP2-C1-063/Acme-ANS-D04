@@ -56,9 +56,8 @@ public class TechnicianTaskInvolvesRecordListService extends AbstractGuiService<
 
 		choicesType = SelectChoices.from(TaskType.class, involves.getTask().getType());
 
-		dataset = super.unbindObject(involves, "task.type", "task.priority", "task.estimatedDuration");
+		dataset = super.unbindObject(involves, "task.type", "task.priority", "task.estimatedDuration", "task.description");
 		dataset.put("types", choicesType);
-		super.addPayload(dataset, involves, "task.technician.licenseNumber");
 		super.getResponse().addData(dataset);
 	}
 
