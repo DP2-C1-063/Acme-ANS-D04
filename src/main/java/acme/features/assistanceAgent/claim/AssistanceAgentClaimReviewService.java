@@ -13,6 +13,7 @@ import acme.client.services.GuiService;
 import acme.entities.claim.Claim;
 import acme.entities.claim.ClaimType;
 import acme.entities.leg.Leg;
+import acme.entities.trackingLogs.TrackingLog;
 import acme.realms.assistanceAgent.AssistanceAgent;
 
 @GuiService
@@ -59,12 +60,17 @@ public class AssistanceAgentClaimReviewService extends AbstractGuiService<Assist
 		boolean notYetOcurred;
 		notYetOcurred = MomentHelper.isAfter(claim.getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment());
 		super.state(!notYetOcurred, "leg", "assistance-agent.claim.leg-has-not-finished-yet");
-
+		Collection<TrackingLog> trackinglogs = this.repository.getAllTrackingLogsByClaim(claim.getId());
+		if (!trackinglogs.isEmpty()) {
+			TrackingLog trackinglog = trackinglogs.stream().toList().getFirst();
+			boolean status = trackinglog.getResolutionPercentage() == 100.0;
+			super.state(status, "*", "assistance-agent.claim.tracking-log-have-not-been-completed");
+		}
 	}
 
 	@Override
 	public void perform(final Claim claim) {
-		claim.setDraftMode(true);
+
 		claim.setReview(true);
 		this.repository.save(claim);
 	}

@@ -62,19 +62,16 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 
 	@Override
 	public void validate(final Claim claim) {
-		boolean trackingLogPublished = true;
+
 		Collection<TrackingLog> trackinglogs = this.trackingLogRepository.getLastTrackingLogByClaim(claim.getId());
-		for (TrackingLog tl : trackinglogs)
-			trackingLogPublished = trackingLogPublished && tl.isDraftMode();
-		super.state(!trackingLogPublished, "*", "assistance-agent.claim.tracking-log-have-not-been-published");
+		boolean status = trackinglogs.isEmpty();
+		super.state(status, "*", "assistance-agent.claim.tracking-log-have-not-been-published");
 
 	}
 
 	@Override
 	public void perform(final Claim claim) {
-		Collection<TrackingLog> trackinglogs = this.trackingLogRepository.getLastTrackingLogByClaim(claim.getId());
-		for (TrackingLog tl : trackinglogs)
-			this.trackingLogRepository.delete(tl);
+
 		this.repository.delete(claim);
 	}
 

@@ -80,5 +80,6 @@ acme.validation.flightAssignment.concurrent-leg.message = Este miembro ya tiene 
 acme.validation.flightAssignment.already-pilot = Ya hay un piloto asignado a este tramo
 acme.validation.flightAssignment.already-co-pilot = Ya hay un copiloto asignado a este tramo
 assistance-agent.tracking-logs.claim-have-not-been-published= queja no publicada
-assistance-agent.claim.tracking-log-have-not-been-published= registro no publicado
+assistance-agent.claim.tracking-log-have-not-been-published= registro no borrado
 assistance-agent.claim.leg-has-not-finished-yet=escala no terminada
+assistance-agent.claim.tracking-log-have-not-been-completed=no hay registro con 100%

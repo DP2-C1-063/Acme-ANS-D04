@@ -33,6 +33,13 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 		AssistanceAgent agent;
 		agent = (AssistanceAgent) super.getRequest().getPrincipal().getActiveRealm();
 		status = status && claim.getAssistanceAgent().equals(agent);
+		String method = super.getRequest().getMethod();
+		if (method.equals("POST")) {
+
+			int legId = super.getRequest().getData("leg", int.class);
+			status = status && (this.repository.findLegById(legId) != null || legId == 0 || this.repository.findLegById(claim.getLeg().getId()) != null);
+
+		}
 		super.getResponse().setAuthorised(status);
 	}
 
