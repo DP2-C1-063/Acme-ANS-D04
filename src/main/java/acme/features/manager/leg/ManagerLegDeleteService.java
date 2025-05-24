@@ -1,13 +1,18 @@
 
 package acme.features.manager.leg;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.claim.Claim;
 import acme.entities.flight.Flight;
+import acme.entities.flightAssignment.FlightAssignment;
 import acme.entities.leg.Leg;
+import acme.entities.trackingLogs.TrackingLog;
 import acme.realms.manager.Manager;
 
 @GuiService
@@ -23,16 +28,20 @@ public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void authorise() {
 		boolean status;
-		Flight flight;
-		Manager manager;
-		int legId;
-		Leg leg;
 
-		legId = super.getRequest().getData("id", int.class);
-		leg = this.repository.findLegById(legId);
-		flight = leg.getFlight();
-		manager = flight == null ? null : flight.getManager();
-		status = flight != null && leg != null && super.getRequest().getPrincipal().hasRealm(manager);
+		if (super.getRequest().getMethod().equals("POST")) {
+			Flight flight;
+			Manager manager;
+			int legId;
+			Leg leg;
+
+			legId = super.getRequest().getData("id", int.class);
+			leg = this.repository.findLegById(legId);
+			flight = leg.getFlight();
+			manager = flight == null ? null : flight.getManager();
+			status = flight != null && leg != null && super.getRequest().getPrincipal().hasRealm(manager) && !leg.isPublished();
+		} else
+			status = false;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -55,17 +64,22 @@ public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void validate(final Leg leg) {
-		{
-			boolean isNotPublished;
-
-			isNotPublished = !leg.isPublished();
-			super.state(isNotPublished, "published", "acme.validation.published.message");
-		}
+		;
 	}
 
 	@Override
 	public void perform(final Leg leg) {
+		Collection<FlightAssignment> flightAssignments;
+		Collection<Claim> claims;
+		Collection<TrackingLog> trackingLogs;
 
+		flightAssignments = this.repository.findAllFlightAssignmentsByLegId(leg.getId());
+		claims = this.repository.findAllClaimsByLegId(leg.getId());
+		trackingLogs = this.repository.findAllTrackingLogsByClaimId(leg.getId());
+
+		this.repository.deleteAll(trackingLogs);
+		this.repository.deleteAll(claims);
+		this.repository.deleteAll(flightAssignments);
 		this.repository.delete(leg);
 	}
 
