@@ -28,11 +28,14 @@ public class ManagerFlightUpdateService extends AbstractGuiService<Manager, Flig
 		Flight flight;
 		Manager manager;
 
-		flightId = super.getRequest().getData("id", int.class);
-		flight = this.repository.findFlightById(flightId);
-		manager = flight == null ? null : flight.getManager();
+		if (super.getRequest().getMethod().equals("POST")) {
+			flightId = super.getRequest().getData("id", int.class);
+			flight = this.repository.findFlightById(flightId);
+			manager = flight == null ? null : flight.getManager();
 
-		status = flight != null && super.getRequest().getPrincipal().hasRealm(manager);
+			status = flight != null && super.getRequest().getPrincipal().hasRealm(manager) && !flight.isPublished();
+		} else
+			status = false;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -55,12 +58,7 @@ public class ManagerFlightUpdateService extends AbstractGuiService<Manager, Flig
 
 	@Override
 	public void validate(final Flight flight) {
-		{
-			boolean isNotPublished;
-
-			isNotPublished = !flight.isPublished();
-			super.state(isNotPublished, "published", "acme.validation.published.message");
-		}
+		;
 	}
 
 	@Override
