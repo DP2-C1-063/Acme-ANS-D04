@@ -22,7 +22,16 @@ public class AdministratorAirportCreateService extends AbstractGuiService<Admini
 	// AbstractGuiService interface
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+
+		status = true;
+
+		if (super.getRequest().getMethod().equals("POST")) {
+			int id = super.getRequest().getData("id", int.class);
+			status = id == 0;
+		}
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
