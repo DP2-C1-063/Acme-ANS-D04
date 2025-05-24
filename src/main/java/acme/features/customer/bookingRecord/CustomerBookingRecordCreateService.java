@@ -55,16 +55,18 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 	@Override
 	public void bind(final BookingRecord bookingRecord) {
-		super.bindObject(bookingRecord, "passenger", "booking");
+		super.bindObject(bookingRecord, "passenger");
 	}
 
 	@Override
 	public void validate(final BookingRecord bookingRecord) {
 		if (bookingRecord.getPassenger() != null) {
 			int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-			boolean status = bookingRecord.getPassenger().getCustomer().getId() == customerId && !bookingRecord.getPassenger().isDraftMode();
-			super.state(status, "passenger", "customer.bookingrecord.form.error.invalidPassenger");
+			Collection<Passenger> includedPassengers = this.repository.getPassengersInBooking(bookingRecord.getBooking().getId());
+			boolean valid = bookingRecord.getPassenger().getCustomer().getId() == customerId && !includedPassengers.contains(bookingRecord.getPassenger());
+			super.state(valid, "passenger", "acme.validation.booking.doublePassenger");
 		}
+
 	}
 
 	@Override

@@ -56,7 +56,7 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 
 		Dataset dataset;
 
-		dataset = super.unbindObject(passenger, "name", "passport", "birth");
+		dataset = super.unbindObject(passenger, "name", "passport", "birth", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}

@@ -27,6 +27,7 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
 
 		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
@@ -51,7 +52,12 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 	public void validate(final Booking booking) {
 		Booking existing = this.repository.findBookingByLocator(booking.getLocatorCode());
 		boolean valid = existing == null || existing.getId() == booking.getId();
-		super.state(valid, "locatorCode", "customer.booking.form.error.duplicateLocatorCode");
+		super.state(valid, "locatorCode", "acme.validation.booking.locatorCode.message");
+		if (booking.getFlight() != null) {
+			boolean valid2 = booking.getFlight().isPublished();
+			super.state(valid2, "flight", "acme.validation.booking.flight.message");
+		}
+
 	}
 
 	@Override
@@ -67,10 +73,11 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		SelectChoices travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
 		Collection<Flight> flights = this.repository.findAllFlights();
-		SelectChoices flightChoices = SelectChoices.from(flights, "id", booking.getFlight());
-
 		dataset = super.unbindObject(booking, "flight", "locatorCode", "travelClass", "lastNibble", "draftMode", "id");
 		dataset.put("travelClasses", travelClasses);
+
+		SelectChoices flightChoices = SelectChoices.from(flights, "tag", booking.getFlight());
+
 		dataset.put("flights", flightChoices);
 
 		super.getResponse().addData(dataset);

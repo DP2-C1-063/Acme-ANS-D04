@@ -11,6 +11,7 @@ import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
+import acme.entities.booking.BookingRecord;
 import acme.entities.booking.TravelClass;
 import acme.entities.flight.Flight;
 import acme.realms.customer.Customer;
@@ -51,22 +52,22 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void validate(final Booking booking) {
-		if (booking.getLastNibble() == null || booking.getLastNibble().isBlank())
-			super.state(false, "lastNibble", "acme.validation.lastNibble.message");
 		Booking existing = this.repository.findBookingByLocator(booking.getLocatorCode());
 		boolean valid = existing == null || existing.getId() == booking.getId();
-		super.state(valid, "locatorCode", "customer.booking.form.error.duplicateLocatorCode");
-		/*
-		 * Collection<BookingRecord> bookingRecords = this.repository.findAllBookingRecordsOf(booking.getId());
-		 * valid = !bookingRecords.isEmpty();
-		 * super.state(valid, "*", "customer.booking.form.error.noPassengers");
-		 * 
-		 * valid = bookingRecords.stream().filter(br -> br.getPassenger().isDraftMode()).findFirst().isEmpty();
-		 * super.state(valid, "*", "customer.booking.form.error.publishPassengers");
-		 * 
-		 * @Query("select br from BookingRecord br where br.booking.id = :bookingId")
-		 * Collection<BookingRecord> findAllBookingRecordsOf(int bookingId);
-		 */
+		super.state(valid, "locatorCode", "acme.validation.booking.duplicated-locatorcode.message");
+
+		Collection<BookingRecord> bookingRecords = this.repository.getAllBookingRecordsByBookingId(booking.getId());
+		valid = !bookingRecords.isEmpty();
+		super.state(valid, "*", "acme.validation.booking.noPassengers");
+
+		valid = bookingRecords.stream().filter(br -> br.getPassenger().isDraftMode()).findFirst().isEmpty();
+		super.state(valid, "*", "acme.validation.booking.passengerNotPublished");
+
+		valid = booking.getFlight() != null;
+		super.state(valid, "flight", "acme.validation.booking.flight.message");
+
+		valid = booking.getLastNibble() != null && !booking.getLastNibble().isBlank();
+		super.state(valid, "lastNibble", "acme.validation.booking.NolastNibble");
 	}
 
 	@Override
