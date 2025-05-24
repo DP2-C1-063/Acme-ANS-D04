@@ -53,6 +53,9 @@ public class TechnicianTaskInvolvesRecordShowService extends AbstractGuiService<
 		dataset.put("task", choicesTask.getSelected().getKey());
 		dataset.put("tasks", choicesTask);
 		dataset.put("types", choicesType);
+
+		dataset.put("draftMode", involves.getMaintenanceRecord().isDraftMode());
+
 		super.getResponse().addData(dataset);
 	}
 

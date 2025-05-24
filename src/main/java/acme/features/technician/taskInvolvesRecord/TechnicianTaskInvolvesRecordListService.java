@@ -63,10 +63,13 @@ public class TechnicianTaskInvolvesRecordListService extends AbstractGuiService<
 
 	@Override
 	public void unbind(final Collection<TaskInvolvesRecord> involvesColl) {
-		Dataset dataset;
-		SelectChoices choicesType;
 
-		super.getResponse().addGlobal("masterId", super.getRequest().getData("masterId", int.class));
+		int masterId = super.getRequest().getData("masterId", int.class);
+		MaintenanceRecord maintenanceRecord = this.repository.findMaintenanceRecordById(masterId);
+
+		super.getResponse().addGlobal("draftMode", maintenanceRecord.isDraftMode());
+
+		super.getResponse().addGlobal("masterId", masterId);
 	}
 
 }

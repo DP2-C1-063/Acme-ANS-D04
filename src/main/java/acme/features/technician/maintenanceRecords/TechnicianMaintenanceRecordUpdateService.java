@@ -51,7 +51,7 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 		int registrionNumber = super.getRequest().getData("relatedAircraft", int.class);
 		Aircraft aircraft = this.repository.findAircraftById(registrionNumber);
 
-		super.bindObject(maintenanceRecord, "maintenanceMoment", "status", "nextInspection", "estimatedCost", "notes");
+		super.bindObject(maintenanceRecord, "status", "nextInspection", "estimatedCost", "notes");
 		maintenanceRecord.setRelatedAircraft(aircraft);
 	}
 

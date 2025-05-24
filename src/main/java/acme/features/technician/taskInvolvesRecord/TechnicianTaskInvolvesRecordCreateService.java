@@ -24,6 +24,7 @@ public class TechnicianTaskInvolvesRecordCreateService extends AbstractGuiServic
 	@Override
 	public void authorise() {
 		Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
+
 		int masterId = super.getRequest().getData("masterId", int.class);
 		MaintenanceRecord record = this.repository.findMaintenanceRecordById(masterId);
 
@@ -38,6 +39,9 @@ public class TechnicianTaskInvolvesRecordCreateService extends AbstractGuiServic
 
 			isAuthorised = isAuthorised && (isTechnician || isNotDraft);
 		}
+
+		if (!record.isDraftMode())
+			isAuthorised = false;
 
 		super.getResponse().setAuthorised(isAuthorised);
 	}
