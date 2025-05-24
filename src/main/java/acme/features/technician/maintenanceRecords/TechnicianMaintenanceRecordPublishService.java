@@ -59,9 +59,11 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 
 	@Override
 	public void validate(final MaintenanceRecord maintenanceRecod) {
+		Collection<Task> tasks = this.repository.findAllTaskAssociatedWith(maintenanceRecod.getId());
 		{
-			Collection<Task> tasks = this.repository.findAllTaskAssociatedWith(maintenanceRecod.getId());
-
+			super.state(!tasks.isEmpty(), "*", "acme.validation.maintenance-record.no-task.message");
+		}
+		{
 			boolean allTaskPublic = tasks.isEmpty() || tasks.stream().allMatch(t -> !t.isDraftMode());
 			super.state(allTaskPublic, "*", "acme.validation.maintenance-record.tasks-unpublished.message");
 		}
