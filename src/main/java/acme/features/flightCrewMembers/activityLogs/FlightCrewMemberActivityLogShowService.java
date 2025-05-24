@@ -4,6 +4,7 @@ package acme.features.flightCrewMembers.activityLogs;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLog.ActivityLog;
@@ -31,7 +32,8 @@ public class FlightCrewMemberActivityLogShowService extends AbstractGuiService<F
 		log = this.repository.findActivityLogById(id);
 
 		status = log.getFlightAssignment().getFlightCrewMember().getId() == memberId;
-		super.getResponse().setAuthorised(status);
+		boolean completed = MomentHelper.isBefore(log.getFlightAssignment().getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment());
+		super.getResponse().setAuthorised(status && completed);
 	}
 
 	@Override
