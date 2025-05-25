@@ -23,7 +23,27 @@ public class TechnicianTaskInvolvesRecordCreateService extends AbstractGuiServic
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
+
+		int masterId = super.getRequest().getData("masterId", int.class);
+		MaintenanceRecord record = this.repository.findMaintenanceRecordById(masterId);
+
+		boolean isAuthorised = record.getTechnician().equals(technician);
+
+		if (super.getRequest().getData().containsKey("id")) {
+			int taskId = super.getRequest().getData("task", int.class);
+			Task task = this.repository.findTaskById(taskId);
+
+			boolean isTechnician = task.getTechnician().equals(technician);
+			boolean isNotDraft = !task.isDraftMode();
+
+			isAuthorised = isAuthorised && (isTechnician || isNotDraft);
+		}
+
+		if (!record.isDraftMode())
+			isAuthorised = false;
+
+		super.getResponse().setAuthorised(isAuthorised);
 	}
 
 	@Override
@@ -61,16 +81,17 @@ public class TechnicianTaskInvolvesRecordCreateService extends AbstractGuiServic
 	public void unbind(final TaskInvolvesRecord involves) {
 		Dataset dataset;
 		SelectChoices choicesTask;
+		Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
 
-		Collection<Task> tasks = this.repository.findAllTasks();
-		choicesTask = SelectChoices.from(tasks, "id", involves.getTask());
+		Collection<Task> tasks = this.repository.findAllTasks().stream().filter(f -> !f.isDraftMode() || f.getTechnician().equals(technician)).toList();
 
-		dataset = super.unbindObject(involves, "task.type", "task.priority", "task.estimatedDuration");
+		choicesTask = SelectChoices.from(tasks, "description", involves.getTask());
+
+		dataset = super.unbindObject(involves);
 		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
 		dataset.put("task", choicesTask.getSelected().getKey());
 		dataset.put("tasks", choicesTask);
 
-		super.addPayload(dataset, involves, "task.technician.licenseNumber");
 		super.getResponse().addData(dataset);
 	}
 }

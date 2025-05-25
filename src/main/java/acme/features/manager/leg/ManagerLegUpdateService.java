@@ -29,29 +29,33 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void authorise() {
 		boolean status;
-		int legId;
-		Leg leg;
-		Flight flight;
-		Manager manager;
 
-		legId = super.getRequest().getData("id", int.class);
-		leg = this.repository.findLegById(legId);
-		flight = leg.getFlight();
-		manager = flight == null ? null : flight.getManager();
+		if (super.getRequest().getMethod().equals("POST")) {
+			int legId;
+			Leg leg;
+			Flight flight;
+			Manager manager;
 
-		// Avoiding POST hacking
+			legId = super.getRequest().getData("id", int.class);
+			leg = this.repository.findLegById(legId);
+			flight = leg.getFlight();
+			manager = flight == null ? null : flight.getManager();
 
-		Integer departureAirportId = super.getRequest().getData("departureAirport", int.class);
-		Airport departureAirport = this.repository.findAirportById(departureAirportId);
-		boolean departureAirportExists = !(departureAirport == null && departureAirportId != 0);
-		Integer arrivalAirportId = super.getRequest().getData("arrivalAirport", int.class);
-		Airport arrivalAirport = this.repository.findAirportById(arrivalAirportId);
-		boolean arrivalAirportExists = !(arrivalAirport == null && arrivalAirportId != 0);
-		Integer aircraftId = super.getRequest().getData("aircraft", int.class);
-		Aircraft aircraft = this.repository.findAircraftById(aircraftId);
-		boolean aircraftExists = !(aircraft == null && aircraftId != 0);
+			// Avoiding POST hacking
 
-		status = leg != null && flight != null && super.getRequest().getPrincipal().hasRealm(manager) && departureAirportExists && arrivalAirportExists && aircraftExists;
+			Integer departureAirportId = super.getRequest().getData("departureAirport", int.class);
+			Airport departureAirport = this.repository.findAirportById(departureAirportId);
+			boolean departureAirportExists = !(departureAirport == null && departureAirportId != 0);
+			Integer arrivalAirportId = super.getRequest().getData("arrivalAirport", int.class);
+			Airport arrivalAirport = this.repository.findAirportById(arrivalAirportId);
+			boolean arrivalAirportExists = !(arrivalAirport == null && arrivalAirportId != 0);
+			Integer aircraftId = super.getRequest().getData("aircraft", int.class);
+			Aircraft aircraft = this.repository.findAircraftById(aircraftId);
+			boolean aircraftExists = !(aircraft == null && aircraftId != 0);
+
+			status = leg != null && flight != null && super.getRequest().getPrincipal().hasRealm(manager) && departureAirportExists && arrivalAirportExists && aircraftExists && !leg.isPublished();
+		} else
+			status = false;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -75,12 +79,7 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void validate(final Leg leg) {
-		{
-			boolean isNotPublished;
-
-			isNotPublished = !leg.isPublished();
-			super.state(isNotPublished, "published", "acme.validation.published.message");
-		}
+		;
 	}
 
 	@Override

@@ -35,7 +35,7 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 		masterId = super.getRequest().getData("masterId", int.class);
 		flight = this.repository.findFlightById(masterId);
 
-		if (!super.getRequest().getMethod().equals("GET")) {
+		if (super.getRequest().getMethod().equals("POST")) {
 			// Avoiding POST hacking
 
 			Integer departureAirportId = super.getRequest().getData("departureAirport", int.class);
@@ -47,9 +47,9 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 			Integer aircraftId = super.getRequest().getData("aircraft", int.class);
 			Aircraft aircraft = this.repository.findAircraftById(aircraftId);
 			boolean aircraftExists = !(aircraft == null && aircraftId != 0);
+			int id = super.getRequest().getData("id", int.class);
 
-			status = flight != null && !flight.isPublished() && super.getRequest().getPrincipal().hasRealm(flight.getManager()) && departureAirportExists && arrivalAirportExists && aircraftExists;
-
+			status = flight != null && !flight.isPublished() && super.getRequest().getPrincipal().hasRealm(flight.getManager()) && departureAirportExists && arrivalAirportExists && aircraftExists && id == 0;
 		} else
 			status = flight != null && !flight.isPublished() && super.getRequest().getPrincipal().hasRealm(flight.getManager());
 

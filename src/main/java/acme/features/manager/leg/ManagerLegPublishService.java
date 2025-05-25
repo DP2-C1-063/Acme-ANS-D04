@@ -31,29 +31,33 @@ public class ManagerLegPublishService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void authorise() {
 		boolean status;
-		Flight flight;
-		Manager manager;
-		Leg leg;
-		int legId;
 
-		legId = super.getRequest().getData("id", int.class);
-		leg = this.repository.findLegById(legId);
-		flight = leg.getFlight();
-		manager = flight == null ? null : flight.getManager();
+		if (super.getRequest().getMethod().equals("POST")) {
+			Flight flight;
+			Manager manager;
+			Leg leg;
+			int legId;
 
-		// Avoiding POST hacking
+			legId = super.getRequest().getData("id", int.class);
+			leg = this.repository.findLegById(legId);
+			flight = leg.getFlight();
+			manager = flight == null ? null : flight.getManager();
 
-		Integer departureAirportId = super.getRequest().getData("departureAirport", int.class);
-		Airport departureAirport = this.repository.findAirportById(departureAirportId);
-		boolean departureAirportExists = !(departureAirport == null && departureAirportId != 0);
-		Integer arrivalAirportId = super.getRequest().getData("arrivalAirport", int.class);
-		Airport arrivalAirport = this.repository.findAirportById(arrivalAirportId);
-		boolean arrivalAirportExists = !(arrivalAirport == null && arrivalAirportId != 0);
-		Integer aircraftId = super.getRequest().getData("aircraft", int.class);
-		Aircraft aircraft = this.repository.findAircraftById(aircraftId);
-		boolean aircraftExists = !(aircraft == null && aircraftId != 0);
+			// Avoiding POST hacking
 
-		status = flight != null && leg != null && !leg.isPublished() && super.getRequest().getPrincipal().hasRealm(manager) && departureAirportExists && arrivalAirportExists && aircraftExists;
+			Integer departureAirportId = super.getRequest().getData("departureAirport", int.class);
+			Airport departureAirport = this.repository.findAirportById(departureAirportId);
+			boolean departureAirportExists = !(departureAirport == null && departureAirportId != 0);
+			Integer arrivalAirportId = super.getRequest().getData("arrivalAirport", int.class);
+			Airport arrivalAirport = this.repository.findAirportById(arrivalAirportId);
+			boolean arrivalAirportExists = !(arrivalAirport == null && arrivalAirportId != 0);
+			Integer aircraftId = super.getRequest().getData("aircraft", int.class);
+			Aircraft aircraft = this.repository.findAircraftById(aircraftId);
+			boolean aircraftExists = !(aircraft == null && aircraftId != 0);
+
+			status = leg != null && flight != null && super.getRequest().getPrincipal().hasRealm(manager) && departureAirportExists && arrivalAirportExists && aircraftExists;
+		} else
+			status = false;
 
 		super.getResponse().setAuthorised(status);
 	}
