@@ -24,7 +24,10 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void authorise() {
-		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+		boolean status;
+		int customerId;
+		customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
 
 		super.getResponse().setAuthorised(status);
 
@@ -77,7 +80,6 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		dataset.put("travelClasses", travelClasses);
 
 		SelectChoices flightChoices = SelectChoices.from(flights, "tag", booking.getFlight());
-
 		dataset.put("flights", flightChoices);
 
 		super.getResponse().addData(dataset);

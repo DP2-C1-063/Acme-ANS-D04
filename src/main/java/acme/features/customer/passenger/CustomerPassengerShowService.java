@@ -18,15 +18,23 @@ public class CustomerPassengerShowService extends AbstractGuiService<Customer, P
 
 	@Override
 	public void authorise() {
-		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+		if (!super.getRequest().getMethod().equals("GET"))
+			super.getResponse().setAuthorised(false);
+		else {
+			boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
 
-		super.getResponse().setAuthorised(status);
+			super.getResponse().setAuthorised(status);
 
-		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		int passengerId = super.getRequest().getData("id", int.class);
-		Passenger passenger = this.repository.getPassengerById(passengerId);
+			int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			Integer passengerId = super.getRequest().getData("id", Integer.class);
+			if (passengerId == null)
+				super.getResponse().setAuthorised(false);
+			else {
+				Passenger passenger = this.repository.getPassengerById(passengerId);
 
-		super.getResponse().setAuthorised(customerId == passenger.getCustomer().getId());
+				super.getResponse().setAuthorised(passengerId != null && customerId == passenger.getCustomer().getId());
+			}
+		}
 	}
 
 	@Override

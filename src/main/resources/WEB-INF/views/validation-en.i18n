@@ -89,4 +89,4 @@ acme.validation.booking.noPassengers = To publish a booking you need to have pas
 acme.validation.booking.passengerNotPublished = To publish a booking you need all passengers published
 acme.validation.booking.NolastNibble = To publish a booking you need the 4 last digits
 acme.validation.booking.doublePassenger = This passenger already is in the booking
-
+acme.validation.booking.notDraft = This booking is already published, meaning you cannot modify it, including adding passengers

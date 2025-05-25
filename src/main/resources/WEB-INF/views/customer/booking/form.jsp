@@ -15,7 +15,7 @@
  			<acme:submit code="customer.booking.form.button.update" action="/customer/booking/update"/>
  			<acme:submit code="customer.booking.form.button.publish" action="/customer/booking/publish"/>
  			<jstl:if test="${_command != 'create'}">
- 				<acme:button code="customer.booking.form.add.passenger" action="/customer/booking-record/create?bookingId=${id}"/>
+ 				<acme:button code="customer.booking.form.add.passenger" action="/customer/booking-record/create?masterId=${id}"/>
  			</jstl:if>
  		</jstl:if>
  

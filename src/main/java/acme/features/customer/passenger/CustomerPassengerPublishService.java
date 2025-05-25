@@ -22,11 +22,15 @@ public class CustomerPassengerPublishService extends AbstractGuiService<Customer
 
 		super.getResponse().setAuthorised(status);
 
-		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		int passengerId = super.getRequest().getData("id", int.class);
-		Passenger passenger = this.repository.getPassengerById(passengerId);
+		if (!super.getRequest().getMethod().equals("POST"))
+			super.getResponse().setAuthorised(false);
+		else {
+			int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			int passengerId = super.getRequest().getData("id", int.class);
+			Passenger passenger = this.repository.getPassengerById(passengerId);
 
-		super.getResponse().setAuthorised(customerId == passenger.getCustomer().getId());
+			super.getResponse().setAuthorised(customerId == passenger.getCustomer().getId() && passenger.isDraftMode());
+		}
 	}
 
 	@Override
