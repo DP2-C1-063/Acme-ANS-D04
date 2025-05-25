@@ -25,8 +25,16 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 
 	@Override
 	public void authorise() {
+		boolean status;
 
-		super.getResponse().setAuthorised(true);
+		status = true;
+
+		if (super.getRequest().getMethod().equals("POST")) {
+			int id = super.getRequest().getData("id", int.class);
+			status = id == 0;
+		}
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

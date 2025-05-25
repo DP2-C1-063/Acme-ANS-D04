@@ -23,12 +23,19 @@ public class TechnicianTaskInvolvesRecordCreateService extends AbstractGuiServic
 
 	@Override
 	public void authorise() {
+		boolean status = true;
+
+		if (super.getRequest().getMethod().equals("POST")) {
+			int id = super.getRequest().getData("id", int.class);
+			status = id == 0;
+		}
+
 		Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
 
 		int masterId = super.getRequest().getData("masterId", int.class);
 		MaintenanceRecord record = this.repository.findMaintenanceRecordById(masterId);
 
-		boolean isAuthorised = record.getTechnician().equals(technician);
+		status = status && record.getTechnician().equals(technician);
 
 		if (super.getRequest().getData().containsKey("id")) {
 			int taskId = super.getRequest().getData("task", int.class);
@@ -37,13 +44,12 @@ public class TechnicianTaskInvolvesRecordCreateService extends AbstractGuiServic
 			boolean isTechnician = task.getTechnician().equals(technician);
 			boolean isNotDraft = !task.isDraftMode();
 
-			isAuthorised = isAuthorised && (isTechnician || isNotDraft);
+			status = status && (isTechnician || isNotDraft);
 		}
 
-		if (!record.isDraftMode())
-			isAuthorised = false;
+		status = status && record.isDraftMode();
 
-		super.getResponse().setAuthorised(isAuthorised);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
