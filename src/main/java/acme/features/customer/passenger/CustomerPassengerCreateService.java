@@ -19,14 +19,9 @@ public class CustomerPassengerCreateService extends AbstractGuiService<Customer,
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
 		int customerId;
 		customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		Passenger passenger;
-
-		masterId = super.getRequest().getData("masterId", int.class);
-		passenger = this.repository.getPassengerById(masterId);
-		status = passenger.getCustomer().getId() == customerId;
+		status = true;
 		super.getResponse().setAuthorised(status);
 
 	}
@@ -63,10 +58,8 @@ public class CustomerPassengerCreateService extends AbstractGuiService<Customer,
 
 	@Override
 	public void unbind(final Passenger passenger) {
-		assert passenger != null;
 		Dataset dataset;
 		dataset = super.unbindObject(passenger, "name", "email", "passport", "birth", "needs", "draftMode");
-		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
 		super.getResponse().addData(dataset);
 
 	}
