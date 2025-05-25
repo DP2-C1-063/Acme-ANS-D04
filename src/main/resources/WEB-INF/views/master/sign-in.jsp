@@ -1,5 +1,5 @@
 <%--
-- form.jsp
+- sign-in.jsp
 -
 - Copyright (C) 2012-2025 Rafael Corchuelo.
 -
@@ -15,15 +15,16 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
-<acme:form>
-    <acme:input-textbox code="authenticated.provider.form.label.company" path="company"/>
-    <acme:input-textbox code="authenticated.provider.form.label.sector" path="sector"/>
-    <jstl:if test="${_command == 'create'}">
-        <acme:submit code="authenticated.provider.form.button.create" action="/authenticated/provider/create"/>
-    </jstl:if>
-    
-    <jstl:if test="${_command == 'update'}">
-        <acme:submit code="authenticated.provider.form.button.update" action="/authenticated/provider/update"/>
-    </jstl:if>
+<jstl:if test="${param.error != null}">
+	<acme:alert-error>
+		<acme:print code="master.sign-in.error.text"/>
+	</acme:alert-error>
+</jstl:if>
 
+<acme:form>
+	<acme:input-textbox code="master.sign-in.label.username" path="username"/>
+	<acme:input-password code="master.sign-in.label.password" path="password"/>
+	<acme:input-checkbox code="master.sign-in.label.remember-me" path="remember"/>
+
+	<acme:submit code="master.sign-in.button.sign-in" action="/anonymous/system/sign-in"/>
 </acme:form>
