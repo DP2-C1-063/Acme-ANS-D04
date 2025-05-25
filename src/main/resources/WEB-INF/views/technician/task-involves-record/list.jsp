@@ -7,10 +7,10 @@
 	<acme:list-column code="technician.task-involves-record.form.label.task-type" path="task.type" width="20%"/>
 	<acme:list-column code="technician.task-involves-record.list.label.priority" path="task.priority" width="20%"/>
 	<acme:list-column code="technician.task-involves-record.list.label.estimated-duration" path="task.estimatedDuration" width="20%"/>
-	<acme:list-column code="technician.task-involves-record.list.label.technician" path="task.technician.licenseNumber" width="20%"/>
+	<acme:list-column code="technician.task-involves-record.list.label.description" path="task.description" width="20%"/>
 	<acme:list-payload path="payload"/>
 </acme:list>
 
-<jstl:if test="${_command == 'list'}">
-	<acme:button code="technician.task.list.button.create" action="/technician/task-involves-record/create?masterId=${masterId}"/>
+<jstl:if test="${_command == 'list' && draftMode == true}">
+	<acme:button code="technician.task-involves-record.list.button.create" action="/technician/task-involves-record/create?masterId=${masterId}"/>
 </jstl:if>	
