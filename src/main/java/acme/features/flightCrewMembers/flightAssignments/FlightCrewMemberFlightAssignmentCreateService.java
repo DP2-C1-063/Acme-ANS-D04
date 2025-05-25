@@ -1,6 +1,7 @@
 
 package acme.features.flightCrewMembers.flightAssignments;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -32,20 +33,42 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 	@Override
 	public void authorise() {
 		boolean auth;
-		if (super.getRequest().getData().containsKey("leg")) {
+		boolean transientId = true;
+		boolean correctDuty = true;
+		boolean correctStatus = true;
+		if (super.getRequest().getMethod().equals("POST")) {
+			String enumValue = super.getRequest().getData("duty", String.class);
+			correctDuty = Arrays.stream(Duty.values()).anyMatch(d -> d.toString().equals(enumValue));
+			correctDuty = correctDuty || enumValue.equals("0");
+		}
+		if (super.getRequest().getMethod().equals("POST")) {
+			String enumValue = super.getRequest().getData("currentStatus", String.class);
+			correctStatus = Arrays.stream(CurrentStatus.values()).anyMatch(s -> s.toString().equals(enumValue));
+			correctStatus = correctStatus || enumValue.equals("0");
+		}
+		if (super.getRequest().getMethod().equals("POST") && super.getRequest().getData("id", int.class) != 0)
+			transientId = false;
+		if (super.getRequest().getMethod().equals("GET") && super.getRequest().getData().containsKey("id"))
+			transientId = false;
 
-			List<AbstractEntity> legs = this.repository.findAll();
-			List<Integer> legsIds = legs.stream().map(l -> l.getId()).toList();
-			Integer legId = super.getRequest().getData("leg", int.class);
-			if (legId == 0)
-				auth = true;
-			else if (!legsIds.contains(legId))
+		if (super.getRequest().getMethod().equals("POST")) {
+
+			if (super.getRequest().getData().containsKey("leg")) {
+
+				List<AbstractEntity> legs = this.repository.findAll();
+				List<Integer> legsIds = legs.stream().map(l -> l.getId()).toList();
+				Integer legId = super.getRequest().getData("leg", int.class);
+				if (legId == 0)
+					auth = true;
+				else if (!legsIds.contains(legId))
+					auth = false;
+				else
+					auth = true;
+			} else
 				auth = false;
-			else
-				auth = true;
 		} else
 			auth = true;
-		super.getResponse().setAuthorised(auth);
+		super.getResponse().setAuthorised(auth && transientId && correctDuty && correctStatus);
 	}
 
 	@Override
