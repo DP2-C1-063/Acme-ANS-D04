@@ -19,7 +19,7 @@ public class MaintenanceRecordValidator extends AbstractValidator<ValidMaintenan
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else {
 			boolean isBefore = MomentHelper.isBefore(value.getMaintenanceMoment(), value.getNextInspection());
-			super.state(context, isBefore, "*", "acme.validation.maintenance-record.invalid-moment.message");
+			super.state(context, isBefore, "nextInspection", "acme.validation.maintenance-record.invalid-moment.message");
 		}
 
 		result = !super.hasErrors(context);
