@@ -40,7 +40,7 @@ acme.validation.leg.arrival-before-departure.message = La llegada debe ocurrir d
 acme.validation.leg.duration-too-long.message = La duración es demasiado larga
 acme.validation.leg.duration-too-short.message = La duración es demasiado corta
 acme.validation.leg.same-departure-and-arrival-airport.message = Los aeropuertos de salida y llegada deben ser diferentes
-acme.validation.leg.flight-number.message = El número de vuelo debe estar compuesto por el IATA de la aerolínea y 4 dígitos
+acme.validation.leg.flight-number.message = El número de vuelo debe estar compuesto por el IATA de la aerolínea (añadidos automáticamente por el sistema) y 4 dígitos
 
 acme.validation.flightcrew.employeecode = El código de empleado deben ser 2 o tres letras mayusculas, las iniciales del empleado, seguido de seis dígitos
 acme.validation.flightcrewmember.duplicated-employeecode.message = Codigo de empleado ya usado
@@ -59,6 +59,7 @@ acme.validation.technician.license-number.message = El número de licencia debe 
 acme.validation.technician.duplicated-license-number.message = El número de licencia ya ha sido usado
 
 acme.validation.maintenance-record.invalid-moment.message = El momento de mantenimiento debe ser anterior a la fecha de la próxima inspección
+acme.validation.maintenance-record.no-task.message = El registro debe tener al menos una tarea.
 
 acme.validation.published.message = No puedes eliminar esto porque ya ha sido publicado
 acme.validation.flight.no-legs.message = No se puede publicar un vuelo sin tramos

@@ -27,13 +27,19 @@ public class AdministratorAirlinesCreateService extends AbstractGuiService<Admin
 	@Override
 	public void authorise() {
 		boolean validEnum = true;
+		boolean status;
+
+		status = true;
+
 		if (super.getRequest().getMethod().equals("POST")) {
+			int id = super.getRequest().getData("id", int.class);
+			status = id == 0;
 			String enumValue = super.getRequest().getData("type", String.class);
 			validEnum = Arrays.stream(AirlineType.values()).anyMatch(t -> t.toString().equals(enumValue));
 			validEnum = validEnum || enumValue.equals("0");
 		}
 
-		super.getResponse().setAuthorised(validEnum);
+		super.getResponse().setAuthorised(status && validEnum);
 	}
 
 	@Override

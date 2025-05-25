@@ -8,7 +8,6 @@
 	<acme:list-column code="technician.task.list.label.description" path="description" width="20%"/>
 	<acme:list-column code="technician.task.list.label.priority" path="priority" width="20%"/>
 	<acme:list-column code="technician.task.list.label.estimated-duration" path="estimatedDuration" width="20%"/>
-	<acme:list-column code="technician.task.list.label.technician" path="technician" width="20%"/>
 	<acme:list-payload path="payload"/>
 </acme:list>
 

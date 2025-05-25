@@ -52,16 +52,18 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 		int registrionNumber = super.getRequest().getData("relatedAircraft", int.class);
 		Aircraft aircraft = this.repository.findAircraftById(registrionNumber);
 
-		super.bindObject(maintenanceRecord, "maintenanceMoment", "status", "nextInspection", "estimatedCost", "notes");
+		super.bindObject(maintenanceRecord, "status", "nextInspection", "estimatedCost", "notes");
 		maintenanceRecord.setRelatedAircraft(aircraft);
 
 	}
 
 	@Override
 	public void validate(final MaintenanceRecord maintenanceRecod) {
+		Collection<Task> tasks = this.repository.findAllTaskAssociatedWith(maintenanceRecod.getId());
 		{
-			Collection<Task> tasks = this.repository.findAllTaskAssociatedWith(maintenanceRecod.getId());
-
+			super.state(!tasks.isEmpty(), "*", "acme.validation.maintenance-record.no-task.message");
+		}
+		{
 			boolean allTaskPublic = tasks.isEmpty() || tasks.stream().allMatch(t -> !t.isDraftMode());
 			super.state(allTaskPublic, "*", "acme.validation.maintenance-record.tasks-unpublished.message");
 		}
