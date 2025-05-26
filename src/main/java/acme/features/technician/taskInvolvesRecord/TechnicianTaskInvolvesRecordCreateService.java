@@ -23,27 +23,44 @@ public class TechnicianTaskInvolvesRecordCreateService extends AbstractGuiServic
 
 	@Override
 	public void authorise() {
-		Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
+		boolean status = true;
 
-		int masterId = super.getRequest().getData("masterId", int.class);
-		MaintenanceRecord record = this.repository.findMaintenanceRecordById(masterId);
-
-		boolean isAuthorised = record.getTechnician().equals(technician);
-
-		if (super.getRequest().getData().containsKey("id")) {
-			int taskId = super.getRequest().getData("task", int.class);
-			Task task = this.repository.findTaskById(taskId);
-
-			boolean isTechnician = task.getTechnician().equals(technician);
-			boolean isNotDraft = !task.isDraftMode();
-
-			isAuthorised = isAuthorised && (isTechnician || isNotDraft);
+		if (super.getRequest().getMethod().equals("POST")) {
+			int id = super.getRequest().getData("id", int.class);
+			status = id == 0;
 		}
 
-		if (!record.isDraftMode())
-			isAuthorised = false;
+		Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
 
-		super.getResponse().setAuthorised(isAuthorised);
+		if (super.getRequest().hasData("masterId")) {
+			int masterId = super.getRequest().getData("masterId", int.class);
+
+			MaintenanceRecord record = this.repository.findMaintenanceRecordById(masterId);
+
+			if (record != null) {
+
+				status = status && record.getTechnician().equals(technician);
+
+				if (super.getRequest().getData().containsKey("task")) {
+					int taskId = super.getRequest().getData("task", int.class);
+					Task task = this.repository.findTaskById(taskId);
+					if (task != null) {
+
+						boolean isTechnician = task.getTechnician().equals(technician);
+						boolean isNotDraft = !task.isDraftMode();
+
+						status = status && (isTechnician || isNotDraft);
+					} else if (taskId != 0)
+						status = false;
+				}
+
+				status = status && record.isDraftMode();
+			} else
+				status = false;
+		} else
+			status = false;
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

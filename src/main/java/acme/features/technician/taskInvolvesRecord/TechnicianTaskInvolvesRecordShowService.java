@@ -24,7 +24,26 @@ public class TechnicianTaskInvolvesRecordShowService extends AbstractGuiService<
 	@Override
 	public void authorise() {
 
-		super.getResponse().setAuthorised(true);
+		TaskInvolvesRecord involves;
+		Technician technician;
+		int id;
+		boolean status = true;
+
+		technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
+
+		if (super.getRequest().hasData("id")) {
+			id = super.getRequest().getData("id", int.class);
+			involves = this.repository.findTaskInvolvesRecordById(id);
+
+			boolean isTechnician = involves.getTask().getTechnician().equals(technician);
+			boolean isNotDraft = !involves.getTask().isDraftMode();
+
+			status = isTechnician || isNotDraft;
+
+		} else
+			status = false;
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
