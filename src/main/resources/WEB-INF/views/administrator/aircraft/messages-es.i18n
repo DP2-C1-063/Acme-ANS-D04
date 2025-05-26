@@ -1,4 +1,4 @@
-administrator.aircraft.list.title = Listing of aircraft
+administrator.aircraft.list.title = Lista de aviones
 
 administrator.aircraft.list.label.model = Modelo
 administrator.aircraft.list.label.registrationNumber = Número de registro
@@ -19,4 +19,4 @@ administrator.aircraft.form.label.airline = Aerolinea:
 administrator.aircraft.form.button.create = Crear
 administrator.aircraft.form.button.update = Actualizar
 administrator.aircraft.form.button.disable = Desactivar
-administrator.aircraft.form.label.confirmation = Comfirma que esta es la información deseada para la aeronave
+administrator.aircraft.form.label.confirmation = Confirma que esta es la información deseada para la aeronave

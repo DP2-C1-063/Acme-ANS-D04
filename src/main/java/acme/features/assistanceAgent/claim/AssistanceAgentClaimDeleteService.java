@@ -62,14 +62,16 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 
 	@Override
 	public void validate(final Claim claim) {
-		;
+
+		Collection<TrackingLog> trackinglogs = this.trackingLogRepository.getLastTrackingLogByClaim(claim.getId());
+		boolean status = trackinglogs.isEmpty();
+		super.state(status, "*", "assistance-agent.claim.tracking-log-have-not-been-published");
+
 	}
 
 	@Override
 	public void perform(final Claim claim) {
-		Collection<TrackingLog> trackinglogs = this.trackingLogRepository.getLastTrackingLogByClaim(claim.getId());
-		for (TrackingLog tl : trackinglogs)
-			this.trackingLogRepository.delete(tl);
+
 		this.repository.delete(claim);
 	}
 
@@ -80,7 +82,7 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 		SelectChoices choicesTypes;
 		choicesTypes = SelectChoices.from(ClaimType.class, claim.getType());
 		Collection<Leg> legs = this.repository.findAllLegs();
-		choicesLegs = SelectChoices.from(legs, "id", claim.getLeg());
+		choicesLegs = SelectChoices.from(legs, "scheduledArrival", claim.getLeg());
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "leg");
 		dataset.put("legs", choicesLegs);
 		dataset.put("assistanceAgent", claim.getAssistanceAgent().getEmployeeCode());

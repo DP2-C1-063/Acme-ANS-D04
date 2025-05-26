@@ -2,6 +2,7 @@
 package acme.features.administrator.aircraft;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -27,18 +28,18 @@ public class AdministratorAircraftCreateService extends AbstractGuiService<Admin
 
 	@Override
 	public void authorise() {
-		boolean status;
-
-		status = true;
-
-		if (super.getRequest().getMethod().equals("POST")) {
+	
+		String method = super.getRequest().getMethod();
+		boolean status = true;
+		if (method.equals("POST")) {
 			int id = super.getRequest().getData("id", int.class);
 			status = id == 0;
+			int airlineId = super.getRequest().getData("airline", int.class);
+			status = status && (this.airlineRepository.findAirlineById(airlineId) != null || airlineId == 0);
 		}
 
 		super.getResponse().setAuthorised(status);
 	}
-
 	@Override
 	public void load() {
 		Aircraft aircraft;
@@ -60,6 +61,13 @@ public class AdministratorAircraftCreateService extends AbstractGuiService<Admin
 	public void validate(final Aircraft aircraft) {
 		boolean confirmation;
 
+		boolean uniqueAircraft;
+		Aircraft existingAircraft;
+
+		existingAircraft = this.repository.findByRegistrationNumber(aircraft.getRegistrationNumber());
+		uniqueAircraft = existingAircraft == null || existingAircraft.equals(aircraft);
+
+		super.state(uniqueAircraft, "*", "acme.validation.aircraft.duplicated-RegistrationNumber.message");
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 	}

@@ -25,8 +25,22 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 
 	@Override
 	public void authorise() {
+		boolean status;
 
-		super.getResponse().setAuthorised(true);
+		status = true;
+
+		if (super.getRequest().getMethod().equals("POST")) {
+			int id = super.getRequest().getData("id", int.class);
+			Collection<Integer> aircrafts = this.repository.findAllAircraft().stream().map(Aircraft::getId).toList();
+
+			status = id == 0;
+
+			int relatedAircraft = super.getRequest().getData("relatedAircraft", int.class);
+
+			status = status && (relatedAircraft == 0 || aircrafts.contains(relatedAircraft));
+		}
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

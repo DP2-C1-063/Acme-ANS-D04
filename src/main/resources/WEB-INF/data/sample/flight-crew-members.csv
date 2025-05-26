@@ -6,7 +6,7 @@ flight-crew-members-01,"Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 flight-crew-members-02,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut e",AVAILABLE,airlines-00,EUR 500000.00,60,+728986,PCM845918,user-account-flight-crew-member-02
 flight-crew-members-03,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut e",AVAILABLE,airlines-00,EUR 500000.00,60,+728986,PAM845919,user-account-flight-crew-member-03
 flight-crew-members-04,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut e",AVAILABLE,airlines-00,EUR 500000.00,60,+728986,PAM845920,user-account-flight-crew-member-04
-flight-crew-members-05,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut e",AVAILABLE,airlines-00,EUR 500000.00,60,+728986,MNM845921,user-account-flight-crew-member-05
+flight-crew-members-05,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut e",ON_VACATION,airlines-00,EUR 500000.00,60,+728986,MNM845921,user-account-flight-crew-member-05
 #language-skills
 flight-crew-member-06,"L",AVAILABLE,airlines-00,EUR 500000.00,60,+728986,BBM845922,user-account-flight-crew-member-00
 flight-crew-member-07,"Lo",AVAILABLE,airlines-00,EUR 500000.00,60,+728986,BBM845923,user-account-flight-crew-member-00

@@ -67,6 +67,7 @@ acme.validation.flight.legs-published.message = Todos los tramos deben estar pub
 acme.validation.leg.aircraft-in-use.message = La aeronave está en uso en el intervalo de vuelo seleccionado
 
 acme.validation.maintenance-record.tasks-unpublished.message  = Para publicar un registro de mantenimiento, todas las tareas asociadas deben estar publicadas 
+acme.validation.task-involves-record.tasks.message = La tarea no debe ser nula.
 
 acme.validation.customer.incorrect-initials-identifier.message = Las 2 primeras letras del identificador del cliente deben ser las iniciales del mismo (nombre y apellidos)
 
@@ -90,4 +91,7 @@ acme.validation.booking.notDraft = Esta reserva ya esta publicada, no le puededs
 acme.validation.booking.locatorCode.message = El codigo de una reserva debe ser de 6 a 8 caracteres alfanuméricos en mayúsculas
 acme.validation.booking.duplicated-locatorcode.message = El codigo de una reserva ya existe
 
-
+assistance-agent.tracking-logs.claim-have-not-been-published= queja no publicada
+assistance-agent.claim.tracking-log-have-not-been-published= registro no borrado
+assistance-agent.claim.leg-has-not-finished-yet=escala no terminada
+assistance-agent.claim.tracking-log-have-not-been-completed=no hay registro con 100%

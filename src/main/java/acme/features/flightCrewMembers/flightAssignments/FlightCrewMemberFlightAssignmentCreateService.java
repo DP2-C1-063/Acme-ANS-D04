@@ -1,6 +1,7 @@
 
 package acme.features.flightCrewMembers.flightAssignments;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -32,20 +33,43 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 	@Override
 	public void authorise() {
 		boolean auth;
-		List<AbstractEntity> legs = this.repository.findAll();
-		List<Integer> legsIds = legs.stream().map(l -> l.getId()).toList();
-		if (super.getRequest().getMethod().equals("GET"))
-			auth = true;
-		else {
-			Integer legId = super.getRequest().getData("leg", int.class);
-			if (legId == 0)
-				auth = true;
-			else if (!legsIds.contains(legId))
-				auth = false;
-			else
-				auth = true;
+
+		boolean transientId = true;
+		boolean correctDuty = true;
+		boolean correctStatus = true;
+		if (super.getRequest().getMethod().equals("POST")) {
+			String enumValue = super.getRequest().getData("duty", String.class);
+			correctDuty = Arrays.stream(Duty.values()).anyMatch(d -> d.toString().equals(enumValue));
+			correctDuty = correctDuty || enumValue.equals("0");
 		}
-		super.getResponse().setAuthorised(auth);
+		if (super.getRequest().getMethod().equals("POST")) {
+			String enumValue = super.getRequest().getData("currentStatus", String.class);
+			correctStatus = Arrays.stream(CurrentStatus.values()).anyMatch(s -> s.toString().equals(enumValue));
+			correctStatus = correctStatus || enumValue.equals("0");
+		}
+		if (super.getRequest().getMethod().equals("POST") && super.getRequest().getData("id", int.class) != 0)
+			transientId = false;
+		if (super.getRequest().getMethod().equals("GET") && super.getRequest().getData().containsKey("id"))
+			transientId = false;
+
+		if (super.getRequest().getMethod().equals("POST")) {
+
+			if (super.getRequest().getData().containsKey("leg")) {
+
+				List<AbstractEntity> legs = this.repository.findAll();
+				List<Integer> legsIds = legs.stream().map(l -> l.getId()).toList();
+				Integer legId = super.getRequest().getData("leg", int.class);
+				if (legId == 0)
+					auth = true;
+				else if (!legsIds.contains(legId))
+					auth = false;
+				else
+					auth = true;
+			} else
+				auth = false;
+		} else
+			auth = true;
+		super.getResponse().setAuthorised(auth && transientId && correctDuty && correctStatus);
 	}
 
 	@Override
@@ -93,8 +117,8 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 		SelectChoices choicesStatuses;
 		Collection<Leg> legs = this.repository.findAllLegs();
 		choicesLegs = SelectChoices.from(legs, "id", assignment.getLeg());
-		choicesDuties = SelectChoices.from(Duty.class, assignment.getDuty());
-		choicesStatuses = SelectChoices.from(CurrentStatus.class, assignment.getCurrentStatus());
+		choicesDuties = SelectChoices.from(Duty.class, assignment.getDuty() == null ? null : assignment.getDuty());
+		choicesStatuses = SelectChoices.from(CurrentStatus.class, assignment.getCurrentStatus() == null ? null : assignment.getCurrentStatus());
 
 		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "leg", "currentStatus", "remarks");
 		dataset.put("legs", choicesLegs);

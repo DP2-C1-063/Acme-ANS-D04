@@ -4,7 +4,9 @@ package acme.entities.trackingLogs;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -24,6 +26,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidTrackingLog
+@Table(indexes = {
+	@Index(columnList = "assistance_agent_id"), @Index(columnList = "claim_id, lastUpdateMoment")
+})
+
 public class TrackingLog extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;

@@ -37,7 +37,7 @@ public class FlightAssignmentValidator extends AbstractValidator<ValidFlightAssi
 
 		if (assignment == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else if (assignment.getFlightCrewMember() != null && assignment.getLeg() != null) {
+		else if (assignment.getFlightCrewMember() != null && assignment.getLeg() != null && assignment.getDuty() != null) {
 			{
 				boolean availableMember;
 				availableMember = assignment.getFlightCrewMember().getAvailabilityStatus().equals(AvailabilityStatus.AVAILABLE);

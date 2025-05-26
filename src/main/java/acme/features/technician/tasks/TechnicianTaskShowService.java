@@ -37,10 +37,6 @@ public class TechnicianTaskShowService extends AbstractGuiService<Technician, Ta
 
 	@Override
 	public void unbind(final Task task) {
-
-		if (task == null)
-			return;
-
 		Dataset dataset;
 		SelectChoices choicesType;
 
