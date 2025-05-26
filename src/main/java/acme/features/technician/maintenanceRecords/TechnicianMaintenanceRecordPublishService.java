@@ -34,8 +34,8 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 			id = super.getRequest().getData("id", int.class);
 			mrecord = this.repository.findMaintenanceRecordById(id);
 
-			status = status && mrecord.isDraftMode();
 			if (mrecord != null) {
+				status = status && mrecord.isDraftMode();
 				Collection<Integer> aircrafts = this.repository.findAllAircraft().stream().map(Aircraft::getId).toList();
 
 				technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
