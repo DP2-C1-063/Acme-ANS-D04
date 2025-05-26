@@ -27,17 +27,14 @@ public class AdministratorAircraftUpdateService extends AbstractGuiService<Admin
 
 	@Override
 	public void authorise() {
-		boolean status;
+		String method = super.getRequest().getMethod();
+		boolean status = true;
+		if (method.equals("POST")) {
 
-		if (super.getRequest().getMethod().equals("POST")) {
-			int id;
-			Aircraft aircraft;
+			int airlineId = super.getRequest().getData("airline", int.class);
+			status = status = status && (this.airlineRepository.findAirlineById(airlineId) != null || airlineId == 0);
 
-			id = super.getRequest().getData("id", int.class);
-			aircraft = this.repository.findAircraftById(id);
-			status = aircraft != null;
-		} else
-			status = false;
+		}
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -66,8 +63,16 @@ public class AdministratorAircraftUpdateService extends AbstractGuiService<Admin
 	public void validate(final Aircraft aircraft) {
 		boolean confirmation;
 
+		boolean uniqueAircraft;
+		Aircraft existingAircraft;
+
+		existingAircraft = this.repository.findByRegistrationNumber(aircraft.getRegistrationNumber());
+		uniqueAircraft = existingAircraft == null || existingAircraft.equals(aircraft);
+
+		super.state(uniqueAircraft, "*", "acme.validation.aircraft.duplicated-RegistrationNumber.message");
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+
 	}
 
 	@Override
