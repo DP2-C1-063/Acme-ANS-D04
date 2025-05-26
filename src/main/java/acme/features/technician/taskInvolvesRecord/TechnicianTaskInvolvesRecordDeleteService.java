@@ -23,10 +23,23 @@ public class TechnicianTaskInvolvesRecordDeleteService extends AbstractGuiServic
 
 	@Override
 	public void authorise() {
-		int id = super.getRequest().getData("id", int.class);
-		TaskInvolvesRecord mrecord = this.repository.findTaskInvolvesRecordById(id);
+		boolean status = true;
+		Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
 
-		super.getResponse().setAuthorised(mrecord.getMaintenanceRecord().isDraftMode());
+		if (super.getRequest().getMethod().equals("POST")) {
+			if (super.getRequest().hasData("id")) {
+				int id = super.getRequest().getData("id", int.class);
+				TaskInvolvesRecord mrecord = this.repository.findTaskInvolvesRecordById(id);
+				if (mrecord != null)
+					status = mrecord.getMaintenanceRecord().isDraftMode() && mrecord.getMaintenanceRecord().getTechnician().equals(technician);
+				else
+					status = false;
+			} else
+				status = false;
+		} else
+			status = false;
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

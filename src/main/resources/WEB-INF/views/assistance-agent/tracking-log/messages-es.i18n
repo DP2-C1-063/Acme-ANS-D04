@@ -1,10 +1,10 @@
-assistance-agent.tracking-log.list.title = Lista de tracking logs
+assistance-agent.tracking-log.list.title = Lista de registross
 
 assistance-agent.tracking-logs.list.label.resolutionPercentage = Porcentaje de resolución
 assistance-agent.tracking-logs.list.label.step = Paso
 assistance-agent.tracking-logs.list.label.lastUpdateMoment =  última actualización
 
-assistance-agent.tracking-log.form.title = Formulario de tracking log
+assistance-agent.tracking-log.form.title = Formulario de registro
 
 assistance-agent.tracking-logs.form.label.lastUpdateMoment = última actualización:
 assistance-agent.tracking-logs.form.label.step = Paso:

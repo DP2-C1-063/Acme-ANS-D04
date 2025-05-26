@@ -28,12 +28,13 @@ public class AssistanceAgentTrackigLogsShowService extends AbstractGuiService<As
 	@Override
 	public void authorise() {
 		int id;
-		TrackingLog trackingLog;
 		id = super.getRequest().getData("id", int.class);
+		TrackingLog trackingLog;
 		trackingLog = this.repository.getTrackingLogById(id);
+
 		AssistanceAgent agent;
 		agent = (AssistanceAgent) super.getRequest().getPrincipal().getActiveRealm();
-		Boolean status = trackingLog.getAssistanceAgent().equals(agent);
+		boolean status = trackingLog != null && (trackingLog.getAssistanceAgent().equals(agent) || !trackingLog.isDraftMode());
 		super.getResponse().setAuthorised(status);
 	}
 

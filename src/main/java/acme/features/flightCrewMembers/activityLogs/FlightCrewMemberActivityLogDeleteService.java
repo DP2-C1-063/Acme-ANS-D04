@@ -4,10 +4,10 @@ package acme.features.flightCrewMembers.activityLogs;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLog.ActivityLog;
-import acme.entities.flightAssignment.FlightAssignment;
 import acme.features.flightCrewMembers.flightAssignments.FlightCrewMemberFlightAssignmentRepository;
 import acme.realms.flightCrewMembers.FlightCrewMembers;
 
@@ -26,18 +26,27 @@ public class FlightCrewMemberActivityLogDeleteService extends AbstractGuiService
 
 	@Override
 	public void authorise() {
-		boolean status;
+		boolean status = false;
 		ActivityLog log;
 		int id;
 		int memberId;
+		boolean method = true;
+		boolean completed = false;
+		if (super.getRequest().getMethod().equals("GET"))
+			method = false;
+		else {
+			id = super.getRequest().getData("id", int.class);
+			log = this.repository.findActivityLogById(id);
 
-		id = super.getRequest().getData("id", int.class);
-		log = this.repository.findActivityLogById(id);
+			memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			if (log != null) {
 
-		status = log.getFlightAssignment().getFlightCrewMember().getId() == memberId && log.isDraftMode();
-		super.getResponse().setAuthorised(status);
+				status = log.getFlightAssignment().getFlightCrewMember().getId() == memberId && log.isDraftMode();
+				completed = MomentHelper.isBefore(log.getFlightAssignment().getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment());
+			}
+		}
+		super.getResponse().setAuthorised(status && completed && method);
 
 	}
 
@@ -54,12 +63,8 @@ public class FlightCrewMemberActivityLogDeleteService extends AbstractGuiService
 
 	@Override
 	public void bind(final ActivityLog log) {
-		int assignmentId;
-		FlightAssignment assignment;
+
 		super.bindObject(log, "incidentType", "description", "severityLevel");
-		assignmentId = super.getRequest().getData("flightAssignment", int.class);
-		assignment = this.assignmentRepository.findAssignmentById(assignmentId);
-		log.setFlightAssignment(assignment);
 
 	}
 

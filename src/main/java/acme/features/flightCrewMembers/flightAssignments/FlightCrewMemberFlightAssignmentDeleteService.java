@@ -1,11 +1,13 @@
 
 package acme.features.flightCrewMembers.flightAssignments;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.basis.AbstractEntity;
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
@@ -31,15 +33,46 @@ public class FlightCrewMemberFlightAssignmentDeleteService extends AbstractGuiSe
 	@Override
 	public void authorise() {
 		FlightAssignment assignment;
+		boolean invalidLeg = false;
+		boolean method = true;
+		boolean status = false;
 		int id;
-		id = super.getRequest().getData("id", int.class);
-		assignment = this.repository.findAssignmentById(id);
+		boolean correctDuty = true;
+		boolean correctStatus = true;
+		if (super.getRequest().getMethod().equals("POST")) {
+			String enumValue = super.getRequest().getData("duty", String.class);
+			correctDuty = Arrays.stream(Duty.values()).anyMatch(d -> d.toString().equals(enumValue));
+			correctDuty = correctDuty || enumValue.equals("0");
+		}
+		if (super.getRequest().getMethod().equals("POST")) {
+			String enumValue = super.getRequest().getData("currentStatus", String.class);
+			correctStatus = Arrays.stream(CurrentStatus.values()).anyMatch(s -> s.toString().equals(enumValue));
+			correctStatus = correctStatus || enumValue.equals("0");
+		}
+		if (super.getRequest().getMethod().equals("GET"))
+			method = false;
+		else {
+			id = super.getRequest().getData("id", int.class);
+			assignment = this.repository.findAssignmentById(id);
+			List<AbstractEntity> legs = this.repository.findAll();
+			List<Integer> legsIds = legs.stream().map(l -> l.getId()).toList();
+			Integer legId = super.getRequest().getData("leg", int.class);
+			if (legId == 0)
+				invalidLeg = true;
+			else if (!legsIds.contains(legId))
+				invalidLeg = false;
+			else
+				invalidLeg = true;
 
-		int memberId;
-		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		boolean status = assignment.isDraftMode() && assignment.getDuty().equals(Duty.LEAD_ATTENDANT) && assignment.getFlightCrewMember().getId() == memberId;
+			int memberId;
+			memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			if (assignment != null)
+				status = assignment.isDraftMode() && assignment.getFlightCrewMember().getId() == memberId;
+			else
+				status = false;
+		}
+		super.getResponse().setAuthorised(method && status && invalidLeg && correctDuty && correctStatus);
 
-		super.getResponse().setAuthorised(status);
 
 	}
 
@@ -83,13 +116,14 @@ public class FlightCrewMemberFlightAssignmentDeleteService extends AbstractGuiSe
 		SelectChoices choicesDuties;
 		SelectChoices choicesStatuses;
 		Collection<Leg> legs = this.repository.findAllLegs();
-		choicesLegs = SelectChoices.from(legs, "id", assignment.getLeg());
+
+		choicesLegs = SelectChoices.from(legs, "id", super.getRequest().getData("leg", int.class) == 0 ? null : assignment.getLeg());
 		choicesDuties = SelectChoices.from(Duty.class, assignment.getDuty());
 		choicesStatuses = SelectChoices.from(CurrentStatus.class, assignment.getCurrentStatus());
 
 		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "leg", "currentStatus", "remarks", "draftMode");
 		dataset.put("legs", choicesLegs);
-		dataset.put("completed", MomentHelper.isBefore(assignment.getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment()));
+		dataset.put("completed", super.getRequest().getData("leg", int.class) == 0 ? false : MomentHelper.isBefore(assignment.getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment()));
 		dataset.put("flightCrewMember", assignment.getFlightCrewMember().getEmployeeCode());
 		dataset.put("duties", choicesDuties);
 		dataset.put("statuses", choicesStatuses);

@@ -1,6 +1,7 @@
 
 package acme.features.flightCrewMembers.flightAssignments;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -31,24 +32,46 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 	@Override
 	public void authorise() {
 		FlightAssignment assignment;
+		boolean invalidLeg = false;
+		boolean method = true;
+		boolean status = false;
 		int id;
-		id = super.getRequest().getData("id", int.class);
-		assignment = this.repository.findAssignmentById(id);
-		boolean invalidLeg;
-		List<AbstractEntity> legs = this.repository.findAll();
-		List<Integer> legsIds = legs.stream().map(l -> l.getId()).toList();
-		Integer legId = super.getRequest().getData("leg", int.class);
-		if (legId == 0)
-			invalidLeg = true;
-		else if (!legsIds.contains(legId))
-			invalidLeg = false;
-		else
-			invalidLeg = true;
-		int memberId;
-		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		boolean status = assignment.isDraftMode() && assignment.getDuty().equals(Duty.LEAD_ATTENDANT) && assignment.getFlightCrewMember().getId() == memberId;
+		boolean correctDuty = true;
+		boolean correctStatus = true;
+		if (super.getRequest().getMethod().equals("POST")) {
+			String enumValue = super.getRequest().getData("duty", String.class);
+			correctDuty = Arrays.stream(Duty.values()).anyMatch(d -> d.toString().equals(enumValue));
+			correctDuty = correctDuty || enumValue.equals("0");
+		}
+		if (super.getRequest().getMethod().equals("POST")) {
+			String enumValue = super.getRequest().getData("currentStatus", String.class);
+			correctStatus = Arrays.stream(CurrentStatus.values()).anyMatch(s -> s.toString().equals(enumValue));
+			correctStatus = correctStatus || enumValue.equals("0");
+		}
+		if (super.getRequest().getMethod().equals("GET"))
+			method = false;
+		else {
+			id = super.getRequest().getData("id", int.class);
+			assignment = this.repository.findAssignmentById(id);
+			List<AbstractEntity> legs = this.repository.findAll();
+			List<Integer> legsIds = legs.stream().map(l -> l.getId()).toList();
+			Integer legId = super.getRequest().getData("leg", int.class);
+			if (legId == 0)
+				invalidLeg = true;
+			else if (!legsIds.contains(legId))
+				invalidLeg = false;
+			else
+				invalidLeg = true;
 
-		super.getResponse().setAuthorised(status && invalidLeg);
+			int memberId;
+			memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			if (assignment != null)
+				status = assignment.isDraftMode() && assignment.getFlightCrewMember().getId() == memberId;
+			else
+				status = false;
+		}
+		super.getResponse().setAuthorised(method && status && invalidLeg && correctStatus && correctDuty);
+
 	}
 
 	@Override

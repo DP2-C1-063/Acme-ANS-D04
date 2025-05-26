@@ -11,8 +11,10 @@
 	<acme:input-textbox code="assistance-agent.claim.form.label.description" path="description"/>
 	<acme:input-select code="assistance-agent.claim.form.label.type" path="type" choices="${types}"/>
 	<acme:input-select code="assistance-agent.claim.form.label.leg" path="leg" choices="${legs}"/>
+	<jstl:if test="${_command == 'show' }">
 	<acme:input-textbox code="assistance-agent.claim.form.label.assistanceAgent" path="assistanceAgent" readonly="true"/>
-	
+	<acme:input-textbox code="assistance-agent.claim.form.label.status" path="status" readonly="true"/>
+	</jstl:if>  
 	<jstl:choose>	
 			
 		<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && draftMode == true}">
