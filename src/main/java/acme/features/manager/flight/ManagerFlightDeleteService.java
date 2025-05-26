@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.activityLog.ActivityLog;
 import acme.entities.booking.Booking;
 import acme.entities.booking.BookingRecord;
 import acme.entities.claim.Claim;
@@ -76,6 +77,7 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 		Collection<FlightAssignment> flightAssignments;
 		Collection<Booking> bookings;
 		Collection<BookingRecord> bookingRecords;
+		Collection<ActivityLog> activityLogs;
 
 		legs = this.repository.findLegsByFlightId(flight.getId());
 		bookings = this.repository.findAllBookingsByFlightId(flight.getId());
@@ -83,6 +85,7 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 		claims = new ArrayList<>();
 		flightAssignments = new ArrayList<>();
 		bookingRecords = new ArrayList<>();
+		activityLogs = new ArrayList<>();
 
 		for (Leg l : legs) {
 			claims.addAll(this.repository.findAllClaimsByLegId(l.getId()));
@@ -92,7 +95,10 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 			trackingLogs.addAll(this.repository.findAllTrackingLogsByClaimId(c.getId()));
 		for (Booking b : bookings)
 			bookingRecords.addAll(this.repository.findAllBookingRecordsByBookingId(b.getId()));
+		for (FlightAssignment fa : flightAssignments)
+			activityLogs.addAll(this.repository.findAllActivityLogsByFlightAssignmentId(fa.getId()));
 
+		this.repository.deleteAll(activityLogs);
 		this.repository.deleteAll(trackingLogs);
 		this.repository.deleteAll(claims);
 		this.repository.deleteAll(flightAssignments);

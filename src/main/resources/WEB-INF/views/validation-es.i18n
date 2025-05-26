@@ -41,6 +41,7 @@ acme.validation.leg.duration-too-long.message = La duración es demasiado larga
 acme.validation.leg.duration-too-short.message = La duración es demasiado corta
 acme.validation.leg.same-departure-and-arrival-airport.message = Los aeropuertos de salida y llegada deben ser diferentes
 acme.validation.leg.flight-number.message = El número de vuelo debe estar compuesto por el IATA de la aerolínea (añadidos automáticamente por el sistema) y 4 dígitos
+acme.validation.leg.overlap.message = El tramo se solapa con otro tramo de este vuelo
 
 acme.validation.flightcrew.employeecode = El código de empleado deben ser 2 o tres letras mayusculas, las iniciales del empleado, seguido de seis dígitos
 acme.validation.flightcrewmember.duplicated-employeecode.message = Codigo de empleado ya usado
