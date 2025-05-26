@@ -1,6 +1,8 @@
 
 package acme.features.administrator.airlines;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -25,7 +27,7 @@ public class AdministratorAirlinesUpdateService extends AbstractGuiService<Admin
 	@Override
 	public void authorise() {
 		boolean status;
-
+		boolean validEnum = false;
 		if (super.getRequest().getMethod().equals("POST")) {
 			int id;
 			Airlines airlines;
@@ -33,10 +35,13 @@ public class AdministratorAirlinesUpdateService extends AbstractGuiService<Admin
 			id = super.getRequest().getData("id", int.class);
 			airlines = this.repository.findAirlineById(id);
 			status = airlines != null;
+			String enumValue = super.getRequest().getData("type", String.class);
+			validEnum = Arrays.stream(AirlineType.values()).anyMatch(t -> t.toString().equals(enumValue));
+			validEnum = validEnum || enumValue.equals("0");
 		} else
 			status = false;
 
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(status && validEnum);
 	}
 
 	@Override

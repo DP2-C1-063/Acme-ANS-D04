@@ -2,6 +2,7 @@
 package acme.features.administrator.aircraft;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -27,6 +28,7 @@ public class AdministratorAircraftCreateService extends AbstractGuiService<Admin
 
 	@Override
 	public void authorise() {
+	
 		String method = super.getRequest().getMethod();
 		boolean status = true;
 		if (method.equals("POST")) {
@@ -34,7 +36,6 @@ public class AdministratorAircraftCreateService extends AbstractGuiService<Admin
 			status = id == 0;
 			int airlineId = super.getRequest().getData("airline", int.class);
 			status = status && (this.airlineRepository.findAirlineById(airlineId) != null || airlineId == 0);
-
 		}
 
 		super.getResponse().setAuthorised(status);

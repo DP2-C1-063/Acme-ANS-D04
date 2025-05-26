@@ -2,6 +2,7 @@
 package acme.features.administrator.aircraft;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -31,8 +32,9 @@ public class AdministratorAircraftUpdateService extends AbstractGuiService<Admin
 		boolean status = true;
 		if (method.equals("POST")) {
 
+
 			int airlineId = super.getRequest().getData("airline", int.class);
-			status = status = status && (this.airlineRepository.findAirlineById(airlineId) != null || airlineId == 0);
+			status = status && (this.airlineRepository.findAirlineById(airlineId) != null || airlineId == 0);
 
 		}
 
