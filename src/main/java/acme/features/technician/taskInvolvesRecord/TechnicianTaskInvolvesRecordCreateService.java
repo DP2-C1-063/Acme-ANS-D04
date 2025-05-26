@@ -32,22 +32,33 @@ public class TechnicianTaskInvolvesRecordCreateService extends AbstractGuiServic
 
 		Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
 
-		int masterId = super.getRequest().getData("masterId", int.class);
-		MaintenanceRecord record = this.repository.findMaintenanceRecordById(masterId);
+		if (super.getRequest().hasData("masterId")) {
+			int masterId = super.getRequest().getData("masterId", int.class);
 
-		status = status && record.getTechnician().equals(technician);
+			MaintenanceRecord record = this.repository.findMaintenanceRecordById(masterId);
 
-		if (super.getRequest().getData().containsKey("id")) {
-			int taskId = super.getRequest().getData("task", int.class);
-			Task task = this.repository.findTaskById(taskId);
+			if (record != null) {
 
-			boolean isTechnician = task.getTechnician().equals(technician);
-			boolean isNotDraft = !task.isDraftMode();
+				status = status && record.getTechnician().equals(technician);
 
-			status = status && (isTechnician || isNotDraft);
-		}
+				if (super.getRequest().getData().containsKey("task")) {
+					int taskId = super.getRequest().getData("task", int.class);
+					Task task = this.repository.findTaskById(taskId);
+					if (task != null) {
 
-		status = status && record.isDraftMode();
+						boolean isTechnician = task.getTechnician().equals(technician);
+						boolean isNotDraft = !task.isDraftMode();
+
+						status = status && (isTechnician || isNotDraft);
+					} else if (taskId != 0)
+						status = false;
+				}
+
+				status = status && record.isDraftMode();
+			} else
+				status = false;
+		} else
+			status = false;
 
 		super.getResponse().setAuthorised(status);
 	}

@@ -70,7 +70,8 @@ acme.validation.flight.legs-published.message = All legs must be published to pu
 acme.validation.leg.aircraft-in-use.message = The aircraft is in use during the selected flight window
 
 acme.validation.maintenance-record.tasks-unpublished.message  = To publish a maintenance record, all the tasks associated must be already published 
-
+acme.validation.task-involves-record.tasks.message = The task cannot be null
+ 
 acme.validation.customer.incorrect-initials-identifier.message = At least the first two letters of the identifier must be the initials of the customer (name and surname)
 
 acme.validation.confirmation.message = Do you wish to confirm this operation?

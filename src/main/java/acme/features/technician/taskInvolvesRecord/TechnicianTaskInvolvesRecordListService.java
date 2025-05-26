@@ -31,12 +31,16 @@ public class TechnicianTaskInvolvesRecordListService extends AbstractGuiService<
 
 		technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
 
-		id = super.getRequest().getData("masterId", int.class);
-		mrecord = this.repository.findMaintenanceRecordById(id);
+		if (super.getRequest().hasData("masterId")) {
 
-		if (mrecord != null)
-			status = mrecord.getTechnician().equals(technician);
-		else
+			id = super.getRequest().getData("masterId", int.class);
+			mrecord = this.repository.findMaintenanceRecordById(id);
+
+			if (mrecord != null)
+				status = mrecord.getTechnician().equals(technician);
+			else
+				status = false;
+		} else
 			status = false;
 
 		super.getResponse().setAuthorised(status);

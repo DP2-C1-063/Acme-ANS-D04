@@ -67,6 +67,7 @@ acme.validation.flight.legs-published.message = Todos los tramos deben estar pub
 acme.validation.leg.aircraft-in-use.message = La aeronave está en uso en el intervalo de vuelo seleccionado
 
 acme.validation.maintenance-record.tasks-unpublished.message  = Para publicar un registro de mantenimiento, todas las tareas asociadas deben estar publicadas 
+acme.validation.task-involves-record.tasks.message = La tarea no debe ser nula.
 
 acme.validation.customer.incorrect-initials-identifier.message = Las 2 primeras letras del identificador del cliente deben ser las iniciales del mismo (nombre y apellidos)
 
