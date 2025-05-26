@@ -37,7 +37,19 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 			int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 			int bookingId = super.getRequest().getData("id", int.class);
 			Booking booking = this.repository.getBookingById(bookingId);
+			Integer flightId = super.getRequest().getData("flight", Integer.class);
 
+			if (flightId != 0) {
+				Flight flight = this.repository.getFlightById(flightId);
+				status = status && flight != null;
+			}
+			if (super.getRequest().getMethod().equals("POST")) {
+				int id;
+				id = super.getRequest().getData("id", int.class);
+				booking = this.repository.getBookingById(id);
+				if (booking == null)
+					status = false;
+			}
 			status = status && customerId == booking.getCustomer().getId();
 			super.getResponse().setAuthorised(status);
 		}
@@ -67,14 +79,15 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 		valid = !bookingRecords.isEmpty();
 		super.state(valid, "*", "acme.validation.booking.noPassengers");
 
-		valid = bookingRecords.stream().filter(br -> br.getPassenger().isDraftMode()).findFirst().isEmpty();
-		super.state(valid, "*", "acme.validation.booking.passengerNotPublished");
+		boolean valid2 = bookingRecords.stream().filter(br -> br.getPassenger().isDraftMode()).findFirst().isEmpty();
+		super.state(valid2, "*", "acme.validation.booking.passengerNotPublished");
 
-		valid = booking.getFlight() != null;
-		super.state(valid, "flight", "acme.validation.booking.flight.message");
-
-		valid = booking.getLastNibble() != null && !booking.getLastNibble().isBlank();
-		super.state(valid, "lastNibble", "acme.validation.booking.NolastNibble");
+		if (booking.getFlight() != null) {
+			boolean valid3 = booking.getFlight().isPublished();
+			super.state(valid3, "flight", "acme.validation.booking.flight.message");
+		}
+		boolean valid4 = booking.getLastNibble() != null && !booking.getLastNibble().isBlank();
+		super.state(valid4, "lastNibble", "acme.validation.booking.NolastNibble");
 	}
 
 	@Override
@@ -92,7 +105,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 		travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
 		Collection<Flight> flights = this.repository.findAllFlights();
-		SelectChoices flightChoices = SelectChoices.from(flights, "id", booking.getFlight());
+		SelectChoices flightChoices = SelectChoices.from(flights, "tag", booking.getFlight());
 
 		dataset = super.unbindObject(booking, "flight", "locatorCode", "travelClass", "price", "lastNibble", "draftMode", "id");
 		dataset.put("travelClasses", travelClasses);

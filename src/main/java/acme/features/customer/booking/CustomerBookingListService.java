@@ -23,8 +23,7 @@ public class CustomerBookingListService extends AbstractGuiService<Customer, Boo
 		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
 
 		super.getResponse().setAuthorised(status);
-		if (!super.getRequest().getMethod().equals("GET"))
-			super.getResponse().setAuthorised(false);
+
 	}
 
 	@Override
@@ -39,7 +38,7 @@ public class CustomerBookingListService extends AbstractGuiService<Customer, Boo
 
 	@Override
 	public void unbind(final Booking booking) {
-		assert booking != null;
+		// assert booking != null;
 
 		Dataset dataset;
 

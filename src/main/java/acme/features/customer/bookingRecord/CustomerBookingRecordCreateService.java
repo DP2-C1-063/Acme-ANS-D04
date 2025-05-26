@@ -23,7 +23,7 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 	@Override
 	public void authorise() {
-		boolean isAuthorised = false;
+		boolean status = false;
 
 		if (super.getRequest().getPrincipal().hasRealmOfType(Customer.class)) {
 			int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
@@ -34,12 +34,25 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 			if (booking != null) {
 				boolean isCustomer = booking.getCustomer().getId() == customerId;
 
-				isAuthorised = isCustomer;
+				status = isCustomer;
 
 			}
 		}
 
-		super.getResponse().setAuthorised(isAuthorised);
+		if (super.getRequest().getMethod().equals("POST")) {
+			int id = super.getRequest().getData("id", int.class);
+			status = id == 0;
+		}
+
+		if (super.getRequest().hasData("id")) {
+			Integer passengerId = super.getRequest().getData("passenger", Integer.class);
+			if (passengerId != 0) {
+				Passenger passenger = this.repository.getPassengerById(passengerId);
+				status = status && passenger != null;
+			}
+		}
+
+		super.getResponse().setAuthorised(status);
 
 	}
 
@@ -75,7 +88,6 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 	@Override
 	public void unbind(final BookingRecord bookingRecord) {
-		assert bookingRecord != null;
 		Dataset dataset;
 
 		dataset = super.unbindObject(bookingRecord, "passenger", "booking");

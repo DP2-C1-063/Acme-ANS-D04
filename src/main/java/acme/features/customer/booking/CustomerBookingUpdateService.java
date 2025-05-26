@@ -24,6 +24,7 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 	@Override
 	public void authorise() {
 		boolean status;
+
 		status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
 
 		super.getResponse().setAuthorised(status);
@@ -33,7 +34,18 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 			int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 			int bookingId = super.getRequest().getData("id", int.class);
 			Booking booking = this.repository.getBookingById(bookingId);
-
+			Integer flightId = super.getRequest().getData("flight", Integer.class);
+			if (flightId != 0) {
+				Flight flight = this.repository.getFlightById(flightId);
+				status = status && flight != null;
+			}
+			if (super.getRequest().getMethod().equals("POST")) {
+				int id;
+				id = super.getRequest().getData("id", int.class);
+				booking = this.repository.getBookingById(id);
+				if (booking == null)
+					status = false;
+			}
 			status = status && customerId == booking.getCustomer().getId();
 			super.getResponse().setAuthorised(status);
 		}
@@ -58,8 +70,10 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 		Booking existing = this.repository.findBookingByLocator(booking.getLocatorCode());
 		boolean valid = existing == null || existing.getId() == booking.getId();
 		super.state(valid, "locatorCode", "acme.validation.booking.duplicated-locatorcode.message");
-		valid = booking.getFlight() != null;
-		super.state(valid, "flight", "acme.validation.booking.flight.message");
+		if (booking.getFlight() != null) {
+			boolean valid2 = booking.getFlight().isPublished();
+			super.state(valid2, "flight", "acme.validation.booking.flight.message");
+		}
 	}
 
 	@Override
@@ -76,7 +90,7 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 		travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
 		Collection<Flight> flights = this.repository.findAllFlights();
-		SelectChoices flightChoices = SelectChoices.from(flights, "id", booking.getFlight());
+		SelectChoices flightChoices = SelectChoices.from(flights, "tag", booking.getFlight());
 
 		dataset = super.unbindObject(booking, "flight", "locatorCode", "travelClass", "price", "lastNibble", "draftMode", "id");
 		dataset.put("travelClasses", travelClasses);

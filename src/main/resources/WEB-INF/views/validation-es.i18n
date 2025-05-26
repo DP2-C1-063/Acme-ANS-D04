@@ -23,8 +23,7 @@ acme.validation.flightcrew.employeecode = El código de empleado deben ser 2 o t
 acme.validation.flightcrewmember.duplicated-employeecode.message = codigo de empleado ya usado
 acme.validation.customer.identifier.message = El identificador de un cliente debe tener las primeras dos o tres letras correspondiendo con las iniciales
 acme.validation.customer.duplicated-identifier.message = El identificador de un cliente ya existe
-acme.validation.booking.locatorCode.message = The codigo de una reserva debe ser de 6 a 8 caracteres alfanuméricos en mayúsculas
-acme.validation.booking.duplicated-locatorcode.message = El codigo de una reserva ya existe
+
 acme.validation.service.promotioncode.message = El codigo de promocion de un servicio debe tener los dos ultimos numeros correspondiendo con el año
 acme.validation.service.duplicated-promotioncode.message = El codigo de promocion ya existe
 acme.validation.aircraft.duplicated-RegistrationNumber.message = El número de registro ya está usado
@@ -82,4 +81,12 @@ acme.validation.flightAssignment.already-pilot = Ya hay un piloto asignado a est
 acme.validation.flightAssignment.already-co-pilot = Ya hay un copiloto asignado a este tramo
 
 acme.validation.booking.flight.message = Este vuelo no esta publicado
+acme.validation.booking.noPassengers = Necesitas pasajeros para poder publicar una reserva
+acme.validation.booking.passengerNotPublished = Todos los pasajeros necesitan estar publicados para poder publicar una reserva
+acme.validation.booking.NolastNibble = Para publicar una reserva debes escribir los ultimos 4 digitos de tu tarjeta
+acme.validation.booking.doublePassenger = Este pasajero ya esta en esta reserva
+acme.validation.booking.notDraft = Esta reserva ya esta publicada, no le puededs añadir pasajeros
+acme.validation.booking.locatorCode.message = El codigo de una reserva debe ser de 6 a 8 caracteres alfanuméricos en mayúsculas
+acme.validation.booking.duplicated-locatorcode.message = El codigo de una reserva ya existe
+
 

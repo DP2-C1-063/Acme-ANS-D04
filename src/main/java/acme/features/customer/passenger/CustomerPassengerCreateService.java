@@ -22,6 +22,10 @@ public class CustomerPassengerCreateService extends AbstractGuiService<Customer,
 		int customerId;
 		customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		status = true;
+		if (super.getRequest().getMethod().equals("POST")) {
+			int id = super.getRequest().getData("id", int.class);
+			status = id == 0;
+		}
 		super.getResponse().setAuthorised(status);
 
 	}
