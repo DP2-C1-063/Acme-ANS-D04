@@ -24,16 +24,32 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 
 	@Override
 	public void authorise() {
-		MaintenanceRecord mrecord;
-		Technician technician;
-		int id;
+		boolean status = true;
 
-		technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
+		if (super.getRequest().getMethod().equals("POST")) {
+			MaintenanceRecord mrecord;
+			Technician technician;
+			int id;
 
-		id = super.getRequest().getData("id", int.class);
-		mrecord = this.repository.findMaintenanceRecordById(id);
+			id = super.getRequest().getData("id", int.class);
+			mrecord = this.repository.findMaintenanceRecordById(id);
 
-		super.getResponse().setAuthorised(mrecord.getTechnician().equals(technician));
+			status = status && mrecord.isDraftMode();
+			if (mrecord != null) {
+				Collection<Integer> aircrafts = this.repository.findAllAircraft().stream().map(Aircraft::getId).toList();
+
+				technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
+				status = status && mrecord.getTechnician().equals(technician);
+
+				int relatedAircraft = super.getRequest().getData("relatedAircraft", int.class);
+				status = status && (relatedAircraft == 0 || aircrafts.contains(relatedAircraft));
+			} else
+				status = false;
+		} else
+			status = false;
+
+		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
@@ -62,10 +78,6 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 		Collection<Task> tasks = this.repository.findAllTaskAssociatedWith(maintenanceRecod.getId());
 		{
 			super.state(!tasks.isEmpty(), "*", "acme.validation.maintenance-record.no-task.message");
-		}
-		{
-			boolean allTaskPublic = tasks.isEmpty() || tasks.stream().allMatch(t -> !t.isDraftMode());
-			super.state(allTaskPublic, "*", "acme.validation.maintenance-record.tasks-unpublished.message");
 		}
 	}
 

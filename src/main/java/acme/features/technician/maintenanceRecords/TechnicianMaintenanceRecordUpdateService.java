@@ -34,9 +34,13 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 			mrecord = this.repository.findMaintenanceRecordById(id);
 
 			if (mrecord != null) {
+				Collection<Integer> aircrafts = this.repository.findAllAircraft().stream().map(Aircraft::getId).toList();
 
 				technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
 				status = mrecord.getTechnician().equals(technician);
+
+				int relatedAircraft = super.getRequest().getData("relatedAircraft", int.class);
+				status = status && (relatedAircraft == 0 || aircrafts.contains(relatedAircraft));
 			} else
 				status = false;
 		} else
