@@ -7,6 +7,7 @@ import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.claim.Claim;
 import acme.entities.trackingLogs.TrackingLog;
 import acme.entities.trackingLogs.TrackingLogStatus;
 import acme.features.assistanceAgent.claim.AssistanceAgentClaimRepository;
@@ -28,7 +29,7 @@ public class AssistanceAgentTrackingLogsPublish extends AbstractGuiService<Assis
 		TrackingLog trackingLog;
 		id = super.getRequest().getData("id", int.class);
 		trackingLog = this.repository.getTrackingLogById(id);
-		boolean status = trackingLog.isDraftMode();
+		boolean status = trackingLog != null && trackingLog.isDraftMode();
 		AssistanceAgent agent;
 		agent = (AssistanceAgent) super.getRequest().getPrincipal().getActiveRealm();
 		status = status && trackingLog.getAssistanceAgent().equals(agent);
@@ -53,13 +54,19 @@ public class AssistanceAgentTrackingLogsPublish extends AbstractGuiService<Assis
 	@Override
 	public void validate(final TrackingLog trackingLog) {
 		boolean claimIsPublished = !trackingLog.getClaim().isDraftMode();
-		super.state(claimIsPublished, "claim", "assistance-agent.tracking-logs.claim-have-not-been-published");
+		super.state(claimIsPublished, "*", "assistance-agent.tracking-logs.claim-have-not-been-published");
 
 	}
 
 	@Override
 	public void perform(final TrackingLog trackingLog) {
 		trackingLog.setDraftMode(false);
+		Claim claim = trackingLog.getClaim();
+		if (claim.isReview()) {
+			claim.setReview(false);
+			claim.setDraftMode(false);
+			this.claimRepository.save(claim);
+		}
 		this.repository.save(trackingLog);
 	}
 

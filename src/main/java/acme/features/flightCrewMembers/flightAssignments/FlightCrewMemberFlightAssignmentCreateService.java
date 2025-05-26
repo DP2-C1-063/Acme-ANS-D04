@@ -33,6 +33,7 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 	@Override
 	public void authorise() {
 		boolean auth;
+
 		boolean transientId = true;
 		boolean correctDuty = true;
 		boolean correctStatus = true;

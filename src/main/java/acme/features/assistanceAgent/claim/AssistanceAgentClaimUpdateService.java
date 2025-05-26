@@ -33,6 +33,13 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 		AssistanceAgent agent;
 		agent = (AssistanceAgent) super.getRequest().getPrincipal().getActiveRealm();
 		status = status && claim.getAssistanceAgent().equals(agent);
+		String method = super.getRequest().getMethod();
+		if (method.equals("POST")) {
+
+			int legId = super.getRequest().getData("leg", int.class);
+			status = status && (this.repository.findLegById(legId) != null || legId == 0 || this.repository.findLegById(claim.getLeg().getId()) != null);
+
+		}
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -58,10 +65,11 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 
 	@Override
 	public void validate(final Claim claim) {
-		boolean notYetOcurred;
-		notYetOcurred = MomentHelper.isAfter(claim.getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment());
-		super.state(notYetOcurred, "leg", "flight-crew-member.flight-assignment.leg-has-not-finished-yet");
-
+		if (claim.getLeg() != null) {
+			boolean notYetOcurred;
+			notYetOcurred = MomentHelper.isAfter(claim.getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment());
+			super.state(!notYetOcurred, "leg", "assistance-agent.claim.leg-has-not-finished-yet");
+		}
 	}
 
 	@Override
@@ -76,7 +84,7 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 		SelectChoices choicesTypes;
 		choicesTypes = SelectChoices.from(ClaimType.class, claim.getType());
 		Collection<Leg> legs = this.repository.findAllLegs();
-		choicesLegs = SelectChoices.from(legs, "id", claim.getLeg());
+		choicesLegs = SelectChoices.from(legs, "scheduledArrival", claim.getLeg());
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "leg", "draftMode");
 		dataset.put("legs", choicesLegs);
 		dataset.put("assistanceAgent", claim.getAssistanceAgent().getEmployeeCode());

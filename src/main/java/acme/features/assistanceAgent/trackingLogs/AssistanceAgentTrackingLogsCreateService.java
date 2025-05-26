@@ -26,7 +26,25 @@ public class AssistanceAgentTrackingLogsCreateService extends AbstractGuiService
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		int masterId;
+
+		Claim claim;
+
+		String method = super.getRequest().getMethod();
+		boolean status = true;
+		if (method.equals("POST")) {
+			int id = super.getRequest().getData("id", int.class);
+			status = id == 0;
+
+		}
+
+		masterId = super.getRequest().getData("masterId", int.class);
+
+		claim = this.repository.findClaim(masterId);
+		AssistanceAgent agent;
+		agent = (AssistanceAgent) super.getRequest().getPrincipal().getActiveRealm();
+		status = status && claim != null && claim.getAssistanceAgent().equals(agent);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -54,11 +72,17 @@ public class AssistanceAgentTrackingLogsCreateService extends AbstractGuiService
 
 	@Override
 	public void validate(final TrackingLog trackingLog) {
-
+		;
 	}
 
 	@Override
 	public void perform(final TrackingLog trackingLog) {
+		if (trackingLog.getClaim().isReview()) {
+			Claim claim = trackingLog.getClaim();
+			claim.setDraftMode(false);
+			claim.setReview(false);
+			this.claimRepository.save(claim);
+		}
 		this.repository.save(trackingLog);
 	}
 

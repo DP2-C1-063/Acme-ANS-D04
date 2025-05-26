@@ -83,3 +83,7 @@ acme.validation.flightAssignment.member-not-available.message = This member is n
 acme.validation.flightAssignment.concurrent-leg.message = There is already a leg that overlaps with this one for this crew member
 acme.validation.flightAssignment.already-pilot = There is already a pilot for this leg
 acme.validation.flightAssignment.already-co-pilot = There is already a co-pilot for this leg
+assistance-agent.tracking-logs.claim-have-not-been-published= claim is not published
+assistance-agent.claim.tracking-log-have-not-been-published= tracking log not deleted
+assistance-agent.claim.leg-has-not-finished-yet=legs has not finished yet
+assistance-agent.claim.tracking-log-have-not-been-completed=there is no tracking log with 100%

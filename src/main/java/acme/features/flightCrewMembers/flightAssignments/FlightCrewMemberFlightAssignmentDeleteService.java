@@ -73,6 +73,7 @@ public class FlightCrewMemberFlightAssignmentDeleteService extends AbstractGuiSe
 		}
 		super.getResponse().setAuthorised(method && status && invalidLeg && correctDuty && correctStatus);
 
+
 	}
 
 	@Override

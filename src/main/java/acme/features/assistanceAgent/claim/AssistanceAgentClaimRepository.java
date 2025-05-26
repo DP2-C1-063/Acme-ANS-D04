@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.claim.Claim;
 import acme.entities.leg.Leg;
+import acme.entities.trackingLogs.TrackingLog;
 
 @Repository
 public interface AssistanceAgentClaimRepository extends AbstractRepository {
@@ -24,5 +25,8 @@ public interface AssistanceAgentClaimRepository extends AbstractRepository {
 
 	@Query("Select l from Leg l where l.id = :id")
 	Leg findLegById(int id);
+
+	@Query("select t from TrackingLog t where t.claim.id = :Id order by t.lastUpdateMoment desc")
+	Collection<TrackingLog> getAllTrackingLogsByClaim(int Id);
 
 }

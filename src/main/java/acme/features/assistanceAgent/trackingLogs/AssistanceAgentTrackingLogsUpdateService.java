@@ -1,6 +1,8 @@
 
 package acme.features.assistanceAgent.trackingLogs;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -25,13 +27,13 @@ public class AssistanceAgentTrackingLogsUpdateService extends AbstractGuiService
 	@Override
 	public void authorise() {
 		int id;
-		TrackingLog trackingLog;
 		id = super.getRequest().getData("id", int.class);
+		TrackingLog trackingLog;
 		trackingLog = this.repository.getTrackingLogById(id);
-		boolean status = trackingLog.isDraftMode();
+
 		AssistanceAgent agent;
 		agent = (AssistanceAgent) super.getRequest().getPrincipal().getActiveRealm();
-		status = status && trackingLog.getAssistanceAgent().equals(agent);
+		boolean status = trackingLog != null && trackingLog.getAssistanceAgent().equals(agent) && trackingLog.isDraftMode();
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -52,6 +54,14 @@ public class AssistanceAgentTrackingLogsUpdateService extends AbstractGuiService
 
 	@Override
 	public void validate(final TrackingLog trackingLog) {
+		if (trackingLog.getResolutionPercentage() != null) {
+			Boolean percentageIsAscendance = true;
+			Collection<TrackingLog> trackingLogs = this.repository.getAllTrackingLogsByClaim(trackingLog.getClaim().getId());
+			if (!trackingLogs.isEmpty())
+				percentageIsAscendance = trackingLogs.stream().toList().get(0).getResolutionPercentage() < trackingLog.getResolutionPercentage() || this.repository.getAllTrackingLogsByClaim(trackingLog.getClaim().getId()).isEmpty()
+					|| trackingLogs.contains(trackingLog);
+			super.state(percentageIsAscendance, "resolutionPercentage", "acme.validation.trackinglog.resolution-percentage.message");
+		}
 
 	}
 

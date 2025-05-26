@@ -73,6 +73,7 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 		}
 		super.getResponse().setAuthorised(method && status && invalidLeg && correctStatus && correctDuty);
 
+
 	}
 
 	@Override

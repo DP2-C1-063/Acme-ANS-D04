@@ -13,6 +13,7 @@ import acme.client.services.GuiService;
 import acme.entities.claim.Claim;
 import acme.entities.claim.ClaimType;
 import acme.entities.leg.Leg;
+import acme.entities.trackingLogs.TrackingLog;
 import acme.realms.assistanceAgent.AssistanceAgent;
 
 @GuiService
@@ -30,7 +31,7 @@ public class AssistanceAgentClaimReviewService extends AbstractGuiService<Assist
 		claim = this.repository.findClaim(id);
 		AssistanceAgent agent;
 		agent = (AssistanceAgent) super.getRequest().getPrincipal().getActiveRealm();
-		boolean status = claim.getAssistanceAgent().equals(agent);
+		boolean status = claim != null && claim.getAssistanceAgent().equals(agent) && !claim.isDraftMode();
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -58,13 +59,18 @@ public class AssistanceAgentClaimReviewService extends AbstractGuiService<Assist
 	public void validate(final Claim claim) {
 		boolean notYetOcurred;
 		notYetOcurred = MomentHelper.isAfter(claim.getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment());
-		super.state(notYetOcurred, "leg", "assistance-agent.claim.leg-has-not-finished-yet");
-
+		super.state(!notYetOcurred, "leg", "assistance-agent.claim.leg-has-not-finished-yet");
+		Collection<TrackingLog> trackinglogs = this.repository.getAllTrackingLogsByClaim(claim.getId());
+		if (!trackinglogs.isEmpty()) {
+			TrackingLog trackinglog = trackinglogs.stream().toList().getFirst();
+			boolean status = trackinglog.getResolutionPercentage() == 100.0;
+			super.state(status, "*", "assistance-agent.claim.tracking-log-have-not-been-completed");
+		}
 	}
 
 	@Override
 	public void perform(final Claim claim) {
-		claim.setDraftMode(true);
+
 		claim.setReview(true);
 		this.repository.save(claim);
 	}
@@ -76,7 +82,7 @@ public class AssistanceAgentClaimReviewService extends AbstractGuiService<Assist
 		SelectChoices choicesTypes;
 		choicesTypes = SelectChoices.from(ClaimType.class, claim.getType());
 		Collection<Leg> legs = this.repository.findAllLegs();
-		choicesLegs = SelectChoices.from(legs, "id", claim.getLeg());
+		choicesLegs = SelectChoices.from(legs, "scheduledArrival", claim.getLeg());
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "leg", "draftMode");
 		dataset.put("legs", choicesLegs);
 		dataset.put("assistanceAgent", claim.getAssistanceAgent().getEmployeeCode());

@@ -21,6 +21,6 @@ assistance-agent.claim.form.button.publish = publicar
 assistance-agent.claim.form.button.update= actualizar
 assistance-agent.claim.list.button.create =crear
 assistance-agent.claim.form.button.create=crear
-
-assistance-agent.claim.form.button.TrackingLogs=Tracking Logs
+assistance-agent.claim.form.label.status=estado
+assistance-agent.claim.form.button.TrackingLogs=registros
 assistance-agent.claim.leg-has-not-finished-yet = Una queja no puede ocurrir si su escala no ha pasado
