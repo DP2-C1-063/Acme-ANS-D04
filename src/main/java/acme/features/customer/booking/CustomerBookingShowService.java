@@ -28,10 +28,14 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		super.getResponse().setAuthorised(status);
 
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		int bookingId = super.getRequest().getData("id", int.class);
-		Booking booking = this.repository.getBookingById(bookingId);
-
-		super.getResponse().setAuthorised(customerId == booking.getCustomer().getId());
+		if (!super.getRequest().getData().containsKey("id"))
+			super.getResponse().setAuthorised(false);
+		else {
+			int bookingId = super.getRequest().getData("id", Integer.class);
+			Booking booking = this.repository.getBookingById(bookingId);
+			status = status && customerId == booking.getCustomer().getId();
+			super.getResponse().setAuthorised(status);
+		}
 	}
 
 	@Override
@@ -45,12 +49,11 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 
 	@Override
 	public void unbind(final Booking booking) {
-		assert booking != null;
 		Dataset dataset;
 		SelectChoices travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
 		Collection<Flight> flights = this.repository.findAllFlights();
-		SelectChoices flightChoices = SelectChoices.from(flights, "id", booking.getFlight());
+		SelectChoices flightChoices = SelectChoices.from(flights, "tag", booking.getFlight());
 
 		dataset = super.unbindObject(booking, "locatorCode", "travelClass", "price", "lastNibble", "draftMode", "id");
 		dataset.put("travelClasses", travelClasses);

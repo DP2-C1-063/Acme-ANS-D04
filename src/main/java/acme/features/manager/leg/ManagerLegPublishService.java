@@ -3,6 +3,7 @@ package acme.features.manager.leg;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -40,22 +41,27 @@ public class ManagerLegPublishService extends AbstractGuiService<Manager, Leg> {
 
 			legId = super.getRequest().getData("id", int.class);
 			leg = this.repository.findLegById(legId);
-			flight = leg.getFlight();
-			manager = flight == null ? null : flight.getManager();
+			if (leg != null) {
+				flight = leg.getFlight();
+				manager = flight.getManager();
 
-			// Avoiding POST hacking
+				// Avoiding POST hacking
 
-			Integer departureAirportId = super.getRequest().getData("departureAirport", int.class);
-			Airport departureAirport = this.repository.findAirportById(departureAirportId);
-			boolean departureAirportExists = !(departureAirport == null && departureAirportId != 0);
-			Integer arrivalAirportId = super.getRequest().getData("arrivalAirport", int.class);
-			Airport arrivalAirport = this.repository.findAirportById(arrivalAirportId);
-			boolean arrivalAirportExists = !(arrivalAirport == null && arrivalAirportId != 0);
-			Integer aircraftId = super.getRequest().getData("aircraft", int.class);
-			Aircraft aircraft = this.repository.findAircraftById(aircraftId);
-			boolean aircraftExists = !(aircraft == null && aircraftId != 0);
+				Integer departureAirportId = super.getRequest().getData("departureAirport", int.class);
+				Airport departureAirport = this.repository.findAirportById(departureAirportId);
+				boolean departureAirportExists = !(departureAirport == null && departureAirportId != 0);
+				Integer arrivalAirportId = super.getRequest().getData("arrivalAirport", int.class);
+				Airport arrivalAirport = this.repository.findAirportById(arrivalAirportId);
+				boolean arrivalAirportExists = !(arrivalAirport == null && arrivalAirportId != 0);
+				Integer aircraftId = super.getRequest().getData("aircraft", int.class);
+				Aircraft aircraft = this.repository.findAircraftById(aircraftId);
+				boolean aircraftExists = !(aircraft == null && aircraftId != 0);
 
-			status = leg != null && flight != null && super.getRequest().getPrincipal().hasRealm(manager) && departureAirportExists && arrivalAirportExists && aircraftExists;
+				status = super.getRequest().getPrincipal().hasRealm(manager) && departureAirportExists && arrivalAirportExists && aircraftExists;
+
+			} else
+				status = false;
+
 		} else
 			status = false;
 
@@ -88,29 +94,71 @@ public class ManagerLegPublishService extends AbstractGuiService<Manager, Leg> {
 			Date departure;
 			Date arrival;
 
-			aircraftId = leg.getAircraft().getId();
-			legsSameAircraft = this.repository.findAllLegsByAircraftId(aircraftId);
-			legsSameAircraft.remove(leg);
-			departure = leg.getScheduledDeparture();
-			arrival = leg.getScheduledArrival();
+			aircraftId = super.getRequest().getData("aircraft", int.class);
 			aircraftNotInUse = true;
-			if (departure != null && arrival != null)
-				for (Leg l : legsSameAircraft) {
-					Date startDate = l.getScheduledDeparture();
-					Date endDate = l.getScheduledArrival();
-					if (startDate != null && endDate != null) {
-						boolean startsWithinInterval = MomentHelper.isAfterOrEqual(departure, startDate) && MomentHelper.isBeforeOrEqual(departure, endDate);
-						boolean endsWithinInterval = MomentHelper.isAfterOrEqual(arrival, startDate) && MomentHelper.isBeforeOrEqual(arrival, endDate);
-						boolean coversEntireInterval = MomentHelper.isBeforeOrEqual(departure, startDate) && MomentHelper.isAfterOrEqual(arrival, endDate);
 
-						if (startsWithinInterval || endsWithinInterval || coversEntireInterval) {
-							aircraftNotInUse = false;
-							break;
+			if (aircraftId != 0) {
+				legsSameAircraft = this.repository.findAllLegsByAircraftId(aircraftId);
+				legsSameAircraft.remove(leg);
+				departure = leg.getScheduledDeparture();
+				arrival = leg.getScheduledArrival();
+
+				if (departure != null && arrival != null)
+					for (Leg l : legsSameAircraft) {
+						Date startDate = l.getScheduledDeparture();
+						Date endDate = l.getScheduledArrival();
+						if (startDate != null && endDate != null) {
+							boolean startsWithinInterval = MomentHelper.isAfterOrEqual(departure, startDate) && MomentHelper.isBeforeOrEqual(departure, endDate);
+							boolean endsWithinInterval = MomentHelper.isAfterOrEqual(arrival, startDate) && MomentHelper.isBeforeOrEqual(arrival, endDate);
+							boolean coversEntireInterval = MomentHelper.isBeforeOrEqual(departure, startDate) && MomentHelper.isAfterOrEqual(arrival, endDate);
+
+							if (startsWithinInterval || endsWithinInterval || coversEntireInterval) {
+								aircraftNotInUse = false;
+								break;
+							}
 						}
 					}
-				}
+			}
 
 			super.state(aircraftNotInUse, "*", "acme.validation.leg.aircraft-in-use.message");
+		}
+		{
+			boolean legsNotOverlapWithPrevious;
+			int masterId;
+			List<Leg> legs;
+			legsNotOverlapWithPrevious = true;
+
+			masterId = leg.getFlight().getId();
+			legs = this.repository.findAllLegsByMasterId(masterId);
+			int index = legs.indexOf(leg);
+
+			if (index >= 1) {
+				Date departure = leg.getScheduledDeparture();
+				Date arrivalPreviousLeg = legs.get(index - 1).getScheduledArrival();
+				if (!MomentHelper.isBefore(arrivalPreviousLeg, departure))
+					legsNotOverlapWithPrevious = false;
+			}
+
+			super.state(legsNotOverlapWithPrevious, "*", "acme.validation.leg.overlap.message");
+		}
+		{
+			boolean legsNotOverlapWithNext;
+			int masterId;
+			List<Leg> legs;
+			legsNotOverlapWithNext = true;
+
+			masterId = leg.getFlight().getId();
+			legs = this.repository.findAllLegsByMasterId(masterId);
+			int index = legs.indexOf(leg);
+
+			if (legs.size() > index + 1) {
+				Date arrival = leg.getScheduledArrival();
+				Date departureNextLeg = legs.get(index + 1).getScheduledDeparture();
+				if (!MomentHelper.isAfter(departureNextLeg, arrival))
+					legsNotOverlapWithNext = false;
+			}
+
+			super.state(legsNotOverlapWithNext, "*", "acme.validation.leg.overlap.message");
 		}
 	}
 
@@ -154,8 +202,8 @@ public class ManagerLegPublishService extends AbstractGuiService<Manager, Leg> {
 			dataset.put("departureAirport", departureAirports.getSelected());
 			dataset.put("arrivalAirport", arrivalAirports.getSelected());
 		}
-
-		dataset.put("aircraft", leg.getAircraft().getId());
+		if (leg.getAircraft() != null)
+			dataset.put("aircraft", leg.getAircraft().getId());
 
 		super.getResponse().addData(dataset);
 	}

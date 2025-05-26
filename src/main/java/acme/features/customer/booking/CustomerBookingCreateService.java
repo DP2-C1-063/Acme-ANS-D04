@@ -24,9 +24,24 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void authorise() {
-		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+		boolean status = true;
+		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+
+		if (super.getRequest().getMethod().equals("POST")) {
+			int id = super.getRequest().getData("id", int.class);
+			status = id == 0;
+		}
+
+		if (super.getRequest().hasData("flight")) {
+			int flightId = super.getRequest().getData("flight", int.class);
+			if (flightId != 0) {
+				Flight flight = this.repository.getFlightById(flightId);
+				status = status && flight != null;
+			}
+		}
 
 		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
@@ -50,8 +65,13 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 	@Override
 	public void validate(final Booking booking) {
 		Booking existing = this.repository.findBookingByLocator(booking.getLocatorCode());
-		boolean valid = existing == null || existing.getId() == booking.getId();
-		super.state(valid, "locatorCode", "customer.booking.form.error.duplicateLocatorCode");
+		boolean valid = existing == null;
+		super.state(valid, "locatorCode", "acme.validation.booking.locatorCode.message");
+		if (booking.getFlight() != null) {
+			boolean valid2 = booking.getFlight().isPublished();
+			super.state(valid2, "flight", "acme.validation.booking.flight.message");
+		}
+
 	}
 
 	@Override
@@ -62,15 +82,15 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void unbind(final Booking booking) {
-		assert booking != null;
+		// assert booking != null;
 		Dataset dataset;
 		SelectChoices travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
 		Collection<Flight> flights = this.repository.findAllFlights();
-		SelectChoices flightChoices = SelectChoices.from(flights, "id", booking.getFlight());
-
 		dataset = super.unbindObject(booking, "flight", "locatorCode", "travelClass", "lastNibble", "draftMode", "id");
 		dataset.put("travelClasses", travelClasses);
+
+		SelectChoices flightChoices = SelectChoices.from(flights, "tag", booking.getFlight());
 		dataset.put("flights", flightChoices);
 
 		super.getResponse().addData(dataset);

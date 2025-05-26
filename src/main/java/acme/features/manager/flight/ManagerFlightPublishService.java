@@ -86,7 +86,7 @@ public class ManagerFlightPublishService extends AbstractGuiService<Manager, Fli
 
 			masterId = super.getRequest().getData("id", int.class);
 			legs = this.repository.findLegsByFlightId(masterId);
-			atLeastOneLeg = legs != null ? legs.size() >= 1 : false;
+			atLeastOneLeg = legs.size() >= 1;
 
 			super.state(atLeastOneLeg, "*", "acme.validation.flight.no-legs.message");
 		}

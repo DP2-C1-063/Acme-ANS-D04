@@ -27,7 +27,7 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 
 		if (!super.getRequest().getData().isEmpty()) {
 			int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-			int bookingId = super.getRequest().getData("bookingId", int.class);
+			Integer bookingId = super.getRequest().getData("bookingId", Integer.class);
 			Booking booking = this.repository.getBookingById(bookingId);
 
 			super.getResponse().setAuthorised(customerId == booking.getCustomer().getId());
@@ -52,11 +52,9 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 
 	@Override
 	public void unbind(final Passenger passenger) {
-		assert passenger != null;
 
 		Dataset dataset;
-
-		dataset = super.unbindObject(passenger, "name", "passport", "birth");
+		dataset = super.unbindObject(passenger, "name", "passport", "birth", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}
