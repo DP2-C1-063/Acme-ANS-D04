@@ -23,8 +23,7 @@ acme.validation.flightcrew.employeecode = The employee code must be two to three
 acme.validation.flightcrewmember.duplicated-employeecode.message = Employee code already used
 acme.validation.customer.identifier.message = The identifier of a customer must have the first two or three letters correspond to their initials
 acme.validation.customer.duplicated-identifier.message = Identifier of a customer already exists
-acme.validation.booking.locatorCode.message = The locator Code of booking must be 6 to 8 characters alphanumeric in uppercase
-acme.validation.booking.duplicated-locatorcode.message = Locator code of a booking already exists
+
 acme.validation.service.promotioncode.message = Promotion code of a service must have the last two digits corresponding to the current year
 acme.validation.service.duplicated-promotioncode.message = The promotion code already exists
 acme.validation.aircraft.duplicated-RegistrationNumber.message = Registration number already exist
@@ -61,6 +60,7 @@ acme.validation.trackinglog.resolution-percentage.message = percentage must be g
 acme.validation.passenger.passport.message = The passport must be 6 to 9 characters alphanumeric in uppercase
 
 acme.validation.maintenance-record.invalid-moment.message = The maintenance moment must be before the next inspection date
+acme.validation.maintenance-record.no-task.message = The record must have at least one task
 
 acme.validation.published.message = You can not delete this because it is already been published
 
@@ -83,3 +83,13 @@ acme.validation.flightAssignment.member-not-available.message = This member is n
 acme.validation.flightAssignment.concurrent-leg.message = There is already a leg that overlaps with this one for this crew member
 acme.validation.flightAssignment.already-pilot = There is already a pilot for this leg
 acme.validation.flightAssignment.already-co-pilot = There is already a co-pilot for this leg
+
+acme.validation.booking.locatorCode.message = The locator Code of booking must be 6 to 8 characters alphanumeric in uppercase
+acme.validation.booking.duplicated-locatorcode.message = Locator code of a booking already exists
+acme.validation.booking.flight.message = This flight is not published yet
+acme.validation.booking.noPassengers = To publish a booking you need to have passengers
+acme.validation.booking.passengerNotPublished = To publish a booking you need all passengers published
+acme.validation.booking.NolastNibble = To publish a booking you need the 4 last digits
+acme.validation.booking.doublePassenger = This passenger already is in the booking
+acme.validation.booking.notDraft = This booking is already published, meaning you cannot modify it, including adding passengers
+

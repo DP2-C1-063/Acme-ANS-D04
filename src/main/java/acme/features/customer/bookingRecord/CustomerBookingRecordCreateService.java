@@ -23,21 +23,33 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 	@Override
 	public void authorise() {
-		Boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
-		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		int bookingId = super.getRequest().getData("bookingId", int.class);
-		Booking booking = this.repository.getBookingById(bookingId);
-		status = status && booking != null && customerId == booking.getCustomer().getId() && booking.isDraftMode();
+		boolean status = false;
+
+		if (super.getRequest().getPrincipal().hasRealmOfType(Customer.class)) {
+			int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			int masterId = super.getRequest().getData("masterId", int.class);
+
+			Booking booking = this.repository.getBookingById(masterId);
+
+			if (booking != null) {
+				boolean isCustomer = booking.getCustomer().getId() == customerId;
+
+				status = isCustomer;
+
+			}
+		}
+
+		if (super.getRequest().getMethod().equals("POST")) {
+			int id = super.getRequest().getData("id", int.class);
+			status = id == 0;
+		}
+
 		if (super.getRequest().hasData("id")) {
-			String locatorCode = super.getRequest().getData("locatorCode", String.class);
-			status = status && booking.getLocatorCode().equals(locatorCode);
-
-			Integer passengerId = super.getRequest().getData("passenger", int.class);
-			Passenger passenger = this.repository.getPassengerById(passengerId);
-			status = status && (passenger != null && customerId == passenger.getCustomer().getId() || passengerId == 0);
-
-			Collection<Passenger> alreadyAddedPassengers = this.repository.getPassengersInBooking(bookingId);
-			status = status && alreadyAddedPassengers.stream().noneMatch(p -> p.getId() == passengerId);
+			Integer passengerId = super.getRequest().getData("passenger", Integer.class);
+			if (passengerId != 0) {
+				Passenger passenger = this.repository.getPassengerById(passengerId);
+				status = status && passenger != null;
+			}
 		}
 
 		super.getResponse().setAuthorised(status);
@@ -46,8 +58,8 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 	@Override
 	public void load() {
-		int bookingId = super.getRequest().getData("bookingId", int.class);
-		Booking booking = this.repository.getBookingById(bookingId);
+		int masterId = super.getRequest().getData("masterId", int.class);
+		Booking booking = this.repository.getBookingById(masterId);
 		BookingRecord bookingRecord = new BookingRecord();
 		bookingRecord.setBooking(booking);
 		super.getBuffer().addData(bookingRecord);
@@ -55,16 +67,18 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 	@Override
 	public void bind(final BookingRecord bookingRecord) {
-		super.bindObject(bookingRecord, "passenger", "booking");
+		super.bindObject(bookingRecord, "passenger");
 	}
 
 	@Override
 	public void validate(final BookingRecord bookingRecord) {
 		if (bookingRecord.getPassenger() != null) {
 			int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-			boolean status = bookingRecord.getPassenger().getCustomer().getId() == customerId && !bookingRecord.getPassenger().isDraftMode();
-			super.state(status, "passenger", "customer.bookingrecord.form.error.invalidPassenger");
+			Collection<Passenger> includedPassengers = this.repository.getPassengersInBooking(bookingRecord.getBooking().getId());
+			boolean valid = bookingRecord.getPassenger().getCustomer().getId() == customerId && !includedPassengers.contains(bookingRecord.getPassenger());
+			super.state(valid, "passenger", "acme.validation.booking.doublePassenger");
 		}
+
 	}
 
 	@Override
@@ -74,19 +88,19 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 	@Override
 	public void unbind(final BookingRecord bookingRecord) {
-		assert bookingRecord != null;
 		Dataset dataset;
 
 		dataset = super.unbindObject(bookingRecord, "passenger", "booking");
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		int bookingId = super.getRequest().getData("bookingId", int.class);
-		Collection<Passenger> addedPassengers = this.repository.getPassengersInBooking(bookingId);
+		int masterId = super.getRequest().getData("masterId", int.class);
+		Collection<Passenger> addedPassengers = this.repository.getPassengersInBooking(masterId);
 
 		Collection<Passenger> passengers = this.repository.getAllPassengersOf(customerId).stream().filter(p -> !addedPassengers.contains(p)).toList();
 		SelectChoices passengerChoices = SelectChoices.from(passengers, "name", bookingRecord.getPassenger());
 		dataset.put("locatorCode", bookingRecord.getBooking().getLocatorCode());
 		dataset.put("passengers", passengerChoices);
+		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
 
 		super.getResponse().addData(dataset);
 

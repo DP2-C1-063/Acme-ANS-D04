@@ -22,7 +22,7 @@ import javax.validation.constraints.Pattern;
 
 public @interface ValidLocatorCode {
 
-	String message() default "{acme.validation.booking.locatorcode.message}";
+	String message() default "{acme.validation.booking.locatorCode.message}";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
